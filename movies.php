@@ -14,22 +14,16 @@
     <!-- Navbar -->
     <?php include 'navbar.php'; ?>
 
-    <!-- Search Section -->
-    <!-- Search Section -->
     <!-- Search & Filter Section -->
     <div class="container py-3">
         <div class="row justify-content-center">
-
-            <!-- Search Box Row -->
             <div class="col-12 col-md-10">
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search for Movies..." style="max-width: 100%; border:1px solid #0c1424;" aria-label="Search">
                     <button class="btn" style="background-color: #0c1424; color: #f8f6fa;" type="submit">Search</button>
                 </form>
             </div>
-            <!-- Dropdowns Row -->
             <div class="col-12 col-md-10 d-flex justify-content-start flex-wrap gap-2 mt-2">
-                <!-- Language Dropdown -->
                 <div class="dropdown">
                     <button class="btn btn-outline-dark fw-bold dropdown-toggle" type="button" data-bs-toggle="dropdown">
                         Language
@@ -40,7 +34,6 @@
                         <li><a class="dropdown-item" href="#">Telugu</a></li>
                     </ul>
                 </div>
-                <!-- Genre Dropdown -->
                 <div class="dropdown">
                     <button class="btn btn-outline-dark fw-bold dropdown-toggle" type="button" data-bs-toggle="dropdown">
                         Genre
@@ -60,7 +53,7 @@
     <section class="container mb-5">
         <hr class="" style="border: 1px solid #0c1424;">
         <h1 class="text-center mb-4" style="font-size: 2.3rem;">Explore All Movies...</h1>
-        <div class="container px-3"> <!-- reduced left-right padding -->
+        <div class="container px-3">
             <div class="row justify-content-center">
                 <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
                     <div class="card p-3 rounded border-0" style="box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.6);">
@@ -113,8 +106,10 @@
     <!-- Footer -->
     <?php include 'footer.php'; ?>
 
-    <!-- JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        
 </body>
 
 </html>

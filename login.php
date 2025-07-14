@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CineBook - Login Page</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -15,19 +15,19 @@
     <!-- Login Page -->
     <div class="container my-5">
         <div class="card border-0 shadow-lg p-4">
-            <form action="#" method="post" class="row g-0 align-items-center justify-content-center">                        
+            <form action="#" method="post" class="row g-0 align-items-center justify-content-center">
                 <div class="col-12 col-lg-6 text-center mb-4 mb-lg-0 d-none d-md-block">
                     <img src="img/CineBook Logo.png" alt="Logo..." class="img-fluid" style="max-width: 100%; width: 35rem;">
-                </div>                
+                </div>
                 <div class="col-12 col-lg-6 px-3" style="max-width: 30rem;">
-                    <h1 class="text-center fw-bold mb-4" style="color: #0c1424;">Login to Your <br> Account</h1>
+                    <h1 class="text-center fw-bold mb-4" style="color: #0c1424; border-bottom: 2px solid #0c1424;">Login to Your <br> Account</h1>
                     <div class="mb-3">
-                        <label for="username">Username:</label>
+                        <label for="username" class="form-label fw-bold">Username:</label>
                         <input type="text" class="form-control" id="username" name="username"
                             placeholder="Enter Your Username...." required>
                     </div>
                     <div class="mb-3">
-                        <label for="password">Password:</label>
+                        <label for="password" class="form-label fw-bold">Password:</label>
                         <input type="password" class="form-control" id="password" name="password"
                             placeholder="Enter Your Password...." required>
                     </div>
@@ -46,7 +46,7 @@
                     <div>
                         <div class="d-flex align-items-center justify-content-between">
                             <hr class="flex-grow-1 me-2" style="border: 1px solid #0c1424;">
-                            <p class="text-center m-0" style="color: #0c1424;">OR</p>
+                            <p class="text-center m-0 fw-bold" style="color: #0c1424;">OR</p>
                             <hr class="flex-grow-1 ms-2" style="border: 1px solid #0c1424;">
                         </div>
                         <div class="d-flex flex-column mt-3">
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="mb-3 mt-2">
-                        <p class="text-center" style="color: #0c1424;">Don't have an account? <a href="register.php"
+                        <p class="text-center" style="color: #0c1424;">Don't have an account? <a href="register.php" class="fw-bold"
                                 style="color: #0c1424;">Register Now</a></p>
                     </div>
                 </div>
@@ -67,8 +67,9 @@
         </div>
     </div>
 
-    <!-- JS (Bootstrap 5) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>
 

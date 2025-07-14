@@ -16,14 +16,13 @@
     <?php include 'navbar.php'; ?>
 
     <!-- Hero Section -->
-    <section class="container my-3">
+    <section class="container mt-5 mb-5">
         <div class="row align-items-center">
             <div class="col-md-6 d-none d-md-block">
                 <img src="https://www.selfpublishingreview.com/wp-content/uploads/2020/12/pitchyrmovie.jpg"
-                    alt="Hero Image" class="img-fluid"
-                    style="box-shadow: 0 1rem 2rem rgb(0, 0, 0, 0.60);">
+                    alt="Hero Image" class="img-fluid" style="box-shadow: 0 1rem 2rem rgb(0, 0, 0, 0.60);">
             </div>
-            <div class="col-12 col-md-6 mt-4 mt-md-0">
+            <div class="col-12 col-md-6 mt-md-0">
                 <h1 class="fw-bold" style="color: #0c1424;">Welcome to CineBook</h1>
                 <p class="fw-normal" style="color: #0c1424;">Your One-Stop Destination for All Movie-Related Information.</p>
                 <a href="login.php" class="btn" style="background-color: #0c1424; color: #f8f6fa;">Explore Movies</a>
@@ -85,8 +84,9 @@
     <!-- Footer -->
     <?php include 'footer.php'; ?>
 
-    <!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>
 
