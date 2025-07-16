@@ -6,7 +6,8 @@
 
 .navbar .navbar-brand .img-fluid {
     width: 13rem;
-    height: 4rem;    
+    height: 4rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.6);
 }
 
 .container-fluid .navbar-nav .nav-link {
