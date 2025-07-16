@@ -16,7 +16,7 @@
   <div class="container my-5">
     <div class="row justify-content-center">
       <div class="col-12 col-md-8 col-lg-6">
-        <div class="card border-0 shadow-lg p-5">
+        <div class="card border-0 shadow-lg p-4">
           <h1 class="text-center fw-bold mb-4" style="color: #0c1424; border-bottom: 2px solid #0c1424;">Create Your New <br> Account</h1>
           <form action="#" method="post">
             <div class="mb-3">

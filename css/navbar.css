@@ -1,0 +1,119 @@
+/* Navbar Styles */
+.navbar {
+    background-image: linear-gradient(to bottom, #16222a, #3a6073);
+    color: #f8f6fa;
+}
+
+.navbar .navbar-brand .img-fluid {
+    width: 13rem;
+    height: 4rem;    
+}
+
+.container-fluid .navbar-nav .nav-link {
+    font-size: 1.4rem;
+    color: #f8f6fa;
+}
+
+.login-btn .btn {
+    font-size: 1.2rem;
+    background-color: #f8f6fa;
+    color: #0c1424;
+}
+
+.toggle-btn {
+    border: 1px solid #f8f6fa;
+    background-image: linear-gradient(to bottom, #16222a, #3a6073);
+    color: #f8f6fa;
+    border-radius: 5px;    
+}
+
+.toggle-btn i {
+    color: #f8f6fa;
+    font-size: 1.6rem;
+}
+
+/* Offcanvas Styles */
+
+.offcanvas {
+    background-image: linear-gradient(to bottom, #16222a, #3a6073);
+    color: #f8f6fa;
+}
+
+#offcanvasExample {
+    width: 20rem;
+}
+
+.offcanvas-header {
+    color: #f8f6fa;
+    font-size: 1.8rem;
+}
+
+.offcanvas-body i .nav-link {
+    color: #f8f6fa;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #f8f6fa;
+    padding-bottom: 10px;
+}
+
+.offcanvas-body .sidebar-a {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #f8f6fa;
+}
+
+.offcanvas-body .sidebar-btn a {
+    width: 8rem;
+    color: #0c1424;
+    font-size: 1.3rem;
+    background-color: #f8f6fa;
+    border-radius: 5px;
+}
+
+.offcanvas-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.offcanvas-footer p {
+    font-size: 1rem;
+}
+
+/* Modal Styles */
+
+.modal-backdrop.show {
+    z-index: -1;
+}
+
+/* Mobile view: Hide the navbar and display the offcanvas */
+@media (max-width: 767px) {
+
+    .navbar .navbar-brand .img-fluid {
+        width: 11rem;
+        height: 4rem;
+        border-radius: 10px;
+    }
+
+    .navbar .container-fluid,
+    .login-btn {
+        display: none !important;
+    }
+
+    .offcanvas {
+        display: block !important;
+        width: 18rem;
+    }
+
+    .offcanvas-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+/* Desktop view: Display navbar and hide offcanvas */
+@media (min-width: 768px) {
+    .navbar {
+        display: flex !important;
+    }
+}
