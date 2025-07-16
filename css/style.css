@@ -7,3 +7,7 @@
     font-family: 'Inria Serif', serif;
 }
 
+
+.slider .slick-slide {
+    margin: 0 10px;
+}

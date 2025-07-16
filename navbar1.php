@@ -4,14 +4,12 @@
         <a href="home.php" class="navbar-brand">
             <img src="img/CineBook_Logo.png" alt="CineBook Logo" class="img-fluid">
         </a>
-        <div class="container-fluid">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item mx-2"><a class="nav-link" href="home.php">Home</a></li>
                 <li class="nav-item mx-2"><a class="nav-link" href="movies.php">Movies</a></li>
                 <li class="nav-item mx-2"><a class="nav-link" href="contact.php">Contact Us</a></li>
                 <li class="nav-item mx-2"><a class="nav-link" href="about.php">About Us</a></li>
             </ul>
-        </div>
         <div class="d-flex login-btn" style="align-items: center;">
             <a href="login.php"><button class="btn fw-bold">Login</button></a>
         </div>
