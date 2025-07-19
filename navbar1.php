@@ -11,14 +11,13 @@
             <li class="nav-item mx-2"><a class="nav-link" href="about.php">About Us</a></li>
         </ul>
         <div class="d-flex login-btn" style="align-items: center;">
-            <a href="login.php"><button class="btn">Login</button></a>
+            <a href="login.php"><button class="btn">Sign-In</button></a>
         </div>
         <!-- Sidebar Toggle Button for Mobile -->
         <button class="btn toggle-btn d-lg-none" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
             <i class="fas fa-bars mt-1"></i>
         </button>
     </nav>
-
     <!-- Sidebar (Offcanvas) for Mobile -->
     <div class="offcanvas offcanvas-start p-2" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
@@ -29,39 +28,39 @@
         <div class="offcanvas-body" style="font-size: 1.2rem;">
             <div class="d-flex flex-column">
                 <div class="sidebar-a d-flex align-items-center mb-3">
-                    <i class="fa fa-home mx-2"></i>
+                    <i class="fa fa-home mx-3"></i>
                     <a href="home.php" class="nav-link p-0">Home</a>
                 </div>
                 <div class="sidebar-a d-flex align-items-center mb-3">
-                    <i class="fa fa-film mx-2"></i>
+                    <i class="fa fa-film mx-3"></i>
                     <a href="movies.php" class="nav-link p-0">Movies</a>
                 </div>
                 <div class="sidebar-a d-flex align-items-center mb-3">
-                    <i class="fa fa-envelope mx-2"></i>
+                    <i class="fa fa-envelope mx-3"></i>
                     <a href="contact.php" class="nav-link p-0">Contact Us</a>
                 </div>
                 <div class="sidebar-a d-flex align-items-center mb-3">
-                    <i class="fa fa-info-circle mx-2"></i>
+                    <i class="fa fa-info-circle mx-3"></i>
                     <a href="about.php" class="nav-link p-0">About Us</a>
                 </div>
                 <div class="sidebar-a d-flex align-items-center mb-3">
-                    <i class="fa fa-user mx-2"></i>
+                    <i class="fa fa-user mx-3"></i>
                     <a href="profile.php" class="nav-link p-0">Profile</a>
                 </div>
                 <div class="sidebar-a d-flex align-items-center mb-3">
-                    <i class="fa fa-cog mx-2"></i>
-                    <a href="settings.php" class="nav-link p-0">Settings</a>
-                </div>
-                <div class="sidebar-a d-flex align-items-center mb-3">
-                    <i class="fa fa-ticket-alt mx-2"></i>
+                    <i class="fa fa-ticket-alt mx-3"></i>
                     <a href="bookings.php" class="nav-link p-0">My Bookings</a>
                 </div>
                 <div class="sidebar-a d-flex align-items-center mb-3">
-                    <i class="fa fa-sign-out-alt mx-2"></i>
+                    <i class="fa fa-cog mx-3"></i>
+                    <a href="settings.php" class="nav-link p-0">Settings</a>
+                </div>
+                <div class="sidebar-a d-flex align-items-center mb-3">
+                    <i class="fa fa-sign-out-alt mx-3"></i>
                     <a href="logout.php" class="nav-link text-danger p-0">Log Out</a>
                 </div>
                 <div class="sidebar-btn d-flex mt-3 align-items-center">
-                    <a href="login.php" class="btn text-center fw-bold">Login</a>
+                    <a href="login.php" class="btn text-center fw-bold">Sign-In</a>
                 </div>
             </div>
         </div>

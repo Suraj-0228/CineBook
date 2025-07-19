@@ -67,7 +67,7 @@
 
     <!-- Movie Cards Section -->
     <section class="container mb-5">
-        <h1 class="text-center my-4 explore-title">Explore All Movies...</h1>
+        <h1 class="text-center my-4 fw-bold">Explore All Movies...</h1>
         <div class="container px-3">
             <div class="row justify-content-center">
                 <!-- <div class="movie-slider"> -->
@@ -89,7 +89,7 @@
                     echo '            <div class="d-flex justify-content-between align-items-center mb-3">';
                     echo '                <span><i class="fa-solid fa-star text-danger"></i> ' . $rating . '/10.0</span>';
                     echo '            </div>';
-                    echo '            <a href="movies.html" class="btn w-100">View Details</a>';
+                    echo '            <a href="movies-details.php" class="btn w-100">View Details</a>';
                     echo '        </div>';
                     echo '    </div>';
                     echo '</div>';

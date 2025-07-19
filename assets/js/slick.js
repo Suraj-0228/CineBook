@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // Hero Slider
+    // Hero Slider {home.php}
     $('.hero-slider').slick({
         arrows: true,
         infinite: true,
@@ -32,7 +32,7 @@ $(document).ready(function () {
         }
         ]
     });
-    // Movie Card Slider
+    // Movie Card Slider {home.php}
     $('.card-slider').slick({
         arrows: true,
         infinite: false,
@@ -65,7 +65,7 @@ $(document).ready(function () {
         }
         ]
     });
-    // Offer Image Slider
+    // Offer Image Slider {home.php}
     $('.img-slider').slick({
         slidesToShow: 2,        // Show 2 on desktop
         slidesToScroll: 1,
@@ -78,36 +78,6 @@ $(document).ready(function () {
                     slidesToShow: 1,  // Show 1 on mobile
                     arrows: false,
                     centerMode: true
-                }
-            }
-        ]
-    });
-    // Catagory-slider
-    $('.catagory-slider').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: false,
-        arrows: false,
-        dots: true,
-        autoplay: false,
-        autoplaySpeed: 2000,
-        responsive: [
-            {
-                breakpoint: 991,
-                settings: {
-                    slidesToShow: 3
-                }
-            },
-            {
-                breakpoint: 767,
-                settings: {
-                    slidesToShow: 2
-                }
-            },
-            {
-                breakpoint: 575,
-                settings: {
-                    slidesToShow: 1
                 }
             }
         ]
@@ -145,6 +115,59 @@ $(document).ready(function () {
                     slidesToShow: 2,
                     slidesToScroll: 1,
                     arrows: false
+                }
+            }
+        ]
+    });
+    // Catagory-slider {movies.php}
+    $('.catagory-slider').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: false,
+        arrows: false,
+        dots: true,
+        autoplay: false,
+        autoplaySpeed: 2000,
+        responsive: [
+            {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 575,
+                settings: {
+                    slidesToShow: 1
+                }
+            }
+        ]
+    });
+    // Cast/Crew Slider {movies-setails.php}
+    $('.cast-slider, .crew-slider').slick({
+        slidesToShow: 5,        // Show 2 on desktop
+        slidesToScroll: 1,
+        infinite: false,
+        dots: false,
+        arrows: true,
+        responsive: [
+            {
+                breakpoint: 768,    // Below 768px (mobile)
+                settings: {
+                    infinite: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 2,
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                    arrows: false,
+                    centerMode: false,
+                    dots: false
                 }
             }
         ]
