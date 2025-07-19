@@ -2,18 +2,16 @@
     <!-- Navbar (Visible on desktop) -->
     <nav class="navbar navbar-expand-lg px-3">
         <a href="home.php" class="navbar-brand">
-            <img src="img/CineBook_Logo.png" alt="CineBook Logo" class="img-fluid">
+            <img src="assets/img/CineBook_Logo.png" alt="CineBook Logo" class="img-fluid">
         </a>
-        <div class="container-fluid">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item mx-2"><a class="nav-link" href="home.php">Home</a></li>
-                <li class="nav-item mx-2"><a class="nav-link" href="movies.php">Movies</a></li>
-                <li class="nav-item mx-2"><a class="nav-link" href="contact.php">Contact Us</a></li>
-                <li class="nav-item mx-2"><a class="nav-link" href="about.php">About Us</a></li>
-            </ul>
-        </div>
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item mx-2"><a class="nav-link" href="home.php">Home</a></li>
+            <li class="nav-item mx-2"><a class="nav-link" href="movies.php">Movies</a></li>
+            <li class="nav-item mx-2"><a class="nav-link" href="contact.php">Contact Us</a></li>
+            <li class="nav-item mx-2"><a class="nav-link" href="about.php">About Us</a></li>
+        </ul>
         <div class="d-flex login-btn" style="align-items: center;">
-            <a href="login.php"><button class="btn fw-bold">Login</button></a>
+            <a href="login.php"><button class="btn">Login</button></a>
         </div>
         <!-- Sidebar Toggle Button for Mobile -->
         <button class="btn toggle-btn d-lg-none" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
@@ -24,7 +22,7 @@
     <!-- Sidebar (Offcanvas) for Mobile -->
     <div class="offcanvas offcanvas-start p-2" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-            <h2 class="offcanvas-title" id="offcanvasExampleLabel">More Options</h2>
+            <h2 class="offcanvas-title" id="offcanvasExampleLabel">Options Menu</h2>
             <li type="button" class="fa fa-xmark mt-2 text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></li>
         </div>
         <!-- Sidebar Body -->

@@ -1,0 +1,124 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inria Serif', serif;
+}
+
+.btn {
+    background-image: linear-gradient(to bottom, #16222a, #3a6073);
+    color: #f8f6fa;
+}
+
+/* Home Page Css */
+
+.hero-con {
+    width: 60%;
+}
+
+.hero-slider img {
+    object-fit: cover;
+    height: 500px;
+}
+
+.slider-item {
+    position: relative;
+}
+
+.slider-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(22, 34, 42, 0.5);
+    z-index: 1;
+}
+
+.slider-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (min-width: 768px) {
+    .img-slider {
+        display: flex !important;
+    }
+}
+
+.catagory-section .row .col-6 img {
+    height: 6rem;
+    width: 6rem;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.catagory-section .row .col-6 p {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease-in;
+}
+
+.catagory-section .row .col-6:hover {
+    transform: scale(1.1);
+}
+
+.catagory-section .img-link {
+    text-decoration: none;
+    color: #0c1424;
+}
+
+.sub-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Movies Page Css */
+
+.custom-search-input {
+    border: 1px solid #0c1424;
+    max-width: 100%;
+}
+
+.custom-search-btn {
+    background-color: #0c1424;
+    color: #f8f6fa;
+}
+
+.custom-hr {
+    border: 1px solid #0c1424;
+}
+
+.future-link{
+    text-decoration: none;
+}
+
+.movie-img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+}
+
+.movie-card {
+    border-radius: 0;
+}
+
+.explore-title {
+    font-size: 2.3rem;
+}
+
+.view-details-btn {
+    background-color: #0c1424;
+    color: #f8f6fa;
+}
+
+@media (max-width: 767px) {
+    .hero-con {
+        width: 100%;
+    }
+}

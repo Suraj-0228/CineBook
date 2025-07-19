@@ -1,31 +1,37 @@
 /* Navbar Styles */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
 .navbar {
     background-image: linear-gradient(to bottom, #16222a, #3a6073);
     color: #f8f6fa;
 }
 
 .navbar .navbar-brand .img-fluid {
-    width: 13rem;
+    width: 14rem;
     height: 4rem;
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.6);
 }
 
-.container-fluid .navbar-nav .nav-link {
-    font-size: 1.4rem;
+.navbar-nav .nav-link {
+    font-size: 1.2rem;
     color: #f8f6fa;
 }
 
 .login-btn .btn {
-    font-size: 1.2rem;
-    background-color: #f8f6fa;
-    color: #0c1424;
+    font-size: 1.1rem;
+    color: #f8f6fa;
+    border: 1px solid #f8f6fa;
+    border-radius: 5px;
 }
 
 .toggle-btn {
     border: 1px solid #f8f6fa;
     background-image: linear-gradient(to bottom, #16222a, #3a6073);
     color: #f8f6fa;
-    border-radius: 5px;    
+    border-radius: 5px;
 }
 
 .toggle-btn i {
@@ -63,10 +69,11 @@
 
 .offcanvas-body .sidebar-btn a {
     width: 8rem;
-    color: #0c1424;
-    font-size: 1.3rem;
-    background-color: #f8f6fa;
+    color: #f8f6fa;
+    font-size: 1.2rem;  
+    border: 1px solid #f8f6fa;  
     border-radius: 5px;
+    background-image: none;
 }
 
 .offcanvas-footer {
@@ -90,12 +97,12 @@
 @media (max-width: 767px) {
 
     .navbar .navbar-brand .img-fluid {
-        width: 11rem;
+        width: 13rem;
         height: 4rem;
         border-radius: 10px;
     }
 
-    .navbar .container-fluid,
+    .navbar-nav,
     .login-btn {
         display: none !important;
     }
@@ -118,3 +125,5 @@
         display: flex !important;
     }
 }
+
+

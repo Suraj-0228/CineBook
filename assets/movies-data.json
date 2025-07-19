@@ -1,0 +1,197 @@
+{
+    "movies_data": [
+        {
+            "id": 1,
+            "title": "Jawan",
+            "language": "Hindi",
+            "release_date": "2023-09-07",
+            "genre": [
+                "Action",
+                "Thriller"
+            ],
+            "rating": 8.5,
+            "poster_url": "assets/img/movie1.jpg",
+            "description": "Shah Rukh Khan stars in Atlee’s action thriller that became the highest‑grossing Indian film of 2023."
+        },
+        {
+            "id": 2,
+            "title": "12th Fail",
+            "language": "Hindi",
+            "release_date": "2023-10-27",
+            "genre": [
+                "Biographical",
+                "Drama"
+            ],
+            "rating": 8.0,
+            "poster_url": "assets/img/movie2.jpg",
+            "description": "A biopic on IPS officer Manoj Sharma, praised as a sleeper hit of late 2023."
+        },
+        {
+            "id": 3,
+            "title": "Fateh",
+            "language": "Hindi",
+            "release_date": "2025-01-10",
+            "genre": [
+                "Action",
+                "Thriller"
+            ],
+            "rating": 7.2,
+            "poster_url": "assets/img/movie3.jpg",
+            "description": "Sonu Sood’s directorial debut, featuring him as an ex-agent battling a cyber mafia."
+        },
+        {
+            "id": 4,
+            "title": "Pushpa 2: The Rule",
+            "language": "English, Hindi, Tamil",
+            "release_date": "2025-01-14",
+            "genre": [
+                "Action",
+                "Thriller"
+            ],
+            "rating": 8.9,
+            "poster_url": "assets/img/movie4.jpg",
+            "description": "A souths most actioned and thriller movie released in 12 december, 2024"
+        },
+        {
+            "id": 5,
+            "title": "Singham Again",
+            "language": "English, Hindi, Telugu",
+            "release_date": "2025-03-07",
+            "genre": [
+                "Thriller",
+                "Action"
+            ],
+            "rating": 8.3,
+            "poster_url": "assets/img/movie5.jpg",
+            "description": "A Telugu thriller centered on a housewife turned detective."
+        },
+        {
+            "id": 6,
+            "title": "Chhaava",
+            "language": "Hindi",
+            "release_date": "2025-02-14",
+            "genre": [
+                "Historical",
+                "Drama"
+            ],
+            "rating": 8.4,
+            "poster_url": "assets/img/movie6.jpg",
+            "description": "Vicky Kaushal stars in this historical epic that crossed ₹800 crore at the box office."
+        },
+        {
+            "id": 7,
+            "title": "Sky Force",
+            "language": "Hindi",
+            "release_date": "2025-01-24",
+            "genre": [
+                "Action",
+                "Drama"
+            ],
+            "rating": 7.1,
+            "poster_url": "assets/img/movie7.jpg",
+            "description": "Akshay Kumar leads this patriotic-action movie that kicked off 2025."
+        },
+        {
+            "id": 8,
+            "title": "Sikandar",
+            "language": "Hindi",
+            "release_date": "2025-04-01",
+            "genre": [
+                "Action",
+                "Thriller"
+            ],
+            "rating": 7.3,
+            "poster_url": "assets/img/movie8.jpg",
+            "description": "Salman Khan teams with AR Murugadoss in this high-profile action entertainer."
+        },
+        {
+            "id": 9,
+            "title": "Toxic",
+            "language": "Kannada",
+            "release_date": "2025-04-10",
+            "genre": [
+                "Crime",
+                "Drama"
+            ],
+            "rating": 7.2,
+            "poster_url": "assets/img/movie9.jpg",
+            "description": "A gangster drama starring Yash and Nayanthara."
+        },
+        {
+            "id": 10,
+            "title": "Housefull 5",
+            "language": "Hindi",
+            "release_date": "2025-06-06",
+            "genre": [
+                "Comedy"
+            ],
+            "rating": 6.5,
+            "poster_url": "assets/img/movie10.jpg",
+            "description": "The fifth installment in the popular comedy franchise released in June 2025."
+        },
+        {
+            "id": 11,
+            "title": "Raid 2",
+            "language": "Hindi",
+            "release_date": "2025-05-01",
+            "genre": [
+                "Action",
+                "Crime"
+            ],
+            "rating": 7.8,
+            "poster_url": "assets/img/movie11.jpg",
+            "description": "Sequel to the hit Raid, another high-octane crime drama."
+        },
+        {
+            "id": 12,
+            "title": "Dragon",
+            "language": "Tamil",
+            "release_date": "2025-02-21",
+            "genre": [
+                "Fantasy",
+                "Drama"
+            ],
+            "rating": 7.9,
+            "poster_url": "assets/img/movie12.jpg",
+            "description": "A magical Tamil fantasy drama that performed strongly at the box office."
+        },
+        {
+            "id": 13,
+            "title": "Sittare Zamin Par",
+            "language": "Hindi",
+            "release_date": "2025-06-15",
+            "genre": [
+                "Comedy"
+            ],
+            "rating": 7.7,
+            "poster_url": "assets/img/movie13.jpg",
+            "description": "The sequel to Chhaava, continuing the historical saga."
+        },
+        {
+            "id": 14,
+            "title": "War 2",
+            "language": "Hindi",
+            "release_date": "2025-08-14",
+            "genre": [
+                "Action",
+                "Spy"
+            ],
+            "rating": 8.0,
+            "poster_url": "assets/img/movie14.jpg",
+            "description": "Hrithik Roshan and Jr NTR reunite in this YRF Spy Universe sequel."
+        },
+        {
+            "id": 15,
+            "title": "Kantara Chapter 1",
+            "language": "Kannada",
+            "release_date": "2025-10-02",
+            "genre": [
+                "Drama",
+                "Thriller"
+            ],
+            "rating": 7.5,
+            "poster_url": "assets/img/movie15.jpg",
+            "description": "Rishab Shetty returns in this sequel to the 2022 blockbuster Kantara."
+        }
+    ]
+}
