@@ -31,7 +31,6 @@ header {
 }
 
 /* Offcanvas Styles */
-
 .offcanvas, #offcanvasExample {
     background-image: linear-gradient(to bottom, #16222a, #3a6073);
     color: #f8f6fa;
@@ -73,7 +72,6 @@ header {
 }
 
 /* Modal Styles */
-
 .modal-backdrop.show {
     z-index: -1;
 }

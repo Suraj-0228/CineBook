@@ -1,10 +1,7 @@
-/* footer css */
 .footer {
     background-image: linear-gradient(to bottom, #16222a, #3a6073);
     color: #f8f6fa;
 }
-
-/* Left Footer */
 
 .col-12 .footer-logo {
     width: 16rem;
@@ -21,15 +18,11 @@
     line-height: 1.5;
 }
 
-/* Center Footer */
-
 .list-unstyled li a {
     font-size: 1.2rem;
     color: #f8f6fa;
     text-decoration: none;
 }
-
-/* Bottom Footer */
 
 .social-links,
 .social-icon {

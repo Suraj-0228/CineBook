@@ -36,8 +36,6 @@
     justify-content: space-between;
 }
 
-/* Mobile/Desktop View */
-
 @media (max-width: 767px) {
     .hero-con {
         width: 100%;
