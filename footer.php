@@ -5,9 +5,11 @@
             <!-- Left Section -->
             <div class="col-12 col-md-6 col-lg-4 text-center text-md-start">
                 <div class="my-3">
-                    <img src="assets/img/CineBook_Logo.png" alt="CineBook Logo" class="footer-logo img-fluid p-2" />
+                    <a href="home.php">
+                        <img src="assets/img/CineBook_Logo.png" alt="CineBook Logo" class="footer-logo border border-light rounded img-fluid p-2" />
+                    </a>
                 </div>
-                <p class="footer-text fw-bold my-4">
+                <p class="left-text fw-bold my-4">
                     Your Gateway to Movie Magic. Discover, <br> Book, and Enjoy the Latest Films
                 </p>
             </div>
@@ -26,7 +28,7 @@
             <div class="col-12 col-lg-4 text-center text-md-start">
                 <h1 class="footer-heading fw-bold my-4">Connect With Us</h1>
                 <p class="footer-text">
-                    <i class="fa-solid fa-phone me-2"></i> +91 56516514301
+                    <i class="fa-solid fa-phone me-2"></i> +91 6359421359
                 </p>
                 <p class="footer-text">
                     <i class="fa-regular fa-envelope me-2"></i> cinebookmovies@gmail.com

@@ -47,8 +47,8 @@
                                 <hr class="flex-grow-1 ms-2 divider-line">
                             </div>
                             <div class="d-flex flex-column mt-3 gap-2">
-                                <a href="#"><button type="button" class="btn w-100 social-btn"><i class="fa-brands fa-facebook fa-lg mx-1"></i>Facebook</button></a>
-                                <a href="#"><button type="button" class="btn w-100 social-btn"><i class="fa-brands fa-google fa-lg mx-1"></i>Google</button></a>
+                                <a href="#"><button type="button" class="btn w-100 social-btn"><i class="fa-brands fa-facebook fa-lg mx-2"></i>Facebook</button></a>
+                                <a href="#"><button type="button" class="btn w-100 social-btn"><i class="fa-brands fa-google fa-lg mx-2"></i>Google</button></a>
                             </div>
                         </div>
                         <div class="mb-3 mt-3">

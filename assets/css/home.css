@@ -1,0 +1,53 @@
+/* Home Page Css */
+
+.hero-con {
+    width: 60%;
+}
+
+.hero-slider img {
+    object-fit: cover;
+    height: 500px;
+}
+
+.slider-item {
+    position: relative;
+}
+
+.slider-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(22, 34, 42, 0.5);
+    z-index: 1;
+}
+
+.slider-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sub-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Mobile/Desktop View */
+
+@media (max-width: 767px) {
+    .hero-con {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .img-slider {
+        display: flex !important;
+    }
+
+}

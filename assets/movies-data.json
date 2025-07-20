@@ -42,7 +42,7 @@
         {
             "id": 4,
             "title": "Pushpa 2: The Rule",
-            "language": "English, Hindi, Tamil",
+            "language": "Hindi",
             "release_date": "2025-01-14",
             "genre": [
                 "Action",
@@ -55,7 +55,7 @@
         {
             "id": 5,
             "title": "Singham Again",
-            "language": "English, Hindi, Telugu",
+            "language": "Hindi",
             "release_date": "2025-03-07",
             "genre": [
                 "Thriller",
@@ -107,7 +107,7 @@
         {
             "id": 9,
             "title": "Toxic",
-            "language": "Kannada",
+            "language": "Hindi",
             "release_date": "2025-04-10",
             "genre": [
                 "Crime",
@@ -145,7 +145,7 @@
         {
             "id": 12,
             "title": "Dragon",
-            "language": "Tamil",
+            "language": "Hindi",
             "release_date": "2025-02-21",
             "genre": [
                 "Fantasy",
@@ -183,7 +183,7 @@
         {
             "id": 15,
             "title": "Kantara Chapter 1",
-            "language": "Kannada",
+            "language": "Hindi",
             "release_date": "2025-10-02",
             "genre": [
                 "Drama",
@@ -192,6 +192,16 @@
             "rating": 7.5,
             "poster_url": "assets/img/movie15.jpg",
             "description": "Rishab Shetty returns in this sequel to the 2022 blockbuster Kantara."
+        },
+        {
+            "id": 16,
+            "title": "Golmaal Again",
+            "language": "Hindi",
+            "release_date": "2021-08-15",
+            "genre": "Comedy",
+            "rating": 8.5,
+            "poster_url": "assets/img/movie16.jpg",
+            "description": "Rohit Shetty's blockbutser comedy movie goes moch famous in the heart."
         }
     ]
 }

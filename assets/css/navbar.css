@@ -23,30 +23,18 @@ header {
 .login-btn .btn {
     font-size: 1.1rem;
     color: #f8f6fa;
-    border: 1px solid #f8f6fa;
-    border-radius: 5px;
 }
 
 .toggle-btn {
-    border: 1px solid #f8f6fa;
     background-image: linear-gradient(to bottom, #16222a, #3a6073);
     color: #f8f6fa;
-    border-radius: 5px;
-}
-
-.toggle-btn i {
-    color: #f8f6fa;
-    font-size: 1.6rem;
 }
 
 /* Offcanvas Styles */
 
-.offcanvas {
+.offcanvas, #offcanvasExample {
     background-image: linear-gradient(to bottom, #16222a, #3a6073);
     color: #f8f6fa;
-}
-
-#offcanvasExample {
     width: 20rem;
 }
 
@@ -70,10 +58,7 @@ header {
 .offcanvas-body .sidebar-btn a {
     width: 8rem;
     color: #f8f6fa;
-    font-size: 1.2rem;  
-    border: 1px solid #f8f6fa;  
-    border-radius: 5px;
-    background-image: none;
+    font-size: 1.2rem;
 }
 
 .offcanvas-footer {
@@ -99,7 +84,6 @@ header {
     .navbar .navbar-brand .img-fluid {
         width: 13rem;
         height: 4rem;
-        border-radius: 10px;
     }
 
     .navbar-nav,
@@ -107,23 +91,4 @@ header {
         display: none !important;
     }
 
-    .offcanvas {
-        display: block !important;
-        width: 18rem;
-    }
-
-    .offcanvas-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
 }
-
-/* Desktop view: Display navbar and hide offcanvas */
-@media (min-width: 768px) {
-    .navbar {
-        display: flex !important;
-    }
-}
-
-

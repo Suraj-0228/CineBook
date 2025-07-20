@@ -1,11 +1,11 @@
 $(document).ready(function () {
     // Hero Slider {home.php}
     $('.hero-slider').slick({
-        arrows: true,
+        arrows: false,
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        dots: true,
+        dots: false,
         speed: 300,
         autoplay: true,
         autoplaySpeed: 3000,

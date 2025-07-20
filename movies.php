@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="assets/css/movies.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
 </head>
 
@@ -57,12 +58,14 @@
 
     <!-- Future Card -->
     <section class="mx-4 my-3">
-        <a href="#" class="future-link">
-            <div class="card p-3 d-flex flex-row align-items-center justify-content-between shadow-lg border-0">
-                <h2 class="fw-bold ms-2 mt-1 fs-4 fs-md-3">Upcoming Movies</h2>
-                <i class="fa-solid fa-arrow-right fa-lg me-3"></i>
-            </div>
-        </a>
+        <div class="container">
+            <a href="#" class="future-link">
+                <div class="card p-3 d-flex flex-row align-items-center justify-content-between shadow-lg border-0">
+                    <h2 class="fw-bold ms-2 mt-1 fs-4 fs-md-3">Upcoming Movies</h2>
+                    <i class="fa-solid fa-arrow-right fa-lg me-3"></i>
+                </div>
+            </a>
+        </div>
     </section>
 
     <!-- Movie Cards Section -->
@@ -70,7 +73,6 @@
         <h1 class="text-center my-4 fw-bold">Explore All Movies...</h1>
         <div class="container px-3">
             <div class="row justify-content-center">
-                <!-- <div class="movie-slider"> -->
                 <?php
                 $movie_json = file_get_contents('assets/movies-data.json');
                 $decoded_json = json_decode($movie_json, true);
@@ -80,7 +82,7 @@
                     $title = $movie['title'];
                     $poster = $movie['poster_url'];
                     $rating = $movie['rating'];
-
+                    $language = $movie['language'];
                     echo '<div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3">';
                     echo '    <div class="card">';
                     echo '        <img src="' . $poster . '" class="card-img-top" alt="' . $title . '">';
@@ -88,6 +90,7 @@
                     echo '            <h5 class="card-title fw-bold">' . $title . '</h5>';
                     echo '            <div class="d-flex justify-content-between align-items-center mb-3">';
                     echo '                <span><i class="fa-solid fa-star text-danger"></i> ' . $rating . '/10.0</span>';
+                    echo '                <span>' . $language . '</span>';
                     echo '            </div>';
                     echo '            <a href="movies-details.php" class="btn w-100">View Details</a>';
                     echo '        </div>';
@@ -101,9 +104,9 @@
     </section>
 
     <!-- Categories Section -->
-    <section class="catagory-section m-5 mt-0">
-        <h1 class="text-center fw-bold">Explore Category</h1>
-        <div class="row justify-content-center mt-3">
+    <section class="catagory-section m-5">
+        <h1 class="text-center explore-title fw-bold">Explore Category</h1>
+        <div class="row justify-content-center">
             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mt-3">
                 <div class="text-center shadow-lg border rounded p-2 h-100 d-flex flex-column align-items-center">
                     <a href="#" class="img-link d-block">

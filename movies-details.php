@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/style.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="stylesheet" href="details.css">
+    <link rel="stylesheet" href="assets/css/details.css">
 </head>
 
 <body>
@@ -53,7 +53,7 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum veritatis, quod ducimus porro distinctio, ad eos quis.</p>
             </div>
             <hr class="w-100">
-            <div class="mb-4">
+            <div class="mb-1">
                 <h3 class="fw-bold">Cast:</h3>
                 <div class="row sub-cast cast-slider ms-1">
                     <div class="col-6 col-md-4 col-lg-2 cast-img">
