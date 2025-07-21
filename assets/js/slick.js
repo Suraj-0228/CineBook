@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // Hero Slider {home.php}
+    // Hero Slider {home.html}
     $('.hero-slider').slick({
         arrows: false,
         infinite: true,
@@ -32,40 +32,9 @@ $(document).ready(function () {
         }
         ]
     });
-    // Movie Card Slider {home.php}
-    $('.card-slider').slick({
-        arrows: true,
-        infinite: false,
-        slidesToShow: 5,
-        slidesToScroll: 2,
-        centermode: true,
-        centerPadding: '60px',
-        dots: false,
-        speed: 300,
-        responsive: [{
-            breakpoint: 991,
-            settings: {
-                slidesToShow: 3,
-                arrows: false
-            }
-        },
-        {
-            breakpoint: 767,
-            settings: {
-                slidesToShow: 2,
-                arrows: false
-            }
-        },
-        {
-            breakpoint: 575,
-            settings: {
-                slidesToShow: 2,
-                arrows: false
-            }
-        }
-        ]
-    });
-    // Offer Image Slider {home.php}
+    // Movie Card Slider {home.html}
+
+    // Offer Image Slider {home.html}
     $('.img-slider').slick({
         slidesToShow: 2,        // Show 2 on desktop
         slidesToScroll: 1,
@@ -82,7 +51,7 @@ $(document).ready(function () {
             }
         ]
     });
-    // Movie Slider {movies.php}
+    // Movie Slider {movies.html}
     $('.movie-slider').slick({
         slidesToShow: 4,
         slidesToScroll: 4,
@@ -119,7 +88,7 @@ $(document).ready(function () {
             }
         ]
     });
-    // Catagory-slider {movies.php}
+    // Catagory-slider {movies.html}
     $('.catagory-slider').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -149,7 +118,7 @@ $(document).ready(function () {
             }
         ]
     });
-    // Cast/Crew Slider {movies-setails.php}
+    // Cast/Crew Slider {movies-setails.html}
     $('.cast-slider, .crew-slider').slick({
         slidesToShow: 5,        // Show 2 on desktop
         slidesToScroll: 1,
