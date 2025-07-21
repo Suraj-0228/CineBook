@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineBook - Ticket Booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="assets/css/footer.css" />
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <!-- Navbar (Visible on desktop) -->
+        <nav class="navbar navbar-expand-lg px-3 py-0">
+            <a href="home.html" class="navbar-brand">
+                <img src="assets/img/CineBook_Logo.png" alt="CineBook Logo" class="img-fluid">
+            </a>
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item mx-2"><a class="nav-link" href="home.html">Home</a></li>
+                <li class="nav-item mx-2"><a class="nav-link" href="movies.html">Movies</a></li>
+                <li class="nav-item mx-2"><a class="nav-link" href="my-booking.html">My Bookings</a></li>
+                <li class="nav-item mx-2"><a class="nav-link" href="about.html">About Us</a></li>
+            </ul>
+            <div class="d-flex login-btn" style="align-items: center;">
+                <a href="login.html"><button class="btn border border-light">Sign-In</button></a>
+            </div>
+            <!-- Sidebar Toggle Button -->
+            <button class="btn toggle-btn py-2 border border-light ms-2" data-bs-toggle="offcanvas"
+                href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                <i class="fas fa-bars fa-xl"></i>
+            </button>
+        </nav>
+        <!-- Sidebar (Offcanvas) for Mobile -->
+        <div class="offcanvas offcanvas-start p-2" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header justify-content-between">
+                <h2 class="offcanvas-title" id="offcanvasExampleLabel">Options Menu</h2>
+                <li type="button" class="fa fa-xmark mt-1 text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
+                </li>
+            </div>
+            <!-- Sidebar Body -->
+            <div class="offcanvas-body" style="font-size: 1.2rem;">
+                <div class="d-flex flex-column">
+                    <div class="sidebar-a d-flex align-items-center d-lg-none mb-3">
+                        <i class="fa fa-home me-3"></i>
+                        <a href="home.html" class="nav-link p-0">Home</a>
+                    </div>
+                    <div class="sidebar-a d-flex align-items-center d-lg-none mb-3">
+                        <i class="fa fa-film me-3"></i>
+                        <a href="movies.html" class="nav-link p-0">Movies</a>
+                    </div>
+                    <div class="sidebar-a d-flex align-items-center d-lg-none mb-3">
+                        <i class="fa fa-info-circle me-3"></i>
+                        <a href="about.html" class="nav-link p-0">About Us</a>
+                    </div>
+                    <div class="sidebar-a d-flex align-items-center mb-3">
+                        <i class="fa fa-user me-3"></i>
+                        <a href="profile.html" class="nav-link p-0">Profile</a>
+                    </div>
+                    <div class="sidebar-a d-flex align-items-center mb-3">
+                        <i class="fa fa-ticket-alt me-3"></i>
+                        <a href="my-booking.html" class="nav-link p-0">My Bookings</a>
+                    </div>
+                    <div class="sidebar-a d-flex align-items-center mb-3">
+                        <i class="fa fa-cog me-3"></i>
+                        <a href="settings.html" class="nav-link p-0">Settings</a>
+                    </div>
+                    <div class="sidebar-a d-flex align-items-center mb-3">
+                        <i class="fa fa-sign-out-alt me-3"></i>
+                        <a href="logout.html" class="nav-link text-danger p-0">Log Out</a>
+                    </div>
+                    <div class="sidebar-btn d-flex mt-3 align-items-center">
+                        <a href="login.html" class="btn border border-light text-center fw-bold">Sign-In</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="offcanvas-footer p-3">
+                <p class="text-center mb-2">&copy; 2025 CineBook. All rights reserved.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <div class="container">
+            <div class="book-heading my-3">
+                <h1 class="fw-bold fs-1">Movie: Jawan - (Hindi)</h1>
+                <p class="booking-genre fs-5">Action</p>
+            </div>
+        </div>
+        <hr class="my-4">
+    </section>
+
+    <!-- Booking Details -->
+    <section class="booking-details">
+        <div class="container">
+            <div class="row gy-3 justify-content-between">
+                <!-- Left Side: Booking Dates -->
+                <h5 class="fw-bold">Date & Price:</h5>
+                <div class="col-12 col-lg-8 d-flex flex-wrap gap-2">
+                    <p class="p-2 text-center border rounded border-dark">Sun 20, July</p>
+                    <p class="p-2 text-center border rounded border-dark">Mon 21, July</p>
+                    <p class="p-2 text-center border rounded border-dark">Tue 22, July</p>
+                    <p class="p-2 text-center border rounded border-dark">Wed 23, July</p>
+                    <p class="p-2 text-center border rounded border-dark">Fri 24, July</p>
+                </div>
+
+                <!-- Right Side: Language and Time -->
+                <div class="col-12 col-lg-4 d-flex flex-wrap gap-2 justify-content-lg-end">
+                    <p class="p-2 border rounded border-dark">Hindi - 2D</p>
+                    <div class="dropdown">
+                        <button class="btn p-2 fw-bold border rounded border-dark dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown">
+                            Price Range
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li class="mx-3 d-flex align-items-center">
+                                <input type="checkbox" class="me-2" name="time" id="time1"> 0-100₹
+                            </li>
+                            <li class="mx-3 d-flex align-items-center">
+                                <input type="checkbox" class="me-2" name="time" id="time2"> 100-200₹
+                            </li>
+                            <li class="mx-3 d-flex align-items-center">
+                                <input type="checkbox" class="me-2" name="time" id="time3"> 200-300₹
+                            </li>
+                            <li class="mx-3 d-flex align-items-center">
+                                <input type="checkbox" class="me-2" name="time" id="time4"> 300-400₹
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3">
+        </div>
+    </section>
+
+    <!-- Theater Section -->
+    <section class="py-4">
+        <div class="container">
+            <div class="mb-4">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-4 mb-2 mb-lg-0">
+                        <a href="#" class="text-decoration-none text-dark">
+                            <h5 class="fw-bold mb-0">Rajhans Cinemas: Rajhans Precia, Surat</h5>
+                        </a>
+                    </div>
+                    <div class="col-12 col-lg-8">
+                        <div class="d-flex flex-wrap gap-2">
+                            <p class="p-2 border rounded border-dark">10:00 AM</p>
+                            <p class="p-2 border rounded border-dark">12:10 PM</p>
+                            <p class="p-2 border rounded border-dark">2:30 PM</p>
+                            <p class="p-2 border rounded border-dark">4:55 PM</p>
+                            <p class="p-2 border rounded border-dark">8:00 PM</p>
+                            <p class="p-2 border rounded border-dark">10:30 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="mb-4">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-4 mb-2 mb-lg-0">
+                        <a href="#" class="text-decoration-none text-dark">
+                            <h5 class="fw-bold mb-0">INOX: VR Mall, Surat</h5>
+                        </a>
+                    </div>
+                    <div class="col-12 col-lg-8">
+                        <div class="d-flex flex-wrap gap-2">
+                            <p class="p-2 border rounded border-dark">10:00 AM</p>
+                            <p class="p-2 border rounded border-dark">4:55 PM</p>
+                            <p class="p-2 border rounded border-dark">10:30 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="mb-4">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-4 mb-2 mb-lg-0">
+                        <a href="#" class="text-decoration-none text-dark">
+                            <h5 class="fw-bold mb-0">Cinepolis: Imperial Square Mall, Surat</h5>
+                        </a>
+                    </div>
+                    <div class="col-12 col-lg-8">
+                        <div class="d-flex flex-wrap gap-2">
+                            <p class="p-2 border rounded border-dark">12:10 PM</p>
+                            <p class="p-2 border rounded border-dark">4:55 PM</p>
+                            <p class="p-2 border rounded border-dark">8:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="mb-4">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-4 mb-2 mb-lg-0">
+                        <a href="#" class="text-decoration-none text-dark">
+                            <h5 class="fw-bold mb-0">PVR: Rahul Raj Mall, Surat</h5>
+                        </a>
+                    </div>
+                    <div class="col-12 col-lg-8">
+                        <div class="d-flex flex-wrap gap-2">
+                            <p class="p-2 border rounded border-dark">10:00 AM</p>
+                            <p class="p-2 border rounded border-dark">12:10 PM</p>
+                            <p class="p-2 border rounded border-dark">2:30 PM</p>
+                            <p class="p-2 border rounded border-dark">10:30 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="mb-4">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-4 mb-2 mb-lg-0">
+                        <a href="#" class="text-decoration-none text-dark">
+                            <h5 class="fw-bold mb-0">Cinezza Multiplex: Jahangirpura, Surat</h5>
+                        </a>
+                    </div>
+                    <div class="col-12 col-lg-8">
+                        <div class="d-flex flex-wrap gap-2">
+                            <p class="p-2 border rounded border-dark">10:00 AM</p>
+                            <p class="p-2 border rounded border-dark">12:10 PM</p>
+                            <p class="p-2 border rounded border-dark">10:30 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Left Section -->
+                <div class="col-12 col-md-6 col-lg-4 text-center text-md-start">
+                    <div class="my-3">
+                        <a href="home.php">
+                            <img src="assets/img/CineBook_Logo.png" alt="CineBook Logo"
+                                class="footer-logo border border-light rounded img-fluid p-2" />
+                        </a>
+                    </div>
+                    <p class="left-text fw-bold my-4">
+                        Your Gateway to Movie Magic. Discover, <br> Book, and Enjoy the Latest Films
+                    </p>
+                </div>
+
+                <!-- Center Section (Quick Links) -->
+                <div class="col-12 col-md-6 col-lg-4 text-center text-md-start">
+                    <h1 class="footer-heading fw-bold my-4">Quick Links</h1>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="d-block mb-2">Privacy & Policy</a></li>
+                        <li><a href="#" class="d-block mb-2">Community</a></li>
+                        <li><a href="#" class="d-block mb-2">About Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Right Section (Contact Info) -->
+                <div class="col-12 col-lg-4 text-center text-md-start">
+                    <h1 class="footer-heading fw-bold my-4">Connect With Us</h1>
+                    <p class="footer-text">
+                        <i class="fa-solid fa-phone me-2"></i> +91 6359421359
+                    </p>
+                    <p class="footer-text">
+                        <i class="fa-regular fa-envelope me-2"></i> cinebookmovies@gmail.com
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom Row -->
+            <div class="row mt-4 pt-4 border-top">
+                <div
+                    class="col-12 d-flex flex-column flex-md-row justify-content-between align-items-center text-center">
+                    <div class="social-links mb-3 mb-md-0">
+                        <a href="https://www.facebook.com/" class="social-icon"><i
+                                class="fa-brands fa-lg fa-facebook"></i></a>
+                        <a href="https://twitter.com/" class="social-icon"><i
+                                class="fa-brands fa-lg fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/" class="social-icon"><i
+                                class="fa-brands fa-lg fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/" class="social-icon"><i
+                                class="fa-brands fa-lg fa-linkedin"></i></a>
+                    </div>
+                    <p class="copy-right mb-0 mt-2 mt-md-0">
+                        &copy; CineBook. All rights reserved. | Designed and developed by the CineBook Team.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
