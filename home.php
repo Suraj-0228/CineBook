@@ -34,6 +34,7 @@
             </div>
         </div>
     </div>
+    <hr class="mx-4">
 
     <!-- Movie Cards 1 -->
     <section class="container my-3 px-3">
@@ -70,7 +71,7 @@
     </section>
 
     <!-- Offer Section -->
-    <section class="offer-section text-center my-2">
+    <section class="offer-section text-center my-3">
         <h1 class="fw-bold">Exclusive Offers</h1>
         <div class="img-slider mt-3">
             <div class="me-1">
@@ -78,6 +79,65 @@
             </div>
             <div class="ms-1">
                 <img src="assets/img/offer3.png" alt="Exclusive Offers..." class="offer-img img-fluid">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section m-4 p-3 bg-light">
+        <div class="container">
+            <h1 class="text-center fw-bold mb-4">What Our Users Say</h1>
+            <div class="row justify-content-center">
+                <!-- Testimonial 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <p class="card-text">"CineBook makes booking movie tickets so easy and convenient. I love
+                                the clean interface and great deals!"</p>
+                            <div class="d-flex align-items-center mt-3">
+                                <img src="https://i.pravatar.cc/50?img=1" alt="User 1" class="rounded-circle me-3">
+                                <div>
+                                    <h6 class="mb-0 fw-bold">Amit Shah</h6>
+                                    <small class="text-muted">Movie Enthusiast</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <p class="card-text">"I’ve never missed a premiere since using CineBook. The offers and
+                                reminders are a huge plus!"</p>
+                            <div class="d-flex align-items-center mt-3">
+                                <img src="https://i.pravatar.cc/50?img=2" alt="User 2" class="rounded-circle me-3">
+                                <div>
+                                    <h6 class="mb-0 fw-bold">Riya Mehta</h6>
+                                    <small class="text-muted">Cinema Lover</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <p class="card-text">"A seamless experience from browsing movies to booking tickets. Highly
+                                recommended!"</p>
+                            <div class="d-flex align-items-center mt-3">
+                                <img src="https://i.pravatar.cc/50?img=3" alt="User 3" class="rounded-circle me-3">
+                                <div>
+                                    <h6 class="mb-0 fw-bold">Sanjay Rao</h6>
+                                    <small class="text-muted">Frequent Viewer</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

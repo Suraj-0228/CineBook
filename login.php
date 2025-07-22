@@ -46,9 +46,15 @@
                                 <p class="text-center m-0 fw-bold or-text">OR</p>
                                 <hr class="flex-grow-1 ms-2 divider-line">
                             </div>
-                            <div class="d-flex flex-column mt-3 gap-2">
-                                <a href="#"><button type="button" class="btn w-100 social-btn"><i class="fa-brands fa-facebook fa-lg mx-2"></i>Facebook</button></a>
-                                <a href="#"><button type="button" class="btn w-100 social-btn"><i class="fa-brands fa-google fa-lg mx-2"></i>Google</button></a>
+                            <div class="login-social-links mb-3 mb-md-0">
+                                <a href="https://www.facebook.com/" class="login-social-icon mx-2 mt-3"><i
+                                        class="fa-brands fa-lg fa-facebook"></i></a>
+                                <a href="https://twitter.com/" class="login-social-icon mx-2 mt-3"><i
+                                        class="fa-brands fa-lg fa-twitter"></i></a>
+                                <a href="https://www.instagram.com/" class="login-social-icon mx-2 mt-3"><i
+                                        class="fa-brands fa-lg fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/" class="login-social-icon mx-2 mt-3"><i
+                                        class="fa-brands fa-lg fa-linkedin"></i></a>
                             </div>
                         </div>
                         <div class="mb-3 mt-3">

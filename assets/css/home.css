@@ -30,6 +30,10 @@
     object-fit: cover;
 }
 
+.card-img-top {
+    height: 20rem;
+}
+
 .sub-section {
     display: flex;
     align-items: center;
@@ -40,6 +44,12 @@
     .hero-con {
         width: 100%;
     }
+
+    .card-img-top {
+        height: 15rem;
+    }
+
+
 }
 
 @media (min-width: 768px) {
