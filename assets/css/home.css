@@ -1,7 +1,8 @@
 /* Home Page Css */
 
 .hero-con {
-    width: 60%;
+    width: 70%;
+    margin: auto;
 }
 
 .hero-slider img {
@@ -34,10 +35,21 @@
     height: 20rem;
 }
 
-.sub-section {
+/* .sub-section {
     display: flex;
     align-items: center;
     justify-content: space-between;
+} */
+
+.slick-prev:before,
+.slick-next:before {
+    font-family: 'slick';
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+    color: #000000;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @media (max-width: 767px) {
@@ -48,8 +60,6 @@
     .card-img-top {
         height: 15rem;
     }
-
-
 }
 
 @media (min-width: 768px) {
@@ -57,5 +67,4 @@
     .img-slider {
         display: flex !important;
     }
-
 }

@@ -26,11 +26,10 @@
 
 .social-links,
 .social-icon {
-    gap: 1.25rem;
+    gap: 1rem;
     color: #ecf0f1;
     font-size: 1.2rem;
     display: flex;
-    justify-content: center;
     transition: transform 0.3s ease;
     text-decoration: none;
 }
@@ -42,4 +41,15 @@
 .copy-right {
     font-size: 1.25rem;
     color: #ecf0f1;
+}
+
+@media (max-width: 767px) {
+    .footer {
+        padding: 1.4rem !important;
+    }
+
+    .social-links,
+    .social-icon {
+        margin-left: 0 !important;
+    }
 }

@@ -1,9 +1,9 @@
 <!-- Footer Section -->
-<footer class="footer py-5">
+<footer class="footer p-5">
     <div class="container">
         <div class="row">
             <!-- Left Section -->
-            <div class="col-12 col-md-6 col-lg-4 text-center text-md-start">
+            <div class="col-12 col-md-6 col-lg-4 text-md-start">
                 <div class="my-3">
                     <a href="home.php">
                         <img src="assets/img/CineBook_Logo.png" alt="CineBook Logo" class="footer-logo border border-light rounded img-fluid p-2" />
@@ -15,9 +15,9 @@
             </div>
 
             <!-- Center Section (Quick Links) -->
-            <div class="col-12 col-md-6 col-lg-4 text-center text-md-start">
-                <h1 class="footer-heading fw-bold my-4">Quick Links</h1>
-                <ul class="list-unstyled">
+            <div class="col-12 col-md-6 col-lg-4 text-md-start my-2">
+                <h1 class="footer-heading fw-bold">Quick Links:</h1>
+                <ul class="list-unstyled my-3">
                     <li><a href="#" class="d-block mb-2">Privacy & Policy</a></li>
                     <li><a href="#" class="d-block mb-2">Community</a></li>
                     <li><a href="#" class="d-block mb-2">About Us</a></li>
@@ -25,29 +25,27 @@
             </div>
 
             <!-- Right Section (Contact Info) -->
-            <div class="col-12 col-lg-4 text-center text-md-start">
-                <h1 class="footer-heading fw-bold my-4">Connect With Us</h1>
-                <p class="footer-text">
-                    <i class="fa-solid fa-phone me-2"></i> +91 6359421359
-                </p>
-                <p class="footer-text">
-                    <i class="fa-regular fa-envelope me-2"></i> cinebookmovies@gmail.com
+            <div class="col-12 col-lg-4 text-md-start my-2 mb-0">
+                <h1 class="footer-heading fw-bold">Connect With Us:</h1>
+                <p class="footer-text my-3">
+                    <i class="fa-solid fa-phone me-2 mb-3"></i> +91 6359421359 <br>
+                    <i class="fa-regular fa-envelope me-2 mb-3"></i> cinebookmovies@gmail.com
                 </p>
             </div>
         </div>
 
         <!-- Bottom Row -->
-        <div class="row mt-4 pt-4 border-top">
-            <div class="col-12 d-flex flex-column flex-md-row justify-content-between align-items-center text-center">
-                <div class="social-links mb-3 mb-md-0">
+        <div class="row mt-4 border-top">
+            <div class="col-12 my-4 d-flex flex-column flex-md-row">
+                <p class="copy-right mt-md-0">
+                    &copy; CineBook. All rights reserved. | Designed and developed by the CineBook Team.
+                </p>
+                <div class="social-links mt-3 ms-auto mb-md-0">
                     <a href="https://www.facebook.com/" class="social-icon"><i class="fa-brands fa-lg fa-facebook"></i></a>
                     <a href="https://twitter.com/" class="social-icon"><i class="fa-brands fa-lg fa-twitter"></i></a>
                     <a href="https://www.instagram.com/" class="social-icon"><i class="fa-brands fa-lg fa-instagram"></i></a>
                     <a href="https://www.linkedin.com/" class="social-icon"><i class="fa-brands fa-lg fa-linkedin"></i></a>
                 </div>
-                <p class="copy-right mb-0 mt-2 mt-md-0">
-                    &copy; CineBook. All rights reserved. | Designed and developed by the CineBook Team.
-                </p>
             </div>
         </div>
     </div>

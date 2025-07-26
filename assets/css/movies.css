@@ -35,13 +35,13 @@
     margin: 0 auto;
 }
 
-.catagory-section .row .col-6 p {
+.catagory-section .row .col-6 {
     font-size: 1.2rem;
-    transition: transform 0.5s ease;
+    transition: transform 0.3s ease;
 }
 
 .catagory-section .row .col-6:hover {
-    transform: scale(1.1);
+    transform: scale(1.06);
 }
 
 .catagory-section .img-link {

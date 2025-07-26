@@ -22,22 +22,45 @@
     <?php include 'navbar1.php'; ?>
 
     <!-- Details Section -->
+    <?php
+    $movie_json = file_get_contents('assets/movies-data.json');
+    $decoded_json = json_decode($movie_json, true);
+    $movies = $decoded_json['movies_data'];
+
+    $id = $_GET['id'] ?? null;
+    $movie = null;
+
+    if ($id !== null) {
+        foreach ($movies as $m) {
+            if ($m['id'] == $id) {
+                $movie = $m;
+                break;
+            }
+        }
+    }
+
+    if (!$movie) {
+        echo "<h1 class='fw-bold text-danger'>Movie not found.</h1>";
+        exit;
+    }
+    ?>
+
     <section class="movies-section">
         <div class="container p-4 pb-0">
             <div class="row align-items-center">
                 <div class="col-md-3">
-                    <img src="assets/img/movie1.jpg" alt="Movie1...." class="img-fluid rounded mb-3 mb-md-0">
+                    <img src="<?= $movie['poster_url'] ?>" alt="<?= $movie['title'] ?>" class="img-fluid details-img rounded mb-3 mb-md-0">
                 </div>
                 <div class="col-md-9">
-                    <h1 class="movie-title fw-bold">Movie: Jawan</h1>
+                    <h1 class="movie-title fw-bold"><?= $movie['title'] ?></h1>
                     <div class="movie-rate d-flex align-items-center my-2">
                         <div class="rate-icon">
-                            <i class="fa fa-star text-danger"></i> 7.6/10
+                            <i class="fa fa-star text-danger"></i><?= $movie['rating'] ?>/10
                         </div>
                         <a href="#" class="btn btn-sm mx-5">Rate Now</a>
                     </div>
-                    <p><strong>Languages:</strong> English, Hindi</p>
-                    <p><strong>Duration:</strong> 2h 15m || Action || 10 Oct, 2022</p>
+                    <p><strong>Languages:</strong> <?= $movie['language'] ?></p>
+                    <p><strong>Duration:</strong> 2h 15m || <?= $movie['genre'] ?> || <?= $movie['release_date'] ?></p>
                     <a href="booking.php" class="btn btn-lg">Book Ticket</a>
                 </div>
             </div>
@@ -50,10 +73,10 @@
         <div class="container p-4 py-0">
             <div class="my-4">
                 <h3 class="fw-bold">About This Movie:</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum veritatis, quod ducimus porro distinctio, ad eos quis.</p>
+                <p> <?= $movie['description'] ?? 'No description available.' ?></p>
             </div>
             <hr class="w-100">
-            <div class="mb-1">
+            <!-- <div class="mb-1">
                 <h3 class="fw-bold">Cast:</h3>
                 <div class="row sub-cast cast-slider ms-1">
                     <div class="col-6 col-md-4 col-lg-2 cast-img">
@@ -111,7 +134,7 @@
                         <p class="fw-bold">Anamika Rai</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 

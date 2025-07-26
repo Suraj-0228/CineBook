@@ -5,193 +5,150 @@
             "title": "Jawan",
             "language": "Hindi",
             "release_date": "2023-09-07",
-            "genre": [
-                "Action",
-                "Thriller"
-            ],
+            "genre": "Action",
             "rating": 8.5,
             "poster_url": "assets/img/movie1.jpg",
-            "description": "Shah Rukh Khan stars in Atlee’s action thriller that became the highest‑grossing Indian film of 2023."
+            "description": "Shah Rukh Khan takes center stage in Atlee’s high-octane action thriller Jawan, portraying a vigilante with a mysterious past. The movie features intense action sequences, emotional depth, and social commentary. It became the highest‑grossing Indian film of 2023."
         },
         {
             "id": 2,
             "title": "12th Fail",
             "language": "Hindi",
             "release_date": "2023-10-27",
-            "genre": [
-                "Biographical",
-                "Drama"
-            ],
-            "rating": 8.0,
+            "genre": "Biographical",
+            "rating": 8.1,
             "poster_url": "assets/img/movie2.jpg",
-            "description": "A biopic on IPS officer Manoj Sharma, praised as a sleeper hit of late 2023."
+            "description": "This biographical drama tells the inspiring story of Manoj Sharma, who rose from poverty to become an IPS officer. The film depicts his struggles, failures, and determination to succeed against all odds."
         },
         {
             "id": 3,
             "title": "Fateh",
             "language": "Hindi",
             "release_date": "2025-01-10",
-            "genre": [
-                "Action",
-                "Thriller"
-            ],
+            "genre": "Action",
             "rating": 7.2,
             "poster_url": "assets/img/movie3.jpg",
-            "description": "Sonu Sood’s directorial debut, featuring him as an ex-agent battling a cyber mafia."
+            "description": "Sonu Sood’s directorial debut features him as an ex-intelligence officer drawn back into action to dismantle a powerful cyber mafia. The film dives into cybercrime, identity theft, and the ethics of surveillance."
         },
         {
             "id": 4,
             "title": "Pushpa 2: The Rule",
             "language": "Hindi",
             "release_date": "2025-01-14",
-            "genre": [
-                "Action",
-                "Thriller"
-            ],
+            "genre": "Thriller",
             "rating": 8.9,
             "poster_url": "assets/img/movie4.jpg",
-            "description": "A souths most actioned and thriller movie released in 12 december, 2024"
+            "description": "Following the massive success of Pushpa, this sequel continues the story of Pushpa Raj’s rise in the red sandalwood smuggling underworld. Featuring explosive action, intense rivalries, and strong emotional arcs, it’s one of South India's most anticipated thrillers."
         },
         {
             "id": 5,
             "title": "Singham Again",
             "language": "Hindi",
             "release_date": "2025-03-07",
-            "genre": [
-                "Thriller",
-                "Action"
-            ],
+            "genre": "Action",
             "rating": 8.3,
             "poster_url": "assets/img/movie5.jpg",
-            "description": "A Telugu thriller centered on a housewife turned detective."
+            "description": "Rohit Shetty returns with another powerful entry in the Singham franchise. Ajay Devgn reprises his role as the fearless cop Bajirao Singham who takes on a new wave of crime and corruption."
         },
         {
             "id": 6,
             "title": "Chhaava",
             "language": "Hindi",
             "release_date": "2025-02-14",
-            "genre": [
-                "Historical",
-                "Drama"
-            ],
+            "genre": "Historical",
             "rating": 8.4,
             "poster_url": "assets/img/movie6.jpg",
-            "description": "Vicky Kaushal stars in this historical epic that crossed ₹800 crore at the box office."
+            "description": "Set in the era of the Maratha Empire, Chhaava is a historical drama chronicling the life of a legendary warrior. Vicky Kaushal leads the epic tale filled with valor, sacrifice, and national pride."
         },
         {
             "id": 7,
             "title": "Sky Force",
             "language": "Hindi",
             "release_date": "2025-01-24",
-            "genre": [
-                "Action",
-                "Drama"
-            ],
+            "genre": "Drama",
             "rating": 7.1,
             "poster_url": "assets/img/movie7.jpg",
-            "description": "Akshay Kumar leads this patriotic-action movie that kicked off 2025."
+            "description": "This patriotic drama follows a courageous Indian Air Force officer who rises to face an unprecedented aerial threat. Akshay Kumar plays the lead, combining emotional depth with thrilling air combat scenes."
         },
         {
             "id": 8,
             "title": "Sikandar",
             "language": "Hindi",
             "release_date": "2025-04-01",
-            "genre": [
-                "Action",
-                "Thriller"
-            ],
+            "genre": "Action",
             "rating": 7.3,
             "poster_url": "assets/img/movie8.jpg",
-            "description": "Salman Khan teams with AR Murugadoss in this high-profile action entertainer."
+            "description": "Salman Khan joins forces with director AR Murugadoss in this stylish action entertainer. Sikandar follows a lone warrior caught between crime, politics, and personal revenge."
         },
         {
             "id": 9,
             "title": "Toxic",
             "language": "Hindi",
             "release_date": "2025-04-10",
-            "genre": [
-                "Crime",
-                "Drama"
-            ],
+            "genre": "Crime",
             "rating": 7.2,
             "poster_url": "assets/img/movie9.jpg",
-            "description": "A gangster drama starring Yash and Nayanthara."
+            "description": "Yash and Nayanthara headline this intense gangster drama set in the gritty world of organized crime. With themes of loyalty, betrayal, and redemption, the film presents a raw and emotional take on the criminal underworld."
         },
         {
             "id": 10,
             "title": "Housefull 5",
             "language": "Hindi",
             "release_date": "2025-06-06",
-            "genre": [
-                "Comedy"
-            ],
+            "genre": "Comedy",
             "rating": 6.5,
             "poster_url": "assets/img/movie10.jpg",
-            "description": "The fifth installment in the popular comedy franchise released in June 2025."
+            "description": "The fifth installment in the Housefull franchise brings back familiar faces and fresh chaos. A madcap comedy of errors involving mistaken identities, lavish weddings, and wild adventures."
         },
         {
             "id": 11,
             "title": "Raid 2",
             "language": "Hindi",
             "release_date": "2025-05-01",
-            "genre": [
-                "Action",
-                "Crime"
-            ],
+            "genre": "Action",
             "rating": 7.8,
             "poster_url": "assets/img/movie11.jpg",
-            "description": "Sequel to the hit Raid, another high-octane crime drama."
+            "description": "A direct continuation of the first film, Raid 2 once again follows the relentless Income Tax officer (Ajay Devgn) as he exposes powerful figures involved in black money scams."
         },
         {
             "id": 12,
             "title": "Dragon",
             "language": "Hindi",
             "release_date": "2025-02-21",
-            "genre": [
-                "Fantasy",
-                "Drama"
-            ],
+            "genre": "Fantasy",
             "rating": 7.9,
             "poster_url": "assets/img/movie12.jpg",
-            "description": "A magical Tamil fantasy drama that performed strongly at the box office."
+            "description": "This fantasy drama set in a mythical Tamil kingdom follows a young hero with magical powers destined to save his land. Visually stunning and rich in folklore, Dragon combines drama, fantasy, and emotion."
         },
         {
             "id": 13,
             "title": "Sittare Zamin Par",
             "language": "Hindi",
             "release_date": "2025-06-15",
-            "genre": [
-                "Comedy"
-            ],
+            "genre": "Drama",
             "rating": 7.7,
             "poster_url": "assets/img/movie13.jpg",
-            "description": "The sequel to Chhaava, continuing the historical saga."
+            "description": "A sequel to Chhaava, this film continues the legacy of the warrior’s family, exploring their next-generation conflicts and loyalties. With a mix of political drama, historical emotion, and personal challenges, it’s a grand and engaging narrative that celebrates courage and tradition."
         },
         {
             "id": 14,
             "title": "War 2",
             "language": "Hindi",
             "release_date": "2025-08-14",
-            "genre": [
-                "Action",
-                "Spy"
-            ],
-            "rating": 8.0,
+            "genre": "Spy",
+            "rating": 8.1,
             "poster_url": "assets/img/movie14.jpg",
-            "description": "Hrithik Roshan and Jr NTR reunite in this YRF Spy Universe sequel."
+            "description": "Hrithik Roshan returns as Kabir in the second installment of the War series, this time teaming up (or clashing) with Jr NTR. Set in the YRF Spy Universe, the movie is loaded with espionage missions, global threats, and jaw-dropping stunts."
         },
         {
             "id": 15,
             "title": "Kantara Chapter 1",
             "language": "Hindi",
             "release_date": "2025-10-02",
-            "genre": [
-                "Drama",
-                "Thriller"
-            ],
+            "genre": "Thriller",
             "rating": 7.5,
             "poster_url": "assets/img/movie15.jpg",
-            "description": "Rishab Shetty returns in this sequel to the 2022 blockbuster Kantara."
+            "description": "A spiritual prequel to the critically acclaimed Kantara, this chapter delves into the origins of folklore, tribal conflict, and divine justice. Rishab Shetty once again leads the story with a blend of mysticism, rural realism, and intense visuals."
         },
         {
             "id": 16,
@@ -201,7 +158,7 @@
             "genre": "Comedy",
             "rating": 8.5,
             "poster_url": "assets/img/movie16.jpg",
-            "description": "Rohit Shetty's blockbutser comedy movie goes moch famous in the heart."
+            "description": "The gang is back with even more laughter and ghostly mayhem. This time, the Golmaal team encounters a spooky mansion and mysterious occurrences that lead to hilarious situations. With Rohit Shetty’s signature style and comic timing, it’s a rollercoaster of horror-comedy chaos."
         }
     ]
 }

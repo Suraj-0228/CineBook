@@ -69,7 +69,7 @@
     </section>
 
     <!-- Movie Cards Section -->
-    <section class="container mb-5">
+    <section class="container mb-2">
         <h1 class="text-center my-4 fw-bold">Explore All Movies...</h1>
         <div class="container px-3">
             <div class="row justify-content-center">
@@ -79,11 +79,12 @@
                 $movies = $decoded_json['movies_data'];
 
                 foreach ($movies as $movie) {
+                    $id = $movie['id'];
                     $title = $movie['title'];
                     $poster = $movie['poster_url'];
                     $rating = $movie['rating'];
                     $language = $movie['language'];
-                    echo '<div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3">';
+                    echo '<div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3 movies-card">';
                     echo '    <div class="card">';
                     echo '        <img src="' . $poster . '" class="card-img-top" alt="' . $title . '">';
                     echo '        <div class="card-body">';
@@ -92,7 +93,7 @@
                     echo '                <span><i class="fa-solid fa-star text-danger"></i> ' . $rating . '/10.0</span>';
                     echo '                <span>' . $language . '</span>';
                     echo '            </div>';
-                    echo '            <a href="movies-details.php" class="btn w-100">View Details</a>';
+                    echo '            <a href="movies-details.php?id=' . $id . '" class="btn w-100">View Details</a>';
                     echo '        </div>';
                     echo '    </div>';
                     echo '</div>';
@@ -100,12 +101,11 @@
                 ?>
             </div>
         </div>
-        </div>
     </section>
 
     <!-- Categories Section -->
-    <section class="catagory-section m-5">
-        <h1 class="text-center explore-title fw-bold">Explore Category</h1>
+    <section class="catagory-section m-4 mt-2">
+        <h1 class="text-center explore-title fw-bold">Explore By Category</h1>
         <div class="row justify-content-center">
             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mt-3">
                 <div class="text-center shadow-lg border rounded p-2 h-100 d-flex flex-column align-items-center">

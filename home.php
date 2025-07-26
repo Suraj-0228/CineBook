@@ -22,8 +22,8 @@
     <?php include 'navbar1.php'; ?>
 
     <!-- Hero Section -->
-    <div class="container hero-con mb-3">
-        <div class="hero-slider my-3">
+    <div class="hero-con my-3">
+        <div class="hero-slider">
             <div class="slider-item">
                 <img src="assets/img/slider2.jpg" alt="Slider Image 2" class="img-fluid">
                 <div class="overlay"></div>
@@ -47,11 +47,12 @@
                 $movies = $decoded_json['movies_data'];
 
                 foreach ($movies as $movie) {
+                    $id = $movie['id'];
                     $title = $movie['title'];
                     $poster = $movie['poster_url'];
                     $rating = $movie['rating'];
                     $language = $movie['language'];
-                    echo '<div class="col-6 col-sm-6 col-md-4 col-lg-3">';
+                    echo '<div class="col-6 col-sm-6 col-md-4 col-lg-3 movies-card">';
                     echo '    <div class="card mx-2">';
                     echo '        <img src="' . $poster . '" class="card-img-top" alt="' . $title . '">';
                     echo '        <div class="card-body">';
@@ -60,7 +61,7 @@
                     echo '                <span><i class="fa-solid fa-star text-danger"></i> ' . $rating . '/10.0</span>';
                     echo '                <span>' . $language . '</span>';
                     echo '            </div>';
-                    echo '            <a href="movies-details.php" class="btn w-100">View Details</a>';
+                    echo '            <a href="movies-details.php?id=' . $id . '" class="btn w-100">View Details</a>';
                     echo '        </div>';
                     echo '    </div>';
                     echo '</div>';
@@ -84,13 +85,13 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials-section m-4 p-3 bg-light">
+    <section class="testimonials-section m-2 mt-2">
         <div class="container">
             <h1 class="text-center fw-bold mb-4">What Our Users Say</h1>
             <div class="row justify-content-center">
                 <!-- Testimonial 1 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm h-100">
+                <div class="col-md-4 mb-4 Testimonial-card">
+                    <div class="card shadow-lg h-100">
                         <div class="card-body">
                             <p class="card-text">"CineBook makes booking movie tickets so easy and convenient. I love
                                 the clean interface and great deals!"</p>
@@ -106,8 +107,8 @@
                 </div>
 
                 <!-- Testimonial 2 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm h-100">
+                <div class="col-md-4 mb-4 Testimonial-card">
+                    <div class="card shadow-lg h-100">
                         <div class="card-body">
                             <p class="card-text">"I’ve never missed a premiere since using CineBook. The offers and
                                 reminders are a huge plus!"</p>
@@ -123,8 +124,8 @@
                 </div>
 
                 <!-- Testimonial 3 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm h-100">
+                <div class="col-md-4 mb-4 Testimonial-card">
+                    <div class="card shadow-lg h-100">
                         <div class="card-body">
                             <p class="card-text">"A seamless experience from browsing movies to booking tickets. Highly
                                 recommended!"</p>
@@ -141,10 +142,11 @@
             </div>
         </div>
     </section>
+    <hr class="mx-4">
 
     <!-- Subscribe Form -->
-    <section class="sub-section mt-5 shadow-lg p-4 m-4 rounded">
-        <div class="container">
+    <section class="card sub-section m-4 p-3 rounded">
+        <div class="">
             <h5 class="text-center mb-3">Don’t miss out!<br>Subscribe for the latest movies & exclusive offers.</h5>
             <form action="#" method="post">
                 <div class="row justify-content-center">

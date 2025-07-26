@@ -24,8 +24,24 @@ html {
     color: #f8f6fa;
 }
 
+.movies-card {
+    transition: transform 0.3s ease;
+}
+
+.movies-card:hover {
+    transform: scale(1.02);
+}
+
+.Testimonial-card {
+    transition: transform 0.3s ease;
+}
+
+.Testimonial-card:hover {
+    transform: scale(1.05);
+}
+
 .booking-not-found .book-btn {
-    background-image: linear-gradient(to bottom, #16222a, #3a6073);
+    /* background-image: linear-gradient(to bottom, #16222a, #3a6073); */
     color: #f8f6fa;
     width: 8rem;
     text-align: center;
@@ -44,4 +60,37 @@ html {
 .login-social-icon {
     font-size: 1.3rem;
     color: #2c3e50;
+    transition: transform 0.3s ease;
+}
+
+.login-social-icon:hover {
+    transform: scale(1.15);
+}
+
+/* Mobile View */
+
+@media (max-width: 767px) {
+    .movies-card {
+        transition: transform 0.3s ease;
+    }
+
+    .movies-card:hover {
+        transform: scale(1.02);
+    }
+
+    .Testimonial-card {
+        transition: transform 0.3s ease;
+    }
+
+    .Testimonial-card:hover {
+        transform: scale(1.05);
+    }
+
+    .login-social-icon {
+        transition: transform 0.3s ease;
+    }
+
+    .login-social-icon:hover {
+        transform: scale(1.15);
+    }
 }

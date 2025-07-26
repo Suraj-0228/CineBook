@@ -8,7 +8,7 @@ $(document).ready(function () {
         dots: false,
         speed: 300,
         autoplay: true,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 2000,
         responsive: [{
             breakpoint: 991,
             settings: {
@@ -39,7 +39,6 @@ $(document).ready(function () {
         slidesToShow: 5,
         slidesToScroll: 2,
         centermode: true,
-        centerPadding: '60px',
         dots: false,
         speed: 300,
         responsive: [{
