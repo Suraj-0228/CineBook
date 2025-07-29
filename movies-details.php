@@ -75,66 +75,52 @@
                 <h3 class="fw-bold">About This Movie:</h3>
                 <p> <?= $movie['description'] ?? 'No description available.' ?></p>
             </div>
-            <hr class="w-100">
-            <!-- <div class="mb-1">
-                <h3 class="fw-bold">Cast:</h3>
-                <div class="row sub-cast cast-slider ms-1">
-                    <div class="col-6 col-md-4 col-lg-2 cast-img">
-                        <img src="assets/img/comedy.png" height="100" width="110" alt="Image....">
-                        <p class="fw-bold">Sharukh Khan</p>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2 cast-img">
-                        <img src="assets/img/comedy.png" height="100" width="110" alt="Image....">
-                        <p class="fw-bold">Salman Khan</p>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2 cast-img">
-                        <img src="assets/img/comedy.png" height="100" width="110" alt="Image....">
-                        <p class="fw-bold">Dipika Padukon</p>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2 cast-img">
-                        <img src="assets/img/comedy.png" height="100" width="110" alt="Image....">
-                        <p class="fw-bold">Prakash Raj</p>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2 cast-img">
-                        <img src="assets/img/comedy.png" height="100" width="110" alt="Image....">
-                        <p class="fw-bold">Shirinivas Rao</p>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2 cast-img">
-                        <img src="assets/img/comedy.png" height="100" width="110" alt="Image....">
-                        <p class="fw-bold">Anamika Rai</p>
-                    </div>
-                </div>
-            </div>
-            <hr class="w-100">
-            <div class="mb-4">
-                <h3 class="fw-bold">Crew:</h3>
-                <div class="row sub-crew crew-slider ms-1">
-                    <div class="col-6 col-md-4 col-lg-2 crew-img">
-                        <img src="assets/img/comedy.png" height="100" width="110" alt="Image....">
-                        <p class="fw-bold">Sharukh Khan</p>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2 crew-img">
-                        <img src="assets/img/comedy.png" height="100" width="110" alt="Image....">
-                        <p class="fw-bold">Salman Khan</p>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2 crew-img">
-                        <img src="assets/img/comedy.png" height="100" width="110" alt="Image....">
-                        <p class="fw-bold">Dipika Padukon</p>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2 crew-img">
-                        <img src="assets/img/comedy.png" height="100" width="110" alt="Image....">
-                        <p class="fw-bold">Prakash Raj</p>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2 crew-img">
-                        <img src="assets/img/comedy.png" height="100" width="110" alt="Image....">
-                        <p class="fw-bold">Shirinivas Rao</p>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2 crew-img">
-                        <img src="assets/img/comedy.png" height="100" width="110" alt="Image....">
-                        <p class="fw-bold">Anamika Rai</p>
+
+            <?php
+            $cast_json = file_get_contents('assets/cast-crew.json');
+            $decoded_cast = json_decode($cast_json, true);
+            $cast_crew_data = $decoded_cast['cast_crew_data'];
+
+            $id = $_GET['id'] ?? null;
+            $cast_data = null;
+
+            if ($id !== null) {
+                foreach ($cast_crew_data as $item) {
+                    if ($item['id'] == $id) {
+                        $cast_data = $item;
+                        break;
+                    }
+                }
+            }
+            ?>
+            <?php if ($cast_data): ?>
+                <hr class="w-100">
+                <div class="mb-1">
+                    <h3 class="fw-bold">Cast:</h3>
+                    <div class="row sub-cast">
+                        <?php foreach ($cast_data['cast'] as $actor): ?>
+                            <div class="col-6 col-md-4 col-lg-2">
+                                <img src="assets/img/comedy.png" class="cast-img" alt="Image....">
+                                <p class="fw-bold"><?= htmlspecialchars($actor) ?></p>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
-            </div> -->
+
+                <hr class="w-100">
+                <div class="mb-3">
+                    <h3 class="fw-bold">Crew:</h3>
+                    <div class="row sub-crew">
+                        <?php foreach ($cast_data['crew'] as $role => $person): ?>
+                            <div class="col-6 col-md-4 col-lg-2 mb-3">
+                                <img src="assets/img/comedy.png" class="crew-img" alt="Image....">
+                                <p class="fw-bold"><?= htmlspecialchars(ucwords(str_replace('_', ' ', $role))) ?>: <br> <?= htmlspecialchars($person) ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+
         </div>
     </section>
 

@@ -48,6 +48,11 @@
         padding: 1.4rem !important;
     }
 
+    .copy-right {
+        font-size: 1rem;
+        color: #ecf0f1;
+    }
+
     .social-links,
     .social-icon {
         margin-left: 0 !important;

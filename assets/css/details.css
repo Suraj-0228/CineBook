@@ -19,24 +19,23 @@
 .btn-rate,
 .btn-book {
     text-decoration: none;
-    color: #f8f6fa;
-    background-image: linear-gradient(to bottom, #16222a, #3a6073);
+}
+
+.cast-img,.crew-img {
+    width: 70%;
+    height: 70%;
 }
 
 .movie-section {
     background-color: #16222a22;
 }
 
-.sub-cast {
-    display: flex;
-}
-
-.cast-img {
+/* .cast-img {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 8rem;
-}
+} */
 
 @media (min-width: 768px) {
     .movies-section .img-fluid{

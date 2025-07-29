@@ -91,7 +91,7 @@
                     echo '            <h5 class="card-title fw-bold">' . $title . '</h5>';
                     echo '            <div class="d-flex justify-content-between align-items-center mb-3">';
                     echo '                <span><i class="fa-solid fa-star text-danger"></i> ' . $rating . '/10.0</span>';
-                    echo '                <span>' . $language . '</span>';
+                    echo '                <span class="text-muted">' . $language . '</span>';
                     echo '            </div>';
                     echo '            <a href="movies-details.php?id=' . $id . '" class="btn w-100">View Details</a>';
                     echo '        </div>';

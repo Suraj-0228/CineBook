@@ -148,27 +148,4 @@ $(document).ready(function () {
             }
         ]
     });
-    // Cast/Crew Slider {movies-setails.php}
-    $('.cast-slider, .crew-slider').slick({
-        slidesToShow: 5,        // Show 2 on desktop
-        slidesToScroll: 1,
-        infinite: false,
-        dots: false,
-        arrows: true,
-        responsive: [
-            {
-                breakpoint: 768,    // Below 768px (mobile)
-                settings: {
-                    infinite: true,
-                    slidesToShow: 3,
-                    slidesToScroll: 2,
-                    autoplay: true,
-                    autoplaySpeed: 2000,
-                    arrows: false,
-                    centerMode: false,
-                    dots: false
-                }
-            }
-        ]
-    });
 });
