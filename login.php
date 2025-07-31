@@ -1,3 +1,40 @@
+<?php
+//Login Process
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['username']) && isset($_POST['password'])) {
+
+        $server = "localhost";
+        $username = "root";
+        $password = "";
+        $database = "registration";
+
+        $con = mysqli_connect($server, $username, $password, $database);
+
+        if (!$con) {
+            die("Connection Failed: " . mysqli_connect_error());
+        }
+
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $sql_query = "SELECT * FROM register WHERE User_Name = '$username' AND password = '$password'";
+        $result = mysqli_query($con, $sql_query);
+
+        if (mysqli_num_rows($result) == 1) {
+            $_SESSION['username'] = $username;
+            header("Location: home.php");
+            exit();
+        } else {
+            echo "<script>alert('Invalid Username or Password!!!');</script>";
+        }
+
+        $con->close();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,11 +59,11 @@
                         <hr class="mb-4">
                         <div class="mb-3">
                             <label for="username" class="form-label fw-bold">Username:</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter Your Username...." required>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter Your Username....">
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label fw-bold">Password:</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Your Password...." required>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Your Password....">
                         </div>
                         <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
                             <div class="form-check">
