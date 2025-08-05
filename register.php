@@ -1,49 +1,7 @@
-<?php
-session_start();
+<!-- Register Process -->
+<?php require 'register-process.php'; ?>
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  if (isset($_POST['fullname'])) {
-    $server = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "registration";
-
-    $con = mysqli_connect($server, $username, $password, $database);
-
-    if (!$con) {
-      die("Connection Failed: " . mysqli_connect_error());
-    }
-
-    $fullname = $_POST['fullname'];
-    $email = $_POST['email'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
-
-    // Check that all fields are filled
-    if (!empty($fullname) && !empty($email) && !empty($username) && !empty($password) && !empty($confirm_password)) {
-      if ($password === $confirm_password) {
-        $sql_query = "INSERT INTO register (Full_Name, Email, User_Name, password) 
-                      VALUES ('$fullname', '$email', '$username', '$password')";
-
-        if ($con->query($sql_query) === TRUE) {
-          echo "<script>alert('Registration Successful.');</script>";
-        } else {
-          echo "<script>alert('Registration Failed!!!');</script>";
-          echo "Error: " . $con->error;
-        }
-      } else {
-        echo "<script>alert('Passwords does not match!!');</script>";
-      }
-    } else {
-      echo "<script>alert('Please, Fill all the Details.');</script>";
-    }
-
-    $con->close();
-  }
-}
-?>
-
+<!-- HTML Code For the Structure -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,17 +40,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <label for="password" class="form-label fw-bold">Password:</label>
               <input type="password" class="form-control" id="password" name="password" placeholder="Enter Your Password....">
             </div>
-            <div class="mb-3">
+            <div class="mb-0">
               <label for="confirm_password" class="form-label fw-bold">Confirm Password:</label>
               <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Your Password....">
-              <input type="checkbox" class="mt-3" onclick="showPassword()"> Show Password
+            </div>
+            <div class="mb-3">
+              <input type="checkbox" class="mt-3" onclick="showPassword()">
+              <label for="showpassword">Show Password</label>
             </div>
             <div class="form-check mb-3">
               <input class="form-check-input" type="checkbox" id="terms" name="terms">
               <label class="form-check-label" for="terms">I agree to the terms and conditions</label>
             </div>
             <div class="mb-3">
-              <button type="submit" class="btn w-100">Submit</button>
+              <button type="submit" class="btn w-100" id="register_btn">Register</button>
             </div>
             <div class="mt-3 text-center">
               <p>Already have an account? <a href="login.php" class="fw-bold">Sign-In</a></p>
@@ -103,19 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
   </div>
 
-  <script>
-    function showPassword() {
-      var pwd = document.getElementById("password");
-      var con_pwd = document.getElementById("confirm_password");
-      if (pwd.type === "password") {
-        pwd.type = "text";
-        con_pwd.type = "text";
-      } else {
-        pwd.type = "password";
-        con_pwd.type = "password";
-      }
-    }
-  </script>
+  <script src="assets/js/register.js"></script>
 
 </body>
 

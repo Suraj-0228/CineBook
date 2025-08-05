@@ -1,40 +1,7 @@
-<?php
-//Login Process
-session_start();
+<!-- Login Process -->
+<?php require 'login-process.php'; ?>
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['username']) && isset($_POST['password'])) {
-
-        $server = "localhost";
-        $username = "root";
-        $password = "";
-        $database = "registration";
-
-        $con = mysqli_connect($server, $username, $password, $database);
-
-        if (!$con) {
-            die("Connection Failed: " . mysqli_connect_error());
-        }
-
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-
-        $sql_query = "SELECT * FROM register WHERE User_Name = '$username' AND password = '$password'";
-        $result = mysqli_query($con, $sql_query);
-
-        if (mysqli_num_rows($result) == 1) {
-            $_SESSION['username'] = $username;
-            header("Location: home.php");
-            exit();
-        } else {
-            echo "<script>alert('Invalid Username or Password!!!');</script>";
-        }
-
-        $con->close();
-    }
-}
-?>
-
+<!-- HTML Code For the Structure -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </div>
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="btn w-100 login-btn">Login</button>
+                            <button type="submit" class="btn w-100 login-btn" id="login_btn">Login</button>
                         </div>
                         <div>
                             <div class="d-flex align-items-center justify-content-between">
@@ -84,14 +51,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <hr class="flex-grow-1 ms-2 divider-line">
                             </div>
                             <div class="login-social-links mb-3 mb-md-0">
-                                <a href="https://www.facebook.com/" class="login-social-icon mx-2 mt-3"><i
-                                        class="fa-brands fa-lg fa-facebook"></i></a>
-                                <a href="https://twitter.com/" class="login-social-icon mx-2 mt-3"><i
-                                        class="fa-brands fa-lg fa-twitter"></i></a>
-                                <a href="https://www.instagram.com/" class="login-social-icon mx-2 mt-3"><i
-                                        class="fa-brands fa-lg fa-instagram"></i></a>
-                                <a href="https://www.linkedin.com/" class="login-social-icon mx-2 mt-3"><i
-                                        class="fa-brands fa-lg fa-linkedin"></i></a>
+                                <a href="https://www.facebook.com/" class="login-social-icon mx-2 mt-3">
+                                    <i class="fa-brands fa-lg fa-facebook"></i></a>
+                                <a href="https://twitter.com/" class="login-social-icon mx-2 mt-3">
+                                    <i class="fa-brands fa-lg fa-twitter"></i></a>
+                                <a href="https://www.instagram.com/" class="login-social-icon mx-2 mt-3">
+                                    <i class="fa-brands fa-lg fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/" class="login-social-icon mx-2 mt-3">
+                                    <i class="fa-brands fa-lg fa-linkedin"></i></a>
                             </div>
                         </div>
                         <div class="mb-3 mt-3">
@@ -102,6 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </div>
     </div>
+
+    <script src="assets/js/login.js"></script>
 
 </body>
 

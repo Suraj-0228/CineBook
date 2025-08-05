@@ -37,6 +37,10 @@ header {
     width: 20rem;
 }
 
+#offcanvasExample{
+    opacity: 0.93;
+}
+
 .offcanvas-header {
     color: #ecf0f1;
     font-size: 1.8rem;

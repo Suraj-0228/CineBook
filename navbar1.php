@@ -10,7 +10,7 @@
             <li class="nav-item mx-2"><a class="nav-link" href="my-booking.php">My Bookings</a></li>
             <li class="nav-item mx-2"><a class="nav-link" href="about.php">About Us</a></li>
         </ul>
-        <div class="d-flex login-btn" style="align-items: center;">
+        <div class="d-flex d-lg-none login-btn" style="align-items: center;">
             <a href="login.php"><button class="btn border border-light">Sign-In</button></a>
         </div>
         <!-- Sidebar Toggle Button -->
