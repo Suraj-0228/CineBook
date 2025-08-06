@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['fullname'])) {
 
         // Database Connection
-        require 'dbconnection.php';
+        require 'includes/dbconnection.php';
 
         // Collecting Form Data
         $fullname = $_POST['fullname'];

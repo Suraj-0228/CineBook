@@ -8,14 +8,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/navbar.css">
-    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
 </head>
 
 <body>
 
     <!-- Navbar -->
-    <?php include 'navbar1.php'; ?>
+    <?php include 'includes/header.php'; ?>
 
     <!-- Booking Section -->
     <section class="booking-section">
@@ -166,7 +166,7 @@
     </section>
 
     <!-- Footer -->
-    <?php include 'footer.php'; ?>
+    <?php include 'includes/footer.php'; ?>
 
 </body>
 

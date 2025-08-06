@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/navbar.css">
-    <link rel="stylesheet" href="assets/style.css" />
+     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/home.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
 </head>
@@ -27,7 +27,7 @@
 <body>
 
     <!-- navbar -->
-    <?php include 'navbar1.php'; ?>
+    <?php include 'includes/header.php'; ?>
 
     <!-- Hero Section -->
     <div class="hero-con my-3">
@@ -50,7 +50,7 @@
         <div class="row justify-content-center mt-3">
             <div class="card-slider">
                 <?php
-                $movie_json = file_get_contents('assets/movies-data.json');
+                $movie_json = file_get_contents('assets/data/movies-data.json');
                 $decoded_json = json_decode($movie_json, true);
                 $movies = $decoded_json['movies_data'];
 
@@ -168,7 +168,7 @@
     </section>
 
     <!-- Footer -->
-    <?php include 'footer.php'; ?>
+    <?php include 'includes/footer.php'; ?>
 
     <!-- jQuery and Slick Carousel JS -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>

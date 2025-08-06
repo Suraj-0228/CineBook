@@ -10,8 +10,8 @@
             <li class="nav-item mx-2"><a class="nav-link" href="my-booking.php">My Bookings</a></li>
             <li class="nav-item mx-2"><a class="nav-link" href="about.php">About Us</a></li>
         </ul>
-        <div class="d-flex d-lg-none login-btn" style="align-items: center;">
-            <a href="login.php"><button class="btn border border-light">Sign-In</button></a>
+        <div class="d-flex logout-btn" style="align-items: center;">
+            <a href="controllers/logout.php"><button class="btn border border-light">Log Out</button></a>
         </div>
         <!-- Sidebar Toggle Button -->
         <button class="btn toggle-btn py-2 border border-light ms-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
@@ -50,10 +50,6 @@
                 <div class="sidebar-a d-flex align-items-center mb-3">
                     <i class="fa fa-cog me-3"></i>
                     <a href="settings.php" class="nav-link p-0">Settings</a>
-                </div>
-                <div class="sidebar-a d-flex align-items-center mb-3">
-                    <i class="fa fa-sign-out-alt me-3"></i>
-                    <a href="logout.php" class="nav-link text-danger p-0">Log Out</a>
                 </div>
                 <div class="sidebar-btn d-flex mt-3 align-items-center">
                     <a href="login.php" class="btn border border-light text-center fw-bold">Sign-In</a>
