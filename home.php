@@ -1,9 +1,19 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['username'])) {
-        header("Location: login.php");
-        echo "<script>alert(Welcome to CineBook);</script>";
-    }
+session_start();
+
+// If session not set but cookie exists, restore session
+if (!isset($_SESSION['username']) && isset($_COOKIE['username'])) {
+    $_SESSION['username'] = $_COOKIE['username'];
+}
+
+// If neither session nor cookie, redirect to login
+if (!isset($_SESSION['username'])) {
+    echo "<script>
+        alert('Please login to access CineBook');
+        window.location.href = 'login.php';
+    </script>";
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +29,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/navbar.css">
-     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/home.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
 </head>

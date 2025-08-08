@@ -35,12 +35,6 @@
     height: 20rem;
 }
 
-/* .sub-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-} */
-
 .slick-prev:before,
 .slick-next:before {
     font-family: 'slick';
