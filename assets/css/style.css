@@ -70,6 +70,11 @@ html {
 /* Mobile View */
 
 @media (max-width: 767px) {
+
+    .nav-btn{
+        display: none;
+    }
+
     .movies-card {
         transition: transform 0.3s ease;
     }
@@ -101,13 +106,19 @@ html {
 }
 
 /* Booking Modal Css */
-/* .modal-content{
-    background-color: #6C4ED6;
-    color: #ecf0f1;
+@media (max-width: 767px) {
+    .modal-dialog{
+        margin: 1.5rem !important;
+    }
 }
 
-.modal-content .modal-btn{
-    background-color: #ecf0f1;
-    color: #000000;
-    border: 1px solid #ecf0f1;
-} */
+#starRating i {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+#starRating i.active {
+    color: #ffc107;
+}

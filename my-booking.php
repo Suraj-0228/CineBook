@@ -17,10 +17,10 @@
     <!-- Navbar -->
     <?php include 'includes/header.php'; ?>
 
-    <div class="container my-5">
+    <div class="container py-4 px-2">
         <div class="booking-not-found p-4 mx-3 p-md-5 d-flex flex-column justify-content-center align-items-center text-center shadow-lg rounded">
             <h1 class="fw-bold text-danger mb-4">No Bookings Found Yet...</h1>
-            <a href="movies.php" class="book-btn btn btn-outline-dark px-4 py-2">Book Now</a>
+            <a href="movies.php" class="book-btn btn btn-outline-dark">Book Now</a>
         </div>
     </div>
 

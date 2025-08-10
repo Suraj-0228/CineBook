@@ -55,7 +55,7 @@ if (!isset($_SESSION['username'])) {
     <hr class="mx-4">
 
     <!-- Movie Cards 1 -->
-    <section class="container my-3 px-3">
+    <section class="container my-3 px-2">
         <h1 class="text-center fw-bold explore-title">Now Showing</h1>
         <div class="row justify-content-center mt-3">
             <div class="card-slider">
@@ -90,7 +90,7 @@ if (!isset($_SESSION['username'])) {
     </section>
 
     <!-- Offer Section -->
-    <section class="offer-section text-center my-3">
+    <section class="offer-section text-center">
         <h1 class="fw-bold">Exclusive Offers</h1>
         <div class="img-slider mt-3">
             <div class="me-1">
@@ -103,13 +103,13 @@ if (!isset($_SESSION['username'])) {
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials-section m-2 mt-2">
+    <section class="testimonials-section p-2 mt-2">
         <div class="container">
             <h1 class="text-center fw-bold mb-4">What Our Users Say</h1>
             <div class="row justify-content-center">
                 <!-- Testimonial 1 -->
                 <div class="col-md-4 mb-4 Testimonial-card">
-                    <div class="card shadow-lg h-100">
+                    <div class="card shadow h-100">
                         <div class="card-body">
                             <p class="card-text">"CineBook makes booking movie tickets so easy and convenient. I love
                                 the clean interface and great deals!"</p>
@@ -126,7 +126,7 @@ if (!isset($_SESSION['username'])) {
 
                 <!-- Testimonial 2 -->
                 <div class="col-md-4 mb-4 Testimonial-card">
-                    <div class="card shadow-lg h-100">
+                    <div class="card shadow h-100">
                         <div class="card-body">
                             <p class="card-text">"I’ve never missed a premiere since using CineBook. The offers and
                                 reminders are a huge plus!"</p>
@@ -143,7 +143,7 @@ if (!isset($_SESSION['username'])) {
 
                 <!-- Testimonial 3 -->
                 <div class="col-md-4 mb-4 Testimonial-card">
-                    <div class="card shadow-lg h-100">
+                    <div class="card shadow h-100">
                         <div class="card-body">
                             <p class="card-text">"A seamless experience from browsing movies to booking tickets. Highly
                                 recommended!"</p>

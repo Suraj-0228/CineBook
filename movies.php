@@ -21,7 +21,7 @@
     <?php include 'includes/header.php'; ?>
 
     <!-- Search & Filter Section -->
-    <div class="container py-3">
+    <div class="container py-3 px-0">
         <div class="row justify-content-center mx-2">
             <div class="col-12 col-md-10">
                 <form class="d-flex">
@@ -57,10 +57,10 @@
     </div>
 
     <!-- Future Card -->
-    <section class="mx-4 my-3">
+    <section class="py-2 px-2">
         <div class="container">
             <a href="#" class="future-link">
-                <div class="card p-3 d-flex flex-row align-items-center justify-content-between shadow-lg border-0">
+                <div class="card p-3 d-flex flex-row align-items-center justify-content-between shadow border-0">
                     <h2 class="fw-bold ms-2 mt-1 fs-4 fs-md-3">Upcoming Movies</h2>
                     <i class="fa-solid fa-arrow-right fa-lg me-3"></i>
                 </div>
@@ -69,9 +69,9 @@
     </section>
 
     <!-- Movie Cards Section -->
-    <section class="container mb-2">
-        <h1 class="text-center my-4 fw-bold">Explore All Movies...</h1>
-        <div class="container px-3">
+    <section class="container p-2 mb-2">
+        <h1 class="text-center py-2 fw-bold">Explore All Movies...</h1>
+        <div class="container">
             <div class="row justify-content-center">
                 <?php
                 $movie_json = file_get_contents('assets/data/movies-data.json');
@@ -104,7 +104,7 @@
     </section>
 
     <!-- Categories Section -->
-    <section class="catagory-section m-4 mt-2">
+    <section class="catagory-section p-4 pt-0">
         <h1 class="text-center explore-title fw-bold">Explore By Category</h1>
         <div class="row justify-content-center">
             <div class="col-6 col-sm-4 col-md-3 col-lg-2 mt-3">

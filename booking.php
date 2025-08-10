@@ -205,7 +205,7 @@
 
     <!-- Booking Modal -->
     <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-title fw-bold" id="bookingModalLabel">Book Your Seat</h2>
@@ -247,7 +247,7 @@
 
     <!-- Payment Modal -->
     <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <form action="my-booking.php" method="POST" id="paymentForm">
                     <div class="modal-header">
@@ -269,7 +269,6 @@
                                 <option selected disabled>Select Payment Method</option>
                                 <option value="upi">UPI</option>
                                 <option value="card">Card</option>
-                                <option value="netbanking">Net Banking</option>
                             </select>
                         </div>
 
@@ -285,15 +284,6 @@
                                 <input type="text" class="form-control mb-2" name="expiry" placeholder="MM/YY">
                                 <input type="text" class="form-control" name="cvv" placeholder="CVV">
                             </div>
-
-                            <div id="netbankingForm" class="payment-form" style="display: none;">
-                                <label class="form-label">Select Bank</label>
-                                <select name="bank" class="form-select">
-                                    <option value="sbi">SBI</option>
-                                    <option value="hdfc">HDFC</option>
-                                    <option value="icici">ICICI</option>
-                                </select>
-                            </div>
                         </div>
                     </div>
 
@@ -308,55 +298,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const timeSlots = document.querySelectorAll('.time-slot');
-            const bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
-            const paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
-
-            timeSlots.forEach(slot => {
-                slot.addEventListener('click', () => {
-                    const theater = slot.getAttribute('data-theater');
-                    const time = slot.getAttribute('data-time');
-
-                    document.getElementById('modalTheater').textContent = theater;
-                    document.getElementById('modalTime').textContent = time;
-                    document.getElementById('inputTheater').value = theater;
-                    document.getElementById('inputTime').value = time;
-
-                    bookingModal.show();
-                });
-            });
-
-            document.getElementById('proceedToPayment').addEventListener('click', () => {
-                // Collect selected seats
-                const selectedSeats = Array.from(document.querySelectorAll('input[name="seats"]:checked'))
-                    .map(seat => seat.value)
-                    .join(', ');
-
-                if (selectedSeats.length === 0) {
-                    alert("Please, Select At Least One Seat!!!");
-                    return;
-                }
-
-                document.getElementById('inputSeats').value = selectedSeats;
-                bookingModal.hide();
-                paymentModal.show();
-            });
-
-            // Payment form display based on selected method
-            document.getElementById('paymentMethod').addEventListener('change', function() {
-                const method = this.value;
-                document.getElementById('paymentForms').style.display = "block";
-
-                document.querySelectorAll('.payment-form').forEach(form => form.style.display = 'none');
-
-                if (method === "upi") document.getElementById('upiForm').style.display = 'block';
-                else if (method === "card") document.getElementById('cardForm').style.display = 'block';
-                else if (method === "netbanking") document.getElementById('netbankingForm').style.display = 'block';
-            });
-        });
-    </script>
+    <script src="assets/js/booking-process.js"></script>
 
     <!-- Footer -->
     <?php include 'includes/footer.php'; ?>

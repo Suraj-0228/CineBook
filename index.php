@@ -35,7 +35,7 @@ if (isset($_SESSION['username'])) {
 <body>
 
     <!-- Navbar -->
-    <?php require 'includes/header.php'; ?>
+    <?php require 'includes/header1.php'; ?>
 
     <!-- Hero Section -->
     <section class="hero text-center m-4 py-3">

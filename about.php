@@ -19,7 +19,7 @@
     <?php include 'includes/header.php'; ?>
 
     <!-- About Section -->
-    <section class="about-section p-4">
+    <section class="about-section py-4 px-2">
         <div class="container">
             <div class="about-cinebook row align-items-center">
                 <div class="col-12 col-md-7">
@@ -39,7 +39,7 @@
             <div class="mt-1">
                 <h2 class="fw-bold mb-3">Platform Highlights:</h2>
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
+                    <table class="table table-bordered">
                         <tbody>
                             <tr>
                                 <th>Instant Ticket Booking</th>
@@ -73,7 +73,7 @@
             <div class="mt-1">
                 <h2 class="fw-bold mb-3">Contact & Support Us:</h2>
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
+                    <table class="table table-bordered">
                         <tbody>
                             <tr>
                                 <th>Email:</th>

@@ -1,5 +1,5 @@
 <!-- Footer Section -->
-<footer class="footer p-5">
+<footer class="footer p-0">
     <div class="container">
         <div class="row">
             <!-- Left Section -->
@@ -9,7 +9,7 @@
                         <img src="assets/img/CineBook_Logo.png" alt="CineBook Logo" class="footer-logo border border-light rounded img-fluid p-2" />
                     </a>
                 </div>
-                <p class="left-text fw-bold my-4">
+                <p class="left-text fw-bold my-3">
                     Your Gateway to Movie Magic. Discover, <br> Book, and Enjoy the Latest Films
                 </p>
             </div>

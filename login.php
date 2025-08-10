@@ -28,9 +28,12 @@
                             <label for="username" class="form-label fw-bold">Username:</label>
                             <input type="text" class="form-control" id="username" name="username" placeholder="Enter Your Username....">
                         </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label fw-bold">Password:</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Your Password....">
+                        <label for="password" class="form-label fw-bold">Password:</label>
+                        <div class="mb-3 input-group">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Your Password...."  onclick="showpassword()">
+                            <button class="btn" type="button" id="togglePassword">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
                             <div class="form-check">
