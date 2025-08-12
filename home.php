@@ -60,24 +60,28 @@ if (!isset($_SESSION['username'])) {
         <div class="row justify-content-center mt-3">
             <div class="card-slider">
                 <?php
-                $movie_json = file_get_contents('assets/data/movies-data.json');
-                $decoded_json = json_decode($movie_json, true);
-                $movies = $decoded_json['movies_data'];
+                require 'includes/dbconnection.php';
 
-                foreach ($movies as $movie) {
-                    $id = $movie['id'];
-                    $title = $movie['title'];
-                    $poster = $movie['poster_url'];
-                    $rating = $movie['rating'];
-                    $language = $movie['language'];
-                    echo '<div class="col-6 col-sm-6 col-md-4 col-lg-3 movies-card">';
+                $sql_query = "select * from movies_details";
+                $result = mysqli_query($con, $sql_query);
+
+                while ($rows = mysqli_fetch_assoc($result)) {
+                    $id = $rows['id'];
+                    $title = $rows['title'];
+                    $poster = $rows['poster_url'];
+                    $rating = $rows['rating'];
+                    $language = $rows['language'];
+
+                    echo '<div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3 movies-card">';
                     echo '    <div class="card mx-2">';
-                    echo '        <img src="' . $poster . '" class="card-img-top" alt="' . $title . '">';
+                    echo '          <a href="movies-details.php?id=' . $id . '">
+                                        <img src="' . $poster . '" class="card-img-top" alt="' . $title . '">
+                                    </a>';
                     echo '        <div class="card-body">';
                     echo '            <h5 class="card-title fw-bold">' . $title . '</h5>';
                     echo '            <div class="d-flex justify-content-between align-items-center mb-3">';
                     echo '                <span><i class="fa-solid fa-star text-danger"></i> ' . $rating . '/10.0</span>';
-                    echo '                <span>' . $language . '</span>';
+                    echo '                <span class="text-muted">' . $language . '</span>';
                     echo '            </div>';
                     echo '            <a href="movies-details.php?id=' . $id . '" class="btn w-100">View Details</a>';
                     echo '        </div>';

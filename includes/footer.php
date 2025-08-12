@@ -1,5 +1,5 @@
 <!-- Footer Section -->
-<footer class="footer p-0">
+<footer class="footer p-5">
     <div class="container">
         <div class="row">
             <!-- Left Section -->

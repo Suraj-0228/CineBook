@@ -23,44 +23,50 @@
 
     <!-- Details Section -->
     <?php
-    $movie_json = file_get_contents('assets/data/movies-data.json');
-    $decoded_json = json_decode($movie_json, true);
-    $movies = $decoded_json['movies_data'];
 
-    $id = $_GET['id'] ?? null;
-    $movie = null;
+    require 'includes/dbconnection.php';
 
-    if ($id !== null) {
-        foreach ($movies as $m) {
-            if ($m['id'] == $id) {
-                $movie = $m;
-                break;
-            }
+    if (isset($_GET['id'])) {
+        $id = $_GET['id']; //Get Movies id from Database
+
+        //Fetching Movies Details from Database
+        $sql_query = "select * from movies_details where id = '$id'";
+        $result = mysqli_query($con, $sql_query);
+
+        if ($rows = mysqli_num_rows($result) > 0) {
+            $movies = mysqli_fetch_assoc($result);
+            
+            // Stored All DEtails in Variables
+            $title = $movies['title'];
+            $language = $movies['language'];
+            $release_date = $movies['release_date'];
+            $genre = $movies['genre'];
+            $rating = $movies['rating'];
+            $poster = $movies['poster_url'];
+            $description = $movies['description'];
         }
+    } else {
+        echo "<script>alert('Invalid Movies ID!!!');</script>";
     }
 
-    if (!$movie) {
-        echo "<h1 class='fw-bold text-danger'>Movie not found.</h1>";
-        exit;
-    }
     ?>
 
     <section class="movies-section">
         <div class="container p-4 pb-0">
             <div class="row align-items-center">
                 <div class="col-md-3">
-                    <img src="<?= $movie['poster_url'] ?>" alt="<?= $movie['title'] ?>" class="img-fluid details-img rounded mb-3 mb-md-0">
+                    <img src="<?php echo $poster ?>" alt="<?php echo $title ?>" class="img-fluid details-img rounded mb-3 mb-md-0">
                 </div>
                 <div class="col-md-9">
-                    <h1 class="movie-title fw-bold"><?= $movie['title'] ?></h1>
+                    <h1 class="movie-title fw-bold"><?php echo $title ?></h1>
                     <div class="movie-rate d-flex align-items-center my-2">
                         <div class="rate-icon">
-                            <i class="fa fa-star text-danger"></i><?= $movie['rating'] ?>/10
+                            <i class="fa fa-star text-danger"></i> <?php echo $rating ?>/10
                         </div>
                         <a href="#" class="btn btn-sm mx-5">Rate Now</a>
                     </div>
-                    <p><strong>Languages:</strong> <?= $movie['language'] ?></p>
-                    <p><strong>Duration:</strong> 2h 15m || <?= $movie['genre'] ?> || <?= $movie['release_date'] ?></p>
+                    <p><strong>Languages:</strong> <?php echo $language ?></p>
+                    <p><strong>Duration:</strong> 2h 15m || <?php echo $genre ?> || <?php echo $release_date ?></p>
                     <a href="booking.php" class="btn btn-lg">Book Ticket</a>
                 </div>
             </div>
@@ -73,7 +79,7 @@
         <div class="container p-4 py-0">
             <div class="my-4">
                 <h3 class="fw-bold">About This Movie:</h3>
-                <p> <?= $movie['description'] ?? 'No description available.' ?></p>
+                <p> <?php echo $description ?></p>
             </div>
 
             <?php

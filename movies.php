@@ -31,24 +31,23 @@
             </div>
             <div class="col-12 col-md-10 d-flex justify-content-start flex-wrap gap-2 mt-2">
                 <div class="dropdown">
-                    <button class="btn btn-outline-dark fw-bold dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    <button class="btn fw-bold dropdown-toggle" type="button" data-bs-toggle="dropdown">
                         Language
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">English</a></li>
                         <li><a class="dropdown-item" href="#">Hindi</a></li>
-                        <li><a class="dropdown-item" href="#">Telugu</a></li>
                     </ul>
                 </div>
                 <div class="dropdown">
-                    <button class="btn btn-outline-dark fw-bold dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    <button class="btn fw-bold dropdown-toggle" type="button" data-bs-toggle="dropdown">
                         Genre
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Action</a></li>
                         <li><a class="dropdown-item" href="#">Drama & Comedy</a></li>
                         <li><a class="dropdown-item" href="#">Horror</a></li>
-                        <li><a class="dropdown-item" href="#">Romance</a></li>
+                        <li><a class="dropdown-item" href="#">Animation</a></li>
                     </ul>
                 </div>
             </div>
@@ -74,19 +73,23 @@
         <div class="container">
             <div class="row justify-content-center">
                 <?php
-                $movie_json = file_get_contents('assets/data/movies-data.json');
-                $decoded_json = json_decode($movie_json, true);
-                $movies = $decoded_json['movies_data'];
+                require 'includes/dbconnection.php';
 
-                foreach ($movies as $movie) {
-                    $id = $movie['id'];
-                    $title = $movie['title'];
-                    $poster = $movie['poster_url'];
-                    $rating = $movie['rating'];
-                    $language = $movie['language'];
+                $sql_query = "select * from movies_details";
+                $result = mysqli_query($con, $sql_query);
+
+                while ($rows = mysqli_fetch_assoc($result)) {
+                    $id = $rows['id'];
+                    $title = $rows['title'];
+                    $poster = $rows['poster_url'];
+                    $rating = $rows['rating'];
+                    $language = $rows['language'];
+
                     echo '<div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3 movies-card">';
                     echo '    <div class="card">';
-                    echo '        <img src="' . $poster . '" class="card-img-top" alt="' . $title . '">';
+                    echo '          <a href="movies-details.php?id=' . $id . '">
+                                        <img src="' . $poster . '" class="card-img-top" alt="' . $title . '">
+                                    </a>';
                     echo '        <div class="card-body">';
                     echo '            <h5 class="card-title fw-bold">' . $title . '</h5>';
                     echo '            <div class="d-flex justify-content-between align-items-center mb-3">';
