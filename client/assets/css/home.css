@@ -1,4 +1,8 @@
 /* Home Page Css */
+body,
+html {
+    overflow-x: hidden !important;
+}
 
 .hero-con {
     width: 70%;

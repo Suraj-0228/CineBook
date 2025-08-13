@@ -1,3 +1,21 @@
+<?php
+session_start();
+
+// If session not set but cookie exists, restore session
+if (!isset($_SESSION['username']) && isset($_COOKIE['username'])) {
+    $_SESSION['username'] = $_COOKIE['username'];
+}
+
+// If neither session nor cookie, redirect to login
+if (!isset($_SESSION['username'])) {
+    echo "<script>
+        alert('Please, Login to Access CineBook');
+        window.location.href = 'login.php';
+    </script>";
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

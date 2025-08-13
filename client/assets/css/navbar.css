@@ -1,6 +1,6 @@
 /* Navbar Styles */
 header {
-    position: sticky;
+    position: sticky !important;
     top: 0;
     z-index: 10;
 }

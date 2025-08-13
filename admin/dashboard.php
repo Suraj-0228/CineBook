@@ -35,6 +35,88 @@ if (!isset($_SESSION['adminname'])) {
     <!-- Navbar -->
     <?php include 'includes/header1.php'; ?>
 
+    <!-- Hero Section -->
+    <section class="container my-5">
+        <h1 class="fw-bold mb-4">Admin Dashboard:</h1>
+        <div class="row g-4">
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="card dashboard-card shadow h-100 text-center">
+                    <div class="card-body p-5 pb-4 d-flex flex-column align-items-center justify-content-center">
+                        <i class="fa fa-film fa-2xl text-primary mb-4"></i>
+                        <span class="fs-3 fw-bold">Total Movies</span>
+                        <p class="mt-2 mb-0 fs-5"><strong>16</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="card dashboard-card shadow h-100 text-center">
+                    <div class="card-body p-5 pb-4 d-flex flex-column align-items-center justify-content-center">
+                        <i class="fa fa-ticket fa-2xl text-success mb-4"></i>
+                        <span class="fs-3 fw-bold">Total Bookings</span>
+                        <p class="mt-2 mb-0 fs-5"><strong>127</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="card dashboard-card shadow h-100 text-center">
+                    <div class="card-body p-5 pb-4 d-flex flex-column align-items-center justify-content-center">
+                        <i class="fa fa-user fa-2xl text-danger mb-4"></i>
+                        <span class="fs-3 fw-bold">Total Users</span>
+                        <p class="mt-2 mb-0 fs-5"><strong>79</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Bookings -->
+    <section class="container">
+        <h2 class="fw-bold">Recent Bookings:</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered my-3">
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Movies Name</th>
+                    <th>User Name</th>
+                    <th>Date & Time</th>
+                    <th>Seats</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>01</td>
+                    <td>Jawaan</td>
+                    <td>Suraj Manani</td>
+                    <td>28/02/2025</td>
+                    <td>5</td>
+                    <td class="text-success">Confirmed</td>
+                </tr>
+                <tr>
+                    <td>02</td>
+                    <td>Jawaan</td>
+                    <td>Suraj Manani</td>
+                    <td>28/02/2025</td>
+                    <td>5</td>
+                    <td class="text-danger">Cancelled</td>
+                </tr>
+                <tr>
+                    <td>03</td>
+                    <td>Jawaan</td>
+                    <td>Suraj Manani</td>
+                    <td>28/02/2025</td>
+                    <td>5</td>
+                    <td class="text-success">Confirmed</td>
+                </tr>
+                <tr>
+                    <td>04</td>
+                    <td>Jawaan</td>
+                    <td>Suraj Manani</td>
+                    <td>28/02/2025</td>
+                    <td>5</td>
+                    <td class="text-danger">Cancelled</td>
+                </tr>
+            </table>
+        </div>
+    </section>
 
     <!-- Footer -->
     <?php include 'includes/footer.php'; ?>
