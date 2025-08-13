@@ -1,0 +1,39 @@
+.footer {
+    background-color: #6C4ED6;
+    color: #ecf0f1;
+}
+
+.copy-right {
+    font-size: 1.25rem;
+    color: #ecf0f1;
+}
+
+.social-links,
+.social-icon {
+    gap: 1rem;
+    color: #ecf0f1;
+    font-size: 1.2rem;
+    display: flex;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+}
+
+.social-links .social-icon:hover {
+    transform: scale(1.3);
+}
+
+@media (max-width: 767px) {
+    .footer {
+        padding: 1rem !important;
+    }
+
+    .copy-right {
+        font-size: 1rem;
+        color: #ecf0f1;
+    }
+
+    .social-links,
+    .social-icon {
+        margin-left: 0 !important;
+    }
+}

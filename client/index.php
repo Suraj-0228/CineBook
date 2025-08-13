@@ -39,10 +39,10 @@ if (isset($_SESSION['username'])) {
 
     <!-- Hero Section -->
     <section class="hero text-center m-4 py-3">
-        <div class="container p-4 shadow-lg">
+        <div class="container p-4 rounded shadow-lg">
             <h2 class=""><strong>Experience Seamless Movie Ticket Booking Today!</strong></h2>
             <p class="text-muted fs-4">Easy, Fast, Reliable.</p>
-            <a href="login.php" class="btn btn-primary btn-lg">Book Now</a>
+            <a href="login.php" class="btn btn-primary">Book Now</a>
         </div>
     </section>
 
@@ -77,9 +77,9 @@ if (isset($_SESSION['username'])) {
     </section>
 
     <!-- Contact Section -->
-    <section class="py-5 text-center bg-white">
+    <section class="m-4 my-5 text-center">
         <div class="container shadow-lg p-5 rounded">
-            <h2 class="mb-4 fw-bold">Get in Touch</h2>
+            <h1 class="mb-4 fw-bold">Get in Touch</h1>
             <p class="fs-5">Need help or have questions? Email us at <a href="#">cinebookmovies@gmail.com</a></p>
         </div>
     </section>

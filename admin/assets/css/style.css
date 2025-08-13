@@ -1,0 +1,41 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inria Serif', serif;
+}
+
+body,
+html {
+    background-color: #ecf0f1;
+    color: #000000;
+}
+
+.btn {
+    background-color: #6C4ED6;
+    color: #ecf0f1;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #6C4ED6;
+    color: #ecf0f1;
+}
+
+/* Admin Login Social Icons */
+.login-social-links {
+    display: flex;
+    justify-content: center;
+}
+
+.login-social-icon {
+    font-size: 1.3rem;
+    color: #6C4ED6;
+    transition: transform 0.3s ease;
+}
+
+.login-social-icon:hover {
+    transform: scale(1.15);
+}
