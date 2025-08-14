@@ -41,11 +41,28 @@ html {
     transform: scale(1.15);
 }
 
-/* Hover Effect for All Cards */
+/* Hover Effect for Dashboard-Card */
 .dashboard-card {
     transition: transform 0.4s ease;
 }
 
 .dashboard-card:hover {
     transform: scale(1.03);
+}
+
+@media (max-width: 767px) {
+    .dashboard-section, .booking-section{
+        padding: 1rem;
+    }
+}
+
+.modal-header {
+    background-color: #6C4ED6;
+    color: #ecf0f1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.fa-xmark:hover{
+    cursor: pointer;
 }

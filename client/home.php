@@ -66,7 +66,7 @@ if (!isset($_SESSION['username'])) {
                 $result = mysqli_query($con, $sql_query);
 
                 while ($rows = mysqli_fetch_assoc($result)) {
-                    $id = $rows['id'];
+                    $id = $rows['movie_id'];
                     $title = $rows['title'];
                     $poster = $rows['poster_url'];
                     $rating = $rows['rating'];

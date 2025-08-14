@@ -3,7 +3,7 @@ session_start();
 session_unset();
 session_destroy();
 
-setcookie("adminame", "", time() - 3600, "/");
+setcookie("adminname", "", time() - 3600, "/");
 
 header("Location: admin_login.php");
 exit();

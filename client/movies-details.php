@@ -30,7 +30,7 @@
         $id = $_GET['id']; //Get Movies id from Database
 
         //Fetching Movies Details from Database
-        $sql_query = "select * from movies_details where id = '$id'";
+        $sql_query = "select * from movies_details where movie_id = '$id'";
         $result = mysqli_query($con, $sql_query);
 
         if ($rows = mysqli_num_rows($result) > 0) {

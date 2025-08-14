@@ -41,7 +41,7 @@
         <!-- Footer Bottom -->
         <div class="col-12 copy-right-social">
             <div class="copy-right">
-                <p class="">CineBook is a platform dedicated to providing seamless experiences to movie lovers. <strong>© 2025 CineBook. All rights reserved.</strong></p>
+                <p class=""><strong>&copy; CineBook. All rights reserved.</strong> | Designed and developed by the CineBook Team.</p>
 
             </div>
             <div class="social-links">

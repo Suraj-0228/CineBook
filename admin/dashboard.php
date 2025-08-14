@@ -36,7 +36,7 @@ if (!isset($_SESSION['adminname'])) {
     <?php include 'includes/header1.php'; ?>
 
     <!-- Hero Section -->
-    <section class="container my-5">
+    <section class="container dashboard-section my-3">
         <h1 class="fw-bold mb-4">Admin Dashboard:</h1>
         <div class="row g-4">
             <div class="col-12 col-sm-6 col-md-4">
@@ -70,8 +70,8 @@ if (!isset($_SESSION['adminname'])) {
     </section>
 
     <!-- Recent Bookings -->
-    <section class="container">
-        <h2 class="fw-bold">Recent Bookings:</h2>
+    <section class="container booking-section">
+        <h2 class="fw-bold mt-4">Recent Bookings:</h2>
         <div class="table-responsive">
             <table class="table table-bordered my-3">
                 <tr>
@@ -80,7 +80,6 @@ if (!isset($_SESSION['adminname'])) {
                     <th>User Name</th>
                     <th>Date & Time</th>
                     <th>Seats</th>
-                    <th>Status</th>
                 </tr>
                 <tr>
                     <td>01</td>
@@ -88,7 +87,6 @@ if (!isset($_SESSION['adminname'])) {
                     <td>Suraj Manani</td>
                     <td>28/02/2025</td>
                     <td>5</td>
-                    <td class="text-success">Confirmed</td>
                 </tr>
                 <tr>
                     <td>02</td>
@@ -96,7 +94,6 @@ if (!isset($_SESSION['adminname'])) {
                     <td>Suraj Manani</td>
                     <td>28/02/2025</td>
                     <td>5</td>
-                    <td class="text-danger">Cancelled</td>
                 </tr>
                 <tr>
                     <td>03</td>
@@ -104,7 +101,6 @@ if (!isset($_SESSION['adminname'])) {
                     <td>Suraj Manani</td>
                     <td>28/02/2025</td>
                     <td>5</td>
-                    <td class="text-success">Confirmed</td>
                 </tr>
                 <tr>
                     <td>04</td>
@@ -112,7 +108,6 @@ if (!isset($_SESSION['adminname'])) {
                     <td>Suraj Manani</td>
                     <td>28/02/2025</td>
                     <td>5</td>
-                    <td class="text-danger">Cancelled</td>
                 </tr>
             </table>
         </div>
