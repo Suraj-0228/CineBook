@@ -37,6 +37,7 @@
             $movies = mysqli_fetch_assoc($result);
             
             // Stored All DEtails in Variables
+            $id = $movies['movie_id'];
             $title = $movies['title'];
             $language = $movies['language'];
             $release_date = $movies['release_date'];
@@ -67,7 +68,7 @@
                     </div>
                     <p><strong>Languages:</strong> <?php echo $language ?></p>
                     <p><strong>Duration:</strong> 2h 15m || <?php echo $genre ?> || <?php echo $release_date ?></p>
-                    <a href="booking.php" class="btn btn-lg">Book Ticket</a>
+                    <a href="booking.php?movie_id=<?php echo $id; ?>" class="btn btn-lg">Book Ticket</a>
                 </div>
             </div>
             <hr class="w-100">

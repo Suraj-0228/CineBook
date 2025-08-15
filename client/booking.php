@@ -1,3 +1,21 @@
+<?php require 'controllers/booking-process.php'; ?>
+<?php
+require 'includes/dbconnection.php';
+
+// Check if movie_id is passed from details.php
+$movie_id = isset($_GET['movie_id']) ? intval($_GET['movie_id']) : 0;
+$movie_title = "";
+
+// Fetch movie title from DB
+if ($movie_id > 0) {
+    $result = mysqli_query($con, "SELECT title FROM movies_details WHERE movie_id = '$movie_id'");
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $movie_title = $row['title'];
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,281 +35,60 @@
     <!-- Navbar -->
     <?php include 'includes/header.php'; ?>
 
-    <!-- Booking Section -->
-    <section class="booking-section">
-        <div class="container">
-            <div class="book-heading my-3">
-                <h1 class="fw-bold fs-1">Movie: Jawan - (Hindi)</h1>
-                <p class="booking-genre fs-5">Action</p>
-            </div>
-        </div>
-        <hr class="my-4">
-    </section>
-
-    <!-- Booking Details -->
-    <section class="booking-details">
-        <div class="container">
-            <div class="row gy-3 justify-content-between">
-                <!-- Left Side: Booking Dates -->
-                <h5 class="fw-bold">Date & Price:</h5>
-                <div class="col-12 col-lg-8 d-flex flex-wrap gap-2">
-                    <p class="p-2 text-center border rounded border-dark">Sun 20, July</p>
-                    <p class="p-2 text-center border rounded border-dark">Mon 21, July</p>
-                    <p class="p-2 text-center border rounded border-dark">Tue 22, July</p>
-                    <p class="p-2 text-center border rounded border-dark">Wed 23, July</p>
-                    <p class="p-2 text-center border rounded border-dark">Fri 24, July</p>
-                </div>
-
-                <!-- Right Side: Language and Time -->
-                <div class="col-12 col-lg-4 d-flex flex-wrap gap-2 justify-content-lg-end">
-                    <p class="p-2 border rounded border-dark">Hindi - 2D</p>
-                    <div class="dropdown">
-                        <button class="btn p-2 fw-bold border rounded border-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            Price Range
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li class="mx-3 d-flex align-items-center">
-                                <input type="checkbox" class="me-2" name="time" id="time1"> 0-100₹
-                            </li>
-                            <li class="mx-3 d-flex align-items-center">
-                                <input type="checkbox" class="me-2" name="time" id="time2"> 100-200₹
-                            </li>
-                            <li class="mx-3 d-flex align-items-center">
-                                <input type="checkbox" class="me-2" name="time" id="time3"> 200-300₹
-                            </li>
-                            <li class="mx-3 d-flex align-items-center">
-                                <input type="checkbox" class="me-2" name="time" id="time4"> 300-400₹
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <hr class="my-3">
-        </div>
-    </section>
-
-    <!-- Theater Section -->
-    <section class="py-4">
-        <div class="container">
-            <div class="mb-4">
-                <div class="row align-items-center">
-                    <div class="col-12 col-lg-4 mb-2 mb-lg-0">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <h5 class="fw-bold mb-0">Rajhans Cinemas: Rajhans Precia, Surat</h5>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-8">
-                        <div class="d-flex flex-wrap gap-2">
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="Rajhans Cinemas: Rajhans Precia, Surat"
-                                data-time="10:00 AM">10:00 AM</p>
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="Rajhans Cinemas: Rajhans Precia, Surat"
-                                data-time="12:10 PM">12:10 PM</p>
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="Rajhans Cinemas: Rajhans Precia, Surat"
-                                data-time="2:30 PM">2:30 PM</p>
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="Rajhans Cinemas: Rajhans Precia, Surat"
-                                data-time="4:55 PM">4:55 PM</p>
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="Rajhans Cinemas: Rajhans Precia, Surat"
-                                data-time="8:00 PM">8:00 PM</p>
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="Rajhans Cinemas: Rajhans Precia, Surat"
-                                data-time="10:30 PM">10:30 PM</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="mb-4">
-                <div class="row align-items-center">
-                    <div class="col-12 col-lg-4 mb-2 mb-lg-0">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <h5 class="fw-bold mb-0">INOX: VR Mall, Surat</h5>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-8">
-                        <div class="d-flex flex-wrap gap-2">
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="INOX: VR Mall, Surat"
-                                data-time="10:00 AM">10:00 AM</p>
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="INOX: VR Mall, Surat"
-                                data-time="4:55 PM">4:55 PM</p>
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="INOX: VR Mall, Surat"
-                                data-time="10:30 PM">10:30 PM</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="mb-4">
-                <div class="row align-items-center">
-                    <div class="col-12 col-lg-4 mb-2 mb-lg-0">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <h5 class="fw-bold mb-0">Cinepolis: Imperial Square Mall, Surat</h5>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-8">
-                        <div class="d-flex flex-wrap gap-2">
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="Cinepolis: Imperial Square Mall, Surat"
-                                data-time="12:10 PM">12:10 PM</p>
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="Cinepolis: Imperial Square Mall, Surat"
-                                data-time="4:55 PM">4:55 PM</p>
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="Cinepolis: Imperial Square Mall, Surat"
-                                data-time="8:00 PM">8:00 PM</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="mb-4">
-                <div class="row align-items-center">
-                    <div class="col-12 col-lg-4 mb-2 mb-lg-0">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <h5 class="fw-bold mb-0">PVR: Rahul Raj Mall, Surat</h5>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-8">
-                        <div class="d-flex flex-wrap gap-2">
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="PVR: Rahul Raj Mall, Surat"
-                                data-time="10:00 AM">10:00 AM</p>
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="PVR: Rahul Raj Mall, Surat"
-                                data-time="12:10 PM">12:10 PM</p>
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="PVR: Rahul Raj Mall, Surat"
-                                data-time="2:30 PM">2:30 PM</p>
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="PVR: Rahul Raj Mall, Surat"
-                                data-time="10:30 PM">10:30 PM</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="mb-4">
-                <div class="row align-items-center">
-                    <div class="col-12 col-lg-4 mb-2 mb-lg-0">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <h5 class="fw-bold mb-0">Cinezza Multiplex: Jahangirpura, Surat</h5>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-8">
-                        <div class="d-flex flex-wrap gap-2">
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="Cinezza Multiplex: Jahangirpura, Surat"
-                                data-time="10:00 AM">10:00 AM</p>
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="Cinezza Multiplex: Jahangirpura, Surat"
-                                data-time="12:10 PM">12:10 PM</p>
-                            <p class="p-2 border rounded border-dark time-slot"
-                                data-theater="Cinezza Multiplex: Jahangirpura, Surat"
-                                data-time="10:30 PM">10:30 PM</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr>
-        </div>
-    </section>
-
-    <!-- Booking Modal -->
-    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title fw-bold" id="bookingModalLabel">Book Your Seat</h2>
-                    <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-                    <!-- Movie & Theater Info -->
-                    <h4 class="my-2"><strong>Movie:</strong></h4> <span id="modalMovie">Jawan - (Hindi)</span>
-                    <h4 class="my-2"><strong>Theater:</strong></h4> <span id="modalTheater"></span>
-                    <h4 class="my-2"><strong>Time:</strong></h4> <span id="modalTime"></span>
-
-                    <!-- Seat Selection -->
-                    <div class="my-3">
-                        <h5 class="form-label fw-bold">Select your Seats:</h5>
-                        <div class="d-flex gap-2 flex-wrap">
-                            <!-- Dummy seats -->
-                            <input type="checkbox" id="seat1" name="seats"> <label for="seat1">1</label>
-                            <input type="checkbox" id="seat2" name="seats"> <label for="seat2">2</label>
-                            <input type="checkbox" id="seat3" name="seats"> <label for="seat3">3</label>
-                            <input type="checkbox" id="seat4" name="seats"> <label for="seat4">4</label>
-                            <input type="checkbox" id="seat5" name="seats"> <label for="seat5">5</label>
-                            <input type="checkbox" id="seat6" name="seats"> <label for="seat6">6</label>
-                            <input type="checkbox" id="seat7" name="seats"> <label for="seat7">7</label>
-                            <input type="checkbox" id="seat8" name="seats"> <label for="seat8">8</label>
-                            <input type="checkbox" id="seat9" name="seats"> <label for="seat9">9</label>
-                            <input type="checkbox" id="seat10" name="seats"> <label for="seat10">10</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="proceedToPayment">Proceed to Pay</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Payment Modal -->
-    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <form action="my-booking.php" method="POST" id="paymentForm">
-                    <div class="modal-header">
-                        <h2 class="modal-title fw-bold" id="paymentModalLabel">Payment</h2>
-                        <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <!-- Hidden Booking Data -->
-                        <input type="hidden" name="movie" id="inputMovie" value="Jawan - (Hindi)">
-                        <input type="hidden" name="theater" id="inputTheater">
-                        <input type="hidden" name="time" id="inputTime">
-                        <input type="hidden" name="seats" id="inputSeats">
-
-                        <!-- Payment Method -->
-                        <div class="mb-3">
-                            <label for="payment" class="form-label fw-bold">Payment Method</label>
-                            <select class="form-select" id="paymentMethod" name="payment_method" required>
-                                <option selected disabled>Select Payment Method</option>
-                                <option value="upi">UPI</option>
-                                <option value="card">Card</option>
-                            </select>
-                        </div>
-
-                        <!-- Payment Fields -->
-                        <div id="paymentForms" style="display: none;">
-                            <div id="upiForm" class="payment-form" style="display: none;">
-                                <label for="upiId" class="form-label">UPI ID</label>
-                                <input type="text" class="form-control" id="upiId" name="upi_id">
+    <!-- Booking Form -->
+    <div class="container my-4">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card border-0 shadow">
+                    <h1 class="booking-header rounded-top fw-bold text-center p-3">Book Your Ticket Now!</h1>
+                    <div class="card-body">
+                        <form action="#" method="post">
+                            <div class="mb-3">
+                                <label for="movietitle" class="form-label fw-bold">Movie Title:</label>
+                                <input type="text" class="form-control" value="<?php echo $movie_title; ?>" readonly>
                             </div>
 
-                            <div id="cardForm" class="payment-form" style="display: none;">
-                                <input type="text" class="form-control mb-2" name="card_number" placeholder="Card Number">
-                                <input type="text" class="form-control mb-2" name="expiry" placeholder="MM/YY">
-                                <input type="text" class="form-control" name="cvv" placeholder="CVV">
+                            <div class="mb-3">
+                                <label for="moviedate" class="form-label fw-bold">Movie Date:</label>
+                                <input type="date" class="form-control" name="moviedate" id="moviedate">
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success">Pay Now</button>
+                            <div class="mb-3">
+                                <label for="movietime" class="form-label fw-bold">Movie Time:</label>
+                                <input type="time" class="form-control" name="movietime" id="movietime">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="ticket" class="form-label fw-bold">Total Tickets:</label>
+                                <input type="number" class="form-control" name="ticket" id="ticket" placeholder="Enter Total Tickets...">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="paymentmethod" class="form-label fw-bold">Payment Method:</label>
+                                <select class="form-select" name="paymentmethod" id="paymentmethod">
+                                    <option value="selectmethod">Select Payment Method</option>
+                                    <option value="upi">UPI</option>
+                                    <option value="creditcard">Credit Card</option>
+                                    <option value="cash">Cash</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="paymentstatus" class="form-label fw-bold">Payment Status:</label>
+                                <select class="form-select" name="paymentstatus" id="paymentstatus">
+                                    <option value="selectstatus">Select Payment Status</option>
+                                    <option value="confirmed">Confirmed</option>
+                                    <option value="pending">Pending</option>
+                                </select>
+                            </div>
+
+                            <div class="d-grid mt-2">
+                                <button type="submit" class="btn">Pay To Proceed</button>
+                            </div>
+
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>

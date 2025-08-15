@@ -25,9 +25,12 @@ CREATE TABLE `booking` (
     booking_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     movie_id INT NOT NULL,
+    movie_title VARCHAR(50),
     show_date DATE NOT NULL,
     show_time TIME NOT NULL,
-    seats INT NOT NULL,
+    tickets INT NOT NULL,
+    payment_method VARCHAR(50),
+    payment_status VARCHAR(50),
 
     -- Relations
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,

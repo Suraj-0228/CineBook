@@ -16,7 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = mysqli_query($con, $sql_query);
 
         if (mysqli_num_rows($result) == 1) {
-            $_SESSION['username'] = $username;
+            $row = mysqli_fetch_assoc($result);
+
+            // Store BOTH username and user_id in session
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['user_id']  = $row['user_id'];
 
             // If "Remember Me" is checked, set cookie for 7 days
             if (isset($_POST['remember'])) {

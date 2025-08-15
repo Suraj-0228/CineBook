@@ -105,11 +105,10 @@ html {
     background-color: #6C4ED6;
 }
 
-/* Booking Modal Css */
-@media (max-width: 767px) {
-    .modal-dialog{
-        margin: 1.5rem !important;
-    }
+/* Booking Page Css */
+.booking-header{
+    background-color: #6C4ED6;
+    color: #ecf0f1;
 }
 
 #starRating i {
