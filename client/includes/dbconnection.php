@@ -4,7 +4,7 @@
 $server = "localhost";
 $username = "root";
 $password = "";
-$database = "cinebook_db";
+$database = "database1";
 
 $con = mysqli_connect($server, $username, $password, $database);
 

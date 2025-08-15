@@ -49,7 +49,7 @@ if (!isset($_SESSION['adminname'])) {
 
     <!-- Display Movies Table -->
     <section class="container my-5">
-        <h1 class="fw-bold mb-3">Available Movies</h1>
+        <h1 class="fw-bold mb-3">Available Movies:</h1>
         <?php
         require 'includes/dbconnection.php';
 
@@ -73,6 +73,7 @@ if (!isset($_SESSION['adminname'])) {
             echo "      </div>";
             echo "      <div class='col-12 col-md-8'>";
             echo "          <div class='card-body'>";
+            echo "              <p class='mb-1'><strong>Movie ID:</strong> $id</p>";
             echo "              <p class='mb-1'><strong>Movie Title:</strong> $movie_title</p>";
             echo "              <p class='mb-1'><strong>Language:</strong> $language</p>";
             echo "              <p class='mb-1'><strong>Release Date:</strong> $release_date</p>";

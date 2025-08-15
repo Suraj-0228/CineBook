@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $adminName = $_POST['adminname'];
         $adminPassword = $_POST['adminPassword'];
 
-        $sql_query = "SELECT * FROM admin WHERE admin_name = '$adminName' AND admin_password = '$adminPassword'";
+        $sql_query = "select * from admin where admin_name = '$adminName' and admin_password = '$adminPassword'";
         $result = mysqli_query($con, $sql_query);
 
         if (mysqli_num_rows($result) == 1) {

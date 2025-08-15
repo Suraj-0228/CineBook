@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $sql_query = "SELECT * FROM register WHERE User_Name = '$username' AND password = '$password'";
+        $sql_query = "select * from users where username = '$username' and user_password = '$password'";
         $result = mysqli_query($con, $sql_query);
 
         if (mysqli_num_rows($result) == 1) {

@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Check that all fields are filled
         if (!empty($fullname) && !empty($email) && !empty($username) && !empty($password) && !empty($confirm_password)) {
             if ($password === $confirm_password) {
-                $sql_query = "INSERT INTO register (Full_Name, Email, User_Name, password) 
+                $sql_query = "INSERT INTO users (fullname, email, username, user_password) 
                       VALUES ('$fullname', '$email', '$username', '$password')";
 
                 if ($con->query($sql_query) === TRUE) {
