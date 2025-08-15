@@ -52,7 +52,7 @@ if (!isset($_SESSION['username'])) {
             </div>
         </div>
     </div>
-    <hr class="mx-4">
+    <hr class="mx-4 border border-dark">
 
     <!-- Movie Cards 1 -->
     <section class="container my-3 px-2">

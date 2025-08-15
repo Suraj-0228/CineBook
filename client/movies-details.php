@@ -71,7 +71,7 @@
                     <a href="booking.php?movie_id=<?php echo $id; ?>" class="btn btn-lg">Book Ticket</a>
                 </div>
             </div>
-            <hr class="w-100">
+            <hr class="w-100 border border-dark">
         </div>
     </section>
 
@@ -101,7 +101,7 @@
             }
             ?>
             <?php if ($cast_data): ?>
-                <hr class="w-100">
+                <hr class="w-100 border border-dark">
                 <div class="mb-1">
                     <h3 class="fw-bold">Cast:</h3>
                     <div class="row sub-cast">
@@ -114,7 +114,7 @@
                     </div>
                 </div>
 
-                <hr class="w-100">
+                <hr class="w-100 border border-dark">
                 <div class="mb-3">
                     <h3 class="fw-bold">Crew:</h3>
                     <div class="row sub-crew">

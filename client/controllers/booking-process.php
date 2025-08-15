@@ -42,9 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $result = mysqli_query($con, $sql_query);
 
             if ($result && mysqli_affected_rows($con) >= 1) {
-                echo "<script>alert('Movie Booking Successful.');</script>";
-            } else {
-                die("MySQL Error: " . mysqli_error($con));
+                echo "<script>
+                    alert('Movie Booking Successful.');
+                    window.location.href = 'movies.php';
+                </script>";
+                exit();
             }
         } else {
             echo "<script>alert('ERROR: Please, Enter All the Details Correctly!');</script>";

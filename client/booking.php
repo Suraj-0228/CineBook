@@ -45,6 +45,7 @@ if ($movie_id > 0) {
                         <form action="#" method="post">
                             <div class="mb-3">
                                 <label for="movietitle" class="form-label fw-bold">Movie Title:</label>
+                                <input type="hidden" name="movietitle" value="<?php echo $movie_id; ?>">
                                 <input type="text" class="form-control" value="<?php echo $movie_title; ?>" readonly>
                             </div>
 
@@ -67,9 +68,9 @@ if ($movie_id > 0) {
                                 <label for="paymentmethod" class="form-label fw-bold">Payment Method:</label>
                                 <select class="form-select" name="paymentmethod" id="paymentmethod">
                                     <option value="selectmethod">Select Payment Method</option>
-                                    <option value="upi">UPI</option>
-                                    <option value="creditcard">Credit Card</option>
-                                    <option value="cash">Cash</option>
+                                    <option value="UPI">UPI</option>
+                                    <option value="Credit Card">Credit Card</option>
+                                    <option value="Cash">Cash</option>
                                 </select>
                             </div>
 
@@ -77,8 +78,8 @@ if ($movie_id > 0) {
                                 <label for="paymentstatus" class="form-label fw-bold">Payment Status:</label>
                                 <select class="form-select" name="paymentstatus" id="paymentstatus">
                                     <option value="selectstatus">Select Payment Status</option>
-                                    <option value="confirmed">Confirmed</option>
-                                    <option value="pending">Pending</option>
+                                    <option value="Confirmed">Confirmed</option>
+                                    <option value="Pending">Pending</option>
                                 </select>
                             </div>
 
