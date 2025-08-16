@@ -36,6 +36,55 @@ if (!isset($_SESSION['adminname'])) {
     <!-- Navbar -->
     <?php include 'includes/header1.php'; ?>
 
+    <!-- Display Bookings Details -->
+    <div class="container my-3">
+        <h1 class="fw-bold">Manage Bookings:</h1>
+        <?php
+        require 'includes/dbconnection.php';
+
+        // Fetch bookings for this user
+        $sql_query = "SELECT * FROM booking";
+        $result = mysqli_query($con, $sql_query);
+        if (mysqli_num_rows($result) > 0) {
+            while ($rows = mysqli_fetch_assoc($result)) {
+                $booking_id = $rows['booking_id'];
+                $movie_title = $rows['movie_title'];
+                $show_date = $rows['show_date'];
+                $show_time = $rows['show_time'];
+                $payment_method = $rows['payment_method'];
+                $payment_status = $rows['payment_status'];
+
+                // Set text color based on payment status
+                $statusClass = '';
+                if (strtolower($payment_status) === 'pending') {
+                    $statusClass = 'text-danger fw-bold'; // Red & bold
+                } elseif (strtolower($payment_status) === 'confirmed' || strtolower($payment_status) === 'paid') {
+                    $statusClass = 'text-success fw-bold'; // Green & bold
+                }
+
+                echo "<div class='card shadow my-3'>";
+                echo "  <div class='row g-0 align-items-center border-0'>";
+                echo "      <div class='col-12 col-md-8'>";
+                echo "          <div class='card-body'>";
+                echo "              <p class='mb-1'><strong>Booking ID:</strong> $booking_id</p>";
+                echo "              <p class='mb-1'><strong>Movie Title:</strong> $movie_title</p>";
+                echo "              <p class='mb-1'><strong>Show Date:</strong> $show_date</p>";
+                echo "              <p class='mb-1'><strong>Show Time:</strong> $show_time</p>";
+                echo "              <p class='mb-1'><strong>Payment Method:</strong> $payment_method</p>";
+                echo "              <p class='mb-1'><strong>Payment Status:</strong> <span class='$statusClass'>$payment_status</span></p>";
+                echo "              <div class='btn-group mt-3'>";
+                echo "                  <a href='controllers/delete_booking.php?booking_id=$booking_id' class='bg-danger text-white rounded p-2 px-4 mx-1'>";
+                echo "                      <i class='fa-solid fa-trash'></i>";
+                echo "                  </a>";
+                echo "              </div>";
+                echo "          </div>";
+                echo "      </div>";
+                echo "  </div>";
+                echo "</div>";
+            }
+        }
+        ?>
+    </div>
 
     <!-- Footer -->
     <?php include 'includes/footer.php'; ?>

@@ -65,6 +65,7 @@ if (!isset($_SESSION['username'])) {
                             if (mysqli_num_rows($result) > 0) {
                                 $rows = mysqli_fetch_assoc($result);
 
+                                $user_id = $rows['user_id'];
                                 $fullname = $rows['fullname'];   // Correct field
                                 $username = $rows['username'];
                                 $email = $rows['email'];
@@ -95,6 +96,11 @@ if (!isset($_SESSION['username'])) {
                         <div class="user-eamil">
                             <h5 class="form-label fw-bold fs-5 m-0">Email ID:</h5>
                             <p class=""><?php echo $email ?? ''; ?></p>
+                        </div>
+                        <div class="btn-group">
+                            <a href="update_profile.php?user_id=<?php echo $user_id; ?>" class="bg-success text-white rounded p-2 px-4 mx-1">
+                                <i class="fa-solid fa-edit"></i>
+                            </a>
                         </div>
                     </div>
                 </div>

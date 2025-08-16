@@ -84,7 +84,7 @@ if (!isset($_SESSION['adminname'])) {
                                 <p class='mb-1'><strong>Description:</strong> $description</p>
                                 <div class='btn-group mt-3'>
                                     <a href='update_movie.php?movie_id=$id' class='bg-success text-white rounded p-2 px-4 mx-1'>
-                                        <i class='fa-solid fa-pencil'></i>
+                                        <i class='fa-solid fa-edit'></i>
                                     </a>
                                     <a href='controllers/delete-movie.php?movie_id=$id' class='bg-danger text-white rounded p-2 px-4 mx-1'>
                                         <i class='fa-solid fa-trash'></i>
