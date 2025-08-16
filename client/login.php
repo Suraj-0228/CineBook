@@ -12,6 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -30,7 +31,7 @@
                         </div>
                         <label for="password" class="form-label fw-bold">Password:</label>
                         <div class="mb-3 input-group">
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Your Password...."  onclick="showpassword()">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Your Password...." onclick="showpassword()">
                             <button class="btn" type="button" id="togglePassword">
                                 <i class="fa-solid fa-eye"></i>
                             </button>

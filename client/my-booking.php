@@ -7,15 +7,6 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
     exit();
 }
 
-require 'includes/dbconnection.php';
-
-// Get logged-in user's ID
-$user_id = $_SESSION['user_id'];
-
-// Fetch bookings for this user
-$query = "SELECT booking_id, movie_title, show_date, show_time, tickets, payment_method, payment_status
-          FROM booking WHERE user_id = '$user_id'";
-$result = mysqli_query($con, $query);
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +21,7 @@ $result = mysqli_query($con, $query);
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -37,19 +29,21 @@ $result = mysqli_query($con, $query);
     <!-- Navbar -->
     <?php include 'includes/header.php'; ?>
 
-    <!-- <div class="container py-4 px-2">
-        <div class="booking-not-found p-4 mx-3 p-md-5 d-flex flex-column justify-content-center align-items-center text-center shadow-lg rounded">
-            <h1 class="fw-bold text-danger mb-4">No Bookings Found Yet...</h1>
-            <a href="movies.php" class="book-btn btn btn-outline-dark">Book Now</a>
-        </div>
-    </div> -->
-
     <!-- Display Booking Details -->
     <div class="container my-4">
         <div class="card-header rounded py-2 justify-content-center">
             <h2 class="text-center fw-bold mt-1">My Bookings</h2>
         </div>
         <?php
+        require 'includes/dbconnection.php';
+
+        // Get logged-in user's ID
+        $user_id = $_SESSION['user_id'];
+
+        // Fetch bookings for this user
+        $query = "SELECT booking_id, movie_title, show_date, show_time, tickets, payment_method, payment_status
+          FROM booking WHERE user_id = '$user_id'";
+        $result = mysqli_query($con, $query);
         if (mysqli_num_rows($result) > 0) {
             while ($rows = mysqli_fetch_assoc($result)) {
                 $booking_id = $rows['booking_id'];

@@ -1,3 +1,21 @@
+<!-- If user is not Logged In to Website -->
+<?php
+session_start();
+
+// If session not set but cookie exists, restore session
+if (!isset($_SESSION['username']) && isset($_COOKIE['username'])) {
+    $_SESSION['username'] = $_COOKIE['username'];
+}
+
+// If neither session nor cookie, redirect to login
+if (!isset($_SESSION['username'])) {
+    echo "<script>
+        alert('Please, Login to Access CineBook');
+        window.location.href = 'login.php';
+    </script>";
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +32,7 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
     <link rel="stylesheet" href="assets/css/details.css">
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -35,7 +54,7 @@
 
         if ($rows = mysqli_num_rows($result) > 0) {
             $movies = mysqli_fetch_assoc($result);
-            
+
             // Stored All DEtails in Variables
             $id = $movies['movie_id'];
             $title = $movies['title'];

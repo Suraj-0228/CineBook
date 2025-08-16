@@ -28,6 +28,7 @@ if (!isset($_SESSION['adminname'])) {
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -66,34 +67,34 @@ if (!isset($_SESSION['adminname'])) {
             $poster = $rows['poster_url'];
             $description = $rows['description'];
 
-            echo "<div class='card shadow my-3'>";
-            echo "  <div class='row g-0 align-items-center my-3 border-0'>";
-            echo "      <div class='col-12 col-md-4 text-center'>";
-            echo "          <img src='" . $poster . "' class='rounded m-3' width='200' alt='" . $movie_title . "'>";
-            echo "      </div>";
-            echo "      <div class='col-12 col-md-8'>";
-            echo "          <div class='card-body'>";
-            echo "              <p class='mb-1'><strong>Movie ID:</strong> $id</p>";
-            echo "              <p class='mb-1'><strong>Movie Title:</strong> $movie_title</p>";
-            echo "              <p class='mb-1'><strong>Language:</strong> $language</p>";
-            echo "              <p class='mb-1'><strong>Release Date:</strong> $release_date</p>";
-            echo "              <p class='mb-1'><strong>Genre:</strong> $genre</p>";
-            echo "              <p class='mb-1'><strong>Rating:</strong> $rating <i class='fa-solid fa-star fa-xs text-danger'></i></p>";
-            echo "              <p class='mb-1'><strong>Description:</strong> $description</p>";
-            echo "              <div class='btn-group mt-3'>";
-            echo "                  <a href='update_movie.php?movie_id=" . $id . "' class='bg-success text-white rounded p-2 px-4 mx-1'>";
-            echo "                      <i class='fa-solid fa-pencil'></i>";
-            echo "                  </a>";
-            echo "                  <a href='#' class='bg-danger text-white rounded p-2 px-4 mx-1'>";
-            echo "                      <i class='fa-solid fa-trash'></i>";
-            echo "                  </a>";
-            echo "              </div>";
-            echo "          </div>";
-            echo "      </div>";
-            echo "  </div>";
-            echo "</div>";
-        }
-        ?>
+            echo "
+                <div class='card shadow my-3'>
+                    <div class='row g-0 align-items-center my-3 border-0'>
+                        <div class='col-12 col-md-4 text-center'>
+                            <img src='$poster' class='rounded m-3' width='200' alt='$movie_title'>
+                        </div>
+                        <div class='col-12 col-md-8'>
+                            <div class='card-body'>
+                                <p class='mb-1'><strong>Movie ID:</strong> $id</p>
+                                <p class='mb-1'><strong>Movie Title:</strong> $movie_title</p>
+                                <p class='mb-1'><strong>Language:</strong> $language</p>
+                                <p class='mb-1'><strong>Release Date:</strong> $release_date</p>
+                                <p class='mb-1'><strong>Genre:</strong> $genre</p>
+                                <p class='mb-1'><strong>Rating:</strong> $rating <i class='fa-solid fa-star fa-xs text-danger'></i></p>
+                                <p class='mb-1'><strong>Description:</strong> $description</p>
+                                <div class='btn-group mt-3'>
+                                    <a href='update_movie.php?movie_id=$id' class='bg-success text-white rounded p-2 px-4 mx-1'>
+                                        <i class='fa-solid fa-pencil'></i>
+                                    </a>
+                                    <a href='controllers/delete-movie.php?movie_id=$id' class='bg-danger text-white rounded p-2 px-4 mx-1'>
+                                        <i class='fa-solid fa-trash'></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>";
+        } ?>
     </section>
 
     <!-- Footer -->

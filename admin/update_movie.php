@@ -22,12 +22,13 @@ if (!isset($_SESSION['adminname'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineBook - Admin Dashboard</title>
+    <title>CineBook - Update Movies</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -49,7 +50,7 @@ if (!isset($_SESSION['adminname'])) {
                 $sql_query = "select * from movies_details where movie_id = '$id'";
                 $result = mysqli_query($con, $sql_query);
 
-                while($rows = mysqli_fetch_assoc($result)){
+                while ($rows = mysqli_fetch_assoc($result)) {
                     $id = $rows['movie_id'];
                     $movie_title = $rows['title'];
                     $language = $rows['language'];

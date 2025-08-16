@@ -42,11 +42,7 @@
                 </div>
                 <div class="sidebar-a d-flex align-items-center mb-3">
                     <i class="fa fa-user me-3"></i>
-                    <a href="profile.php" class="nav-link p-0">Profile</a>
-                </div>
-                <div class="sidebar-a d-flex align-items-center mb-3">
-                    <i class="fa fa-gear me-3"></i>
-                    <a href="setting.php" class="nav-link p-0">Setting</a>
+                    <a href="profile.php?user_id=<?php echo $_SESSION['user_id']; ?>" class="nav-link p-0">Profile</a>
                 </div>
                 <!-- Sign In & Sign Up Button -->
                 <div class="sidebar-btn d-flex flex-row mx-1">

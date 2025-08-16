@@ -1,3 +1,4 @@
+<!-- If user is not Logged In to Website -->
 <?php
 session_start();
 
@@ -29,6 +30,7 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/about.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 </head>
 
 <body>
