@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Redirect to home
             echo "<script>
                 alert('Welcome to Admin Dashboard');
-                window.location.href = 'dashboard.php';
+                window.location.href = 'index.php';
             </script>";
             exit();
         } else {

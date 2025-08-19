@@ -1,17 +1,21 @@
 <header>
     <!-- Navbar (Visible on desktop) -->
     <nav class="navbar navbar-expand-lg px-3 py-0">
-        <a href="dashboard.php" class="navbar-brand">
+        <a href="index.php" class="navbar-brand">
             <img src="assets/img/CineBook_Logo.png" alt="CineBook Logo" class="img-fluid">
         </a>
         <ul class="navbar-nav mx-auto">
-            <li class="nav-item mx-3"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
+            <li class="nav-item mx-3"><a class="nav-link" href="index.php">Dashboard</a></li>
             <li class="nav-item mx-3"><a class="nav-link" href="manage_movies.php">Manage Movies</a></li>
             <li class="nav-item mx-3"><a class="nav-link" href="manage_bookings.php">Manage Bookings</a></li>
             <li class="nav-item mx-3"><a class="nav-link" href="manage_users.php">Manage Users</a></li>
         </ul>
+        <!-- Logout Button -->
+        <div class="sidebar-btn d-none d-lg-flex d-flex flex-row mx-1">
+            <a href="admin_logout.php" class="btn border border-light text-center text-white">Log Out</a>
+        </div>
         <!-- Sidebar Toggle Button -->
-        <button class="btn toggle-btn py-2 border border-light ms-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+        <button class="btn d-lg-none py-2 border border-light ms-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
             <i class="fas fa-bars fa-xl"></i>
         </button>
     </nav>
@@ -26,7 +30,7 @@
             <div class="d-flex flex-column">
                 <div class="sidebar-a d-flex align-items-center mb-3">
                     <i class="fa fa-clapperboard me-3"></i>
-                    <a href="dashboard.php" class="nav-link p-0">Dashboard</a>
+                    <a href="index.php" class="nav-link p-0">Dashboard</a>
                 </div>
                 <div class="sidebar-a d-flex align-items-center mb-3">
                     <i class="fa fa-film me-3"></i>
@@ -40,7 +44,7 @@
                     <i class="fa fa-user me-3"></i>
                     <a href="manage_users.php" class="nav-link p-0">Manage Users</a>
                 </div>
-                <!-- Sign In & Sign Up Button -->
+                <!-- Logout Button -->
                 <div class="sidebar-btn d-flex flex-row mx-1">
                     <a href="admin_logout.php" class="btn border border-light text-center text-danger">Log Out</a>
                 </div>

@@ -1,21 +1,24 @@
 <?php
 session_start();
+require 'includes/dbconnection.php';
 
-// If session not set but cookie exists, restore session
-if (!isset($_SESSION['adminname']) && isset($_COOKIE['adminname'])) {
-    $_SESSION['adminname'] = $_COOKIE['adminname'];
+// Update status if action clicked
+if (isset($_GET['action']) && isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $status = $_GET['action'] == 'approve' ? 'Approved' : 'Cancelled';
+    mysqli_query($con, "UPDATE bookings SET booking_status='$status' WHERE booking_id='$id'");
+    header("Location: manage_bookings.php");
+    exit;
 }
 
-// If neither session nor cookie, redirect to login
-if (!isset($_SESSION['adminname'])) {
-    echo "<script>
-        alert('Please, Login to Access CineBook Admin');
-        window.location.href = 'admin_login.php';
-    </script>";
-    exit();
-}
+$query = "SELECT b.*, u.username, m.title, s.show_date, s.show_time, t.theater_name FROM bookings b
+          JOIN users u ON b.user_id = u.user_id
+          JOIN movies_details m ON b.movie_id = m.movie_id
+          JOIN showtimes s ON b.show_id = s.show_id
+          JOIN theaters t ON s.theater_id = t.theater_id";
+
+$result = mysqli_query($con, $query);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,55 +39,77 @@ if (!isset($_SESSION['adminname'])) {
     <!-- Navbar -->
     <?php include 'includes/header1.php'; ?>
 
-    <!-- Display Bookings Details -->
-    <div class="container my-3">
-        <h1 class="fw-bold">Manage Bookings:</h1>
+    <!-- Manage All Bookings -->
+    <section class="container my-5">
+        <h1 class="fw-bold mb-3">Manage Bookings:</h1>
         <?php
-        require 'includes/dbconnection.php';
 
-        // Fetch bookings for this user
-        $sql_query = "SELECT * FROM booking";
-        $result = mysqli_query($con, $sql_query);
-        if (mysqli_num_rows($result) > 0) {
-            while ($rows = mysqli_fetch_assoc($result)) {
-                $booking_id = $rows['booking_id'];
-                $movie_title = $rows['movie_title'];
-                $show_date = $rows['show_date'];
-                $show_time = $rows['show_time'];
-                $payment_method = $rows['payment_method'];
-                $payment_status = $rows['payment_status'];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $booking_id = $row['booking_id'];
+            $username = $row['username'];
+            $movie_title = $row['title'];
+            $show_date = $row['show_date'];
+            $show_time = $row['show_time'];
+            $theater_name = $row['theater_name'];
+            $seat_row = $row['seat_row'];
+            $total_seat = $row['total_seat'];
+            $amount = $row['amount'];
+            $payment_method = $row['payment_method'];
+            $booking_status = $row['booking_status'];
 
-                // Set text color based on payment status
-                $statusClass = '';
-                if (strtolower($payment_status) === 'pending') {
-                    $statusClass = 'text-danger fw-bold'; // Red & bold
-                } elseif (strtolower($payment_status) === 'confirmed' || strtolower($payment_status) === 'paid') {
-                    $statusClass = 'text-success fw-bold'; // Green & bold
-                }
+            echo "
+            <div class='card shadow my-3'>
+                <div class='row g-0 align-items-center border-0'>
+                    <div class='col-12 col-md-8'>
+                        <div class='card-body'>
+                            <p class='mb-1'><strong>Booking ID:</strong> $booking_id</p>
+                            <p class='mb-1'><strong>Username:</strong> $username</p>
+                            <p class='mb-1'><strong>Movie Title:</strong> $movie_title</p>
+                            <p class='mb-1'><strong>Show Date:</strong> $show_date</p>
+                            <p class='mb-1'><strong>Show Time:</strong> $show_time</p>
+                            <p class='mb-1'><strong>Theater Name:</strong> $theater_name</p>
+                            <p class='mb-1'><strong>Seat:</strong> $seat_row - $total_seat</p>
+                            <p class='mb-1'><strong>Amount:</strong> $amount</p>
 
-                echo "<div class='card shadow my-3'>";
-                echo "  <div class='row g-0 align-items-center border-0'>";
-                echo "      <div class='col-12 col-md-8'>";
-                echo "          <div class='card-body'>";
-                echo "              <p class='mb-1'><strong>Booking ID:</strong> $booking_id</p>";
-                echo "              <p class='mb-1'><strong>Movie Title:</strong> $movie_title</p>";
-                echo "              <p class='mb-1'><strong>Show Date:</strong> $show_date</p>";
-                echo "              <p class='mb-1'><strong>Show Time:</strong> $show_time</p>";
-                echo "              <p class='mb-1'><strong>Payment Method:</strong> $payment_method</p>";
-                echo "              <p class='mb-1'><strong>Payment Status:</strong> <span class='$statusClass'>$payment_status</span></p>";
-                echo "              <div class='btn-group mt-3'>";
-                echo "                  <a href='controllers/delete_booking.php?booking_id=$booking_id' class='bg-danger text-white rounded p-2 px-4 mx-1'>";
-                echo "                      <i class='fa-solid fa-trash'></i>";
-                echo "                  </a>";
-                echo "              </div>";
-                echo "          </div>";
-                echo "      </div>";
-                echo "  </div>";
-                echo "</div>";
+                            <!-- Booking Status -->
+                            <p class='mb-1'><strong>Status:</strong> ";
+            if ($booking_status == 'Pending') {
+                echo "<span class='p-2 text-warning fw-bold'>Pending</span>";
+            } elseif ($booking_status == 'Approved') {
+                echo "<span class='p-2 text-success fw-bold'>Approved</span>";
+            } else {
+                echo "<span class='p-2 text-danger fw-bold'>Cancelled</span>";
             }
-        }
-        ?>
-    </div>
+            echo "</p>";
+
+            // Payment Method
+            echo "<p class='mb-1'><strong>Booking Method:</strong> ";
+            if ($payment_method == 'UPI') {
+                echo "<span class='p-2 text-success fw-bold'>$payment_method</span>";
+            } elseif ($payment_method == 'Card') {
+                echo "<span class='p-2 text-success fw-bold'>$payment_method</span>";
+            }
+            echo "</p>";
+
+            // Action buttons only when status is Pending
+            if ($booking_status == 'Pending') {
+                echo "
+                                <div class='btn-group mt-3'>
+                                    <a href='?action=approve&id=$booking_id' class='bg-success text-white text-decoration-none rounded p-2 px-4 mx-1'>
+                                        <i class='fa-solid fa-check'></i> Approve
+                                    </a>
+                                    <a href='?action=cancel&id=$booking_id' class='bg-danger text-white text-decoration-none rounded p-2 px-4 mx-1'>
+                                        <i class='fa-solid fa-xmark'></i> Cancel
+                                    </a>
+                                </div>";
+            }
+
+            echo "</div>
+                    </div>
+                </div>
+            </div>";
+        } ?>
+    </section>
 
     <!-- Footer -->
     <?php include 'includes/footer.php'; ?>

@@ -98,9 +98,45 @@ if (!isset($_SESSION['username'])) {
                             <p class=""><?php echo $email ?? ''; ?></p>
                         </div>
                         <div class="btn-group">
-                            <a href="update_profile.php?user_id=<?php echo $user_id; ?>" class="bg-success text-white rounded p-2 px-4 mx-1">
+                            <a href="#" class="bg-success text-white rounded p-2 px-4 mx-1" data-bs-toggle="modal"
+                                data-bs-target="#updateProfile<?php echo $user_id; ?>">
                                 <i class="fa-solid fa-edit"></i>
                             </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Update Profile Modal -->
+            <div class="modal fade" id="updateProfile<?php echo $user_id; ?>" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content p-4">
+                        <div class="modal-header border-bottom-0 p-0">
+                            <h3 class="fw-bold">Update Profile</h3>
+                        </div>
+                        <hr class="border border-dark">
+                        <form action="controllers/update-process.php" method="post">
+                            <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Enter Your Full Name:</label>
+                                <input type="text" class="form-control" name="fullname1"
+                                    value="<?php echo $fullname; ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Email ID:</label>
+                                <input type="email" class="form-control" name="email1"
+                                    value="<?php echo $email; ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">User Name:</label>
+                                <input type="text" class="form-control" name="username1"
+                                    value="<?php echo $username; ?>">
+                            </div>
+                        </form>
+                        <hr class="border border-dark">
+                        <div class="d-flex justify-content-end gap-2">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Update Profile</button>
                         </div>
                     </div>
                 </div>

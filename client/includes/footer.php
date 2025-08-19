@@ -14,9 +14,9 @@
         <div class="col-12 col-md-4 my-2">
             <h1 class="fw-bold mb-3">Quick Links:</h1>
             <ul class="list-unstyled">
-                <li class="nav-items"><a href="privacy-policy.php" class="nav-link text-decoration-none">Privacy Policy</a></li>
-                <li class="nav-items"><a href="community.php" class="nav-link text-decoration-none">Community</a></li>
-                <li class="nav-items"><a href="about.php" class="nav-link text-decoration-none">About Us</a></li>
+                <li class="nav-items"><a href="#" class="nav-link text-decoration-none">Privacy Policy</a></li>
+                <li class="nav-items"><a href="#" class="nav-link text-decoration-none">Community</a></li>
+                <li class="nav-items"><a href="#" class="nav-link text-decoration-none">About Us</a></li>
             </ul>
         </div>
 

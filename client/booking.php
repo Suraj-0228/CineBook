@@ -1,6 +1,5 @@
-<!-- If user is not Logged In to Website -->
-<?php
-session_start();
+<?php 
+require 'controllers/booking-process2.php';
 
 // If session not set but cookie exists, restore session
 if (!isset($_SESSION['username']) && isset($_COOKIE['username'])) {
@@ -14,27 +13,6 @@ if (!isset($_SESSION['username'])) {
         window.location.href = 'login.php';
     </script>";
     exit();
-}
-?>
-
-<!-- Calling Required File -->
-<?php require 'controllers/booking-process.php'; ?>
-
-<!-- Operate the Operation -->
-<?php
-require 'includes/dbconnection.php';
-
-// Check if movie_id is passed from details.php
-$movie_id = isset($_GET['movie_id']) ? intval($_GET['movie_id']) : 0;
-$movie_title = "";
-
-// Fetch movie title from DB
-if ($movie_id > 0) {
-    $result = mysqli_query($con, "SELECT title FROM movies_details WHERE movie_id = '$movie_id'");
-    if ($result && mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $movie_title = $row['title'];
-    }
 }
 ?>
 
@@ -54,75 +32,90 @@ if ($movie_id > 0) {
 </head>
 
 <body>
-
     <!-- Navbar -->
     <?php include 'includes/header.php'; ?>
 
-    <!-- Booking Form -->
     <div class="container my-4">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-8 col-lg-6">
-                <div class="card border-0 shadow">
-                    <h1 class="booking-header rounded-top fw-bold text-center p-3">Book Your Ticket Now!</h1>
-                    <div class="card-body">
-                        <form action="#" method="post">
-                            <div class="mb-3">
-                                <label for="movietitle" class="form-label fw-bold">Movie Title:</label>
-                                <input type="hidden" name="movietitle" value="<?php echo $movie_id; ?>">
-                                <input type="text" class="form-control" value="<?php echo $movie_title; ?>" readonly>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="moviedate" class="form-label fw-bold">Movie Date:</label>
-                                <input type="date" class="form-control" name="moviedate" id="moviedate">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="movietime" class="form-label fw-bold">Movie Time:</label>
-                                <input type="time" class="form-control" name="movietime" id="movietime">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="ticket" class="form-label fw-bold">Total Tickets:</label>
-                                <input type="number" class="form-control" name="ticket" id="ticket" placeholder="Enter Total Tickets...">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="paymentmethod" class="form-label fw-bold">Payment Method:</label>
-                                <select class="form-select" name="paymentmethod" id="paymentmethod">
-                                    <option value="selectmethod">Select Payment Method</option>
-                                    <option value="UPI">UPI</option>
-                                    <option value="Credit Card">Credit Card</option>
-                                    <option value="Cash">Cash</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="paymentstatus" class="form-label fw-bold">Payment Status:</label>
-                                <select class="form-select" name="paymentstatus" id="paymentstatus">
-                                    <option value="selectstatus">Select Payment Status</option>
-                                    <option value="Confirmed">Confirmed</option>
-                                    <option value="Pending">Pending</option>
-                                </select>
-                            </div>
-
-                            <div class="d-grid mt-2">
-                                <button type="submit" class="btn">Pay To Proceed</button>
-                            </div>
-
-                        </form>
+        <div class="card shadow">
+            <div class="booking-header rounded-top p-3">
+                <h1 class="text-center mt-2">Book Your Tickets Now!</h1>
+            </div>
+            <div class="card-body">
+                <form action="controllers/booking-process.php" method="post">
+                    <!-- Movie Title -->
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Movie Title:</label>
+                        <input type="hidden" name="movie_id" value="<?php echo $movie_id; ?>">
+                        <input type="text" class="form-control" value="<?php echo $movie_title; ?>" readonly>
                     </div>
-                </div>
+
+                    <div class="mb-3">
+                        <label for="show_id" class="form-label fw-bold">Select Show:</label>
+                        <select class="form-select" name="show_id" id="show_id">
+                            <option value="">Select Date, Time, Theater</option>
+                            <?php foreach ($shows as $show) {
+                                $selected = ($selected_show_id == $show['show_id']) ? 'selected' : '';
+                                $show_data = $show['show_date'] . ' || ' . date("h:i A", strtotime($show['show_time'])) . ' || ' . $show['theater_name'] . ' (' . $show['theater_location'] . ')';
+                                echo "<option value='{$show['show_id']}' data-price='{$show['ticket_price']}' $selected>$show_data</option>";
+                            } ?>
+                        </select>
+                    </div>
+
+                    <!-- Seat Row & Total Seats -->
+                    <div class="row g-2 mb-3">
+                        <div class="col-md-6 col-12">
+                            <label class="form-label fw-bold">Select Row:</label>
+                            <select class="form-select" name="seatRow">
+                                <option value="">Select Row</option>
+                                <?php foreach (['A', 'B', 'C', 'D', 'E', 'F'] as $row): ?>
+                                    <option value="<?php echo $row; ?>"><?php echo $row; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <label class="form-label fw-bold">Total Seats:</label>
+                            <select class="form-select" name="totalSeat" id="totalSeat">
+                                <option value="">Select Total Seats</option>
+                                <?php for ($i = 1; $i <= 10; $i++) {
+                                    echo "<option value='$i'>$i</option>";
+                                } ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Ticket Price & Amount -->
+                    <div class="mb-3">
+                        <label for="ticketPrice" class="form-label fw-bold">Ticket Price:</label>
+                        <input type="number" class="form-control" name="ticketPrice" id="ticketPrice" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="form-label fw-bold">Total Amount:</label>
+                        <input type="number" class="form-control" name="amount" id="amount" readonly>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Payment Method:</label>
+                        <select class="form-select" name="payment_method">
+                            <option value="">Select Payment Method</option>
+                            <option value="UPI">UPI</option>
+                            <option value="Card">Credit/Debit Card</option>
+                            <option value="Cash">Cash at Counter</option>
+                        </select>
+                    </div>
+
+                    <div class="d-grid">
+                        <button formaction="controllers/booking-process.php" type="submit" class="btn btn-primary">Book Now</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="assets/js/booking-process.js"></script>
-
     <!-- Footer -->
     <?php include 'includes/footer.php'; ?>
+
+    <script src="assets/js/booking.js"></script>
 
 </body>
 

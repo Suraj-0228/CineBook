@@ -25,11 +25,6 @@ header {
     color: #ecf0f1;
 }
 
-.toggle-btn {
-    background-color: #6C4ED6;
-    color: #ecf0f1;
-}
-
 /* Offcanvas Styles */
 .offcanvas, #offcanvasExample {
     background-color: #6C4ED6;

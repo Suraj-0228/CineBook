@@ -8,8 +8,17 @@
             <li class="nav-item mx-2"><a class="nav-link" href="home.php">Home</a></li>
             <li class="nav-item mx-2"><a class="nav-link" href="about.php">About Us</a></li>
         </ul>
+        <!-- Sign In & Sign Up Button -->
+        <div class="d-none d-lg-flex d-flex flex-row">
+            <div class="sidebar-btn d-flex flex-row mx-1">
+                <a href="login.php" class="btn border border-light text-center">Sign In</a>
+            </div>
+            <div class="sidebar-btn d-flex flex-row mx-1">
+                <a href="register.php" class="btn border border-light text-center">Sign Up</a>
+            </div>
+        </div>
         <!-- Sidebar Toggle Button -->
-        <button class="btn toggle-btn py-2 border border-light ms-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+        <button class="btn d-lg-none py-2 border border-light ms-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
             <i class="fas fa-bars fa-xl"></i>
         </button>
     </nav>

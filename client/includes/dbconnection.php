@@ -1,10 +1,9 @@
 <?php
 
-// Establishing the Connection with Database
 $server = "localhost";
 $username = "root";
 $password = "";
-$database = "database1";
+$database = "cinebook_db";
 
 $con = mysqli_connect($server, $username, $password, $database);
 

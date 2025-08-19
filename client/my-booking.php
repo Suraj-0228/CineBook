@@ -1,11 +1,23 @@
 <?php
 session_start();
+require 'includes/dbconnection.php';
 
 // Redirect if not logged in
 if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
     echo "<script>alert('Please login to view your bookings.'); window.location.href = 'login.php';</script>";
     exit();
 }
+
+$user_id = $_SESSION['user_id'];
+
+$query = "SELECT b.*, m.title, s.show_date, s.show_time, t.theater_name 
+          FROM bookings b
+          JOIN movies_details m ON b.movie_id = m.movie_id
+          JOIN showtimes s ON b.show_id = s.show_id
+          JOIN theaters t ON s.theater_id = t.theater_id
+          WHERE b.user_id = '$user_id' ";
+
+$result = mysqli_query($con, $query);
 
 ?>
 
@@ -30,65 +42,55 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
     <?php include 'includes/header.php'; ?>
 
     <!-- Display Booking Details -->
-    <div class="container my-4">
-        <div class="card-header rounded py-2 justify-content-center">
-            <h2 class="text-center fw-bold mt-1">My Bookings</h2>
+    <!-- <div class="container my-4">
+        <div class="my-3">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-12">
+                    <div class="alert alert-danger border border-danger text-center shadow-sm">
+                        You Have no Bookings Yet!
+                        <a href="movies.php" class="alert-link fw-bold">Book Now!</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <?php
-        require 'includes/dbconnection.php';
+    </div> -->
 
-        // Get logged-in user's ID
-        $user_id = $_SESSION['user_id'];
-
-        // Fetch bookings for this user
-        $query = "SELECT booking_id, movie_title, show_date, show_time, tickets, payment_method, payment_status
-          FROM booking WHERE user_id = '$user_id'";
-        $result = mysqli_query($con, $query);
-        if (mysqli_num_rows($result) > 0) {
-            while ($rows = mysqli_fetch_assoc($result)) {
-                $booking_id = $rows['booking_id'];
-                $movie_title = $rows['movie_title'];
-                $show_date = $rows['show_date'];
-                $show_time = $rows['show_time'];
-                $payment_method = $rows['payment_method'];
-                $payment_status = $rows['payment_status'];
-
-                // Set text color based on payment status
-                $statusClass = '';
-                if (strtolower($payment_status) === 'pending') {
-                    $statusClass = 'text-danger fw-bold'; // Red & bold
-                } elseif (strtolower($payment_status) === 'confirmed' || strtolower($payment_status) === 'paid') {
-                    $statusClass = 'text-success fw-bold'; // Green & bold
-                }
-
-                echo "<div class='card shadow my-3'>";
-                echo "  <div class='row g-0 align-items-center border-0'>";
-                echo "      <div class='col-12 col-md-8'>";
-                echo "          <div class='card-body'>";
-                echo "              <p class='mb-1'><strong>Booking ID:</strong> $booking_id</p>";
-                echo "              <p class='mb-1'><strong>Movie Title:</strong> $movie_title</p>";
-                echo "              <p class='mb-1'><strong>Show Date:</strong> $show_date</p>";
-                echo "              <p class='mb-1'><strong>Show Time:</strong> $show_time</p>";
-                echo "              <p class='mb-1'><strong>Payment Method:</strong> $payment_method</p>";
-                echo "              <p class='mb-1'><strong>Payment Status:</strong> <span class='$statusClass'>$payment_status</span></p>";
-                echo "          </div>";
-                echo "      </div>";
-                echo "  </div>";
-                echo "</div>";
-            }
-        } else {
-            echo '<div class="my-3">';
-            echo '    <div class="row justify-content-center">';
-            echo '        <div class="col-12 col-md-12">';
-            echo '            <div class="alert alert-danger border border-danger text-center shadow-sm">';
-            echo '                You Have no Bookings Yet! ';
-            echo '                <a href="movies.php" class="alert-link fw-bold">Book Now!</a>';
-            echo '            </div>';
-            echo '        </div>';
-            echo '    </div>';
-            echo '</div>';
-        }
-        ?>
+    <div class="container my-5">
+        <h2 class="fw-bold">My Bookings</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Movie</th>
+                    <th>Show</th>
+                    <th>Theater</th>
+                    <th>Seats</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                    <tr>
+                        <td><?php echo $row['booking_id']; ?></td>
+                        <td><?php echo $row['title']; ?></td>
+                        <td><?php echo $row['show_date'] . ' ' . date("h:i A", strtotime($row['show_time'])); ?></td>
+                        <td><?php echo $row['theater_name']; ?></td>
+                        <td><?php echo $row['seat_row'] . "-" . $row['total_seat']; ?></td>
+                        <td><?php echo $row['amount']; ?></td>
+                        <td>
+                            <?php if ($row['booking_status'] == 'Pending') { ?>
+                                <span class="p-2 text-white fw-bold rounded bg-warning text-dark">Pending</span>
+                            <?php } elseif ($row['booking_status'] == 'Approved') { ?>
+                                <span class="p-2 text-white fw-bold rounded bg-success">Approved</span>
+                            <?php } else { ?>
+                                <span class="p-2 text-white fw-bold rounded bg-danger">Cancelled</span>
+                            <?php } ?>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
     </div>
 
     <!-- Footer -->

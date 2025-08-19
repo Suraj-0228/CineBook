@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'includes/dbconnection.php';
 
 // If session not set but cookie exists, restore session
 if (!isset($_SESSION['adminname']) && isset($_COOKIE['adminname'])) {
@@ -38,7 +39,10 @@ if (!isset($_SESSION['adminname'])) {
 
     <!-- Hero Section -->
     <section class="container dashboard-section my-3">
-        <h1 class="fw-bold mb-4">Admin Dashboard:</h1>
+        <div class="my-4">
+            <h1 class="fw-bold">Admin Dashboard:</h1>
+            <hr class="border border-dark">
+        </div>
         <div class="row g-4">
             <div class="col-12 col-sm-6 col-md-4">
                 <div class="card dashboard-card shadow h-100 text-center">
@@ -69,14 +73,14 @@ if (!isset($_SESSION['adminname'])) {
                         <?php
                         require 'includes/dbconnection.php';
 
-                        $sql_query = "select count(*) as total_booking from booking";
+                        $sql_query = "select count(*) as total_booking from bookings";
                         $result = mysqli_query($con, $sql_query);
 
                         if ($result) {
                             $row = mysqli_fetch_assoc($result);
                             echo "<p class='mt-2 mb-0 fs-5'><strong>" . $row['total_booking'] . "</strong></p>";
                         } else {
-                            echo "<p class='mt-2 mb-0 fs-5 text-danger'><strong>Error</strong></p>";
+                            echo "<p class='mt-2 mb-0 fs-5 text-danger'><strong>0</strong></p>";
                         }
                         ?>
                     </div>
@@ -103,47 +107,6 @@ if (!isset($_SESSION['adminname'])) {
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Recent Bookings -->
-    <section class="container booking-section">
-        <h2 class="fw-bold">Recent Bookings:</h2>
-        <?php
-        require 'includes/dbconnection.php';
-
-        $sql_query = "select * from booking order by booking_id desc limit 5";
-        $result = mysqli_query($con, $sql_query);
-
-        while ($rows = mysqli_fetch_assoc($result)) {
-
-            $booking_id = $rows['booking_id'];
-            $user_id = $rows['user_id'];
-            $movie_title = $rows['movie_title'];
-            $show_date = $rows['show_date'];
-            $show_time = $rows['show_time'];
-            $tickets = $rows['tickets'];
-            $payment_method = $rows['payment_method'];
-            $payment_status = $rows['payment_status'];
-
-            echo "
-                        <div class='card shadow my-3'>
-                            <div class='row g-0 align-items-center my-3 border-0'>
-                                <div class='col-12 col-md-8'>
-                                    <div class='card-body'>
-                                        <p class='mb-1'><strong>Booking ID:</strong> $booking_id</p>
-                                        <p class='mb-1'><strong>User ID:</strong> $user_id</p>
-                                        <p class='mb-1'><strong>Movie Title:</strong> $movie_title</p>
-                                        <p class='mb-1'><strong>Show Date:</strong> $show_date</p>
-                                        <p class='mb-1'><strong>Show Time:</strong> $show_time</p>
-                                        <p class='mb-1'><strong>Total Tickets:</strong> $tickets</p>
-                                        <p class='mb-1'><strong>Payment Method:</strong> $payment_method</p>
-                                        <p class='mb-1'><strong>Payment Status:</strong> $payment_status</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>";
-        } ?>
         </div>
     </section>
 

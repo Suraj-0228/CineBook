@@ -9,9 +9,14 @@
             <li class="nav-item mx-2"><a class="nav-link" href="movies.php">Movies</a></li>
             <li class="nav-item mx-2"><a class="nav-link" href="my-booking.php">My Bookings</a></li>
             <li class="nav-item mx-2"><a class="nav-link" href="about.php">About Us</a></li>
+            <li class="nav-item mx-2"><a href='profile.php?user_id=<?php echo $_SESSION["user_id"]; ?>' class="nav-link">Profile</a></li>
         </ul>
+        <!-- Logout Button -->
+        <div class="sidebar-btn d-none d-lg-flex d-flex flex-row mx-1">
+            <a href="logout.php" class="btn border border-light text-center text-white">Log Out</a>
+        </div>
         <!-- Sidebar Toggle Button -->
-        <button class="btn toggle-btn py-2 border border-light ms-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+        <button class="btn d-lg-none toggle-btn py-2 border border-light ms-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
             <i class="fas fa-bars fa-xl"></i>
         </button>
     </nav>
@@ -44,7 +49,7 @@
                     <i class="fa fa-user me-3"></i>
                     <a href="profile.php?user_id=<?php echo $_SESSION['user_id']; ?>" class="nav-link p-0">Profile</a>
                 </div>
-                <!-- Sign In & Sign Up Button -->
+                <!-- Logout Button -->
                 <div class="sidebar-btn d-flex flex-row mx-1">
                     <a href="logout.php" class="btn border border-light text-center text-danger">Log Out</a>
                 </div>
