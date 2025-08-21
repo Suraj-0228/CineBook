@@ -51,7 +51,7 @@
                 </div>
                 <!-- Logout Button -->
                 <div class="sidebar-btn d-flex flex-row mx-1">
-                    <a href="logout.php" class="btn border border-light text-center text-danger">Log Out</a>
+                    <a href="logout.php" class="btn border border-light text-center text-white">Log Out</a>
                 </div>
             </div>
         </div>

@@ -24,11 +24,20 @@ if (!empty($seatRow) && !empty($totalSeat) && !empty($paymentMethod)) {
         VALUES ('$user_id', '$movie_id', '$show_id', '$seatRow', '$totalSeat', '$ticketPrice', '$amount', '$paymentMethod', 'Pending')";
 
     if (mysqli_query($con, $sql)) {
-        echo "<script>alert('Booking Request Submitted!! We will Approve Your Requset Very Soon.'); window.location='../my-booking.php';</script>";
+        if ($paymentMethod === "Cash") {
+            echo "<script>
+            alert('Booking Request Submitted!! \\nWe will Approve Your Request Very Soon. \\nPlease, Pay Your Cash Amount within 1 hour. Otherwise we will Cancel Your Booking.');
+            window.location='../my-booking.php';
+        </script>";
+        } else {
+            echo "<script>
+            alert('Booking Request Submitted!!\\nWe will Approve Your Request Very Soon.');
+            window.location='../my-booking.php';
+        </script>";
+        }
     } else {
         echo "Error: " . mysqli_error($con);
     }
 } else {
     echo "<script>alert('ERROR: Please, Enter All the Details!!!');</script>";
-
 }

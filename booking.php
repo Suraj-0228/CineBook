@@ -32,9 +32,8 @@ if (!isset($_SESSION['username'])) {
 </head>
 
 <body>
-    <!-- Navbar -->
-    <?php include 'includes/header.php'; ?>
 
+    <!-- Booking Form -->
     <div class="container my-4">
         <div class="card shadow">
             <div class="booking-header rounded-top p-3">
@@ -105,15 +104,12 @@ if (!isset($_SESSION['username'])) {
                     </div>
 
                     <div class="d-grid">
-                        <button formaction="controllers/booking-process.php" type="submit" class="btn btn-primary">Book Now</button>
+                        <button type="submit" class="btn btn-primary">Book Now</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
-    <!-- Footer -->
-    <?php include 'includes/footer.php'; ?>
 
     <script src="assets/js/booking.js"></script>
 

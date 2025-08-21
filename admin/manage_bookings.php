@@ -15,7 +15,8 @@ $query = "SELECT b.*, u.username, m.title, s.show_date, s.show_time, t.theater_n
           JOIN users u ON b.user_id = u.user_id
           JOIN movies_details m ON b.movie_id = m.movie_id
           JOIN showtimes s ON b.show_id = s.show_id
-          JOIN theaters t ON s.theater_id = t.theater_id";
+          JOIN theaters t ON s.theater_id = t.theater_id 
+          order by b.booking_id desc";
 
 $result = mysqli_query($con, $query);
 ?>

@@ -91,11 +91,11 @@ if (!isset($_SESSION['username'])) {
                     <div class="user-data my-4">
                         <div class="user-fullname">
                             <h5 class="form-label fw-bold fs-5 m-0">Full Name:</h5>
-                            <p class=""><?php echo $fullname ?? ''; ?></p>
+                            <p class="text-muted"><?php echo $fullname ?? ''; ?></p>
                         </div>
                         <div class="user-eamil">
                             <h5 class="form-label fw-bold fs-5 m-0">Email ID:</h5>
-                            <p class=""><?php echo $email ?? ''; ?></p>
+                            <p class="text-muted"><?php echo $email ?? ''; ?></p>
                         </div>
                         <div class="btn-group">
                             <a href="#" class="bg-success text-white rounded p-2 px-4 mx-1" data-bs-toggle="modal"
