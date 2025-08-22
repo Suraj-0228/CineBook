@@ -56,8 +56,13 @@
             <div class="mb-3">
               <button type="submit" class="btn w-100" id="register_btn">Register</button>
             </div>
-            <div class="mt-3 text-center">
-              <p>Already have an account? <a href="login.php" class="fw-bold">Sign-In</a></p>
+            <div class="d-flex align-items-center justify-content-between">
+              <hr class="flex-grow-1 me-2 divider-line">
+              <p class="text-center m-0 fw-bold">Already have an account?</p>
+              <hr class="flex-grow-1 ms-2 divider-line">
+            </div>
+            <div class="text-center mt-3">
+              <a href="login.php" class="btn btn-login w-100 w-md-auto">Sign In</a>
             </div>
           </form>
         </div>

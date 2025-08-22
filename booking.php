@@ -104,7 +104,7 @@ if (!isset($_SESSION['username'])) {
                     </div>
 
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary">Book Now</button>
+                        <button type="submit" class="btn">Book Now</button>
                     </div>
                 </form>
             </div>

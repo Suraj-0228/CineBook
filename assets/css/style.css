@@ -24,6 +24,14 @@ html {
     color: #ecf0f1;
 }
 
+.btn-register,
+.btn-login {
+    background-color: white;
+    color: #6C4ED6;
+    border: 1px solid #6C4ED6;
+
+}
+
 .movies-card {
     transition: transform 0.3s ease;
 }
@@ -71,7 +79,7 @@ html {
 
 @media (max-width: 767px) {
 
-    .nav-btn{
+    .nav-btn {
         display: none;
     }
 
@@ -101,12 +109,12 @@ html {
 }
 
 /* Index Page CSS */
-.features-section{
+.features-section {
     background-color: #6C4ED6;
 }
 
 /* Booking Page Css */
-.booking-header{
+.booking-header {
     background-color: #6C4ED6;
     color: #ecf0f1;
 }

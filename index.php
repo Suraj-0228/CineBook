@@ -43,7 +43,7 @@ if (isset($_SESSION['username'])) {
         <div class="container p-4 rounded shadow-lg">
             <h2 class=""><strong>Experience Seamless Movie Ticket Booking Today!</strong></h2>
             <p class="text-muted fs-4">Easy, Fast, Reliable.</p>
-            <a href="login.php" class="btn btn-primary">Book Now</a>
+            <a href="login.php" class="btn">Book Now</a>
         </div>
     </section>
 

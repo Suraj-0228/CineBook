@@ -136,7 +136,7 @@ if (!isset($_SESSION['username'])) {
                         <hr class="border border-dark">
                         <div class="d-flex justify-content-end gap-2">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                            <button type="submit" class="btn">Update Profile</button>
                         </div>
                     </div>
                 </div>

@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (mysqli_num_rows($result) == 1) {
             $row = mysqli_fetch_assoc($result);
 
-            // Store BOTH username and user_id in session
+            // Store username and user_id in session
             $_SESSION['username'] = $row['username'];
             $_SESSION['user_id']  = $row['user_id'];
 
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             // Redirect to home
             echo "<script>
-                alert('Welcome to CineBook');
+                alert('Welcome to CineBook, $username');
                 window.location.href = 'home.php';
             </script>";
             exit();
