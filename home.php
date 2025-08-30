@@ -58,42 +58,46 @@ if (!isset($_SESSION['username'])) {
     <hr class="mx-4 border border-dark">
 
     <!-- Movie Cards 1 -->
-    <section class="container my-3 px-2">
+    <section class="container my-3 px-3">
         <h1 class="text-center fw-bold explore-title">Now Showing</h1>
         <div class="row justify-content-center mt-3">
-            <div class="card-slider">
-                <?php
-                require 'includes/dbconnection.php';
+            <?php
+            require 'includes/dbconnection.php';
 
-                $sql_query = "select * from movies_details";
-                $result = mysqli_query($con, $sql_query);
+            $sql_query = "select * from movies_details limit 8";
+            $result = mysqli_query($con, $sql_query);
 
-                while ($rows = mysqli_fetch_assoc($result)) {
-                    $id = $rows['movie_id'];
-                    $title = $rows['title'];
-                    $poster = $rows['poster_url'];
-                    $rating = $rows['rating'];
-                    $language = $rows['language'];
+            while ($rows = mysqli_fetch_assoc($result)) {
+                $id = $rows['movie_id'];
+                $title = $rows['title'];
+                $poster = $rows['poster_url'];
+                $rating = $rows['rating'];
+                $language = $rows['language'];
 
-                    echo '<div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3 movies-card">';
-                    echo '    <div class="card mx-2">';
-                    echo '          <a href="movies-details.php?id=' . $id . '">
+                echo '<div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3 movies-card">';
+                echo '    <div class="card">';
+                echo '          <a href="movies-details.php?id=' . $id . '">
                                         <img src="' . $poster . '" class="card-img-top" alt="' . $title . '">
                                     </a>';
-                    echo '        <div class="card-body">';
-                    echo '            <h5 class="card-title fw-bold">' . $title . '</h5>';
-                    echo '            <div class="d-flex justify-content-between align-items-center mb-3">';
-                    echo '                <span><i class="fa-solid fa-star text-danger"></i> ' . $rating . '/10.0</span>';
-                    echo '                <span class="text-muted">' . $language . '</span>';
-                    echo '            </div>';
-                    echo '            <a href="movies-details.php?id=' . $id . '" class="btn w-100">View Details</a>';
-                    echo '        </div>';
-                    echo '    </div>';
-                    echo '</div>';
-                }
-                ?>
-            </div>
+                echo '        <div class="card-body">';
+                echo '            <h5 class="card-title fw-bold">' . $title . '</h5>';
+                echo '            <div class="d-flex justify-content-between align-items-center mb-3">';
+                echo '                <span><i class="fa-solid fa-star text-danger"></i> ' . $rating . '/10.0</span>';
+                echo '                <span class="text-muted">' . $language . '</span>';
+                echo '            </div>';
+                echo '            <a href="movies-details.php?id=' . $id . '" class="btn w-100">View Details</a>';
+                echo '        </div>';
+                echo '    </div>';
+                echo '</div>';
+            }
+            ?>
         </div>
+        <a href="movies.php" class="explore-link text-decoration-none">
+            <div class="card p-3 d-flex flex-row align-items-center justify-content-between shadow-lg border-0">
+                <h2 class="fw-bold ms-2 mt-1 fs-4 fs-md-3">Explore Movies</h2>
+                <i class="fa-solid fa-arrow-right fa-lg me-3"></i>
+            </div>
+        </a>
     </section>
 
     <!-- Offer Section -->

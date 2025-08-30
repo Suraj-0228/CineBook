@@ -32,38 +32,6 @@ $(document).ready(function () {
         }
         ]
     });
-    // Movie Card Slider {home.php}
-    $('.card-slider').slick({
-        arrows: true,
-        infinite: false,
-        slidesToShow: 5,
-        slidesToScroll: 2,
-        centermode: true,
-        dots: false,
-        speed: 300,
-        responsive: [{
-            breakpoint: 991,
-            settings: {
-                slidesToShow: 3,
-                arrows: false
-            }
-        },
-        {
-            breakpoint: 767,
-            settings: {
-                slidesToShow: 2,
-                arrows: false
-            }
-        },
-        {
-            breakpoint: 575,
-            settings: {
-                slidesToShow: 2,
-                arrows: false
-            }
-        }
-        ]
-    });
     // Offer Image Slider {home.php}
     $('.img-slider').slick({
         slidesToShow: 2,        // Show 2 on desktop
