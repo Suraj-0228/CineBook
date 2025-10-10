@@ -108,6 +108,85 @@ if (!isset($_SESSION['adminname'])) {
                 </div>
             </div>
         </div>
+        <!-- Recent Booking -->
+        <section class="container recent-booking my-3">
+            <div class="my-5">
+                <h1 class="fw-bold">Recent Bookings:</h1>
+                <hr>
+            </div>
+
+            <?php
+            require 'includes/dbconnection.php';
+
+            // Fetch the last 5 bookings
+            $query = "SELECT b.*, u.username, m.title, s.show_date, s.show_time, t.theater_name FROM bookings b
+                        JOIN users u ON b.user_id = u.user_id
+                        JOIN movies_details m ON b.movie_id = m.movie_id
+                        JOIN showtimes s ON b.show_id = s.show_id
+                        JOIN theaters t ON s.theater_id = t.theater_id 
+                        order by b.booking_id desc";
+            $result_recent = mysqli_query($con, $query);
+
+            if (mysqli_num_rows($result_recent) > 0) {
+                echo "
+                <table class='table table-bordered table-striped table-hover align-middle shadow'>
+                    <thead class='text-center'>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Username</th>
+                            <th>Movie Title</th>
+                            <th>Show Date</th>
+                            <th>Show Time</th>
+                            <th>Theater</th>
+                            <th>Seat</th>
+                            <th>Price/Ticket</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>";
+
+                while ($row = mysqli_fetch_assoc($result_recent)) {
+                    $booking_id = $row['booking_id'];
+                    $username = $row['username'];
+                    $movie_title = $row['title'];
+                    $show_date = $row['show_date'];
+                    $show_time = $row['show_time'];
+                    $theater_name = $row['theater_name'];
+                    $seat_row = $row['seat_row'];
+                    $total_seat = $row['total_seat'];
+                    $price = $row['ticket_price'];
+                    $amount = $row['amount'];
+                    $booking_status = $row['booking_status'];
+
+                    echo "
+                <tr class='text-center'>
+                    <td>$booking_id</td>
+                    <td>$username</td>
+                    <td>$movie_title</td>
+                    <td>$show_date</td>
+                    <td>$show_time</td>
+                    <td>$theater_name</td>
+                    <td>$seat_row - $total_seat</td>
+                    <td>₹$price</td>
+                    <td>₹$amount</td>                
+                    <td>";
+
+                    if ($booking_status == 'Pending') {
+                        echo "<span class='badge bg-warning text-dark'>Pending</span>";
+                    } elseif ($booking_status == 'Approved') {
+                        echo "<span class='badge bg-success'>Approved</span>";
+                    } else {
+                        echo "<span class='badge bg-danger'>Cancelled</span>";
+                    }
+                }
+
+                echo "</tbody></table>";
+            } else {
+                echo "<p class='text-center text-muted'>No recent bookings found.</p>";
+            }
+            ?>
+        </section>
+
     </section>
 
     <!-- Footer -->

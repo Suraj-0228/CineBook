@@ -37,49 +37,56 @@ if (!isset($_SESSION['adminname'])) {
     <?php include 'includes/header1.php'; ?>
 
     <!-- Display & Manage Users -->
-    <div class="container">
+    <!-- Display & Manage Users -->
+    <div class="container my-5">
         <div class="my-4">
             <h1 class="fw-bold">Manage Users:</h1>
             <hr class="border border-dark">
         </div>
-        <?php
-        require 'includes/dbconnection.php';
 
-        $sql_query = "select * from users";
-        $result = mysqli_query($con, $sql_query);
+        <table class="table table-bordered table-striped table-hover align-middle shadow">
+            <thead class="text-center">
+                <tr>
+                    <th>User ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                require 'includes/dbconnection.php';
+                $sql_query = "SELECT * FROM users";
+                $result = mysqli_query($con, $sql_query);
 
-        while ($rows = mysqli_fetch_assoc($result)) {
-            $user_id = $rows['user_id'];
-            $fullname = $rows['fullname'];
-            $email = $rows['email'];
-            $username = $rows['username'];
-            $user_password = $rows['user_password'];
-            $created_at = $rows['created_at'];
-
-            echo "
-                <div class='card shadow my-3'>
-                    <div class='row g-0 align-items-center border-0'>
-                        <div class='col-12 col-md-8'>
-                        <div class='card-body'>
-                                <p class='mb-1'><strong>User ID:</strong> $user_id</p>
-                                <p class='mb-1'><strong>Full Name:</strong> $fullname</p>
-                                <p class='mb-1'><strong>Email ID:</strong> $email</p>
-                                <p class='mb-1'><strong>User Name:</strong> $username</p>
-                                <p class='mb-1'><strong>User Password:</strong> $user_password</p>
-                                <p class='mb-1'><strong>Created At:</strong> $created_at</p>
-                                <div class='btn-group mt-3'>
-                                    <a href='controllers/delete-process.php?user_id=$user_id' class='bg-danger text-white rounded p-2 px-4 mx-1'>
-                                        <i class='fa-solid fa-trash'></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>";
-        }
-        ?>
+                while ($rows = mysqli_fetch_assoc($result)) {
+                    $user_id = $rows['user_id'];
+                    $fullname = $rows['fullname'];
+                    $email = $rows['email'];
+                    $username = $rows['username'];
+                    $user_password = $rows['user_password'];
+                    $created_at = $rows['created_at'];
+                ?>
+                    <tr class="text-center">
+                        <td><?= $user_id ?></td>
+                        <td><?= $fullname ?></td>
+                        <td><?= $email ?></td>
+                        <td><?= $username ?></td>
+                        <td><?= $user_password ?></td>
+                        <td><?= $created_at ?></td>
+                        <td>
+                            <a href="controllers/delete-process.php?user_id=<?= $user_id ?>" class="text-danger text-decoration-none btn-sm mx-1">
+                                <i class="fa-solid fa-trash"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
     </div>
-
 
     <!-- Footer -->
     <?php include 'includes/footer.php'; ?>

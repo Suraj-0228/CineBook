@@ -65,9 +65,6 @@
                                     <i class="fa-brands fa-lg fa-linkedin"></i></a>
                             </div>
                         </div>
-                        <div class="mb-3 mt-3">
-                            <p class="text-center">Don't have an account? <a href="register.php" class="fw-bold register-link">Sign-Up</a></p>
-                        </div>
                     </form>
                 </div>
             </div>
