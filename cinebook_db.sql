@@ -21,7 +21,6 @@ CREATE TABLE movies_details (
 );
 
 -- Cast Details Table
-
 CREATE TABLE `cast_details` (
   `cast_id` INT AUTO_INCREMENT PRIMARY KEY,
   `movie_id` INT NOT NULL,
@@ -68,12 +67,6 @@ CREATE TABLE bookings (
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (movie_id) REFERENCES movies_details(movie_id),
     FOREIGN KEY (show_id) REFERENCES showtimes(show_id)
-);
--- Admin Table
-CREATE TABLE admin (
-    admin_id INT AUTO_INCREMENT PRIMARY KEY,
-    admin_name VARCHAR(50) NOT NULL UNIQUE,
-    admin_password VARCHAR(255) NOT NULL
 );
 
 -- Insert Records into register Table
@@ -293,7 +286,3 @@ INSERT INTO `showtimes` (`movie_id`, `theater_id`, `show_date`, `show_time`) VAL
 (17, 7, '2025-08-25', '16:30:00'),
 (17, 1, '2025-08-27', '21:00:00'),
 (17, 2, '2025-08-28', '22:30:00'); 
-
--- Insert Records into admin Table
-INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_password`) VALUES
-(1, 'Admin_Suraj', 'Admin_0228');
