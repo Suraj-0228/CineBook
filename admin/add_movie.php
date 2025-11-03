@@ -13,7 +13,7 @@ if (!isset($_SESSION['adminname']) && isset($_COOKIE['adminname'])) {
 if (!isset($_SESSION['adminname'])) {
     echo "<script>
         alert('Please, Login to Access CineBook Admin');
-        window.location.href = 'admin_login.php';
+        window.location.href = '../login.php';
     </script>";
     exit();
 }

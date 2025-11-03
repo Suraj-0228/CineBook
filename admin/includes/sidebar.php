@@ -32,7 +32,8 @@
 
     <!-- Logout -->
     <div class="w-100">
-        <a href="admin_logout.php" class="btn btn-outline-light w-100 mb-2">
+        <a href="admin_logout.php" class="bg-danger text-white text-decoration-none d-block text-center py-2 rounded mb-2"
+            onclick="return confirm('Are You Sure!! You want to Logout??');">
             <i class="fa fa-sign-out-alt me-2"></i> Logout
         </a>
         <p class="text-center text-white mb-0">&copy; 2025 CineBook</p>

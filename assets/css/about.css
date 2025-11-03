@@ -1,5 +1,5 @@
 .container .img-fluid {
-    background-color: #6C4ED6;
+    background-color: #19589C;
 }
 
 .container .img-fluid {
@@ -8,5 +8,5 @@
 }
 
 .container .img-fluid:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }

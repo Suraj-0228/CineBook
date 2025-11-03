@@ -6,8 +6,8 @@ header {
 }
 
 .navbar {
-    background-color: #6C4ED6;
-    color: #ecf0f1;
+    background-color: #19589C;
+    color: #E9E9E6;
 }
 
 .navbar .navbar-brand .img-fluid {
@@ -17,23 +17,23 @@ header {
 
 .navbar-nav .nav-link {
     font-size: 1.2rem;
-    color: #ecf0f1;
+    color: #E9E9E6;
 }
 
 .login-btn .btn {
     font-size: 1.1rem;
-    color: #ecf0f1;
+    color: #E9E9E6;
 }
 
 .toggle-btn {
-    background-color: #6C4ED6;
-    color: #ecf0f1;
+    background-color: #19589C;
+    color: #E9E9E6;
 }
 
 /* Offcanvas Styles */
 .offcanvas, #offcanvasExample {
-    background-color: #6C4ED6;
-    color: #ecf0f1;
+    background-color: #19589C;
+    color: #E9E9E6;
     width: 20rem;
 }
 
@@ -42,25 +42,25 @@ header {
 }
 
 .offcanvas-header {
-    color: #ecf0f1;
+    color: #E9E9E6;
     font-size: 1.8rem;
 }
 
 .offcanvas-body i .nav-link {
-    color: #ecf0f1;
+    color: #E9E9E6;
     font-size: 1.2rem;
-    border-bottom: 1px solid #ecf0f1;
+    border-bottom: 1px solid #E9E9E6;
     padding-bottom: 10px;
 }
 
 .offcanvas-body .sidebar-a {
     padding-bottom: 5px;
-    border-bottom: 1px solid #ecf0f1;
+    border-bottom: 1px solid #E9E9E6;
 }
 
 .offcanvas-body .sidebar-btn a {
     width: 8rem;
-    color: #ecf0f1;
+    color: #E9E9E6;
     font-size: 1.2rem;
 }
 

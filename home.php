@@ -101,7 +101,7 @@ if (!isset($_SESSION['username'])) {
     </section>
 
     <!-- Offer Section -->
-    <section class="offer-section text-center">
+    <section class="offer-section text-center mt-5">
         <h1 class="fw-bold">Exclusive Offers</h1>
         <div class="img-slider mt-3">
             <div class="me-1">

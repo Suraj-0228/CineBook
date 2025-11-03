@@ -40,86 +40,88 @@ if (!isset($_SESSION['username'])) {
     <!-- Navbar -->
     <?php include 'includes/header.php'; ?>
 
-    <!-- Search & Filter Section -->
+    <!-- 🔍 Search & Filter Section -->
     <div class="container py-3 px-0">
         <div class="row justify-content-center mx-2">
-            <div class="col-12 col-md-10">
-                <form class="d-flex">
-                    <input class="form-control me-2 custom-search-input" type="search" placeholder="Search for Movies..." aria-label="Search">
-                    <button class="btn custom-search-btn" type="submit">Search</button>
+            <div class="container mt-4 mb-3 text-center">
+                <form method="GET" action="movies.php" class="d-inline-block">
+                    <?php
+                    require 'includes/dbconnection.php';
+
+                    // Get filter values
+                    $filter_genre = isset($_GET['genre']) ? $_GET['genre'] : '';
+                    $search_query = isset($_GET['search']) ? trim($_GET['search']) : '';
+
+                    // Build SQL based on filters
+                    $sql_query = "SELECT * FROM movies_details WHERE 1=1";
+
+                    if (!empty($filter_genre)) {
+                        $sql_query .= " AND genre = '$filter_genre'";
+                    }
+                    if (!empty($search_query)) {
+                        $sql_query .= " AND title LIKE '%$search_query%'";
+                    }
+
+                    // Execute query
+                    $result = mysqli_query($con, $sql_query);
+                    ?>
+
+                    <!-- Search Box -->
+                    <div class="input-group mb-3 d-inline-flex w-75 me-3">
+                        <input type="text" name="search" class="form-control"
+                            placeholder="Search by Movie Name....."
+                            value="<?= htmlspecialchars($search_query) ?>">
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                    </div>
+
+                    <!-- Genre Dropdown -->
+                    <label for="genre" class="fw-semibold me-2">Filter by Genre:</label>
+                    <select name="genre" id="genre" class="form-select d-inline-block w-auto"
+                        onchange="this.form.submit()">
+                        <option value="">All</option>
+                        <option value="Action" <?= ($filter_genre == 'Action') ? 'selected' : '' ?>>Action</option>
+                        <option value="Comedy" <?= ($filter_genre == 'Comedy') ? 'selected' : '' ?>>Comedy</option>
+                        <option value="Horror" <?= ($filter_genre == 'Horror') ? 'selected' : '' ?>>Horror</option>
+                        <option value="Thriller" <?= ($filter_genre == 'Thriller') ? 'selected' : '' ?>>Thriller</option>
+                    </select>
                 </form>
-            </div>
-            <div class="col-12 col-md-10 d-flex justify-content-start flex-wrap gap-2 mt-2">
-                <div class="dropdown">
-                    <button class="btn fw-bold dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        Language
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">English</a></li>
-                        <li><a class="dropdown-item" href="#">Hindi</a></li>
-                    </ul>
-                </div>
-                <div class="dropdown">
-                    <button class="btn fw-bold dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        Genre
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Drama & Comedy</a></li>
-                        <li><a class="dropdown-item" href="#">Horror</a></li>
-                        <li><a class="dropdown-item" href="#">Animation</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
         <hr class="custom-hr">
     </div>
 
-    <!-- Future Card -->
-    <section class="py-2 px-2">
-        <div class="container">
-            <a href="#" class="future-link">
-                <div class="card p-3 d-flex flex-row align-items-center justify-content-between shadow border-0">
-                    <h2 class="fw-bold ms-2 mt-1 fs-4 fs-md-3">Upcoming Movies</h2>
-                    <i class="fa-solid fa-arrow-right fa-lg me-3"></i>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Movie Cards Section -->
+    <!-- 🎥 Movie Cards Section -->
     <section class="container p-2 mb-2">
         <h1 class="text-center py-2 fw-bold">Explore All Movies...</h1>
         <div class="container">
             <div class="row justify-content-center">
                 <?php
-                require 'includes/dbconnection.php';
+                if (mysqli_num_rows($result) > 0) {
+                    while ($rows = mysqli_fetch_assoc($result)) {
+                        $id = $rows['movie_id'];
+                        $title = $rows['title'];
+                        $poster = $rows['poster_url'];
+                        $rating = $rows['rating'];
+                        $language = $rows['language'];
 
-                $sql_query = "select * from movies_details";
-                $result = mysqli_query($con, $sql_query);
-
-                while ($rows = mysqli_fetch_assoc($result)) {
-                    $id = $rows['movie_id'];
-                    $title = $rows['title'];
-                    $poster = $rows['poster_url'];
-                    $rating = $rows['rating'];
-                    $language = $rows['language'];
-
-                    echo '<div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3 movies-card">';
-                    echo '    <div class="card">';
-                    echo '          <a href="movies-details.php?id=' . $id . '">
-                                        <img src="' . $poster . '" class="card-img-top" alt="' . $title . '">
+                        echo '<div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3 movies-card">';
+                        echo '    <div class="card shadow-sm border-0">';
+                        echo '        <a href="movies-details.php?id=' . $id . '">
+                                        <img src="' . $poster . '" class="card-img-top rounded-top" alt="' . $title . '">
                                     </a>';
-                    echo '        <div class="card-body">';
-                    echo '            <h5 class="card-title fw-bold">' . $title . '</h5>';
-                    echo '            <div class="d-flex justify-content-between align-items-center mb-3">';
-                    echo '                <span><i class="fa-solid fa-star text-danger"></i> ' . $rating . '/10.0</span>';
-                    echo '                <span class="text-muted">' . $language . '</span>';
-                    echo '            </div>';
-                    echo '            <a href="movies-details.php?id=' . $id . '" class="btn w-100">View Details</a>';
-                    echo '        </div>';
-                    echo '    </div>';
-                    echo '</div>';
+                        echo '        <div class="card-body">';
+                        echo '            <h5 class="card-title fw-bold">' . $title . '</h5>';
+                        echo '            <div class="d-flex justify-content-between align-items-center mb-3">';
+                        echo '                <span><i class="fa-solid fa-star text-warning"></i> ' . $rating . '/10</span>';
+                        echo '                <span class="text-muted small">' . $language . '</span>';
+                        echo '            </div>';
+                        echo '            <a href="movies-details.php?id=' . $id . '" class="btn btn-outline-primary w-100">View Details</a>';
+                        echo '        </div>';
+                        echo '    </div>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo "<p class='text-center text-muted'>No movies found matching your search or filter.</p>";
                 }
                 ?>
             </div>

@@ -2,7 +2,7 @@
     <!-- Navbar (Visible on desktop) -->
     <nav class="navbar navbar-expand-lg px-3 py-0">
         <a href="home.php" class="navbar-brand">
-            <img src="assets/img/CineBook_Logo.png" alt="CineBook Logo" class="img-fluid">
+            <h1 class="text-light fw-bold mt-2">CineBook</h1>
         </a>
         <ul class="navbar-nav mx-auto">
             <li class="nav-item mx-2"><a class="nav-link" href="home.php">Home</a></li>
@@ -13,7 +13,10 @@
         </ul>
         <!-- Logout Button -->
         <div class="sidebar-btn d-none d-lg-flex d-flex flex-row mx-1">
-            <a href="logout.php" class="btn border border-light text-center text-white">Log Out</a>
+            <a href="logout.php" class="bg-danger text-white text-decoration-none border border-light d-block text-center py-2 px-3 rounded"
+                onclick="return confirm('Are You Sure!! You want to Logout??');">
+                <i class="fa fa-sign-out-alt me-2"></i> Logout
+            </a>
         </div>
         <!-- Sidebar Toggle Button -->
         <button class="btn d-lg-none toggle-btn py-2 border border-light ms-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">

@@ -1,6 +1,6 @@
 .footer {
-    background-color: #6C4ED6;
-    color: #ecf0f1;
+    background-color: #19589C;
+    color: #E9E9E6;
 }
 
 .col-12 .footer-logo {
@@ -10,7 +10,7 @@
 }
 
 .col-12 .footer-logo:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .left-text {
@@ -20,7 +20,7 @@
 
 .list-unstyled li a {
     font-size: 1.15rem;
-    color: #ecf0f1;
+    color: #E9E9E6;
     text-decoration: none;
 }
 
@@ -32,13 +32,13 @@
 }
 
 hr{
-    border: 1px solid #ecf0f1;
+    border: 1px solid #E9E9E6;
 }
 
 .social-links,
 .social-icon {
     gap: 1rem;
-    color: #ecf0f1;
+    color: #E9E9E6;
     font-size: 1.4rem;
     display: flex;
     transition: transform 0.3s ease;
@@ -56,7 +56,7 @@ hr{
 
 .copy-right {
     font-size: 1.25rem;
-    color: #ecf0f1;
+    color: #E9E9E6;
 }
 
 @media (max-width: 767px) {
@@ -71,7 +71,7 @@ hr{
 
     .copy-right {
         font-size: 1.2rem;
-        color: #ecf0f1;
+        color: #E9E9E6;
     }
 
     .social-links,

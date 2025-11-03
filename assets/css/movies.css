@@ -1,16 +1,16 @@
 /* Movies Page Css */
 .custom-search-input {
-    border: 1px solid #6C4ED6;
+    border: 1px solid #19589C;
     max-width: 100%;
 }
 
 .custom-search-btn {
-    background-color: #6C4ED6;
+    background-color: #19589C;
     color: #ecf0f1;
 }
 
 .custom-hr {
-    border: 1px solid #6C4ED6;
+    border: 1px solid #19589C;
 }
 
 .future-link {
@@ -22,7 +22,7 @@
 }
 
 .view-details-btn {
-    background-color: #6C4ED6;
+    background-color: #19589C;
     color: #ecf0f1;
 }
 
@@ -46,7 +46,7 @@
 
 .catagory-section .img-link {
     text-decoration: none;
-    color: #6C4ED6;
+    color: #19589C;
 }
 
 @media (max-width: 767px) {

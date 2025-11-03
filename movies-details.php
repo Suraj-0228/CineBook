@@ -64,6 +64,15 @@ if (!isset($_SESSION['username'])) {
             $rating = $movies['rating'];
             $poster = $movies['poster_url'];
             $description = $movies['description'];
+
+            // Fetch Cast Details
+            $cast_query = "SELECT actor_name, role_name FROM cast_details WHERE movie_id = '$id'";
+            $cast_result = mysqli_query($con, $cast_query);
+
+            $cast_list = [];
+            while ($row = mysqli_fetch_assoc($cast_result)) {
+                $cast_list[] = $row;
+            }
         }
     } else {
         echo "<script>alert('Invalid Movies ID!!!');</script>";
@@ -93,59 +102,36 @@ if (!isset($_SESSION['username'])) {
             <hr class="w-100 border border-dark">
         </div>
     </section>
-
+    
     <!-- About Section -->
     <section class="about-section">
         <div class="container p-4 py-0">
             <div class="my-4">
-                <h3 class="fw-bold">About This Movie:</h3>
+                <h3 class="fw-bold">Description:</h3>
                 <p> <?php echo $description ?></p>
             </div>
+            <hr class="w-100 border border-dark">
+            <div class="row g-3 justify-content-center m-5">
+                <h1 class="fw-bold">Movie Cast:</h1>
+                <?php foreach ($cast_list as $cast) { ?>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card border-0 shadow-sm text-center h-100">
+                            <div class="card-body">
+                                <!-- Optional actor image -->
+                                <img src="<?= $cast['actor_image'] ?? 'assets/img/action.png' ?>"
+                                    alt="<?= $cast['actor_name'] ?>"
+                                    class="img-fluid rounded-circle mb-3"
+                                    style="width: 90px; height: 90px; object-fit: cover;">
 
-            <?php
-            $cast_json = file_get_contents('assets/data/cast-crew.json');
-            $decoded_cast = json_decode($cast_json, true);
-            $cast_crew_data = $decoded_cast['cast_crew_data'];
-
-            $id = $_GET['id'] ?? null;
-            $cast_data = null;
-
-            if ($id !== null) {
-                foreach ($cast_crew_data as $item) {
-                    if ($item['id'] == $id) {
-                        $cast_data = $item;
-                        break;
-                    }
-                }
-            }
-            ?>
-            <?php if ($cast_data): ?>
-                <hr class="w-100 border border-dark">
-                <div class="mb-1">
-                    <h3 class="fw-bold">Cast:</h3>
-                    <div class="row sub-cast">
-                        <?php foreach ($cast_data['cast'] as $actor): ?>
-                            <div class="col-6 col-md-4 col-lg-2">
-                                <img src="assets/img/comedy.png" class="cast-img" alt="Image....">
-                                <p class="fw-bold"><?= htmlspecialchars($actor) ?></p>
+                                <h6 class="fw-bold text-dark mb-1"><?= $cast['actor_name'] ?></h6>
+                                <?php if (!empty($cast['role_name'])) { ?>
+                                    <small class="text-muted">as <?= $cast['role_name'] ?></small>
+                                <?php } ?>
                             </div>
-                        <?php endforeach; ?>
+                        </div>
                     </div>
-                </div>
-
-                <hr class="w-100 border border-dark">
-                <div class="mb-3">
-                    <h3 class="fw-bold">Crew:</h3>
-                    <div class="row sub-crew">
-                        <?php foreach ($cast_data['crew'] as $role => $person): ?>
-                            <div class="col-6 col-md-4 col-lg-2 mb-3">
-                                <img src="assets/img/comedy.png" class="crew-img" alt="Image....">
-                                <p class="fw-bold"><?= htmlspecialchars(ucwords(str_replace('_', ' ', $role))) ?>: <br> <?= htmlspecialchars($person) ?></p>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            <?php endif; ?>
+                <?php } ?>
+            </div>
 
         </div>
     </section>

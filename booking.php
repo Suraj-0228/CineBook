@@ -1,4 +1,4 @@
-<?php 
+<?php
 require 'controllers/booking-process2.php';
 
 // If session not set but cookie exists, restore session
@@ -32,6 +32,9 @@ if (!isset($_SESSION['username'])) {
 </head>
 
 <body>
+
+    <!-- Navbar -->
+    <?php include 'includes/header.php'; ?>
 
     <!-- Booking Form -->
     <div class="container my-4">
@@ -104,7 +107,7 @@ if (!isset($_SESSION['username'])) {
                     </div>
 
                     <div class="d-grid">
-                        <button type="submit" class="btn">Book Now</button>
+                        <button type="submit" class="btn btn-lg">Book Now</button>
                     </div>
                 </form>
             </div>
@@ -112,6 +115,9 @@ if (!isset($_SESSION['username'])) {
     </div>
 
     <script src="assets/js/booking.js"></script>
+
+    <!-- Footer -->
+    <?php include 'includes/footer.php'; ?>
 
 </body>
 

@@ -14,24 +14,24 @@
         <div class="col-12 col-md-4 my-2">
             <h1 class="fw-bold mb-3">Quick Links:</h1>
             <ul class="list-unstyled">
-                <li class="nav-items"><a href="#" class="nav-link text-decoration-none">Privacy Policy</a></li>
-                <li class="nav-items"><a href="#" class="nav-link text-decoration-none">Community</a></li>
-                <li class="nav-items"><a href="#" class="nav-link text-decoration-none">About Us</a></li>
+                <li class="nav-items"><a href="#" class="nav-link mb-1 text-decoration-none">Privacy Policy</a></li>
+                <li class="nav-items"><a href="#" class="nav-link mb-1 text-decoration-none">Community</a></li>
+                <li class="nav-items"><a href="about.php" class="nav-link mb-1 text-decoration-none">About Us</a></li>
             </ul>
         </div>
 
         <!-- Footer Left -->
         <div class="col-12 col-md-4 my-2">
             <h1 class="fw-bold mb-3">Contact Us:</h1>
-            <div class="contact-info">
+            <div class="contact-info mb-2">
                 <i class="fa-regular fa-envelope fa-lg mx-1"></i>
                 <p class="mb-1 mx-1">cinebookmovies@gmail.com</p>
             </div>
-            <div class="contact-info">
+            <div class="contact-info mb-2">
                 <i class="fa-solid fa-globe mx-1"></i>
                 <p class="mb-1 mx-1">www.cinebookindia.co.in</p>
             </div>
-            <div class="contact-info">
+            <div class="contact-info mb-2">
                 <i class="fa-solid fa-phone mx-1"></i>
                 <p class="mb-1 mx-1">+91 6359421359</p>
             </div>

@@ -39,107 +39,112 @@ if (!isset($_SESSION['username'])) {
     <!-- Navbar -->
     <?php include 'includes/header.php'; ?>
 
-    <!-- Display Users Profile -->
-    <div class="container my-4">
-        <div class="card p-4 pb-0 shadow-sm">
-            <div class="row align-items-center">
-                <!-- User Icon -->
-                <div class="col-12 col-sm-1 text-center text-sm-start mb-3 mb-sm-0">
-                    <div class="user-photo">
-                        <i class="fa fa-user fa-5x"></i>
-                    </div>
+    <!-- User Profile Section -->
+    <div class="container my-5">
+        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+            <!-- Header Section -->
+            <div class="card-header bg-gradient text-white text-center py-4" style="background: linear-gradient(90deg, #4a90e2, #9013fe);">
+                <div class="user-icon mb-2">
+                    <i class="fa-solid fa-user-circle fa-6x text-dark"></i>
                 </div>
+                <?php
+                require 'includes/dbconnection.php';
 
-                <!-- User Data -->
-                <div class="col-12 col-sm-11">
-                    <div class="user-data">
-                        <?php
-                        require 'includes/dbconnection.php';
+                if (isset($_GET['user_id'])) {
+                    $user_id = intval($_GET['user_id']);
+                    $sql_query = "SELECT * FROM users WHERE user_id = $user_id";
+                    $result = mysqli_query($con, $sql_query);
 
-                        if (isset($_GET['user_id'])) {
-                            $user_id = intval($_GET['user_id']);
+                    if (mysqli_num_rows($result) > 0) {
+                        $rows = mysqli_fetch_assoc($result);
+                        $fullname = $rows['fullname'];
+                        $username = $rows['username'];
+                        $email = $rows['email'];
 
-                            $sql_query = "SELECT * FROM users WHERE user_id = $user_id";
-                            $result = mysqli_query($con, $sql_query);
-
-                            if (mysqli_num_rows($result) > 0) {
-                                $rows = mysqli_fetch_assoc($result);
-
-                                $user_id = $rows['user_id'];
-                                $fullname = $rows['fullname'];   // Correct field
-                                $username = $rows['username'];
-                                $email = $rows['email'];
-
-                                echo "
-                                <p class='fw-bold m-0 fs-5'>$username</p>
-                                <p class='text-muted m-0'>$email</p>
-                            ";
-                            } else {
-                                echo "<p class='text-muted'>User not found.</p>";
-                            }
-                        }
-                        ?>
-                    </div>
-                </div>
+                        echo "
+                        <h3 class='fw-bold mb-1 text-dark'>$fullname</h3>
+                        <p class='m-0 text-dark'>$email</p>
+                        <p class='text-light small text-dark'><i class='fa-solid fa-user '></i> @$username</p>
+                    ";
+                    } else {
+                        echo "<p class='text-light'>User not found.</p>";
+                    }
+                }
+                ?>
             </div>
 
-            <!-- Personal Information Section -->
-            <div class="user-information mt-4">
-                <h3 class="fw-bold text-center text-md-center">Your Personal Information</h3>
-                <hr class="border border-dark">
-                <div class="user-info col-12 col-sm-11">
-                    <div class="user-data my-4">
-                        <div class="user-fullname">
-                            <h5 class="form-label fw-bold fs-5 m-0">Full Name:</h5>
-                            <p class="text-muted"><?php echo $fullname ?? ''; ?></p>
-                        </div>
-                        <div class="user-eamil">
-                            <h5 class="form-label fw-bold fs-5 m-0">Email ID:</h5>
-                            <p class="text-muted"><?php echo $email ?? ''; ?></p>
-                        </div>
-                        <div class="btn-group">
-                            <a href="#" class="bg-success text-white rounded p-2 px-4 mx-1" data-bs-toggle="modal"
-                                data-bs-target="#updateProfile<?php echo $user_id; ?>">
-                                <i class="fa-solid fa-edit"></i>
-                            </a>
+            <!-- Body Section -->
+            <div class="card-body p-4">
+                <h4 class="fw-bold mb-3 text-primary"><i class="fa-solid fa-id-card me-2"></i>Personal Information</h4>
+                <hr>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="p-3 border rounded-3 bg-light">
+                            <h6 class="fw-bold text-secondary mb-1">Full Name</h6>
+                            <p class="mb-0"><?php echo $fullname ?? 'N/A'; ?></p>
                         </div>
                     </div>
+
+                    <div class="col-md-6">
+                        <div class="p-3 border rounded-3 bg-light">
+                            <h6 class="fw-bold text-secondary mb-1">Email ID</h6>
+                            <p class="mb-0"><?php echo $email ?? 'N/A'; ?></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="p-3 border rounded-3 bg-light">
+                            <h6 class="fw-bold text-secondary mb-1">Username</h6>
+                            <p class="mb-0">@<?php echo $username ?? 'N/A'; ?></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="text-end mt-4">
+                    <button class="btn btn-success px-4" data-bs-toggle="modal" data-bs-target="#updateProfile<?php echo $user_id; ?>">
+                        <i class="fa-solid fa-pen-to-square me-2"></i>Update Profile
+                    </button>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Update Profile Modal -->
-            <div class="modal fade" id="updateProfile<?php echo $user_id; ?>" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg">
-                    <div class="modal-content p-4">
-                        <div class="modal-header border-bottom-0 p-0">
-                            <h3 class="fw-bold">Update Profile</h3>
+    <!-- Update Profile Modal -->
+    <div class="modal fade" id="updateProfile<?php echo $user_id; ?>" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4">
+                <div class="modal-header bg-primary text-white border-0 rounded-top-4">
+                    <h5 class="modal-title fw-bold"><i class="fa-solid fa-user-pen me-2"></i>Update Profile</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form action="controllers/update-process.php" method="post"> <!-- ✅ moved here -->
+                    <div class="modal-body p-4">
+                        <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Full Name</label>
+                            <input type="text" class="form-control" name="fullname1" value="<?php echo $fullname; ?>">
                         </div>
-                        <hr class="border border-dark">
-                        <form action="controllers/update-process.php" method="post">
-                            <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
-                            <div class="mb-3">
-                                <label class="form-label fw-bold">Enter Your Full Name:</label>
-                                <input type="text" class="form-control" name="fullname1"
-                                    value="<?php echo $fullname; ?>">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label fw-bold">Email ID:</label>
-                                <input type="email" class="form-control" name="email1"
-                                    value="<?php echo $email; ?>">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label fw-bold">User Name:</label>
-                                <input type="text" class="form-control" name="username1"
-                                    value="<?php echo $username; ?>">
-                            </div>
-                        </form>
-                        <hr class="border border-dark">
-                        <div class="d-flex justify-content-end gap-2">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn">Update Profile</button>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Email ID</label>
+                            <input type="email" class="form-control" name="email1" value="<?php echo $email; ?>">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Username</label>
+                            <input type="text" class="form-control" name="username1" value="<?php echo $username; ?>">
                         </div>
                     </div>
-                </div>
+
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form> <!-- ✅ form ends here -->
             </div>
         </div>
     </div>

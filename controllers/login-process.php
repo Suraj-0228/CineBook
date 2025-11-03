@@ -1,35 +1,47 @@
 <?php
-// Login Process
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['username']) && isset($_POST['password'])) {
 
-        // Database Connection
         require 'includes/dbconnection.php';
 
-        // Collecting Form Data
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        // Get form input
+        $username = trim($_POST['username']);
+        $password = trim($_POST['password']);
 
-        $sql_query = "select * from users where username = '$username' and user_password = '$password'";
+        // Check for admin login (static credentials) ----
+        $admin_username = 'admin';
+        $admin_password = 'admin123';
+
+        if ($username === $admin_username && $password === $admin_password) {
+            $_SESSION['adminname'] = $admin_username;
+
+            echo "<script>
+                alert('Welcome to Admin Dashboard.');
+                window.location.href = 'admin/index.php';
+            </script>";
+            exit();
+        }
+
+        // Check for normal user login (from database) ----
+        $sql_query = "SELECT * FROM users WHERE username = '$username' AND user_password = '$password'";
         $result = mysqli_query($con, $sql_query);
 
         if (mysqli_num_rows($result) == 1) {
             $row = mysqli_fetch_assoc($result);
 
-            // Store username and user_id in session
+            // Store user details in session
             $_SESSION['username'] = $row['username'];
             $_SESSION['user_id']  = $row['user_id'];
 
-            // If "Remember Me" is checked, set cookie for 7 days
+            // "Remember Me" option
             if (isset($_POST['remember'])) {
                 setcookie('username', $username, time() + (7 * 24 * 60 * 60), "/");
             }
 
-            // Redirect to home
             echo "<script>
-                alert('Welcome to CineBook, $username');
+                alert('Welcome to CineBook, $username!');
                 window.location.href = 'home.php';
             </script>";
             exit();

@@ -11,10 +11,10 @@
         <!-- Sign In & Sign Up Button -->
         <div class="d-none d-lg-flex d-flex flex-row">
             <div class="sidebar-btn d-flex flex-row mx-1">
-                <a href="login.php" class="btn border border-light text-center">Sign In</a>
+                <a href="login.php" class="bg-white text-dark text-decoration-none d-block text-center py-2 px-3 rounded">Sign In</a>
             </div>
             <div class="sidebar-btn d-flex flex-row mx-1">
-                <a href="register.php" class="btn border border-light text-center">Sign Up</a>
+                <a href="register.php" class="bg-white text-dark text-decoration-none d-block text-center py-2 px-3 rounded">Sign Up</a>
             </div>
         </div>
         <!-- Sidebar Toggle Button -->

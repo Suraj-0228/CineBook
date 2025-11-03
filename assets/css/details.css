@@ -26,9 +26,6 @@
     height: 70%;
 }
 
-.movie-section {
-    background-color: #16222a22;
-}
 
 @media (min-width: 768px) {
     .movies-section .img-fluid{

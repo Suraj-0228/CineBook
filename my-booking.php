@@ -45,29 +45,29 @@ $result = mysqli_query($con, $query);
     <div class="container my-4">
         <h2 class="booking-header text-center fw-bold rounded p-2 mb-3">My Bookings</h2>
         <div class="table-responsive">
-            <table class="table table-bordered">
+            <table class="table table-bordered text-center">
                 <tbody>
                     <?php if (mysqli_num_rows($result) > 0) { ?>
                         <thead>
                             <tr>
-                                <th>Booking ID</th>
-                                <th>Movie</th>
-                                <th>Show</th>
-                                <th>Theater</th>
-                                <th>Seats</th>
-                                <th>Amount</th>
-                                <th>Status</th>
+                                <th class="fw-bold" style="font-size: 1.2rem;">Booking ID</th>
+                                <th class="fw-bold" style="font-size: 1.2rem;">Movie</th>
+                                <th class="fw-bold" style="font-size: 1.2rem;">Show</th>
+                                <th class="fw-bold" style="font-size: 1.2rem;">Theater</th>
+                                <th class="fw-bold" style="font-size: 1.2rem;">Seats</th>
+                                <th class="fw-bold" style="font-size: 1.2rem;">Amount</th>
+                                <th class="fw-bold" style="font-size: 1.2rem;">Status</th>
                             </tr>
                         </thead>
                         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                             <tr>
-                                <td><?php echo $row['booking_id']; ?></td>
-                                <td><?php echo $row['title']; ?></td>
-                                <td><?php echo $row['show_date'] . ' ' . date("h:i A", strtotime($row['show_time'])); ?></td>
-                                <td><?php echo $row['theater_name']; ?></td>
-                                <td><?php echo $row['seat_row'] . "-" . $row['total_seat']; ?></td>
-                                <td><?php echo $row['amount']; ?></td>
-                                <td>
+                                <td class="p-3"><?php echo $row['booking_id']; ?></td>
+                                <td class="p-3"><?php echo $row['title']; ?></td>
+                                <td class="p-3"><?php echo $row['show_date'] . ' ' . date("h:i A", strtotime($row['show_time'])); ?></td>
+                                <td class="p-3"><?php echo $row['theater_name']; ?></td>
+                                <td class="p-3"><?php echo $row['seat_row'] . "-" . $row['total_seat']; ?></td>
+                                <td class="p-3"><?php echo $row['amount']; ?></td>
+                                <td class="p-3">
                                     <?php if ($row['booking_status'] == 'Pending') { ?>
                                         <span class="p-2 text-white fw-bold rounded bg-warning text-dark">Pending</span>
                                     <?php } elseif ($row['booking_status'] == 'Approved') { ?>
