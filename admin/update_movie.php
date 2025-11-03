@@ -33,66 +33,66 @@ if (!isset($_SESSION['adminname'])) {
 
 <body>
 
-    <!-- Navbar -->
-    <?php include 'includes/header1.php'; ?>
+    <main class="d-flex">
 
-    <!-- Update Movies Form -->
-    <div class="container py-5 pb-0">
-        <div class="card border-0 shadow p-4">
-            <h1 class="text-center fw-bold">Update Movies:</h1>
-            <hr class="mb-4">
-            <form action="controllers/update-process.php" method="post">
-                <?php
-                require 'includes/dbconnection.php';
+        <!-- Navbar -->
+        <?php include 'includes/sidebar.php'; ?>
 
-                $id = $_GET['movie_id'];
+        <!-- Update Movies Form -->
+        <div class="container p-5 pb-0 pt-4">
+            <div class="card border-0 shadow p-4">
+                <h1 class="text-center fw-bold">Update Movies:</h1>
+                <hr class="mb-4">
+                <form action="controllers/update-process.php" method="post">
+                    <?php
+                    require 'includes/dbconnection.php';
 
-                $sql_query = "select * from movies_details where movie_id = '$id'";
-                $result = mysqli_query($con, $sql_query);
+                    $id = $_GET['movie_id'];
 
-                while ($rows = mysqli_fetch_assoc($result)) {
-                    $id = $rows['movie_id'];
-                    $movie_title = $rows['title'];
-                    $language = $rows['language'];
-                    $release_date = $rows['release_date'];
-                    $genre = $rows['genre'];
-                    $rating = $rows['rating'];
-                    $poster = $rows['poster_url'];
-                    $description = $rows['description'];
-                };
-                ?>
-                <div class="mb-3">
-                    <label for="title" class="form-label fw-bold">Movie Title:</label>
-                    <input type="hidden" class="form-control" name="movie_id" id="movie_id" value="<?php echo $id; ?>">
-                    <input type="text" class="form-control" name="title1" id="title1" placeholder="Enter Movie Title...." value="<?php echo $movie_title; ?>">
-                </div>
-                <div class="mb-3">
-                    <label for="language" class="form-label fw-bold">Language</label>
-                    <input type="text" class="form-control" name="language1" id="language1" placeholder="Enter Movie Language...." value="<?php echo $language; ?>">
-                </div>
-                <div class="mb-3">
-                    <label for="release_date" class="form-label fw-bold">Release Date</label>
-                    <input type="date" class="form-control" name="release_date1" id="release_date1" value="<?php echo $release_date; ?>">
-                </div>
-                <div class="mb-3">
-                    <label for="genre" class="form-label fw-bold">Genre:</label>
-                    <input type="text" class="form-control" name="genre1" id="genre1" placeholder="Enter Movie Genre...." value="<?php echo $genre; ?>">
-                </div>
-                <div class="mb-3">
-                    <label for="rating" class="form-label fw-bold">Movie Rating:</label>
-                    <input type="text" class="form-control" name="rating1" id="rating1" value="<?php echo $rating; ?>">
-                </div>
-                <div class="mb-3">
-                    <label for="description" class="form-label fw-bold">Description</label>
-                    <textarea class="form-control" name="description" id="description" rows="3" placeholder="Enter Movie Description...."><?php echo $description; ?></textarea>
-                </div>
-                <button type="submit" class="btn">Update Movie</button>
-            </form>
+                    $sql_query = "select * from movies_details where movie_id = '$id'";
+                    $result = mysqli_query($con, $sql_query);
+
+                    while ($rows = mysqli_fetch_assoc($result)) {
+                        $id = $rows['movie_id'];
+                        $movie_title = $rows['title'];
+                        $language = $rows['language'];
+                        $release_date = $rows['release_date'];
+                        $genre = $rows['genre'];
+                        $rating = $rows['rating'];
+                        $poster = $rows['poster_url'];
+                        $description = $rows['description'];
+                    };
+                    ?>
+                    <div class="mb-3">
+                        <label for="title" class="form-label fw-bold">Movie Title:</label>
+                        <input type="hidden" class="form-control" name="movie_id" id="movie_id" value="<?php echo $id; ?>">
+                        <input type="text" class="form-control" name="title1" id="title1" placeholder="Enter Movie Title...." value="<?php echo $movie_title; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="language" class="form-label fw-bold">Language</label>
+                        <input type="text" class="form-control" name="language1" id="language1" placeholder="Enter Movie Language...." value="<?php echo $language; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="release_date" class="form-label fw-bold">Release Date</label>
+                        <input type="date" class="form-control" name="release_date1" id="release_date1" value="<?php echo $release_date; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="genre" class="form-label fw-bold">Genre:</label>
+                        <input type="text" class="form-control" name="genre1" id="genre1" placeholder="Enter Movie Genre...." value="<?php echo $genre; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="rating" class="form-label fw-bold">Movie Rating:</label>
+                        <input type="text" class="form-control" name="rating1" id="rating1" value="<?php echo $rating; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label fw-bold">Description</label>
+                        <textarea class="form-control" name="description" id="description" rows="3" placeholder="Enter Movie Description...."><?php echo $description; ?></textarea>
+                    </div>
+                    <button type="submit" class="btn">Update Movie</button>
+                </form>
+            </div>
         </div>
-    </div>
-
-    <!-- Footer -->
-    <?php include 'includes/footer.php'; ?>
+    </main>
 
 </body>
 

@@ -33,63 +33,62 @@ if (!isset($_SESSION['adminname'])) {
 
 <body>
 
-    <!-- Navbar -->
-    <?php include 'includes/header1.php'; ?>
+    <main class="d-flex">
 
-    <!-- Display & Manage Users -->
-    <!-- Display & Manage Users -->
-    <div class="container my-5">
-        <div class="my-4">
-            <h1 class="fw-bold">Manage Users:</h1>
-            <hr class="border border-dark">
-        </div>
+        <!-- Navbar -->
+        <?php include 'includes/sidebar.php'; ?>
 
-        <table class="table table-bordered table-striped table-hover align-middle shadow">
-            <thead class="text-center">
-                <tr>
-                    <th>User ID</th>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                    <th>Created At</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                require 'includes/dbconnection.php';
-                $sql_query = "SELECT * FROM users";
-                $result = mysqli_query($con, $sql_query);
+        <!-- Display & Manage Users -->
+        <div class="container p-5">
+            <div class="">
+                <h1 class="fw-bold">Manage Users:</h1>
+                <hr class="border border-dark">
+            </div>
 
-                while ($rows = mysqli_fetch_assoc($result)) {
-                    $user_id = $rows['user_id'];
-                    $fullname = $rows['fullname'];
-                    $email = $rows['email'];
-                    $username = $rows['username'];
-                    $user_password = $rows['user_password'];
-                    $created_at = $rows['created_at'];
-                ?>
-                    <tr class="text-center">
-                        <td><?= $user_id ?></td>
-                        <td><?= $fullname ?></td>
-                        <td><?= $email ?></td>
-                        <td><?= $username ?></td>
-                        <td><?= $user_password ?></td>
-                        <td><?= $created_at ?></td>
-                        <td>
-                            <a href="controllers/delete-process.php?user_id=<?= $user_id ?>" class="text-danger text-decoration-none btn-sm mx-1">
-                                <i class="fa-solid fa-trash"></i> Delete
-                            </a>
-                        </td>
+            <table class="table table-bordered table-striped table-hover align-middle shadow">
+                <thead class="text-center">
+                    <tr>
+                        <th>User ID</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Created At</th>
+                        <th>Actions</th>
                     </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    <?php
+                    require 'includes/dbconnection.php';
+                    $sql_query = "SELECT * FROM users";
+                    $result = mysqli_query($con, $sql_query);
 
-    <!-- Footer -->
-    <?php include 'includes/footer.php'; ?>
+                    while ($rows = mysqli_fetch_assoc($result)) {
+                        $user_id = $rows['user_id'];
+                        $fullname = $rows['fullname'];
+                        $email = $rows['email'];
+                        $username = $rows['username'];
+                        $user_password = $rows['user_password'];
+                        $created_at = $rows['created_at'];
+                    ?>
+                        <tr class="text-center">
+                            <td><?= $user_id ?></td>
+                            <td><?= $fullname ?></td>
+                            <td><?= $email ?></td>
+                            <td><?= $username ?></td>
+                            <td><?= $user_password ?></td>
+                            <td><?= $created_at ?></td>
+                            <td>
+                                <a href="controllers/delete-process.php?user_id=<?= $user_id ?>" class="text-danger text-decoration-none btn-sm mx-1">
+                                    <i class="fa-solid fa-trash"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </main>
 
 </body>
 
