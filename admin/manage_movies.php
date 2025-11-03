@@ -28,7 +28,6 @@ if (!isset($_SESSION['adminname'])) {
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -39,13 +38,13 @@ if (!isset($_SESSION['adminname'])) {
         <?php include 'includes/sidebar.php'; ?>
 
         <!-- Manage Movies Section -->
-        <section class="w-100 p-3">
+        <section class="w-100 p-5">
             <!-- Add Movies Button -->
             <section class="container my-4">
                 <div class="d-flex justify-content-between align-items-center p-4 shadow rounded bg-white">
                     <h2 class="fw-bold m-0">Manage Movies</h2>
                     <!-- Add New Movie Button -->
-                    <a href="add_movie.php" class="btn btn-primary d-flex align-items-center">
+                    <a href="add_movie.php" class="btn d-flex align-items-center">
                         <i class="fa fa-plus-circle fa-lg me-2"></i> Add New Movie
                     </a>
                 </div>

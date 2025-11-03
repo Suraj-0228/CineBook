@@ -19,7 +19,7 @@ loginBtn.addEventListener("click", function (e) {
 
     // Password length validation
     const minLength = 6;
-    const maxLength = 12;
+    const maxLength = 18;
     if (passwordValue.length < minLength || passwordValue.length > maxLength) {
         alert(`Password must be between ${minLength} and ${maxLength} characters long!`);
         return;

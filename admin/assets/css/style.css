@@ -1,68 +1,26 @@
 /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Inria Serif', serif;
+    font-family: poppins, sans-serif;
 }
 
 body,
 html {
-    background-color: #ecf0f1;
-    color: #000000;
+    background-color: #E9E9E6;
+    color: #111;
 }
 
 /* Button Css for All Buttons */
 .btn {
-    background-color: #6C4ED6;
-    color: #ecf0f1;
+    background-color: #19589C;
+    color: #E9E9E6;
     border: none;
 }
 
 .btn:hover {
-    background-color: #6C4ED6;
-    color: #ecf0f1;
-}
-
-/* Admin Login Social Icons */
-.login-social-links {
-    display: flex;
-    justify-content: center;
-}
-
-.login-social-icon {
-    font-size: 1.3rem;
-    color: #6C4ED6;
-    transition: transform 0.3s ease;
-}
-
-.login-social-icon:hover {
-    transform: scale(1.15);
-}
-
-/* Hover Effect for Dashboard-Card */
-.dashboard-card {
-    transition: transform 0.4s ease;
-}
-
-.dashboard-card:hover {
-    transform: scale(1.03);
-}
-
-@media (max-width: 767px) {
-    .dashboard-section, .booking-section{
-        padding: 1rem;
-    }
-}
-
-.modal-header {
-    background-color: #6C4ED6;
-    color: #ecf0f1;
-    display: flex;
-    justify-content: space-between;
-}
-
-.fa-xmark:hover{
-    cursor: pointer;
+    background-color: #19589C;
+    color: #E9E9E6;
 }

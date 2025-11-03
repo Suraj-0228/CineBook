@@ -40,22 +40,6 @@ html {
     transform: scale(1.02);
 }
 
-.Testimonial-card {
-    transition: transform 0.3s ease;
-}
-
-.Testimonial-card:hover {
-    transform: scale(1.05);
-}
-
-.booking-not-found .book-btn {
-    /* background-image: linear-gradient(to bottom, #16222a, #3a6073); */
-    color: #E9E9E6;
-    width: 8rem;
-    text-align: center;
-    border: none !important;
-}
-
 .footer-text {
     font-size: 1.1rem;
 }
@@ -75,39 +59,6 @@ html {
     transform: scale(1.15);
 }
 
-/* Mobile View */
-
-@media (max-width: 767px) {
-
-    .nav-btn {
-        display: none;
-    }
-
-    .movies-card {
-        transition: transform 0.3s ease;
-    }
-
-    .movies-card:hover {
-        transform: scale(1.02);
-    }
-
-    .Testimonial-card {
-        transition: transform 0.3s ease;
-    }
-
-    .Testimonial-card:hover {
-        transform: scale(1.05);
-    }
-
-    .login-social-icon {
-        transition: transform 0.3s ease;
-    }
-
-    .login-social-icon:hover {
-        transform: scale(1.15);
-    }
-}
-
 /* Index Page CSS */
 .features-section {
     background-color: #19589C;
@@ -117,15 +68,4 @@ html {
 .booking-header {
     background-color: #19589C;
     color: #E9E9E6;
-}
-
-#starRating i {
-    font-size: 2rem;
-    color: #ccc;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-#starRating i.active {
-    color: #ffc107;
 }

@@ -28,7 +28,6 @@ if (!isset($_SESSION['adminname'])) {
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -79,7 +78,7 @@ if (!isset($_SESSION['adminname'])) {
                             <td><?= $user_password ?></td>
                             <td><?= $created_at ?></td>
                             <td>
-                                <a href="controllers/delete-process.php?user_id=<?= $user_id ?>" class="text-danger text-decoration-none btn-sm mx-1">
+                                <a href="controllers/delete-users.php?user_id=<?= $user_id ?>" class="text-danger text-decoration-none btn-sm mx-1">
                                     <i class="fa-solid fa-trash"></i> Delete
                                 </a>
                             </td>

@@ -32,7 +32,6 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/movies.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -112,10 +111,10 @@ if (!isset($_SESSION['username'])) {
                         echo '        <div class="card-body">';
                         echo '            <h5 class="card-title fw-bold">' . $title . '</h5>';
                         echo '            <div class="d-flex justify-content-between align-items-center mb-3">';
-                        echo '                <span><i class="fa-solid fa-star text-warning"></i> ' . $rating . '/10</span>';
+                        echo '                <span><i class="fa-solid fa-star text-danger"></i> ' . $rating . '/10</span>';
                         echo '                <span class="text-muted small">' . $language . '</span>';
                         echo '            </div>';
-                        echo '            <a href="movies-details.php?id=' . $id . '" class="btn btn-outline-primary w-100">View Details</a>';
+                        echo '            <a href="movies-details.php?id=' . $id . '" class="btn w-100">View Details</a>';
                         echo '        </div>';
                         echo '    </div>';
                         echo '</div>';

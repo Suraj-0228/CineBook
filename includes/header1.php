@@ -2,7 +2,7 @@
     <!-- Navbar (Visible on desktop) -->
     <nav class="navbar navbar-expand-lg px-3 py-0">
         <a href="home.php" class="navbar-brand">
-            <img src="assets/img/CineBook_Logo.png" alt="CineBook Logo" class="img-fluid">
+            <h1 class="text-light fw-bold mt-2">CineBook</h1>
         </a>
         <ul class="navbar-nav mx-auto">
             <li class="nav-item mx-2"><a class="nav-link" href="home.php">Home</a></li>

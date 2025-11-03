@@ -1,17 +1,6 @@
-/* Home Page Css */
-body,
-html {
-    overflow-x: hidden !important;
-}
-
 .hero-con {
-    width: 70%;
+    width: 60%;
     margin: auto;
-}
-
-.hero-slider img {
-    object-fit: cover;
-    height: 500px;
 }
 
 .slider-item {
@@ -31,27 +20,10 @@ html {
 .slider-item img {
     display: block;
     width: 100%;
-    height: 100%;
+    height: 80%;
     object-fit: cover;
 }
 
 .card-img-top {
     height: 25rem;
-}
-
-@media (max-width: 767px) {
-    .hero-con {
-        width: 100%;
-    }
-
-    .card-img-top {
-        height: 15rem;
-    }
-}
-
-@media (min-width: 768px) {
-
-    .img-slider {
-        display: flex !important;
-    }
 }

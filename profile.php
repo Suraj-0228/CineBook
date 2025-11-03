@@ -31,7 +31,6 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -120,7 +119,7 @@ if (!isset($_SESSION['username'])) {
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="controllers/update-process.php" method="post"> <!-- ✅ moved here -->
+                <form action="controllers/update-users.php" method="post"> <!-- ✅ moved here -->
                     <div class="modal-body p-4">
                         <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 

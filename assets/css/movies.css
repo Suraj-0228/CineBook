@@ -1,29 +1,9 @@
-/* Movies Page Css */
-.custom-search-input {
-    border: 1px solid #19589C;
-    max-width: 100%;
-}
-
-.custom-search-btn {
-    background-color: #19589C;
-    color: #ecf0f1;
-}
-
 .custom-hr {
     border: 1px solid #19589C;
 }
 
-.future-link {
-    text-decoration: none;
-}
-
 .card-img-top {
     height: 25rem;
-}
-
-.view-details-btn {
-    background-color: #19589C;
-    color: #ecf0f1;
 }
 
 /* Catagory Section */
@@ -35,22 +15,7 @@
     margin: 0 auto;
 }
 
-.catagory-section .row .col-6 {
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
-}
-
-.catagory-section .row .col-6:hover {
-    transform: scale(1.06);
-}
-
 .catagory-section .img-link {
     text-decoration: none;
     color: #19589C;
-}
-
-@media (max-width: 767px) {
-    .card-img-top {
-        height: 15rem;
-    }
 }

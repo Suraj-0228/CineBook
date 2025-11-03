@@ -3,8 +3,10 @@
     <div class="w-100">
 
         <!-- Title -->
-        <h2 class="text-center fw-bold text-white border-bottom border-secondary pb-2 mb-3">Admin Panel</h2>
-
+        <a href="index.php" class="navbar-brand">            
+            <h2 class="text-center fw-bold text-white mt-3 mb-0 pb-0">Admin Panel</h2>
+        </a>
+        <hr class="text-light mt-0">
         <!-- Links -->
         <ul class="navbar-nav flex-column">
             <li class="nav-item mb-2">

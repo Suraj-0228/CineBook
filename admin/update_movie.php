@@ -28,7 +28,6 @@ if (!isset($_SESSION['adminname'])) {
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -43,7 +42,7 @@ if (!isset($_SESSION['adminname'])) {
             <div class="card border-0 shadow p-4">
                 <h1 class="text-center fw-bold">Update Movies:</h1>
                 <hr class="mb-4">
-                <form action="controllers/update-process.php" method="post">
+                <form action="controllers/update-movies.php" method="post">
                     <?php
                     require 'includes/dbconnection.php';
 

@@ -30,7 +30,6 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/about.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -47,7 +46,7 @@ if (!isset($_SESSION['username'])) {
                     <p>CineBook is your ultimate digital companion for seamless movie ticket booking. Built with simplicity and speed in mind, CineBook offers a smooth experience to help you browse movies, select your seats, and book tickets instantly — all in just a few taps or clicks. Whether it’s a weekend plan with friends or a spontaneous movie night, CineBook is always ready to serve.</p>
                 </div>
                 <div class="col-12 col-md-5 text-center mt-4 mt-md-0">
-                    <img src="assets/img/CineBook_Logo.png" class="img-fluid rounded p-2" alt="CineBook Logo" style="max-width: 300px;">
+                    <h1 class="text-dark fw-bold mt-2 border border-dark rounded py-3 shadow-lg">CineBook</h1>
                 </div>
             </div>
             <hr class="my-4">

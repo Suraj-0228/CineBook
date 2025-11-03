@@ -11,8 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = trim($_POST['password']);
 
         // Check for admin login (static credentials) ----
-        $admin_username = 'admin';
-        $admin_password = 'admin123';
+        $admin_username = 'Admin';
+        $admin_password = 'adminPassword';
 
         if ($username === $admin_username && $password === $admin_password) {
             $_SESSION['adminname'] = $admin_username;

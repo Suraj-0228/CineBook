@@ -10,23 +10,8 @@ header {
     color: #E9E9E6;
 }
 
-.navbar .navbar-brand .img-fluid {
-    width: 14rem;
-    height: 4rem;
-}
-
 .navbar-nav .nav-link {
     font-size: 1.2rem;
-    color: #E9E9E6;
-}
-
-.login-btn .btn {
-    font-size: 1.1rem;
-    color: #E9E9E6;
-}
-
-.toggle-btn {
-    background-color: #19589C;
     color: #E9E9E6;
 }
 
@@ -78,19 +63,4 @@ header {
 /* Modal Styles */
 .modal-backdrop.show {
     z-index: -10 !important;
-}
-
-/* Mobile view: Hide the navbar and display the offcanvas */
-@media (max-width: 767px) {
-
-    .navbar .navbar-brand .img-fluid {
-        width: 13rem;
-        height: 4rem;
-    }
-
-    .navbar-nav,
-    .login-btn {
-        display: none !important;
-    }
-
 }

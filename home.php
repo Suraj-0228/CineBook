@@ -34,7 +34,6 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/home.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -46,11 +45,11 @@ if (!isset($_SESSION['username'])) {
     <div class="hero-con my-3">
         <div class="hero-slider">
             <div class="slider-item">
-                <img src="assets/img/slider2.jpg" alt="Slider Image 2" class="img-fluid">
+                <img src="https://i.pinimg.com/736x/c9/e8/53/c9e85338209984f5360c1b3e65cbd258.jpg" alt="Slider Image 1" class="img-fluid">
                 <div class="overlay"></div>
             </div>
             <div class="slider-item">
-                <img src="assets/img/slider3.jpg" alt="Slider Image 3" class="img-fluid">
+                <img src="https://i.pinimg.com/1200x/78/05/2d/78052d014b0cbf4160e942d48c376658.jpg" alt="Slider Image 2" class="img-fluid">
                 <div class="overlay"></div>
             </div>
         </div>
@@ -103,12 +102,12 @@ if (!isset($_SESSION['username'])) {
     <!-- Offer Section -->
     <section class="offer-section text-center mt-5">
         <h1 class="fw-bold">Exclusive Offers</h1>
-        <div class="img-slider mt-3">
-            <div class="me-1">
-                <img src="assets/img/offer2.png" alt="Exclusive Offers..." class="offer-img img-fluid">
+        <div class="img-slider mt-3 ps-4">
+            <div class="ms-5">
+                <img src="https://i.pinimg.com/736x/a9/a9/8d/a9a98d4153c905ee39ab80ef5d296ef1.jpg" alt="Exclusive Offers..." class="offer-img img-fluid">
             </div>
-            <div class="ms-1">
-                <img src="assets/img/offer3.png" alt="Exclusive Offers..." class="offer-img img-fluid">
+            <div class="">
+                <img src="https://i.pinimg.com/736x/a9/a9/8d/a9a98d4153c905ee39ab80ef5d296ef1.jpg" alt="Exclusive Offers..." class="offer-img img-fluid">
             </div>
         </div>
     </section>

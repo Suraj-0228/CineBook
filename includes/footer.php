@@ -1,10 +1,10 @@
 <!-- Footer Section -->
 <footer class="footer p-5 text-center">
-    <div class="row d-flex justify-content-between"> <!-- Fixed typo 'justifuy' to 'justify' -->
+    <div class="row d-flex justify-content-between">
         <!-- Footer Right -->
         <div class="col-12 col-md-4 my-2">
-            <a href="home.php" class="mb-5">
-                <img src="assets/img/CineBook_Logo.png" alt="CineBook Logo" class="footer-logo p-2 mb-3 border border-light rounded">
+            <a href="home.php" class="mb-5 text-decoration-none">
+                 <h1 class="text-light fw-bold mt-2 py-3">CineBook</h1>
             </a>
             <p class="left-text fw-bold">Discover the latest blockbusters and timeless classics.
                 Enjoy seamless booking and exclusive member benefits.</p>
