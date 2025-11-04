@@ -30,27 +30,27 @@
             <div class="mb-3">
               <label for="fullname" class="form-label fw-semibold">Full Name</label>
               <input type="text" class="form-control" id="fullname" name="fullname"
-                placeholder="Enter your full name" required>
+                placeholder="Enter Your Full Name....">
             </div>
             <div class="mb-3">
               <label for="email" class="form-label fw-semibold">Email Address</label>
               <input type="email" class="form-control" id="email" name="email"
-                placeholder="Enter your email" required>
+                placeholder="Enter Your Email....">
             </div>
             <div class="mb-3">
               <label for="username" class="form-label fw-semibold">Username</label>
               <input type="text" class="form-control" id="username" name="username"
-                placeholder="Create a username" required>
+                placeholder="Create a Username....">
             </div>
             <div class="mb-3">
               <label for="password" class="form-label fw-semibold">Password</label>
               <input type="password" class="form-control" id="password" name="password"
-                placeholder="Enter your password" required>
+                placeholder="Enter Your Password....">
             </div>
             <div class="mb-3">
               <label for="confirm_password" class="form-label fw-semibold">Confirm Password</label>
               <input type="password" class="form-control" id="confirm_password" name="confirm_password"
-                placeholder="Confirm your password" required>
+                placeholder="Confirm Your Password....">
             </div>
             <div class="form-check mb-3">
               <input type="checkbox" class="form-check-input" id="showpassword" onclick="showPassword()">

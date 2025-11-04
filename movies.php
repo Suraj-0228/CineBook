@@ -39,34 +39,45 @@ if (!isset($_SESSION['username'])) {
     <!-- Navbar -->
     <?php include 'includes/header.php'; ?>
 
-    <!-- 🔍 Search & Filter Section -->
+    <!-- Search & Filter Section -->
     <div class="container py-3 px-0">
         <div class="row justify-content-center mx-2">
             <div class="container mt-4 mb-3 text-center">
-                <form method="GET" action="movies.php" class="d-inline-block">
+                <form method="GET" action="movies.php" class="d-inline-block w-100">
                     <?php
                     require 'includes/dbconnection.php';
 
-                    // Get filter values
                     $filter_genre = isset($_GET['genre']) ? $_GET['genre'] : '';
                     $search_query = isset($_GET['search']) ? trim($_GET['search']) : '';
 
-                    // Build SQL based on filters
+                    $limit = 8; // Movies per page
+                    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+                    $start = ($page - 1) * $limit;
+
                     $sql_query = "SELECT * FROM movies_details WHERE 1=1";
 
                     if (!empty($filter_genre)) {
-                        $sql_query .= " AND genre = '$filter_genre'";
-                    }
-                    if (!empty($search_query)) {
-                        $sql_query .= " AND title LIKE '%$search_query%'";
+                        $sql_query .= " AND genre = '" . mysqli_real_escape_string($con, $filter_genre) . "'";
                     }
 
-                    // Execute query
+                    if (!empty($search_query)) {
+                        $sql_query .= " AND title LIKE '%" . mysqli_real_escape_string($con, $search_query) . "%'";
+                    }
+
+                    // Count total results for pagination
+                    $count_query = str_replace("SELECT *", "SELECT COUNT(*) AS total", $sql_query);
+                    $count_result = mysqli_query($con, $count_query);
+                    $total_row = mysqli_fetch_assoc($count_result);
+                    $total_movies = $total_row['total'];
+                    $total_pages = ceil($total_movies / $limit);
+
+                    // Add limit for current page
+                    $sql_query .= " LIMIT $start, $limit";
                     $result = mysqli_query($con, $sql_query);
                     ?>
 
                     <!-- Search Box -->
-                    <div class="input-group mb-3 d-inline-flex w-75 me-3">
+                    <div class="input-group mb-3 d-inline-flex w-50 me-3">
                         <input type="text" name="search" class="form-control"
                             placeholder="Search by Movie Name....."
                             value="<?= htmlspecialchars($search_query) ?>">
@@ -89,26 +100,9 @@ if (!isset($_SESSION['username'])) {
         <hr class="custom-hr">
     </div>
 
-    <!-- 🎥 Movie Cards Section -->
+    <!-- Movie Cards Section -->
     <section class="container py-4 mb-4">
         <h1 class="text-center fw-bold mb-4">Explore All Movies...</h1>
-
-        <?php
-        require 'includes/dbconnection.php';
-
-        $limit = 8; // Movies per page
-        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $start = ($page - 1) * $limit;
-
-        $total_query = "SELECT COUNT(*) as total FROM movies_details";
-        $total_result = mysqli_query($con, $total_query);
-        $total_row = mysqli_fetch_assoc($total_result);
-        $total_movies = $total_row['total'];
-        $total_pages = ceil($total_movies / $limit);
-
-        $sql_query = "SELECT * FROM movies_details LIMIT $start, $limit";
-        $result = mysqli_query($con, $sql_query);
-        ?>
 
         <div class="row justify-content-center">
             <?php
@@ -150,20 +144,22 @@ if (!isset($_SESSION['username'])) {
             <nav aria-label="Movies pagination">
                 <ul class="pagination pagination-lg justify-content-center mt-5">
                     <li class="page-item <?= ($page <= 1) ? 'disabled' : '' ?>">
-                        <a class="page-link fw-semibold shadow-sm" href="?page=<?= max(1, $page - 1) ?>" tabindex="-1">
+                        <a class="page-link fw-semibold shadow-sm"
+                            href="?page=<?= max(1, $page - 1) ?>&search=<?= urlencode($search_query) ?>&genre=<?= urlencode($filter_genre) ?>">
                             <i class="fa-solid fa-chevron-left"></i> Prev
                         </a>
                     </li>
                     <?php for ($i = 1; $i <= $total_pages; $i++): ?>
                         <li class="page-item <?= ($page == $i) ? 'active' : '' ?>">
                             <a class="page-link fw-semibold shadow-sm <?= ($page == $i) ? 'bg-primary text-white border-primary' : '' ?>"
-                                href="?page=<?= $i ?>">
+                                href="?page=<?= $i ?>&search=<?= urlencode($search_query) ?>&genre=<?= urlencode($filter_genre) ?>">
                                 <?= $i ?>
                             </a>
                         </li>
                     <?php endfor; ?>
                     <li class="page-item <?= ($page >= $total_pages) ? 'disabled' : '' ?>">
-                        <a class="page-link fw-semibold shadow-sm" href="?page=<?= min($total_pages, $page + 1) ?>">
+                        <a class="page-link fw-semibold shadow-sm"
+                            href="?page=<?= min($total_pages, $page + 1) ?>&search=<?= urlencode($search_query) ?>&genre=<?= urlencode($filter_genre) ?>">
                             Next <i class="fa-solid fa-chevron-right"></i>
                         </a>
                     </li>

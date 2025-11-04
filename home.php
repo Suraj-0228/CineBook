@@ -175,11 +175,10 @@ if (!isset($_SESSION['username'])) {
     <hr class="mx-4">
 
     <!-- Subscribe Form -->
-    <!-- ✉️ Subscription Section -->
     <section class="card sub-section mb-5 mx-4 p-4 shadow-lg border-0 rounded-4 bg-light">
         <div class="text-center">
             <h4 class="fw-bold mb-3">
-                Don’t Miss Out! 🎬<br>
+                Don’t Miss Out!<br>
                 <span class="fw-normal">Subscribe for the latest movies & exclusive offers.</span>
             </h4>
             <form action="#" method="post" class="mt-3">

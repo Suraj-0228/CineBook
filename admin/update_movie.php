@@ -27,6 +27,7 @@ if (!isset($_SESSION['adminname'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/update.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
 </head>
 
@@ -37,60 +38,88 @@ if (!isset($_SESSION['adminname'])) {
         <!-- Navbar -->
         <?php include 'includes/sidebar.php'; ?>
 
-        <!-- Update Movies Form -->
-        <div class="container p-5 pb-0 pt-4">
-            <div class="card border-0 shadow p-4">
-                <h1 class="text-center fw-bold">Update Movies:</h1>
-                <hr class="mb-4">
-                <form action="controllers/update-movies.php" method="post">
+        <!-- 🎥 Update Movie Page -->
+        <section class="container my-5 px-5">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header text-center text-white py-4 admin-header">
+                    <h1 class="fw-bold text-uppercase mb-0">
+                        <i class="fa-solid fa-film me-2"></i> Update Movie Details
+                    </h1>
+                </div>
+                <div class="card-body p-4 p-md-5 bg-light">
                     <?php
                     require 'includes/dbconnection.php';
+                    if (isset($_GET['movie_id'])) {
+                        $id = $_GET['movie_id'];
+                        $sql_query = "SELECT * FROM movies_details WHERE movie_id = '$id'";
+                        $result = mysqli_query($con, $sql_query);
 
-                    $id = $_GET['movie_id'];
-
-                    $sql_query = "select * from movies_details where movie_id = '$id'";
-                    $result = mysqli_query($con, $sql_query);
-
-                    while ($rows = mysqli_fetch_assoc($result)) {
-                        $id = $rows['movie_id'];
-                        $movie_title = $rows['title'];
-                        $language = $rows['language'];
-                        $release_date = $rows['release_date'];
-                        $genre = $rows['genre'];
-                        $rating = $rows['rating'];
-                        $poster = $rows['poster_url'];
-                        $description = $rows['description'];
-                    };
+                        if ($rows = mysqli_fetch_assoc($result)) {
+                            $movie_title = $rows['title'];
+                            $language = $rows['language'];
+                            $release_date = $rows['release_date'];
+                            $genre = $rows['genre'];
+                            $rating = $rows['rating'];
+                            $poster = $rows['poster_url'];
+                            $description = $rows['description'];
+                        }
+                    }
                     ?>
-                    <div class="mb-3">
-                        <label for="title" class="form-label fw-bold">Movie Title:</label>
-                        <input type="hidden" class="form-control" name="movie_id" id="movie_id" value="<?php echo $id; ?>">
-                        <input type="text" class="form-control" name="title1" id="title1" placeholder="Enter Movie Title...." value="<?php echo $movie_title; ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="language" class="form-label fw-bold">Language</label>
-                        <input type="text" class="form-control" name="language1" id="language1" placeholder="Enter Movie Language...." value="<?php echo $language; ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="release_date" class="form-label fw-bold">Release Date</label>
-                        <input type="date" class="form-control" name="release_date1" id="release_date1" value="<?php echo $release_date; ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="genre" class="form-label fw-bold">Genre:</label>
-                        <input type="text" class="form-control" name="genre1" id="genre1" placeholder="Enter Movie Genre...." value="<?php echo $genre; ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="rating" class="form-label fw-bold">Movie Rating:</label>
-                        <input type="text" class="form-control" name="rating1" id="rating1" value="<?php echo $rating; ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="description" class="form-label fw-bold">Description</label>
-                        <textarea class="form-control" name="description" id="description" rows="3" placeholder="Enter Movie Description...."><?php echo $description; ?></textarea>
-                    </div>
-                    <button type="submit" class="btn">Update Movie</button>
-                </form>
+                    <form action="controllers/update-movies.php" method="post" class="needs-validation" novalidate>
+                        <input type="hidden" name="movie_id" value="<?= $id ?>">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label for="title1" class="form-label fw-semibold">Movie Title:</label>
+                                <input type="text" class="form-control" id="title1" name="title1"
+                                    placeholder="Enter movie title..." value="<?= htmlspecialchars($movie_title) ?>">
+                                <div class="invalid-feedback">Please enter the movie title.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="language1" class="form-label fw-semibold">Language:</label>
+                                <input type="text" class="form-control" id="language1" name="language1"
+                                    placeholder="Enter movie language..." value="<?= htmlspecialchars($language) ?>">
+                                <div class="invalid-feedback">Please enter a language.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="release_date1" class="form-label fw-semibold">Release Date:</label>
+                                <input type="date" class="form-control" id="release_date1" name="release_date1"
+                                    value="<?= htmlspecialchars($release_date) ?>">
+                                <div class="invalid-feedback">Please select a release date.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="genre1" class="form-label fw-semibold">Genre:</label>
+                                <input type="text" class="form-control" id="genre1" name="genre1"
+                                    placeholder="Enter movie genre..." value="<?= htmlspecialchars($genre) ?>">
+                                <div class="invalid-feedback">Please enter a genre.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="rating1" class="form-label fw-semibold">Movie Rating:</label>
+                                <input type="number" class="form-control" id="rating1" name="rating1"
+                                    step="0.1" min="0" max="10" value="<?= htmlspecialchars($rating) ?>">
+                                <div class="invalid-feedback">Please provide a rating between 0 and 10.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="poster1" class="form-label fw-semibold">Poster URL:</label>
+                                <input type="url" class="form-control" id="poster1" name="poster1"
+                                    placeholder="Enter poster image URL..." value="<?= htmlspecialchars($poster) ?>">
+                                <div class="invalid-feedback">Please enter a valid image URL.</div>
+                            </div>
+                            <div class="col-12">
+                                <label for="description" class="form-label fw-semibold">Description:</label>
+                                <textarea class="form-control" id="description" name="description" rows="4"
+                                    placeholder="Enter movie description..."><?= htmlspecialchars($description) ?></textarea>
+                                <div class="invalid-feedback">Please provide a description.</div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-5">
+                            <button type="submit" class="btn w-100 px-5 py-2 fw-semibold">
+                                <i class="fa-solid fa-upload me-2"></i> Update Movie
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
+        </section>
     </main>
 
 </body>

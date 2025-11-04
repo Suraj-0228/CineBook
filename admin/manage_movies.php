@@ -38,23 +38,18 @@ if (!isset($_SESSION['adminname'])) {
         <?php include 'includes/sidebar.php'; ?>
 
         <!-- Manage Movies Section -->
-        <section class="w-100 p-5">
-            <!-- Add Movies Button -->
-            <section class="container my-4">
-                <div class="d-flex justify-content-between align-items-center p-4 shadow rounded bg-white">
-                    <h2 class="fw-bold m-0">Manage Movies</h2>
-                    <!-- Add New Movie Button -->
-                    <a href="add_movie.php" class="btn d-flex align-items-center">
-                        <i class="fa fa-plus-circle fa-lg me-2"></i> Add New Movie
-                    </a>
-                </div>
-                <hr class="my-4">
-            </section>
-
-            <!-- Display Movies Table -->
-            <section class="container my-3">
-                <table class="table table-bordered table-striped table-hover align-middle shadow">
-                    <thead class="text-center">
+        <section class="container my-5 px-5">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+                <h1 class="fw-bold text-primary text-uppercase mb-3 mb-md-0">
+                    <i class="fa-solid fa-video me-2"></i> Manage Movies
+                </h1>
+                <a href="add_movie.php" class="btn fw-semibold shadow">
+                    <i class="fa-solid fa-plus me-2"></i> Add New Movie
+                </a>
+            </div>
+            <div class="table-responsive shadow rounded border">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-dark text-center">
                         <tr>
                             <th>Poster</th>
                             <th>Movie ID</th>
@@ -67,46 +62,69 @@ if (!isset($_SESSION['adminname'])) {
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center">
                         <?php
                         require 'includes/dbconnection.php';
                         $sql_query = "SELECT * FROM movies_details";
                         $result = mysqli_query($con, $sql_query);
 
-                        while ($rows = mysqli_fetch_assoc($result)) {
-                            $id = $rows['movie_id'];
-                            $movie_title = $rows['title'];
-                            $language = $rows['language'];
-                            $release_date = $rows['release_date'];
-                            $genre = $rows['genre'];
-                            $rating = $rows['rating'];
-                            $poster = $rows['poster_url'];
-                            $description = $rows['description'];
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($rows = mysqli_fetch_assoc($result)) {
+                                $id = $rows['movie_id'];
+                                $movie_title = $rows['title'];
+                                $language = $rows['language'];
+                                $release_date = $rows['release_date'];
+                                $genre = $rows['genre'];
+                                $rating = $rows['rating'];
+                                $poster = $rows['poster_url'];
+                                $description = $rows['description'];
                         ?>
-                            <tr class="text-center">
-                                <td>
-                                    <img src="<?= $poster ?>" class="rounded" width="100" alt="<?= $movie_title ?>">
-                                </td>
-                                <td><?= $id ?></td>
-                                <td><?= $movie_title ?></td>
-                                <td><?= $language ?></td>
-                                <td><?= $release_date ?></td>
-                                <td><?= $genre ?></td>
-                                <td><?= $rating ?> <i class="fa-solid fa-star fa-xs text-danger"></i></td>
-                                <td class="text-truncate" style="max-width: 250px;"><?= $description ?></td>
-                                <td class="text-center">
-                                    <a href="update_movie.php?movie_id=<?= $id ?>" class="text-success text-decoration-none btn-sm mx-1">
-                                        <i class="fa-solid fa-edit"></i>
-                                    </a>
-                                    <a href="controllers/delete-movie.php?movie_id=<?= $id ?>" class="text-danger text-decoration-none btn-sm mx-1">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php } ?>
+                                <tr>
+                                    <td>
+                                        <img src="<?= htmlspecialchars($poster) ?>"
+                                            alt="<?= htmlspecialchars($movie_title) ?>"
+                                            class="img-fluid rounded shadow-sm border"
+                                            style="width: 90px; height: 120px; object-fit: cover;">
+                                    </td>
+                                    <td class="fw-semibold"><?= $id ?></td>
+                                    <td class="fw-semibold"><?= htmlspecialchars($movie_title) ?></td>
+                                    <td><?= htmlspecialchars($language) ?></td>
+                                    <td><?= htmlspecialchars($release_date) ?></td>
+                                    <td>
+                                        <span class="badge bg-secondary px-3 py-2"><?= htmlspecialchars($genre) ?></span>
+                                    </td>
+                                    <td>
+                                        <span class="fw-semibold"><?= $rating ?></span>
+                                        <i class="fa-solid fa-star text-danger ms-1"></i>
+                                    </td>
+                                    <td class="text-start text-truncate" style="max-width: 250px;">
+                                        <?= htmlspecialchars($description) ?>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <a href="update_movie.php?movie_id=<?= $id ?>"
+                                                class="text-success text-decoration-none"
+                                                data-bs-toggle="tooltip" title="Edit Movie">
+                                                <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                                            </a>
+                                            <a href="controllers/delete-movie.php?movie_id=<?= $id ?>"
+                                                class="text-danger text-decoration-none"
+                                                onclick="return confirm('Are you sure you want to delete this movie?');"
+                                                data-bs-toggle="tooltip" title="Delete Movie">
+                                                <i class="fa-solid fa-trash fa-lg"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                        <?php
+                            }
+                        } else {
+                            echo "<tr><td colspan='9' class='text-center text-muted py-4'>No movies available.</td></tr>";
+                        }
+                        ?>
                     </tbody>
                 </table>
-            </section>
+            </div>
         </section>
     </main>
 

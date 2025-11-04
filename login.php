@@ -30,12 +30,12 @@
                         <form action="#" method="POST" novalidate>
                             <div class="mb-3">
                                 <label for="username" class="form-label fw-semibold">Username</label>
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Enter Your Username....">
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label fw-semibold">Password</label>
                                 <div class="input-group">
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter Your Password....">
                                     <button class="btn" type="button" id="togglePassword">
                                         <i class="fa-solid fa-eye"></i>
                                     </button>

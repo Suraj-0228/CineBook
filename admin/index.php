@@ -37,156 +37,127 @@ if (!isset($_SESSION['adminname'])) {
         <!-- Navbar -->
         <?php include 'includes/sidebar.php'; ?>
 
-        <!-- Hero Section -->
-        <section class="container dashboard-section p-5">
-            <div class="">
-                <h1 class="fw-bold">Admin Dashboard:</h1>
-                <hr class="border border-dark">
+        <!-- Admin Dashboard Section -->
+        <section class="container my-5 px-5">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+                <h1 class="fw-bold text-primary text-uppercase mb-3 mb-md-0">
+                    <i class="fa-solid fa-user-tie me-2"></i> Admin Dashboard
+                </h1>
             </div>
-            <div class="row g-4">
+            <div class="row g-4 text-center">
                 <div class="col-12 col-sm-6 col-md-4">
-                    <div class="card dashboard-card shadow h-100 text-center">
-                        <div class="card-body p-5 pb-4 d-flex flex-column align-items-center justify-content-center">
+                    <div class="card shadow border-0 rounded h-100">
+                        <div class="card-body p-5 d-flex flex-column justify-content-center align-items-center">
                             <i class="fa fa-film fa-2xl text-primary mb-4"></i>
-                            <span class="fs-3 fw-bold">Total Movies</span>
+                            <h5 class="fw-bold mb-2">Total Movies</h5>
                             <?php
                             require 'includes/dbconnection.php';
-
-                            $sql_query = "select count(*) as total_movies from movies_details";
-                            $result = mysqli_query($con, $sql_query);
-
-                            if ($result) {
-                                $row = mysqli_fetch_assoc($result);
-                                echo "<p class='mt-2 mb-0 fs-5'><strong>" . $row['total_movies'] . "</strong></p>";
-                            } else {
-                                echo "<p class='mt-2 mb-0 fs-5 text-danger'><strong>Error</strong></p>";
-                            }
+                            $result = mysqli_query($con, "SELECT COUNT(*) AS total_movies FROM movies_details");
+                            $row = mysqli_fetch_assoc($result);
                             ?>
+                            <p class="fs-4 fw-semibold mb-0 text-dark"><?= $row['total_movies'] ?? '0'; ?></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-4">
-                    <div class="card dashboard-card shadow h-100 text-center">
-                        <div class="card-body p-5 pb-4 d-flex flex-column align-items-center justify-content-center">
+                    <div class="card shadow border-0 rounded h-100">
+                        <div class="card-body p-5 d-flex flex-column justify-content-center align-items-center">
                             <i class="fa fa-ticket fa-2xl text-success mb-4"></i>
-                            <span class="fs-3 fw-bold">Total Bookings</span>
+                            <h5 class="fw-bold mb-2">Total Bookings</h5>
                             <?php
-                            require 'includes/dbconnection.php';
-
-                            $sql_query = "select count(*) as total_booking from bookings";
-                            $result = mysqli_query($con, $sql_query);
-
-                            if ($result) {
-                                $row = mysqli_fetch_assoc($result);
-                                echo "<p class='mt-2 mb-0 fs-5'><strong>" . $row['total_booking'] . "</strong></p>";
-                            } else {
-                                echo "<p class='mt-2 mb-0 fs-5 text-danger'><strong>0</strong></p>";
-                            }
+                            $result = mysqli_query($con, "SELECT COUNT(*) AS total_booking FROM bookings");
+                            $row = mysqli_fetch_assoc($result);
                             ?>
+                            <p class="fs-4 fw-semibold mb-0 text-dark"><?= $row['total_booking'] ?? '0'; ?></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-4">
-                    <div class="card dashboard-card shadow h-100 text-center">
-                        <div class="card-body p-5 pb-4 d-flex flex-column align-items-center justify-content-center">
+                    <div class="card shadow border-0 rounded h-100">
+                        <div class="card-body p-5 d-flex flex-column justify-content-center align-items-center">
                             <i class="fa fa-user fa-2xl text-danger mb-4"></i>
-                            <span class="fs-3 fw-bold">Total Users</span>
+                            <h5 class="fw-bold mb-2">Total Users</h5>
                             <?php
-                            require 'includes/dbconnection.php';
-
-                            $sql_query = "select count(*) as total_user from users";
-                            $result = mysqli_query($con, $sql_query);
-
-                            if ($result) {
-                                $row = mysqli_fetch_assoc($result);
-                                echo "<p class='mt-2 mb-0 fs-5'><strong>" . $row['total_user'] . "</strong></p>";
-                            } else {
-                                echo "<p class='mt-2 mb-0 fs-5 text-danger'><strong>Error</strong></p>";
-                            }
+                            $result = mysqli_query($con, "SELECT COUNT(*) AS total_user FROM users");
+                            $row = mysqli_fetch_assoc($result);
                             ?>
+                            <p class="fs-4 fw-semibold mb-0 text-dark"><?= $row['total_user'] ?? '0'; ?></p>
                         </div>
                     </div>
                 </div>
+                <hr class="border border-dark my-5 opacity-75">
             </div>
-            <!-- Recent Booking -->
-            <section class="container recent-booking my-3">
-                <div class="my-5">
-                    <h1 class="fw-bold">Recent Bookings:</h1>
-                    <hr>
+
+            <!-- Recent Bookings Section -->
+            <section class="recent-booking">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+                    <h1 class="fw-bold text-primary text-uppercase mb-3 mb-md-0">
+                        <i class="fa-solid fa-ticket me-2"></i> Recent Bookings
+                    </h1>
                 </div>
-
                 <?php
-                require 'includes/dbconnection.php';
-
-                // Fetch the last 5 bookings
-                $query = "SELECT b.*, u.username, m.title, s.show_date, s.show_time, t.theater_name FROM bookings b
-                        JOIN users u ON b.user_id = u.user_id
-                        JOIN movies_details m ON b.movie_id = m.movie_id
-                        JOIN showtimes s ON b.show_id = s.show_id
-                        JOIN theaters t ON s.theater_id = t.theater_id 
-                        order by b.booking_id desc";
+                $query = "
+            SELECT b.*, u.username, m.title, s.show_date, s.show_time, t.theater_name 
+            FROM bookings b
+            JOIN users u ON b.user_id = u.user_id
+            JOIN movies_details m ON b.movie_id = m.movie_id
+            JOIN showtimes s ON b.show_id = s.show_id
+            JOIN theaters t ON s.theater_id = t.theater_id
+            ORDER BY b.booking_id DESC
+            LIMIT 5
+        ";
                 $result_recent = mysqli_query($con, $query);
 
-                if (mysqli_num_rows($result_recent) > 0) {
-                    echo "
-                <table class='table table-bordered table-striped table-hover align-middle shadow'>
-                    <thead class='text-center'>
-                        <tr>
-                            <th>Booking ID</th>
-                            <th>Username</th>
-                            <th>Movie Title</th>
-                            <th>Show Date</th>
-                            <th>Show Time</th>
-                            <th>Theater</th>
-                            <th>Seat</th>
-                            <th>Price/Ticket</th>
-                            <th>Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>";
-
-                    while ($row = mysqli_fetch_assoc($result_recent)) {
-                        $booking_id = $row['booking_id'];
-                        $username = $row['username'];
-                        $movie_title = $row['title'];
-                        $show_date = $row['show_date'];
-                        $show_time = $row['show_time'];
-                        $theater_name = $row['theater_name'];
-                        $seat_row = $row['seat_row'];
-                        $total_seat = $row['total_seat'];
-                        $price = $row['ticket_price'];
-                        $amount = $row['amount'];
-                        $booking_status = $row['booking_status'];
-
-                        echo "
-                <tr class='text-center'>
-                    <td>$booking_id</td>
-                    <td>$username</td>
-                    <td>$movie_title</td>
-                    <td>$show_date</td>
-                    <td>$show_time</td>
-                    <td>$theater_name</td>
-                    <td>$seat_row - $total_seat</td>
-                    <td>₹$price</td>
-                    <td>₹$amount</td>                
-                    <td>";
-
-                        if ($booking_status == 'Pending') {
-                            echo "<span class='badge bg-warning text-dark'>Pending</span>";
-                        } elseif ($booking_status == 'Approved') {
-                            echo "<span class='badge bg-success'>Approved</span>";
-                        } else {
-                            echo "<span class='badge bg-danger'>Cancelled</span>";
-                        }
-                    }
-
-                    echo "</tbody></table>";
-                } else {
-                    echo "<p class='text-center text-muted'>No recent bookings found.</p>";
-                }
+                if (mysqli_num_rows($result_recent) > 0) :
                 ?>
+                    <div class="table-responsive shadow-sm rounded">
+                        <table class="table table-striped table-hover align-middle mb-0">
+                            <thead class="table-dark text-center">
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>User</th>
+                                    <th>Movie</th>
+                                    <th>Show Date</th>
+                                    <th>Show Time</th>
+                                    <th>Theater</th>
+                                    <th>Seat</th>
+                                    <th>Price</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <?php while ($row = mysqli_fetch_assoc($result_recent)) : ?>
+                                    <tr>
+                                        <td><?= $row['booking_id']; ?></td>
+                                        <td><?= htmlspecialchars($row['username']); ?></td>
+                                        <td><?= htmlspecialchars($row['title']); ?></td>
+                                        <td><?= $row['show_date']; ?></td>
+                                        <td><?= $row['show_time']; ?></td>
+                                        <td><?= htmlspecialchars($row['theater_name']); ?></td>
+                                        <td><?= $row['seat_row']; ?> - <?= $row['total_seat']; ?></td>
+                                        <td>₹<?= $row['ticket_price']; ?></td>
+                                        <td>₹<?= $row['amount']; ?></td>
+                                        <td>
+                                            <?php
+                                            $status = $row['booking_status'];
+                                            $badge_class = match ($status) {
+                                                'Pending' => 'bg-warning text-dark',
+                                                'Approved' => 'bg-success',
+                                                default => 'bg-danger'
+                                            };
+                                            ?>
+                                            <span class="badge <?= $badge_class; ?> px-3 py-2 fw-semibold"><?= $status; ?></span>
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php else : ?>
+                    <p class="text-center text-muted mt-4">No recent bookings found.</p>
+                <?php endif; ?>
             </section>
-
         </section>
     </main>
 

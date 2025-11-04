@@ -1,13 +1,16 @@
 <!-- Sidebar -->
-<nav class="navbar navbar-dark bg-dark d-flex flex-column justify-content-between vh-100 p-3 shadow" style="width: 280px;">
+<nav class="navbar admin-header d-flex flex-column justify-content-between vh-100 p-3 shadow" style="width: 280px;">
 
     <!-- Top Section -->
     <div class="w-100">
         <!-- Logo / Title -->
         <a href="index.php" class="navbar-brand d-flex align-items-center justify-content-center">
-            <h4 class="fw-bold text-white">Admin Panel</h4>
+            <h3 class="fw-bold text-white mb-3 mb-md-0">
+                <i class="fa-solid fa-user-tie me-2"></i> Admin Panel
+            </h3>
+            <!-- <h2 class="fw-bold text-white">Admin Panel</h2> -->
         </a>
-        <hr class="text-secondary mt-0 mb-4">
+        <hr class="text-white opacity-100 mt-0 mb-4">
 
         <!-- Navigation Links -->
         <ul class="navbar-nav flex-column">
@@ -41,7 +44,7 @@
             onclick="return confirm('Are You Sure?? You want to Logout!!');">
             <i class="fa fa-sign-out-alt me-2"></i> Logout
         </a>
-        <p class="text-center text-secondary small mb-0 opacity-75">
+        <p class="text-center text-white small mb-0 opacity-75">
             &copy; 2025 <strong>CineBook</strong>
         </p>
     </div>
