@@ -38,73 +38,89 @@ if (!isset($_SESSION['username'])) {
     <?php include 'includes/header.php'; ?>
 
     <!-- About Section -->
-    <section class="about-section py-4 px-2">
+    <section class="about-section py-5 bg-light text-dark">
         <div class="container">
-            <div class="about-cinebook row align-items-center">
+            <!-- About CineBook -->
+            <div class="row align-items-center mb-5">
                 <div class="col-12 col-md-7">
-                    <h2 class="fw-bold mb-3">About CineBook:</h2>
-                    <p>CineBook is your ultimate digital companion for seamless movie ticket booking. Built with simplicity and speed in mind, CineBook offers a smooth experience to help you browse movies, select your seats, and book tickets instantly — all in just a few taps or clicks. Whether it’s a weekend plan with friends or a spontaneous movie night, CineBook is always ready to serve.</p>
+                    <h2 class="fw-bold mb-3 text-uppercase">About CineBook</h2>
+                    <p class="lead">
+                        CineBook is your ultimate digital companion for seamless movie ticket booking.
+                        Built with simplicity and speed in mind, CineBook offers a smooth experience to help you browse movies,
+                        select your seats, and book tickets instantly — all in just a few taps or clicks.
+                        Whether it’s a weekend plan with friends or a spontaneous movie night, CineBook is always ready to serve.
+                    </p>
                 </div>
                 <div class="col-12 col-md-5 text-center mt-4 mt-md-0">
-                    <h1 class="text-dark fw-bold mt-2 border border-dark rounded py-3 shadow-lg">CineBook</h1>
+                    <h1 class="display-5 fw-bold  border border-dark rounded py-3 shadow-sm bg-white">
+                        CineBook
+                    </h1>
                 </div>
             </div>
-            <hr class="my-4">
-            <div class="mt-1">
-                <h2 class="fw-bold mb-3">Our Mission:</h2>
-                <p>At CineBook, our mission is to redefine the way people experience cinema. We aim to make movie ticket booking more accessible, faster, and more enjoyable for everyone. By combining user-friendly design with real-time seat availability and reliable transactions, we strive to make your movie journey effortless and exciting from start to finish.</p>
+            <hr class="border-secondary my-4">
+            <!-- Mission -->
+            <div class="mb-5">
+                <h2 class="fw-bold mb-3 text-uppercase">Our Mission</h2>
+                <p class="lead">
+                    At CineBook, our mission is to redefine the way people experience cinema.
+                    We aim to make movie ticket booking more accessible, faster, and more enjoyable for everyone.
+                    By combining user-friendly design with real-time seat availability and secure transactions,
+                    we strive to make your movie journey effortless and exciting from start to finish.
+                </p>
             </div>
-            <hr class="my-4">
-            <div class="mt-1">
-                <h2 class="fw-bold mb-3">Platform Highlights:</h2>
+            <hr class="border-secondary my-4">
+            <!-- Platform Highlights -->
+            <div class="mb-5">
+                <h2 class="fw-bold mb-3 text-uppercase">Platform Highlights</h2>
                 <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table class="table table-hover align-middle border">
                         <tbody>
                             <tr>
-                                <th>Instant Ticket Booking</th>
-                                <td>No more long queues or complex apps. Book in seconds.</td>
+                                <th scope="row" class="w-25 ">Instant Ticket Booking</th>
+                                <td>No more long queues or complex apps — book in seconds.</td>
                             </tr>
                             <tr>
-                                <th>Live Seat Selection</th>
+                                <th scope="row" class="">Live Seat Selection</th>
                                 <td>View available seats and choose exactly where you want to sit.</td>
                             </tr>
                             <tr>
-                                <th>Mobile Friendly</th>
+                                <th scope="row" class="">Mobile Friendly</th>
                                 <td>Fully responsive design for smooth booking on any device.</td>
                             </tr>
                             <tr>
-                                <th>Secure Payments</th>
+                                <th scope="row" class="">Secure Payments</th>
                                 <td>Fast and protected transactions using trusted gateways.</td>
                             </tr>
                             <tr>
-                                <th>Exclusive Offers</th>
+                                <th scope="row" class="">Exclusive Offers</th>
                                 <td>Enjoy discounts and festive deals you won’t find elsewhere.</td>
                             </tr>
                             <tr>
-                                <th>Upcoming Releases</th>
-                                <td>Stay updated with what's hitting theaters soon.</td>
+                                <th scope="row" class="">Upcoming Releases</th>
+                                <td>Stay updated with what’s hitting theaters soon.</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <hr class="my-4">
-            <div class="mt-1">
-                <h2 class="fw-bold mb-3">Contact & Support Us:</h2>
+            <hr class="border-secondary my-4">
+            <!-- Contact & Support -->
+            <div>
+                <h2 class="fw-bold mb-3 text-uppercase">Contact & Support</h2>
                 <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table class="table table-striped align-middle border">
                         <tbody>
                             <tr>
-                                <th>Email:</th>
+                                <th scope="row" class="w-25 ">Email</th>
                                 <td>cinebookmovies@gmail.com</td>
                             </tr>
                             <tr>
-                                <th>Contact:</th>
-                                <td>+91 6359421359</td>
+                                <th scope="row" class="">Contact</th>
+                                <td>+91 63594 21359</td>
                             </tr>
                             <tr>
-                                <th>Contact Form:</th>
-                                <td>We will provide you contact form in platform very soon.</td>
+                                <th scope="row" class="">Contact Form</th>
+                                <td>We will provide you a contact form on the platform very soon.</td>
                             </tr>
                         </tbody>
                     </table>

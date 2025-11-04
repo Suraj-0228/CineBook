@@ -1,12 +1,13 @@
-.container .img-fluid {
-    background-color: #19589C;
+.about-section h2 {
+    color: #222;
+    letter-spacing: 0.5px;
 }
 
-.container .img-fluid {
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.6);
-    transition: transform 0.6s ease;
+.about-section .table th {
+    width: 30%;
+    font-weight: 600;
 }
 
-.container .img-fluid:hover {
-    transform: scale(1.05);
+.about-section .table td {
+    color: #333;
 }

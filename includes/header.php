@@ -1,66 +1,78 @@
+<!-- 🎥 CineBook Header -->
 <header>
-    <!-- Navbar (Visible on desktop) -->
-    <nav class="navbar navbar-expand-lg px-3 py-0">
-        <a href="home.php" class="navbar-brand">
-            <h1 class="text-light fw-bold mt-2">CineBook</h1>
-        </a>
-        <ul class="navbar-nav mx-auto">
-            <li class="nav-item mx-2"><a class="nav-link" href="home.php">Home</a></li>
-            <li class="nav-item mx-2"><a class="nav-link" href="movies.php">Movies</a></li>
-            <li class="nav-item mx-2"><a class="nav-link" href="my-booking.php">My Bookings</a></li>
-            <li class="nav-item mx-2"><a class="nav-link" href="about.php">About Us</a></li>
-            <li class="nav-item mx-2"><a href='profile.php?user_id=<?php echo $_SESSION["user_id"]; ?>' class="nav-link">Profile</a></li>
-        </ul>
-        <!-- Logout Button -->
-        <div class="sidebar-btn d-none d-lg-flex d-flex flex-row mx-1">
-            <a href="logout.php" class="bg-danger text-white text-decoration-none border border-light d-block text-center py-2 px-3 rounded"
-                onclick="return confirm('Are You Sure!! You want to Logout??');">
-                <i class="fa fa-sign-out-alt me-2"></i> Logout
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg px-3 py-2 shadow-sm">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a href="home.php" class="navbar-brand d-flex align-items-center">
+                <h1 class="fw-bold mb-0 text-light">CineBook</h1>
             </a>
-        </div>
-        <!-- Sidebar Toggle Button -->
-        <button class="btn d-lg-none toggle-btn py-2 border border-light ms-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-            <i class="fas fa-bars fa-xl"></i>
-        </button>
-    </nav>
-    <!-- Sidebar (Offcanvas) for Mobile -->
-    <div class="offcanvas offcanvas-start p-2" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header justify-content-between">
-            <h2 class="offcanvas-title" id="offcanvasExampleLabel">Options Menu</h2>
-            <li type="button" class="fa fa-xmark mt-1 text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></li>
-        </div>
-        <!-- Sidebar Body -->
-        <div class="offcanvas-body" style="font-size: 1.2rem;">
-            <div class="d-flex flex-column">
-                <div class="sidebar-a d-flex align-items-center mb-3">
-                    <i class="fa fa-home me-3"></i>
-                    <a href="home.php" class="nav-link p-0">Home</a>
-                </div>
-                <div class="sidebar-a d-flex align-items-center mb-3">
-                    <i class="fa fa-film me-3"></i>
-                    <a href="movies.php" class="nav-link p-0">Movies</a>
-                </div>
-                <div class="sidebar-a d-flex align-items-center mb-3">
-                    <i class="fa fa-ticket me-3"></i>
-                    <a href="my-booking.php" class="nav-link p-0">My Bookings</a>
-                </div>
-                <div class="sidebar-a d-flex align-items-center mb-3">
-                    <i class="fa fa-circle-info me-3"></i>
-                    <a href="about.php" class="nav-link p-0">About Us</a>
-                </div>
-                <div class="sidebar-a d-flex align-items-center mb-3">
-                    <i class="fa fa-user me-3"></i>
-                    <a href="profile.php?user_id=<?php echo $_SESSION['user_id']; ?>" class="nav-link p-0">Profile</a>
-                </div>
-                <!-- Logout Button -->
-                <div class="sidebar-btn d-flex flex-row mx-1">
-                    <a href="logout.php" class="btn border border-light text-center text-white">Log Out</a>
+            <!-- Toggle Button (Mobile) -->
+            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle navigation">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <!-- Desktop Nav -->
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item mx-2"><a class="nav-link active text-light" href="home.php">Home</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link text-light" href="movies.php">Movies</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link text-light" href="my-booking.php">My Bookings</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link text-light" href="about.php">About Us</a></li>
+                    <li class="nav-item mx-2">
+                        <a href="profile.php?user_id=<?php echo $_SESSION['user_id']; ?>" class="nav-link text-light">Profile</a>
+                    </li>
+                </ul>
+                <!-- Logout (Visible on Desktop) -->
+                <div class="d-none d-lg-block">
+                    <a href="logout.php"
+                        class="bg-danger rounded fw-semibold text-decoration-none text-white px-3 py-2 border border-light"
+                        onclick="return confirm('Are You Sure?? You want to Logout!!');">
+                        <i class="fa fa-sign-out-alt me-2"></i>Logout
+                    </a>
                 </div>
             </div>
         </div>
+    </nav>
 
-        <div class="offcanvas-footer p-3">
-            <p class="text-center mb-2">&copy; 2025 CineBook. All rights reserved.</p>
+    <!-- Offcanvas Sidebar (Mobile Menu) -->
+    <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h4 class="offcanvas-title fw-bold text-white" id="mobileMenuLabel">Menu</h4>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column justify-content-between">
+            <!-- Menu Items -->
+            <div>
+                <a href="home.php" class="nav-link text-light mb-3 d-flex align-items-center">
+                    <i class="fa fa-home me-3 text-white"></i> Home
+                </a>
+                <a href="movies.php" class="nav-link text-light mb-3 d-flex align-items-center">
+                    <i class="fa fa-film me-3 text-white"></i> Movies
+                </a>
+                <a href="my-booking.php" class="nav-link text-light mb-3 d-flex align-items-center">
+                    <i class="fa fa-ticket me-3 text-white"></i> My Bookings
+                </a>
+                <a href="about.php" class="nav-link text-light mb-3 d-flex align-items-center">
+                    <i class="fa fa-circle-info me-3 text-white"></i> About Us
+                </a>
+                <a href="profile.php?user_id=<?php echo $_SESSION['user_id']; ?>"
+                    class="nav-link text-light mb-3 d-flex align-items-center">
+                    <i class="fa fa-user me-3 text-white"></i> Profile
+                </a>
+                <!-- Logout -->
+                <div class="mt-3">
+                    <a href="logout.php"
+                        class="btn btn-danger w-100 fw-semibold"
+                        onclick="return confirm('Are you sure you want to log out?');">
+                        <i class="fa fa-sign-out-alt me-2"></i> Log Out
+                    </a>
+                </div>
+            </div>
+            <!-- Footer -->
+            <div class="text-center border-top border-secondary pt-3 mt-3 small">
+                <p class="mb-0 text-secondary">&copy; 2025 <span class="text-white">CineBook</span>. All rights reserved.</p>
+            </div>
         </div>
     </div>
 </header>

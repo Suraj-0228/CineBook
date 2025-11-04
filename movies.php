@@ -128,43 +128,35 @@ if (!isset($_SESSION['username'])) {
     </section>
 
     <!-- Categories Section -->
-    <section class="catagory-section p-4 pt-0">
-        <h1 class="text-center explore-title fw-bold">Explore By Category</h1>
-        <div class="row justify-content-center">
-            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mt-3">
-                <div class="text-center shadow-lg border rounded p-2 h-100 d-flex flex-column align-items-center">
-                    <a href="#" class="img-link d-block">
-                        <img src="assets/img/comedy.png" alt="Comedy" class="img-fluid rounded-circle">
-                        <p class="catagory-text mt-2 mb-0">Comedy</p>
+    <section class="category-section p-4">
+        <div class="container">
+            <h1 class="text-center explore-title fw-bold mb-4">Explore by Category</h1>
+            <div class="row justify-content-center g-4">
+                                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <a href="#" class="category-card text-decoration-none d-block text-center border-0 rounded p-3 h-100">
+                        <img src="assets/img/action.png" alt="Action" class="category-img img-fluid rounded-circle">
+                        <p class="category-text mt-3 fw-semibold">Action</p>
+                    </a>
+                </div>          
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <a href="#" class="category-card text-decoration-none d-block text-center border-0 rounded p-3 h-100">
+                        <img src="assets/img/comedy.png" alt="Comedy" class="category-img img-fluid rounded-circle">
+                        <p class="category-text mt-3 fw-semibold">Comedy</p>
                     </a>
                 </div>
-            </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <a href="#" class="category-card text-decoration-none d-block text-center border-0 rounded p-3 h-100">
+                        <img src="assets/img/horror.png" alt="Horror" class="category-img img-fluid rounded-circle">
+                        <p class="category-text mt-3 fw-semibold">Horror</p>
+                    </a>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <a href="#" class="category-card text-decoration-none d-block text-center border-0 rounded p-3 h-100">
+                        <img src="assets/img/thriller.png" alt="Thriller" class="category-img img-fluid rounded-circle">
+                        <p class="category-text mt-3 fw-semibold">Thriller</p>
+                    </a>
+                </div>
 
-            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mt-3">
-                <div class="text-center shadow-lg border rounded p-2 h-100 d-flex flex-column align-items-center">
-                    <a href="#" class="img-link d-block">
-                        <img src="assets/img/horror.png" alt="Horror" class="img-fluid rounded-circle">
-                        <p class="catagory-text mt-2 mb-0">Horror</p>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mt-3">
-                <div class="text-center shadow-lg border rounded p-2 h-100 d-flex flex-column align-items-center">
-                    <a href="#" class="img-link d-block">
-                        <img src="assets/img/thriller.png" alt="Thriller" class="img-fluid rounded-circle">
-                        <p class="catagory-text mt-2 mb-0">Thriller</p>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-4 col-md-3 col-lg-2 mt-3">
-                <div class="text-center shadow-lg border rounded p-2 h-100 d-flex flex-column align-items-center">
-                    <a href="#" class="img-link d-block">
-                        <img src="assets/img/action.png" alt="Action" class="img-fluid rounded-circle">
-                        <p class="catagory-text mt-2 mb-0">Action</p>
-                    </a>
-                </div>
             </div>
         </div>
     </section>

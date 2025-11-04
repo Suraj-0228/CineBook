@@ -7,15 +7,28 @@
 }
 
 /* Catagory Section */
-.catagory-section .row .col-6 img {
-    height: 6rem;
-    width: 6rem;
-    object-fit: cover;
-    border-radius: 50%;
-    margin: 0 auto;
+.category-card {
+    background: #19589C;
+    border: 2px solid transparent;
+    border-radius: 12px;
 }
 
-.catagory-section .img-link {
-    text-decoration: none;
-    color: #19589C;
+.category-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 3px solid #E9E9E6;
+}
+
+.category-text {
+    color: #E9E9E6;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .category-img {
+        width: 80px;
+        height: 80px;
+    }
 }

@@ -3,47 +3,14 @@
     color: #E9E9E6;
 }
 
-.col-12 .footer-logo {
-    width: 16rem;
-    box-shadow: 0 1rem 2rem rgba(44, 44, 44, 0.6);
-    transition: transform 0.6s ease;
-}
-
-.col-12 .footer-logo:hover {
-    transform: scale(1.05);
-}
-
-.contact-info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-}
-
-hr{
+hr {
     border: 1px solid #E9E9E6;
 }
 
-.social-links,
 .social-icon {
-    gap: 1rem;
-    color: #E9E9E6;
-    font-size: 1.4rem;
-    display: flex;
     transition: transform 0.3s ease;
-    text-decoration: none;
 }
 
-.social-links .social-icon:hover {
-    transform: scale(1.1);
-}
-
-.copy-right-social {
-    display: flex;
-    justify-content: space-between;
-}
-
-.copy-right {
-    font-size: 1.25rem;
-    color: #E9E9E6;
+.social-icon:hover {
+    transform: scale(1.2);
 }

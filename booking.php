@@ -36,24 +36,31 @@ if (!isset($_SESSION['username'])) {
     <?php include 'includes/header.php'; ?>
 
     <!-- Booking Form -->
-    <div class="container my-4">
-        <div class="card shadow">
-            <div class="booking-header rounded-top p-3">
-                <h1 class="text-center mt-2">Book Your Tickets Now!</h1>
+    <!-- 🎟️ Booking Section -->
+    <div class="container my-5">
+        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+            <!-- Header -->
+            <div class="booking-header text-center py-4">
+                <h1 class="fw-bold mb-0">Book Your Tickets Now!</h1>
             </div>
-            <div class="card-body">
+            <!-- Body -->
+            <div class="card-body p-4 bg-light">
                 <form action="controllers/booking-process.php" method="post">
                     <!-- Movie Title -->
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Movie Title:</label>
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Movie Title:</label>
                         <input type="hidden" name="movie_id" value="<?php echo $movie_id; ?>">
-                        <input type="text" class="form-control" value="<?php echo $movie_title; ?>" readonly>
+                        <input
+                            type="text"
+                            class="form-control border-0 shadow-sm"
+                            value="<?php echo $movie_title; ?>"
+                            readonly>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="show_id" class="form-label fw-bold">Select Show:</label>
-                        <select class="form-select" name="show_id" id="show_id">
-                            <option value="">Select Date, Time, Theater</option>
+                    <!-- Show Selection -->
+                    <div class="mb-4">
+                        <label for="show_id" class="form-label fw-semibold">Select Show:</label>
+                        <select class="form-select shadow-sm" name="show_id" id="show_id" required>
+                            <option value="">Select Date, Time & Theater</option>
                             <?php foreach ($shows as $show) {
                                 $selected = ($selected_show_id == $show['show_id']) ? 'selected' : '';
                                 $show_data = $show['show_date'] . ' || ' . date("h:i A", strtotime($show['show_time'])) . ' || ' . $show['theater_name'] . ' (' . $show['theater_location'] . ')';
@@ -61,21 +68,20 @@ if (!isset($_SESSION['username'])) {
                             } ?>
                         </select>
                     </div>
-
-                    <!-- Seat Row & Total Seats -->
-                    <div class="row g-2 mb-3">
-                        <div class="col-md-6 col-12">
-                            <label class="form-label fw-bold">Select Row:</label>
-                            <select class="form-select" name="seatRow">
+                    <!-- Seat Selection -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Select Row:</label>
+                            <select class="form-select shadow-sm" name="seatRow" required>
                                 <option value="">Select Row</option>
                                 <?php foreach (['A', 'B', 'C', 'D', 'E', 'F'] as $row): ?>
                                     <option value="<?php echo $row; ?>"><?php echo $row; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="col-md-6 col-12">
-                            <label class="form-label fw-bold">Total Seats:</label>
-                            <select class="form-select" name="totalSeat" id="totalSeat">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Total Seats:</label>
+                            <select class="form-select shadow-sm" name="totalSeat" id="totalSeat" required>
                                 <option value="">Select Total Seats</option>
                                 <?php for ($i = 1; $i <= 10; $i++) {
                                     echo "<option value='$i'>$i</option>";
@@ -83,40 +89,52 @@ if (!isset($_SESSION['username'])) {
                             </select>
                         </div>
                     </div>
-
                     <!-- Ticket Price & Amount -->
-                    <div class="mb-3">
-                        <label for="ticketPrice" class="form-label fw-bold">Ticket Price:</label>
-                        <input type="number" class="form-control" name="ticketPrice" id="ticketPrice" readonly>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label for="ticketPrice" class="form-label fw-semibold">Ticket Price:</label>
+                            <input
+                                type="number"
+                                class="form-control shadow-sm"
+                                name="ticketPrice"
+                                id="ticketPrice"
+                                readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="amount" class="form-label fw-semibold">Total Amount:</label>
+                            <input
+                                type="number"
+                                class="form-control shadow-sm"
+                                name="amount"
+                                id="amount"
+                                readonly>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="amount" class="form-label fw-bold">Total Amount:</label>
-                        <input type="number" class="form-control" name="amount" id="amount" readonly>
-                    </div>
-
                     <!-- Payment Method -->
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Payment Method:</label>
-                        <select class="form-select" name="payment_method">
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Payment Method:</label>
+                        <select class="form-select shadow-sm" name="payment_method" required>
                             <option value="">Select Payment Method</option>
                             <option value="UPI">UPI</option>
-                            <option value="Card">Credit/Debit Card</option>
+                            <option value="Card">Credit / Debit Card</option>
                             <option value="Cash">Cash at Counter</option>
                         </select>
                     </div>
-
+                    <!-- Submit Button -->
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-lg">Book Now</button>
+                        <button type="submit" class="btn btn-lg fw-bold shadow-sm">
+                            Confirm & Book Now
+                        </button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <script src="assets/js/booking.js"></script>
-
     <!-- Footer -->
     <?php include 'includes/footer.php'; ?>
+
+    <script src="assets/js/booking.js"></script>
 
 </body>
 

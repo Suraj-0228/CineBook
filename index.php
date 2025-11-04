@@ -38,38 +38,70 @@ if (isset($_SESSION['username'])) {
     <?php require 'includes/header1.php'; ?>
 
     <!-- Hero Section -->
-    <section class="hero text-center m-4 py-3">
-        <div class="container p-4 rounded shadow-lg">
-            <h2 class=""><strong>Experience Seamless Movie Ticket Booking Today!</strong></h2>
-            <p class="text-muted fs-4">Easy, Fast, Reliable.</p>
-            <a href="login.php" class="btn btn-lg">Book Now</a>
+    <section class="hero-section text-center  d-flex align-items-center justify-content-center py-5">
+        <div class="container p-5 rounded-4 shadow-lg">
+            <h1 class="fw-bold mb-3 ">Experience Seamless Movie Ticket Booking!</h1>
+            <p class=" fs-5 mb-4">Fast • Easy • Reliable — Book Anytime, Anywhere.</p>
+            <a href="login.php" class="btn btn-warning btn-lg fw-semibold px-4 py-2 shadow-sm">
+                Book Now
+            </a>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features-section py-5">
+    <section class="features-section py-5 text-center">
         <div class="container">
-            <div class="row g-4 text-center">
-                <h1 class="text-white"><strong>Our Features</strong></h1>
+            <h2 class="fw-bold mb-5 text-white">Our Features</h2>
+            <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="card h-100 mx-2 p-4">
-                        <i class="fa fa-film fs-1 text-primary mb-3"></i>
-                        <h4><strong>Latest Releases</strong></h4>
-                        <p class="fs-5">Stay updated with new and upcoming movies.</p>
+                    <div class="card text-success border-0 h-100 p-4 shadow-sm hover-card">
+                        <i class="fa fa-film fs-1  mb-3"></i>
+                        <h4 class="fw-bold">Latest Releases</h4>
+                        <p class="fs-6 text-secondary">Stay updated with the newest and upcoming blockbusters.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card h-100 mx-2 p-4">
-                        <i class="fa fa-phone fs-1 text-success mb-3"></i>
-                        <h4><strong>Mobile Friendly</strong></h4>
-                        <p class="fs-5">Book your tickets from any device with ease.</p>
+                    <div class="card text-primary border-0 h-100 p-4 shadow-sm hover-card">
+                        <i class="fa fa-mobile-screen-button fs-1  mb-3"></i>
+                        <h4 class="fw-bold">Mobile Friendly</h4>
+                        <p class="fs-6 text-secondary">Book your tickets easily from any device — anytime, anywhere.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card h-100 mx-2 p-4">
-                        <i class="fa fa-credit-card fs-1 text-danger mb-3"></i>
-                        <h4><strong>Secure Payments</strong></h4>
-                        <p class="fs-5">You can make your transaction more safely with us.</p>
+                    <div class="card text-danger border-0 h-100 p-4 shadow-sm hover-card">
+                        <i class="fa fa-credit-card fs-1  mb-3"></i>
+                        <h4 class="fw-bold">Secure Payments</h4>
+                        <p class="fs-6 text-secondary">Enjoy fast and secure transactions using trusted gateways.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section (Newly Added) -->
+    <section class="how-it-works-section py-5 bg-light text-center">
+        <div class="container">
+            <h2 class="fw-bold mb-5 text-dark">How It Works</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm p-4 h-100">
+                        <i class="fa fa-search fs-1 text-success mb-3"></i>
+                        <h5 class="fw-bold">Browse Movies</h5>
+                        <p>Explore the latest films and find your favorites by genre or rating.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm p-4 h-100">
+                        <i class="fa fa-ticket fs-1 text-primary mb-3"></i>
+                        <h5 class="fw-bold">Choose Your Seats</h5>
+                        <p>Select your preferred seats with our real-time theater layout view.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm p-4 h-100">
+                        <i class="fa fa-bolt fs-1 text-danger mb-3"></i>
+                        <h5 class="fw-bold">Book Instantly</h5>
+                        <p>Confirm your show and pay securely in seconds — all set for movie time!</p>
                     </div>
                 </div>
             </div>
@@ -77,10 +109,16 @@ if (isset($_SESSION['username'])) {
     </section>
 
     <!-- Contact Section -->
-    <section class="m-4 my-5 text-center">
-        <div class="container shadow-lg p-5 rounded">
-            <h1 class="mb-4 fw-bold">Get in Touch</h1>
-            <p class="fs-5">Need help or have questions? Email us at <a href="#">cinebookmovies@gmail.com</a></p>
+    <section class="contact-section my-5 text-center">
+        <div class="container shadow-lg p-5 rounded-4" style="background-color: #19589c;">
+            <h2 class="mb-3 fw-bold text-white">Get in Touch</h2>
+            <p class="fs-5 text-white">
+                Need help or have questions?
+                Email us at
+                <a href="mailto:cinebookmovies@gmail.com" class="text-white">
+                    cinebookmovies@gmail.com
+                </a>
+            </p>
         </div>
     </section>
 
@@ -89,6 +127,7 @@ if (isset($_SESSION['username'])) {
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
 </body>
 
 </html>

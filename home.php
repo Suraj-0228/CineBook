@@ -93,7 +93,7 @@ if (!isset($_SESSION['username'])) {
         </div>
         <a href="movies.php" class="explore-link text-decoration-none">
             <div class="card p-3 d-flex flex-row align-items-center justify-content-between shadow-lg border-0">
-                <h2 class="fw-bold ms-2 mt-1 fs-4 fs-md-3">Explore Movies</h2>
+                <h2 class="fw-bold ms-2 mt-1 fs-4 fs-md-3">Explore More Movies</h2>
                 <i class="fa-solid fa-arrow-right fa-lg me-3"></i>
             </div>
         </a>
@@ -101,19 +101,21 @@ if (!isset($_SESSION['username'])) {
 
     <!-- Offer Section -->
     <section class="offer-section text-center mt-5">
-        <h1 class="fw-bold">Exclusive Offers</h1>
-        <div class="img-slider mt-3 ps-4">
-            <div class="ms-5">
-                <img src="https://i.pinimg.com/736x/a9/a9/8d/a9a98d4153c905ee39ab80ef5d296ef1.jpg" alt="Exclusive Offers..." class="offer-img img-fluid">
-            </div>
-            <div class="">
-                <img src="https://i.pinimg.com/736x/a9/a9/8d/a9a98d4153c905ee39ab80ef5d296ef1.jpg" alt="Exclusive Offers..." class="offer-img img-fluid">
+        <div class="container">
+            <h1 class="fw-bold mb-4">Exclusive Offers</h1>
+            <div class="offer-img">
+                <div class="offer-item mx-2">
+                    <img src="assets/img/offer1.png" alt="Weekend Offers - Cinebook" class="offer-img img-fluid rounded">
+                </div>
+                <div class="offer-item mx-2">
+                    <img src="assets/img/offer2.png" alt="Festival Offers - Cinebook" class="offer-img img-fluid rounded">
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials-section p-2 mt-2">
+    <section class="testimonials-section p-2 mt-4">
         <div class="container">
             <h1 class="text-center fw-bold mb-4">What Our Users Say</h1>
             <div class="row justify-content-center">
@@ -173,14 +175,28 @@ if (!isset($_SESSION['username'])) {
     <hr class="mx-4">
 
     <!-- Subscribe Form -->
-    <section class="card sub-section m-4 p-3 rounded">
-        <div class="">
-            <h5 class="text-center mb-3">Don’t miss out!<br>Subscribe for the latest movies & exclusive offers.</h5>
-            <form action="#" method="post">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-8 d-flex flex-md-row">
-                        <input type="email" class="form-control mx-1" name="sub_email" id="sub_email" placeholder="abc@example.com" required>
-                        <button type="submit" class="btn mx-1 w-md-auto">Subscribe</button>
+    <!-- ✉️ Subscription Section -->
+    <section class="card sub-section mb-5 mx-4 p-4 shadow-lg border-0 rounded-4 bg-light">
+        <div class="text-center">
+            <h4 class="fw-bold mb-3">
+                Don’t Miss Out! 🎬<br>
+                <span class="fw-normal">Subscribe for the latest movies & exclusive offers.</span>
+            </h4>
+            <form action="#" method="post" class="mt-3">
+                <div class="row justify-content-center g-2">
+                    <div class="col-12 col-md-8 d-flex flex-column flex-md-row align-items-stretch">
+                        <input
+                            type="email"
+                            class="form-control mb-2 mb-md-0 me-md-2 shadow-sm border-secondary"
+                            name="sub_email"
+                            id="sub_email"
+                            placeholder="Enter your Email Address....."
+                            required>
+                        <button
+                            type="submit"
+                            class="btn fw-bold shadow-sm px-4">
+                            Subscribe
+                        </button>
                     </div>
                 </div>
             </form>
