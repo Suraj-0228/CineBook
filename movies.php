@@ -90,41 +90,86 @@ if (!isset($_SESSION['username'])) {
     </div>
 
     <!-- 🎥 Movie Cards Section -->
-    <section class="container p-2 mb-2">
-        <h1 class="text-center py-2 fw-bold">Explore All Movies...</h1>
-        <div class="container">
-            <div class="row justify-content-center">
-                <?php
-                if (mysqli_num_rows($result) > 0) {
-                    while ($rows = mysqli_fetch_assoc($result)) {
-                        $id = $rows['movie_id'];
-                        $title = $rows['title'];
-                        $poster = $rows['poster_url'];
-                        $rating = $rows['rating'];
-                        $language = $rows['language'];
+    <section class="container py-4 mb-4">
+        <h1 class="text-center fw-bold mb-4">Explore All Movies...</h1>
 
-                        echo '<div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3 movies-card">';
-                        echo '    <div class="card shadow-sm border-0">';
-                        echo '        <a href="movies-details.php?id=' . $id . '">
-                                        <img src="' . $poster . '" class="card-img-top rounded-top" alt="' . $title . '">
-                                    </a>';
-                        echo '        <div class="card-body">';
-                        echo '            <h5 class="card-title fw-bold">' . $title . '</h5>';
-                        echo '            <div class="d-flex justify-content-between align-items-center mb-3">';
-                        echo '                <span><i class="fa-solid fa-star text-danger"></i> ' . $rating . '/10</span>';
-                        echo '                <span class="text-muted small">' . $language . '</span>';
-                        echo '            </div>';
-                        echo '            <a href="movies-details.php?id=' . $id . '" class="btn w-100">View Details</a>';
-                        echo '        </div>';
-                        echo '    </div>';
-                        echo '</div>';
-                    }
-                } else {
-                    echo "<p class='text-center text-muted'>No movies found matching your search or filter.</p>";
+        <?php
+        require 'includes/dbconnection.php';
+
+        $limit = 8; // Movies per page
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $start = ($page - 1) * $limit;
+
+        $total_query = "SELECT COUNT(*) as total FROM movies_details";
+        $total_result = mysqli_query($con, $total_query);
+        $total_row = mysqli_fetch_assoc($total_result);
+        $total_movies = $total_row['total'];
+        $total_pages = ceil($total_movies / $limit);
+
+        $sql_query = "SELECT * FROM movies_details LIMIT $start, $limit";
+        $result = mysqli_query($con, $sql_query);
+        ?>
+
+        <div class="row justify-content-center">
+            <?php
+            if (mysqli_num_rows($result) > 0) {
+                while ($rows = mysqli_fetch_assoc($result)) {
+                    $id = $rows['movie_id'];
+                    $title = $rows['title'];
+                    $poster = $rows['poster_url'];
+                    $rating = $rows['rating'];
+                    $language = $rows['language'];
+            ?>
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <div class="card h-100 shadow-sm border-0 rounded-3">
+                            <a href="movies-details.php?id=<?= $id ?>">
+                                <img src="<?= $poster ?>" class="card-img-top rounded-top" alt="<?= htmlspecialchars($title) ?>">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold text-truncate"><?= htmlspecialchars($title) ?></h5>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span><i class="fa-solid fa-star text-danger"></i> <?= $rating ?>/10</span>
+                                    <span class="badge bg-light text-dark"><?= htmlspecialchars($language) ?></span>
+                                </div>
+                                <a href="movies-details.php?id=<?= $id ?>" class="btn btn-outline-primary w-100 fw-semibold">
+                                    <i class="fa-solid fa-film me-2"></i> View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+            <?php
                 }
-                ?>
-            </div>
+            } else {
+                echo "<p class='text-center text-muted'>No movies found.</p>";
+            }
+            ?>
         </div>
+
+        <!-- Pagination Controls -->
+        <?php if ($total_pages > 1): ?>
+            <nav aria-label="Movies pagination">
+                <ul class="pagination pagination-lg justify-content-center mt-5">
+                    <li class="page-item <?= ($page <= 1) ? 'disabled' : '' ?>">
+                        <a class="page-link fw-semibold shadow-sm" href="?page=<?= max(1, $page - 1) ?>" tabindex="-1">
+                            <i class="fa-solid fa-chevron-left"></i> Prev
+                        </a>
+                    </li>
+                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                        <li class="page-item <?= ($page == $i) ? 'active' : '' ?>">
+                            <a class="page-link fw-semibold shadow-sm <?= ($page == $i) ? 'bg-primary text-white border-primary' : '' ?>"
+                                href="?page=<?= $i ?>">
+                                <?= $i ?>
+                            </a>
+                        </li>
+                    <?php endfor; ?>
+                    <li class="page-item <?= ($page >= $total_pages) ? 'disabled' : '' ?>">
+                        <a class="page-link fw-semibold shadow-sm" href="?page=<?= min($total_pages, $page + 1) ?>">
+                            Next <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        <?php endif; ?>
     </section>
 
     <!-- Categories Section -->
@@ -132,12 +177,12 @@ if (!isset($_SESSION['username'])) {
         <div class="container">
             <h1 class="text-center explore-title fw-bold mb-4">Explore by Category</h1>
             <div class="row justify-content-center g-4">
-                                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                     <a href="#" class="category-card text-decoration-none d-block text-center border-0 rounded p-3 h-100">
                         <img src="assets/img/action.png" alt="Action" class="category-img img-fluid rounded-circle">
                         <p class="category-text mt-3 fw-semibold">Action</p>
                     </a>
-                </div>          
+                </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                     <a href="#" class="category-card text-decoration-none d-block text-center border-0 rounded p-3 h-100">
                         <img src="assets/img/comedy.png" alt="Comedy" class="category-img img-fluid rounded-circle">

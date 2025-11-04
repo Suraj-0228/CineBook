@@ -8,7 +8,7 @@
                 <h1 class="fw-bold mb-0 text-light">CineBook</h1>
             </a>
             <!-- Toggle Button (Mobile) -->
-            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="offcanvas"
+            <button class="navbar-toggler btn d-lg-none py-2 border border-light ms-2 text-white" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle navigation">
                 <i class="fas fa-bars fa-lg"></i>
             </button>
@@ -61,9 +61,9 @@
                     <i class="fa fa-user me-3 text-white"></i> Profile
                 </a>
                 <!-- Logout -->
-                <div class="mt-3">
+                <div class="mt-4">
                     <a href="logout.php"
-                        class="btn btn-danger w-100 fw-semibold"
+                        class="bg-danger rounded fw-semibold text-decoration-none text-white px-3 py-2 border border-light"
                         onclick="return confirm('Are you sure you want to log out?');">
                         <i class="fa fa-sign-out-alt me-2"></i> Log Out
                     </a>

@@ -20,48 +20,62 @@
   <div class="container my-5">
     <div class="row justify-content-center">
       <div class="col-12 col-md-8 col-lg-6">
-        <div class="card border-0 shadow-lg p-4 m-1">
-          <h1 class="text-center fw-bold mt-2">Create Your New <br> Account</h1>
-          <hr class="mb-4">
-          <form action="#" method="post">
+        <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5 m-2">
+          <div class="text-center">            
+            <h2 class="fw-bold">Create Your New Account</h2>
+            <p class="text-muted small">Join CineBook and experience seamless movie ticket booking!</p>
+          </div>
+          <hr>
+          <form action="#" method="post" novalidate>
             <div class="mb-3">
-              <label for="fullname" class="form-label fw-bold">Full Name:</label>
-              <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Enter Your Full Name....">
+              <label for="fullname" class="form-label fw-semibold">Full Name</label>
+              <input type="text" class="form-control" id="fullname" name="fullname"
+                placeholder="Enter your full name" required>
             </div>
             <div class="mb-3">
-              <label for="email" class="form-label fw-bold">Email:</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email....">
+              <label for="email" class="form-label fw-semibold">Email Address</label>
+              <input type="email" class="form-control" id="email" name="email"
+                placeholder="Enter your email" required>
             </div>
             <div class="mb-3">
-              <label for="username" class="form-label fw-bold">Username:</label>
-              <input type="text" class="form-control" id="username" name="username" placeholder="Create Your Username....">
+              <label for="username" class="form-label fw-semibold">Username</label>
+              <input type="text" class="form-control" id="username" name="username"
+                placeholder="Create a username" required>
             </div>
             <div class="mb-3">
-              <label for="password" class="form-label fw-bold">Password:</label>
-              <input type="password" class="form-control" id="password" name="password" placeholder="Enter Your Password....">
-            </div>
-            <div class="mb-0">
-              <label for="confirm_password" class="form-label fw-bold">Confirm Password:</label>
-              <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Your Password....">
+              <label for="password" class="form-label fw-semibold">Password</label>
+              <input type="password" class="form-control" id="password" name="password"
+                placeholder="Enter your password" required>
             </div>
             <div class="mb-3">
-              <input type="checkbox" class="mt-3" onclick="showPassword()">
-              <label for="showpassword">Show Password</label>
+              <label for="confirm_password" class="form-label fw-semibold">Confirm Password</label>
+              <input type="password" class="form-control" id="confirm_password" name="confirm_password"
+                placeholder="Confirm your password" required>
             </div>
             <div class="form-check mb-3">
-              <input class="form-check-input" type="checkbox" id="terms" name="terms">
-              <label class="form-check-label" for="terms">I agree to the terms and conditions</label>
+              <input type="checkbox" class="form-check-input" id="showpassword" onclick="showPassword()">
+              <label for="showpassword" class="form-check-label">Show Password</label>
             </div>
-            <div class="mb-3">
-              <button type="submit" class="btn w-100" id="register_btn">Register</button>
+            <div class="form-check mb-4">
+              <input class="form-check-input" type="checkbox" id="terms" name="terms">
+              <label class="form-check-label" for="terms">
+                I agree to the <a href="#" class="text-decoration-none text-primary">terms and conditions</a>
+              </label>
+            </div>
+            <div class="d-grid mb-4">
+              <button type="submit" class="btn btn-primary fw-semibold" id="register_btn">
+                <i class="fa-solid fa-user-plus me-2"></i>Register
+              </button>
             </div>
             <div class="d-flex align-items-center justify-content-between">
-              <hr class="flex-grow-1 me-2 divider-line">
-              <p class="text-center m-0 fw-bold">Already have an account?</p>
-              <hr class="flex-grow-1 ms-2 divider-line">
+              <hr class="flex-grow-1 me-2">
+              <p class="text-center m-0 fw-semibold text-muted small">Already have an account?</p>
+              <hr class="flex-grow-1 ms-2">
             </div>
             <div class="text-center mt-3">
-              <a href="login.php" class="btn btn-login w-100 w-md-auto">Sign In</a>
+              <a href="login.php" class="btn btn-outline-primary w-100 fw-semibold">
+                <i class="fa-solid fa-right-to-bracket me-2"></i>Sign In
+              </a>
             </div>
           </form>
         </div>

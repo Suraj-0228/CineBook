@@ -43,7 +43,7 @@
 
         </div>
 
-        <hr class="border-secondary my-4">
+        <hr class="border-white my-4 opacity-100">
 
         <!-- Footer Bottom -->
         <div class="row align-items-center text-center text-md-start">

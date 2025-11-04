@@ -4,7 +4,7 @@
         <a href="home.php" class="navbar-brand">
             <h1 class="text-light fw-bold mt-2">CineBook</h1>
         </a>
-        <ul class="navbar-nav mx-auto">
+        <ul class="navbar-nav mx-auto d-none d-md-flex">
             <li class="nav-item mx-2"><a class="nav-link" href="home.php">Home</a></li>
             <li class="nav-item mx-2"><a class="nav-link" href="about.php">About Us</a></li>
         </ul>
@@ -23,7 +23,7 @@
         </button>
     </nav>
     <!-- Sidebar (Offcanvas) for Mobile -->
-    <div class="offcanvas offcanvas-start p-2" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas bg-dark text-white offcanvas-start p-2" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header justify-content-between">
             <h2 class="offcanvas-title" id="offcanvasExampleLabel">Options Menu</h2>
             <li type="button" class="fa fa-xmark mt-1 text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></li>

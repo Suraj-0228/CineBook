@@ -39,32 +39,30 @@ if (!isset($_SESSION['username'])) {
     <!-- navbar -->
     <?php include 'includes/header.php'; ?>
 
-    <!-- Details Section -->
+    <!-- Movie Details Section -->
     <?php
-
     require 'includes/dbconnection.php';
 
     if (isset($_GET['id'])) {
-        $id = $_GET['id']; //Get Movies id from Database
+        $id = intval($_GET['id']); // Safety
 
-        //Fetching Movies Details from Database
-        $sql_query = "select * from movies_details where movie_id = '$id'";
+        // Fetch movie details
+        $sql_query = "SELECT * FROM movies_details WHERE movie_id = '$id'";
         $result = mysqli_query($con, $sql_query);
 
-        if ($rows = mysqli_num_rows($result) > 0) {
-            $movies = mysqli_fetch_assoc($result);
+        if (mysqli_num_rows($result) > 0) {
+            $movie = mysqli_fetch_assoc($result);
 
-            // Stored All DEtails in Variables
-            $id = $movies['movie_id'];
-            $title = $movies['title'];
-            $language = $movies['language'];
-            $release_date = $movies['release_date'];
-            $genre = $movies['genre'];
-            $rating = $movies['rating'];
-            $poster = $movies['poster_url'];
-            $description = $movies['description'];
+            $id = $movie['movie_id'];
+            $title = $movie['title'];
+            $language = $movie['language'];
+            $release_date = $movie['release_date'];
+            $genre = $movie['genre'];
+            $rating = $movie['rating'];
+            $poster = $movie['poster_url'];
+            $description = $movie['description'];
 
-            // Fetch Cast Details
+            // Fetch cast data
             $cast_query = "SELECT actor_name, role_name FROM cast_details WHERE movie_id = '$id'";
             $cast_result = mysqli_query($con, $cast_query);
 
@@ -72,66 +70,96 @@ if (!isset($_SESSION['username'])) {
             while ($row = mysqli_fetch_assoc($cast_result)) {
                 $cast_list[] = $row;
             }
+        } else {
+            echo "<div class='alert alert-danger text-center'>Movie not Found!!</div>";
+            exit;
         }
     } else {
-        echo "<script>alert('Invalid Movies ID!!!');</script>";
+        echo "<script>alert('Invalid Movie ID!'); window.location.href='movies.php';</script>";
+        exit;
     }
-
     ?>
 
-    <section class="movies-section">
-        <div class="container p-4 pb-0">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <img src="<?php echo $poster ?>" alt="<?php echo $title ?>" class="img-fluid details-img rounded mb-3 mb-md-0">
+    <!-- Movie Overview Section -->
+    <section class="movies-section pt-5">
+        <div class="container p-4 shadow-sm rounded bg-white">
+            <div class="row align-items-center g-4">
+                <div class="col-12 col-md-4 text-center">
+                    <img
+                        src="<?= htmlspecialchars($poster); ?>"
+                        alt="<?= htmlspecialchars($title); ?>"
+                        class="img-fluid rounded-4 shadow-sm border border-light-subtle"
+                        style="max-height: 420px; object-fit: cover;">
                 </div>
-                <div class="col-md-9">
-                    <h1 class="movie-title fw-bold"><?php echo $title ?></h1>
-                    <div class="movie-rate d-flex align-items-center my-2">
-                        <div class="rate-icon">
-                            <i class="fa fa-star text-danger"></i> <?php echo $rating ?>/10
+                <div class="col-12 col-md-8">
+                    <h1 class="fw-bold mb-3 text-primary"><?= htmlspecialchars($title); ?></h1>
+                    <div class="d-flex flex-wrap align-items-center mb-3">
+                        <div class="me-3 text-danger">
+                            <i class="fa-solid fa-star"></i>
+                            <span class="fw-semibold text-dark"><?= htmlspecialchars($rating); ?>/10</span>
                         </div>
-                        <a href="#" class="btn btn-sm mx-5">Rate Now</a>
+                        <a href="#" class="btn btn-sm fw-semibold">
+                            <i class="fa-solid fa-pen me-2"></i>Rate Now
+                        </a>
                     </div>
-                    <p><strong>Languages:</strong> <?php echo $language ?></p>
-                    <p><strong>Duration:</strong> 2h 15m || <?php echo $genre ?> || <?php echo $release_date ?></p>
-                    <a href="booking.php?movie_id=<?php echo $id; ?>" class="btn btn-lg">Book Ticket</a>
+                    <ul class="list-unstyled mb-4">
+                        <li><strong>Language:</strong> <?= htmlspecialchars($language); ?></li>
+                        <li><strong>Genre:</strong> <?= htmlspecialchars($genre); ?></li>
+                        <li><strong>Duration:</strong> 2h 15m</li>
+                        <li><strong>Release Date:</strong> <?= htmlspecialchars($release_date); ?></li>
+                    </ul>
+                    <a href="booking.php?movie_id=<?= $id; ?>" class="btn fw-semibold px-4 py-2">
+                        <i class="fa-solid fa-ticket me-2"></i>Book Ticket
+                    </a>
                 </div>
             </div>
-            <hr class="w-100 border border-dark">
         </div>
     </section>
-    
-    <!-- About Section -->
-    <section class="about-section">
-        <div class="container p-4 py-0">
-            <div class="my-4">
-                <h3 class="fw-bold">Description:</h3>
-                <p> <?php echo $description ?></p>
-            </div>
-            <hr class="w-100 border border-dark">
-            <div class="row g-3 justify-content-center m-5">
-                <h1 class="fw-bold">Movie Cast:</h1>
-                <?php foreach ($cast_list as $cast) { ?>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="card border-0 shadow-sm text-center h-100">
-                            <div class="card-body">
-                                <!-- Optional actor image -->
-                                <img src="<?= $cast['actor_image'] ?? 'assets/img/action.png' ?>"
-                                    alt="<?= $cast['actor_name'] ?>"
-                                    class="img-fluid rounded-circle mb-3"
-                                    style="width: 90px; height: 90px; object-fit: cover;">
 
-                                <h6 class="fw-bold text-dark mb-1"><?= $cast['actor_name'] ?></h6>
-                                <?php if (!empty($cast['role_name'])) { ?>
-                                    <small class="text-muted">as <?= $cast['role_name'] ?></small>
-                                <?php } ?>
+    <!-- Description Section -->
+    <section class="about-section my-5">
+        <div class="container">
+            <div class="p-4 bg-light rounded shadow-sm border">
+                <h3 class="fw-bold mb-3 text-primary">
+                    <i class="fa-solid fa-align-left me-3"></i>Description
+                </h3>
+                <p class="text-muted lh-base mb-0">
+                    <?= nl2br(htmlspecialchars($description)); ?>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cast Section -->
+    <section class="cast-section py-5 bg-white">
+        <div class="container">
+            <h2 class="fw-bold text-primary text-center mb-5">
+                <i class="fa-solid fa-users me-2"></i>Movie Cast
+            </h2>
+            <div class="row g-4 justify-content-center">
+                <?php if (!empty($cast_list)) { ?>
+                    <?php foreach ($cast_list as $cast) { ?>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card border-0 shadow text-center h-100 rounded-4">
+                                <div class="card-body p-4">
+                                    <img
+                                        src="assets/img/action.png"
+                                        alt="<?= htmlspecialchars($cast['actor_name']); ?>"
+                                        class="img-fluid rounded-circle shadow-sm mb-3 border"
+                                        style="width: 100px; height: 100px; object-fit: cover;">
+
+                                    <h6 class="fw-bold text-dark mb-1"><?= htmlspecialchars($cast['actor_name']); ?></h6>
+                                    <?php if (!empty($cast['role_name'])) { ?>
+                                        <small class="text-muted fst-italic">as <?= htmlspecialchars($cast['role_name']); ?></small>
+                                    <?php } ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php } ?>
+                <?php } else { ?>
+                    <p class="text-center text-muted">No cast information available.</p>
                 <?php } ?>
             </div>
-
         </div>
     </section>
 

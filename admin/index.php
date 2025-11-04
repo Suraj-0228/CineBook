@@ -34,7 +34,6 @@ if (!isset($_SESSION['adminname'])) {
 <body>
 
     <main class="d-flex">
-
         <!-- Navbar -->
         <?php include 'includes/sidebar.php'; ?>
 
