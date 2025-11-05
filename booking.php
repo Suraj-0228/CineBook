@@ -36,27 +36,18 @@ if (!isset($_SESSION['username'])) {
     <?php include 'includes/header.php'; ?>
 
     <!-- Booking Form -->
-    <!-- 🎟️ Booking Section -->
     <div class="container my-5">
         <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
-            <!-- Header -->
             <div class="booking-header text-center py-4">
                 <h1 class="fw-bold mb-0">Book Your Tickets Now!</h1>
             </div>
-            <!-- Body -->
             <div class="card-body p-4 bg-light">
-                <form action="controllers/booking-process.php" method="post">
-                    <!-- Movie Title -->
+                <form action="controllers/booking-process.php" method="post" id="bookingForm">
                     <div class="mb-4">
                         <label class="form-label fw-semibold">Movie Title:</label>
-                        <input type="hidden" name="movie_id" value="<?php echo $movie_id; ?>">
-                        <input
-                            type="text"
-                            class="form-control border-0 shadow-sm"
-                            value="<?php echo $movie_title; ?>"
-                            readonly>
+                        <input type="hidden" name="movie_id" value="<?= $movie_id; ?>">
+                        <input type="text" class="form-control border-0 shadow-sm" value="<?= $movie_title; ?>" readonly>
                     </div>
-                    <!-- Show Selection -->
                     <div class="mb-4">
                         <label for="show_id" class="form-label fw-semibold">Select Show:</label>
                         <select class="form-select shadow-sm" name="show_id" id="show_id" required>
@@ -68,14 +59,13 @@ if (!isset($_SESSION['username'])) {
                             } ?>
                         </select>
                     </div>
-                    <!-- Seat Selection -->
                     <div class="row g-3 mb-4">
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">Select Row:</label>
                             <select class="form-select shadow-sm" name="seatRow" required>
                                 <option value="">Select Row</option>
                                 <?php foreach (['A', 'B', 'C', 'D', 'E', 'F'] as $row): ?>
-                                    <option value="<?php echo $row; ?>"><?php echo $row; ?></option>
+                                    <option value="<?= $row; ?>"><?= $row; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -89,44 +79,78 @@ if (!isset($_SESSION['username'])) {
                             </select>
                         </div>
                     </div>
-                    <!-- Ticket Price & Amount -->
                     <div class="row g-3 mb-4">
                         <div class="col-md-6">
                             <label for="ticketPrice" class="form-label fw-semibold">Ticket Price:</label>
-                            <input
-                                type="number"
-                                class="form-control shadow-sm"
-                                name="ticketPrice"
-                                id="ticketPrice"
-                                readonly>
+                            <input type="number" class="form-control shadow-sm" name="ticketPrice" id="ticketPrice" readonly>
                         </div>
                         <div class="col-md-6">
                             <label for="amount" class="form-label fw-semibold">Total Amount:</label>
-                            <input
-                                type="number"
-                                class="form-control shadow-sm"
-                                name="amount"
-                                id="amount"
-                                readonly>
+                            <input type="number" class="form-control shadow-sm" name="amount" id="amount" readonly>
                         </div>
                     </div>
-                    <!-- Payment Method -->
-                    <div class="mb-4">
-                        <label class="form-label fw-semibold">Payment Method:</label>
-                        <select class="form-select shadow-sm" name="payment_method" required>
-                            <option value="">Select Payment Method</option>
-                            <option value="UPI">UPI</option>
-                            <option value="Card">Credit / Debit Card</option>
-                            <option value="Cash">Cash at Counter</option>
-                        </select>
-                    </div>
-                    <!-- Submit Button -->
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-lg fw-bold shadow-sm">
-                            Confirm & Book Now
+                    <div class="mb-4 text-center">
+                        <button type="button" class="btn w-100 fw-bold px-4" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                            <i class="fa-solid fa-wallet me-2"></i> Pay & Book Now
                         </button>
                     </div>
+                    <input type="hidden" name="payment_method" id="payment_method" required>
                 </form>
+            </div>
+
+            <!-- Payment Method Modal -->
+            <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content shadow-lg border-0 rounded-4">
+                        <div class="modal-header payment-header text-white">
+                            <h5 class="modal-title" id="paymentModalLabel"><i class="fa-solid fa-credit-card me-2"></i> Select Payment Method</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="list-group">
+                                <button type="button" class="list-group-item list-group-item-action payment-option" data-method="UPI">
+                                    <i class="fa-brands fa-google-pay me-2 text-success"></i> Pay via UPI
+                                </button>
+                                <button type="button" class="list-group-item list-group-item-action payment-option" data-method="Card">
+                                    <i class="fa-solid fa-credit-card me-2 text-primary"></i> Pay via Card
+                                </button>
+                                <button type="button" class="list-group-item list-group-item-action payment-option" data-method="Cash">
+                                    <i class="fa-solid fa-money-bill me-2 text-success"></i> Cash at Counter
+                                </button>
+                            </div>
+                            <div id="upiForm" class="payment-form mt-4 d-none text-center">
+                                <p class="fw-semibold mb-2">Scan the QR Code Below to Pay:</p>
+                                <img src="assets/img/QR Scanner.jpg" alt="UPI QR Code" class="img-fluid rounded shadow-sm border mb-3" style="max-width: 180px;">
+                                <p class="text-muted mb-3">Or Enter Your UPI ID Manually:</p>
+                                <input type="text" class="form-control mb-3" id="upiIdInput" placeholder="example@upi">
+                                <button type="button" class="btn btn-success w-100 fw-bold" id="upiPayBtn">
+                                    Pay Now</span>
+                                </button>
+                            </div>
+                            <div id="cardForm" class="payment-form d-none mt-4">
+                                <input type="text" class="form-control mb-2" id="cardNumberInput" placeholder="Card Number (16 digits)">
+                                <input type="text" class="form-control mb-2" id="cardHolderInput" placeholder="Card Holder Name">
+                                <div class="row g-2">
+                                    <div class="col">
+                                        <input type="text" class="form-control mb-2" id="cardExpiryInput" placeholder="MM/YY">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control mb-2" id="cardCVVInput" placeholder="CVV">
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary w-100 fw-bold" id="cardPayBtn">
+                                    Pay Now
+                                </button>
+                            </div>
+                            <div id="cashForm" class="payment-form d-none mt-4 text-center">
+                                <p class="text-muted mb-3">Please pay the cash amount at the counter within 1 hour to confirm your booking.</p>
+                                <button type="button" class="btn btn-warning w-100 fw-bold" id="cashConfirmBtn">
+                                    Confirm Cash Payment
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

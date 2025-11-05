@@ -26,9 +26,7 @@ if (!isset($_SESSION['adminname'])) {
     <title>CineBook - Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
-    <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/footer.css" />
 </head>
 
 <body>
@@ -95,21 +93,32 @@ if (!isset($_SESSION['adminname'])) {
                         <i class="fa-solid fa-ticket me-2"></i> Recent Bookings
                     </h1>
                 </div>
+
                 <?php
                 $query = "
-            SELECT b.*, u.username, m.title, s.show_date, s.show_time, t.theater_name 
-            FROM bookings b
-            JOIN users u ON b.user_id = u.user_id
-            JOIN movies_details m ON b.movie_id = m.movie_id
-            JOIN showtimes s ON b.show_id = s.show_id
-            JOIN theaters t ON s.theater_id = t.theater_id
-            ORDER BY b.booking_id DESC
-            LIMIT 5
-        ";
-                $result_recent = mysqli_query($con, $query);
+        SELECT 
+            b.*, 
+            u.username, 
+            m.title, 
+            s.show_date, 
+            s.show_time, 
+            t.theater_name,
+            p.payment_method,
+            p.payment_status
+        FROM bookings b
+        JOIN users u ON b.user_id = u.user_id
+        JOIN movies_details m ON b.movie_id = m.movie_id
+        JOIN showtimes s ON b.show_id = s.show_id
+        JOIN theaters t ON s.theater_id = t.theater_id
+        LEFT JOIN payments p ON b.booking_id = p.booking_id
+        ORDER BY b.booking_id DESC
+        LIMIT 5
+    ";
 
-                if (mysqli_num_rows($result_recent) > 0) :
+                $result_recent = mysqli_query($con, $query);
                 ?>
+
+                <?php if (mysqli_num_rows($result_recent) > 0) : ?>
                     <div class="table-responsive shadow-sm rounded">
                         <table class="table table-striped table-hover align-middle mb-0">
                             <thead class="table-dark text-center">
@@ -121,33 +130,47 @@ if (!isset($_SESSION['adminname'])) {
                                     <th>Show Time</th>
                                     <th>Theater</th>
                                     <th>Seat</th>
-                                    <th>Price</th>
                                     <th>Amount</th>
                                     <th>Status</th>
+                                    <th>Payment</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
                                 <?php while ($row = mysqli_fetch_assoc($result_recent)) : ?>
+                                    <?php
+                                    $status = $row['booking_status'];
+                                    $status_badge = match ($status) {
+                                        'Pending' => 'bg-warning text-dark',
+                                        'Approved' => 'bg-success',
+                                        default => 'bg-danger'
+                                    };
+
+                                    $payment_method = $row['payment_method'] ?? 'N/A';
+                                    $payment_status = $row['payment_status'] ?? 'Pending';
+
+                                    $payment_badge = match ($payment_status) {
+                                        'Confirmed' => 'bg-success',
+                                        'Pending' => 'bg-warning text-dark',
+                                        'Failed' => 'bg-danger',
+                                        default => 'bg-secondary'
+                                    };
+
+                                    $payment_label = ($payment_method !== 'N/A') ? $payment_method : 'Not Paid';
+                                    ?>
                                     <tr>
                                         <td><?= $row['booking_id']; ?></td>
                                         <td><?= htmlspecialchars($row['username']); ?></td>
                                         <td><?= htmlspecialchars($row['title']); ?></td>
                                         <td><?= $row['show_date']; ?></td>
-                                        <td><?= $row['show_time']; ?></td>
+                                        <td><?= date("h:i A", strtotime($row['show_time'])); ?></td>
                                         <td><?= htmlspecialchars($row['theater_name']); ?></td>
                                         <td><?= $row['seat_row']; ?> - <?= $row['total_seat']; ?></td>
-                                        <td>₹<?= $row['ticket_price']; ?></td>
-                                        <td>₹<?= $row['amount']; ?></td>
+                                        <td class="fw-semibold text-success">₹<?= number_format($row['amount'], 2); ?></td>
+                                        <td><span class="badge <?= $status_badge; ?> px-3 py-2 fw-semibold"><?= $status; ?></span></td>
                                         <td>
-                                            <?php
-                                            $status = $row['booking_status'];
-                                            $badge_class = match ($status) {
-                                                'Pending' => 'bg-warning text-dark',
-                                                'Approved' => 'bg-success',
-                                                default => 'bg-danger'
-                                            };
-                                            ?>
-                                            <span class="badge <?= $badge_class; ?> px-3 py-2 fw-semibold"><?= $status; ?></span>
+                                            <span class="badge <?= $payment_badge; ?> px-3 py-2 fw-semibold">
+                                                <?= $payment_label; ?> (<?= $payment_status; ?>)
+                                            </span>
                                         </td>
                                     </tr>
                                 <?php endwhile; ?>
