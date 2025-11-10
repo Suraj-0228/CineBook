@@ -59,7 +59,7 @@
             <div class="form-check mb-4">
               <input class="form-check-input" type="checkbox" id="terms" name="terms">
               <label class="form-check-label" for="terms">
-                I agree to the <a href="#" class="text-decoration-none text-primary">terms and conditions</a>
+                I agree to the <a href="#" class="text-decoration-none text-danger text-danger fw-bold">terms and conditions</a>
               </label>
             </div>
             <div class="d-grid mb-4">

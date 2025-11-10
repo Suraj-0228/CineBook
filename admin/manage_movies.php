@@ -41,9 +41,12 @@ if (!isset($_SESSION['adminname'])) {
                 <h1 class="fw-bold text-primary text-uppercase mb-3 mb-md-0">
                     <i class="fa-solid fa-video me-2"></i> Manage Movies
                 </h1>
-                <a href="add_movie.php" class="btn fw-semibold shadow">
-                    <i class="fa-solid fa-plus me-2"></i> Add New Movie
+                <a href="add_movie.php" class="bg-success text-white rounded border-0 w-md-auto px-5 py-2 fw-semibold shadow-sm text-decoration-none">
+                    <i class="fa-solid fa-plus me-2"></i> Add Movie
                 </a>
+                <!-- <a href="add_movie.php" class="btn fw-semibold shadow">
+                    <i class="fa-solid fa-plus me-2"></i> Add New Movie
+                </a> -->
             </div>
             <div class="table-responsive shadow rounded border">
                 <table class="table table-hover align-middle mb-0">

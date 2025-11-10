@@ -47,7 +47,7 @@ if (!isset($_SESSION['adminname'])) {
                     </h1>
                 </div>
                 <div class="card-body p-4 p-md-5 bg-light">
-                    <form action="controllers/add-movie.php" method="post" class="needs-validation" novalidate>
+                    <form action="controllers/add-process.php" method="post" class="needs-validation" novalidate>
                         <div class="row g-4">
                             <div class="col-md-6">
                                 <label for="title" class="form-label fw-semibold">Movie Title:</label>
@@ -91,10 +91,13 @@ if (!isset($_SESSION['adminname'])) {
                                 <div class="invalid-feedback">Please enter a description.</div>
                             </div>
                         </div>
-                        <div class="text-center mt-5">
-                            <button type="submit" class="btn w-100 px-5 py-2 fw-semibold">
+                        <div class="text-center mt-5 d-flex flex-column flex-md-row gap-3 justify-content-center">
+                            <button type="submit" class="bg-success text-white rounded border-0 w-100 w-md-auto px-5 py-2 fw-semibold shadow-sm text-decoration-none">
                                 <i class="fa-solid fa-plus me-2"></i> Add Movie
                             </button>
+                            <a href="manage_movies.php" class="bg-danger text-white rounded w-100 w-md-auto px-5 py-2 fw-semibold shadow-sm text-decoration-none">
+                                <i class="fa-solid fa-xmark me-2"></i> Cancel
+                            </a>
                         </div>
                     </form>
                 </div>

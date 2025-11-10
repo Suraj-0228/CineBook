@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['title'])) {
 
         // Database Connection
-        require 'includes/dbconnection.php';
+        require '../includes/dbconnection.php';
 
         // Collecting Form Data
         $movie_title = $_POST['title'];
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo "Error: " . $con->error;
             }
         } else {
-            echo "<script>alert('ERROR: Please, Fill all the Details.');</script>";
+            echo "<script>alert('ERROR: Please, Fill all the Details.'); window.location.href = '../manage_movies.php';</script>";
         }
 
         $con->close();

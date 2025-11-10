@@ -62,8 +62,7 @@ if (!isset($_SESSION['username'])) {
 
                         echo "
                         <h3 class='fw-bold mb-1 text-dark'>$fullname</h3>
-                        <p class='m-0 text-dark'>$email</p>
-                        <p class='text-light small text-dark'><i class='fa-solid fa-user '></i> @$username</p>
+                        <p class='m-0 text-dark'>$email</p>                        
                     ";
                     } else {
                         echo "<p class='text-light'>User not found.</p>";
@@ -102,8 +101,12 @@ if (!isset($_SESSION['username'])) {
 
                 <!-- Action Buttons -->
                 <div class="text-end mt-4">
-                    <button class="btn btn-success px-4" data-bs-toggle="modal" data-bs-target="#updateProfile<?php echo $user_id; ?>">
+                    <!-- <button class="btn btn-success px-4" data-bs-toggle="modal" data-bs-target="#updateProfile<?php echo $user_id; ?>">
                         <i class="fa-solid fa-pen-to-square me-2"></i>Update Profile
+                    </button> -->
+                    <button class="bg-success text-white rounded border-0 w-md-auto px-5 py-2 fw-semibold shadow-sm text-decoration-none"
+                        data-bs-toggle="modal" data-bs-target="#updateProfile<?php echo $user_id; ?>">
+                        <i class="fa-solid fa-pen-to-square me-2"></i> Update Profile
                     </button>
                 </div>
             </div>
@@ -119,7 +122,7 @@ if (!isset($_SESSION['username'])) {
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="controllers/update-users.php" method="post"> <!-- ✅ moved here -->
+                <form action="controllers/update-users.php" method="post">
                     <div class="modal-body p-4">
                         <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 
@@ -140,8 +143,8 @@ if (!isset($_SESSION['username'])) {
                     </div>
 
                     <div class="modal-footer border-0">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="button" class="bg-danger text-white border-0 rounded px-5 py-2" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="bg-success text-white border-0 rounded px-5 py-2">Save Changes</button>
                     </div>
                 </form> <!-- ✅ form ends here -->
             </div>

@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
 
             echo "<script>
-                alert('Welcome to CineBook, $username!');
+                alert('Welcome to CineBook');
                 window.location.href = 'home.php';
             </script>";
             exit();
