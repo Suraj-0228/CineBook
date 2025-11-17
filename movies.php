@@ -78,10 +78,10 @@ if (!isset($_SESSION['username'])) {
 
                     <!-- Search Box -->
                     <div class="input-group mb-3 d-inline-flex w-50 me-3">
-                        <input type="text" name="search" class="form-control"
+                        <input type="text" name="search" class="form-control mx-2"
                             placeholder="Search by Movie Name....."
                             value="<?= htmlspecialchars($search_query) ?>">
-                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                        <button class="bg-primary px-5 py-2 text-white border border-0 rounded" type="submit">Search</button>
                     </div>
 
                     <!-- Genre Dropdown -->
@@ -151,7 +151,7 @@ if (!isset($_SESSION['username'])) {
                     </li>
                     <?php for ($i = 1; $i <= $total_pages; $i++): ?>
                         <li class="page-item <?= ($page == $i) ? 'active' : '' ?>">
-                            <a class="page-link fw-semibold shadow-sm <?= ($page == $i) ? 'bg-primary text-white border-primary' : '' ?>"
+                            <a class="page-link fw-semibold shadow-sm <?= ($page == $i) ? 'text-white' : '' ?>"
                                 href="?page=<?= $i ?>&search=<?= urlencode($search_query) ?>&genre=<?= urlencode($filter_genre) ?>">
                                 <?= $i ?>
                             </a>

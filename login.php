@@ -25,6 +25,7 @@
                         <div class="text-center mb-4">
                             <h2 class="fw-bold">Login to Your Account</h2>
                             <p class="text-muted small">Access your CineBook profile or manage your bookings.</p>
+                            <p id="error_msg" class="text-danger fw-bold mt-2"></p>
                         </div>
                         <hr>
                         <form action="#" method="POST" novalidate>
@@ -49,7 +50,7 @@
                                 <a href="#" class="text-decoration-none text-danger small fw-semibold">Forgot Password?</a>
                             </div>
                             <div class="d-grid mb-3">
-                                <button type="submit" id="login_btn" class="btn fw-semibold">
+                                <button type="submit" id="login_btn" class="bg-success px-5 py-2 text-white border border-0 rounded fw-semibold">
                                     <i class="fa-solid fa-right-to-bracket me-2"></i>Login
                                 </button>
                             </div>
@@ -66,7 +67,7 @@
                             </div>
                             <p class="text-center fw-semibold mb-2">Don’t have an account?</p>
                             <div class="d-grid">
-                                <a href="register.php" class="btn fw-semibold">
+                                <a href="register.php" class="bg-primary px-5 py-2 text-white border border-0 rounded fw-semibold text-center text-decoration-none" id="register_btn">
                                     <i class="fa-solid fa-user-plus me-2"></i>Register
                                 </a>
                             </div>

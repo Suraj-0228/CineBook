@@ -1,52 +1,46 @@
 <!-- Sidebar -->
-<nav class="navbar admin-header d-flex flex-column justify-content-between vh-100 p-3 shadow" style="width: 280px;">
+<nav class="navbar admin-header d-flex flex-column justify-content-between p-3 shadow position-fixed top-0 start-0 vh-100"
+     style="width: 260px; z-index: 1000;">
 
     <!-- Top Section -->
     <div class="w-100">
-        <!-- Logo / Title -->
-        <a href="index.php" class="navbar-brand d-flex align-items-center justify-content-center">
-            <h3 class="fw-bold text-white mb-3 mb-md-0">
+        <a href="index.php" class="navbar-brand d-flex align-items-center justify-content-center mb-3">
+            <h3 class="fw-bold text-white mb-0">
                 <i class="fa-solid fa-user-tie me-2"></i> Admin Panel
             </h3>
-            <!-- <h2 class="fw-bold text-white">Admin Panel</h2> -->
         </a>
-        <hr class="text-white opacity-100 mt-0 mb-4">
-
-        <!-- Navigation Links -->
+        <hr class="text-white opacity-100">
         <ul class="navbar-nav flex-column">
             <li class="nav-item mb-2">
-                <a href="index.php" class="nav-link text-white d-flex align-items-center py-2 px-3 rounded hover-effect">
+                <a href="index.php" class="nav-link text-white py-2 px-3 rounded fw-semibold hover-effect">
                     <i class="fa fa-home me-2"></i> Dashboard
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="manage_movies.php" class="nav-link text-white d-flex align-items-center py-2 px-3 rounded hover-effect">
+                <a href="manage_movies.php" class="nav-link text-white py-2 px-3 rounded fw-semibold hover-effect">
                     <i class="fa fa-film me-2"></i> Manage Movies
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="manage_bookings.php" class="nav-link text-white d-flex align-items-center py-2 px-3 rounded hover-effect">
+                <a href="manage_bookings.php" class="nav-link text-white py-2 px-3 rounded fw-semibold hover-effect">
                     <i class="fa fa-ticket me-2"></i> Manage Bookings
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="manage_users.php" class="nav-link text-white d-flex align-items-center py-2 px-3 rounded hover-effect">
+                <a href="manage_users.php" class="nav-link text-white py-2 px-3 rounded fw-semibold hover-effect">
                     <i class="fa fa-user me-2"></i> Manage Users
                 </a>
             </li>
         </ul>
     </div>
 
-    <!-- Logout & Footer -->
+    <!-- Logout -->
     <div class="w-100 mt-auto text-center">
         <a href="admin_logout.php"
-            class="d-inline-block bg-danger text-white fw-semibold text-decoration-none rounded px-4 py-2 mb-2 border border-light shadow-sm w-100"
-            onclick="return confirm('Are You Sure?? You want to Logout!!');">
-            <i class="fa fa-sign-out-alt me-2"></i> Logout
+           class="bg-danger px-5 py-2 text-white border border-0 rounded fw-semibold text-decoration-none fw-semibold w-100"
+           onclick="return confirm('Are You Sure? Want to Logout?');">
+           <i class="fa fa-sign-out-alt me-2"></i> Logout
         </a>
-        <p class="text-center text-white small mb-0 opacity-75">
-            &copy; 2025 <strong>CineBook</strong>
-        </p>
+        <p class="text-white small opacity-75 my-3">&copy; 2025 CineBook</p>
     </div>
-
 </nav>

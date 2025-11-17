@@ -117,7 +117,7 @@ if (!isset($_SESSION['username'])) {
     <div class="modal fade" id="updateProfile<?php echo $user_id; ?>" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content rounded-4">
-                <div class="modal-header bg-primary text-white border-0 rounded-top-4">
+                <div class="modal-header payment-header text-white border-0 rounded-top-4">
                     <h5 class="modal-title fw-bold"><i class="fa-solid fa-user-pen me-2"></i>Update Profile</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>

@@ -3,6 +3,7 @@ const username = document.getElementById("username");
 const password = document.getElementById("password");
 const remember = document.getElementById("remember");
 const loginBtn = document.getElementById("login_btn");
+const errorMsg = document.getElementById("error_msg"); // <p> tag
 
 loginBtn.addEventListener("click", function (e) {
     // Prevent form from submitting until validation passes
@@ -11,9 +12,12 @@ loginBtn.addEventListener("click", function (e) {
     const usernameValue = username.value.trim();
     const passwordValue = password.value.trim();
 
+    // Reset previous messages
+    errorMsg.textContent = "";
+
     // Empty field validation
     if (usernameValue === "" || passwordValue === "") {
-        alert("ERROR: Fields are Empty!!!");
+        errorMsg.textContent = "ERROR: Fields Cannot be Empty!!";
         return;
     }
 
@@ -21,19 +25,20 @@ loginBtn.addEventListener("click", function (e) {
     const minLength = 6;
     const maxLength = 18;
     if (passwordValue.length < minLength || passwordValue.length > maxLength) {
-        alert(`Password must be between ${minLength} and ${maxLength} characters long!`);
+        errorMsg.textContent = `Password must be between ${minLength} and ${maxLength} Characters Long!!`;
         return;
     }
 
     // Remember Me checkbox validation
     if (!remember.checked) {
-        alert("Please, Agree to the 'Remember Me' Option to Proceed!!!");
+        errorMsg.textContent = "Please, Check 'Remember Me' before Login!!";
         return;
     }
 
     // If all checks pass, submit the form
     document.querySelector("form").submit();
 });
+
 
 // ===== Show / Hide Password =====
 document.getElementById("togglePassword").addEventListener("click", function () {

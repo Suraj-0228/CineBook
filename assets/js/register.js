@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirm_password = document.getElementById('confirm_password');
     const terms = document.getElementById('terms');
     const register_btn = document.getElementById('register_btn');
+    const error_msg = document.getElementById('error_msg');
 
     register_btn.addEventListener('click', (e) => {
         // Prevent form from submitting before validation
@@ -19,6 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const passwordValue = password.value.trim();
         const confirmPasswordValue = confirm_password.value.trim();
 
+        // Clear previous error message
+        error_msg.textContent = '';
+
         // Check if all fields are filled
         if (
             fullNameValue === '' ||
@@ -27,13 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
             passwordValue === '' ||
             confirmPasswordValue === ''
         ) {
-            alert('ERROR: Fields are Empty!!!');
+            error_msg.textContent = "ERROR: Fields Cannot be Empty!!";
             return;
         }
 
         // Validate Email Format
         if (!emailValue.includes('@') || !emailValue.endsWith('.com')) {
-            alert('ERROR: Email Address (must Contain @ and .com)');
+            error_msg.textContent = "ERROR: Email Address (must Contain @ and .com)";
             return;
         }
 
@@ -42,19 +46,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const maxLength = 12;
 
         if (passwordValue.length < minLength || passwordValue.length > maxLength) {
-            alert(`ERROR: Password must be between ${minLength} and ${maxLength} characters!`);
+            error_msg.textContent = "ERROR: Password must be between ${minLength} and ${maxLength} characters!!";
             return;
         }
 
         // Check Password Match
         if (passwordValue !== confirmPasswordValue) {
-            alert('ERROR: Password and Confirm Password do not Match!');
+            error_msg.textContent = "ERROR: Password and Confirm Password does not Matched!!";
             return;
         }
 
         // Check Terms and Conditions
         if (!terms.checked) {
-            alert('ERROR: You must Agree to the Terms and Conditions!!');
+            error_msg.textContent = "ERROR: You must Agree to Terms and Conditions!!";
             return;
         }
 

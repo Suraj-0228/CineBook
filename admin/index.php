@@ -32,62 +32,62 @@ if (!isset($_SESSION['adminname'])) {
 <body>
 
     <main class="d-flex">
+        
         <!-- Navbar -->
         <?php include 'includes/sidebar.php'; ?>
 
         <!-- Admin Dashboard Section -->
-        <section class="container my-5 px-5">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
-                <h1 class="fw-bold text-primary text-uppercase mb-3 mb-md-0">
-                    <i class="fa-solid fa-user-tie me-2"></i> Admin Dashboard
-                </h1>
-            </div>
-            <div class="row g-4 text-center">
-                <div class="col-12 col-sm-6 col-md-4">
-                    <div class="card shadow border-0 rounded h-100">
-                        <div class="card-body p-5 d-flex flex-column justify-content-center align-items-center">
-                            <i class="fa fa-film fa-2xl text-primary mb-4"></i>
-                            <h5 class="fw-bold mb-2">Total Movies</h5>
-                            <?php
-                            require 'includes/dbconnection.php';
-                            $result = mysqli_query($con, "SELECT COUNT(*) AS total_movies FROM movies_details");
-                            $row = mysqli_fetch_assoc($result);
-                            ?>
-                            <p class="fs-4 fw-semibold mb-0 text-dark"><?= $row['total_movies'] ?? '0'; ?></p>
+        <section class="content-area flex-grow-1" style="margin-left: 260px; padding: 20px;">
+            <section class="container my-5 px-4" style="width: 80rem;">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+                    <h1 class="fw-bold text-primary text-uppercase mb-3 mb-md-0">
+                        <i class="fa-solid fa-user-tie me-2"></i> Admin Dashboard
+                    </h1>
+                </div>
+                <div class="row g-4 text-center">
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <div class="card shadow border-0 rounded h-100">
+                            <div class="card-body p-5 d-flex flex-column justify-content-center align-items-center">
+                                <i class="fa fa-film fa-2xl text-primary mb-4"></i>
+                                <h5 class="fw-bold mb-2">Total Movies</h5>
+                                <?php
+                                require 'includes/dbconnection.php';
+                                $result = mysqli_query($con, "SELECT COUNT(*) AS total_movies FROM movies_details");
+                                $row = mysqli_fetch_assoc($result);
+                                ?>
+                                <p class="fs-4 fw-semibold mb-0 text-dark"><?= $row['total_movies'] ?? '0'; ?></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4">
-                    <div class="card shadow border-0 rounded h-100">
-                        <div class="card-body p-5 d-flex flex-column justify-content-center align-items-center">
-                            <i class="fa fa-ticket fa-2xl text-success mb-4"></i>
-                            <h5 class="fw-bold mb-2">Total Bookings</h5>
-                            <?php
-                            $result = mysqli_query($con, "SELECT COUNT(*) AS total_booking FROM bookings");
-                            $row = mysqli_fetch_assoc($result);
-                            ?>
-                            <p class="fs-4 fw-semibold mb-0 text-dark"><?= $row['total_booking'] ?? '0'; ?></p>
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <div class="card shadow border-0 rounded h-100">
+                            <div class="card-body p-5 d-flex flex-column justify-content-center align-items-center">
+                                <i class="fa fa-ticket fa-2xl text-success mb-4"></i>
+                                <h5 class="fw-bold mb-2">Total Bookings</h5>
+                                <?php
+                                $result = mysqli_query($con, "SELECT COUNT(*) AS total_booking FROM bookings");
+                                $row = mysqli_fetch_assoc($result);
+                                ?>
+                                <p class="fs-4 fw-semibold mb-0 text-dark"><?= $row['total_booking'] ?? '0'; ?></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4">
-                    <div class="card shadow border-0 rounded h-100">
-                        <div class="card-body p-5 d-flex flex-column justify-content-center align-items-center">
-                            <i class="fa fa-user fa-2xl text-danger mb-4"></i>
-                            <h5 class="fw-bold mb-2">Total Users</h5>
-                            <?php
-                            $result = mysqli_query($con, "SELECT COUNT(*) AS total_user FROM users");
-                            $row = mysqli_fetch_assoc($result);
-                            ?>
-                            <p class="fs-4 fw-semibold mb-0 text-dark"><?= $row['total_user'] ?? '0'; ?></p>
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <div class="card shadow border-0 rounded h-100">
+                            <div class="card-body p-5 d-flex flex-column justify-content-center align-items-center">
+                                <i class="fa fa-user fa-2xl text-danger mb-4"></i>
+                                <h5 class="fw-bold mb-2">Total Users</h5>
+                                <?php
+                                $result = mysqli_query($con, "SELECT COUNT(*) AS total_user FROM users");
+                                $row = mysqli_fetch_assoc($result);
+                                ?>
+                                <p class="fs-4 fw-semibold mb-0 text-dark"><?= $row['total_user'] ?? '0'; ?></p>
+                            </div>
                         </div>
                     </div>
+                    <hr class="border border-dark my-5 opacity-75">
                 </div>
-                <hr class="border border-dark my-5 opacity-75">
-            </div>
 
-            <!-- Recent Bookings Section -->
-            <section class="recent-booking">
                 <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
                     <h1 class="fw-bold text-primary text-uppercase mb-3 mb-md-0">
                         <i class="fa-solid fa-ticket me-2"></i> Recent Bookings
@@ -95,27 +95,25 @@ if (!isset($_SESSION['adminname'])) {
                 </div>
 
                 <?php
-                $query = "
-        SELECT 
-            b.*, 
-            u.username, 
-            m.title, 
-            s.show_date, 
-            s.show_time, 
-            t.theater_name,
-            p.payment_method,
-            p.payment_status
-        FROM bookings b
-        JOIN users u ON b.user_id = u.user_id
-        JOIN movies_details m ON b.movie_id = m.movie_id
-        JOIN showtimes s ON b.show_id = s.show_id
-        JOIN theaters t ON s.theater_id = t.theater_id
-        LEFT JOIN payments p ON b.booking_id = p.booking_id
-        ORDER BY b.booking_id DESC
-        LIMIT 5
-    ";
-
-                $result_recent = mysqli_query($con, $query);
+                    $query = "
+                        SELECT 
+                            b.*, 
+                            u.username, 
+                            m.title, 
+                            s.show_date, 
+                            s.show_time, 
+                            t.theater_name,
+                            p.payment_method,
+                            p.payment_status
+                        FROM bookings b
+                        JOIN users u ON b.user_id = u.user_id
+                        JOIN movies_details m ON b.movie_id = m.movie_id
+                        JOIN showtimes s ON b.show_id = s.show_id
+                        JOIN theaters t ON s.theater_id = t.theater_id
+                        LEFT JOIN payments p ON b.booking_id = p.booking_id
+                        ORDER BY b.booking_id DESC
+                        LIMIT 5";
+                    $result_recent = mysqli_query($con, $query);
                 ?>
 
                 <?php if (mysqli_num_rows($result_recent) > 0) : ?>

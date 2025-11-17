@@ -90,7 +90,7 @@ if (!isset($_SESSION['username'])) {
                         </div>
                     </div>
                     <div class="mb-4 text-center">
-                        <button type="button" class="btn w-100 fw-bold px-4" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                        <button type="button" class="bg-success px-5 py-2 text-white border border-0 rounded w-100 fw-bold px-4" data-bs-toggle="modal" data-bs-target="#paymentModal">
                             <i class="fa-solid fa-wallet me-2"></i> Pay & Book Now
                         </button>
                     </div>
@@ -123,7 +123,7 @@ if (!isset($_SESSION['username'])) {
                                 <img src="assets/img/QR Scanner.jpg" alt="UPI QR Code" class="img-fluid rounded shadow-sm border mb-3" style="max-width: 180px;">
                                 <p class="text-muted mb-3">Or Enter Your UPI ID Manually:</p>
                                 <input type="text" class="form-control mb-3" id="upiIdInput" placeholder="example@upi">
-                                <button type="button" class="btn btn-success w-100 fw-bold" id="upiPayBtn">
+                                <button type="button" class="bg-success px-5 py-2 text-white border border-0 rounded w-100 fw-bold" id="upiPayBtn">
                                     Pay Now</span>
                                 </button>
                             </div>
@@ -138,13 +138,13 @@ if (!isset($_SESSION['username'])) {
                                         <input type="text" class="form-control mb-2" id="cardCVVInput" placeholder="CVV">
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-primary w-100 fw-bold" id="cardPayBtn">
+                                <button type="button" class="bg-success px-5 py-2 text-white border border-0 rounded w-100 fw-bold" id="cardPayBtn">
                                     Pay Now
                                 </button>
                             </div>
                             <div id="cashForm" class="payment-form d-none mt-4 text-center">
                                 <p class="text-muted mb-3">Please pay the cash amount at the counter within 1 hour to confirm your booking.</p>
-                                <button type="button" class="btn btn-warning w-100 fw-bold" id="cashConfirmBtn">
+                                <button type="button" class="bg-danger px-5 py-2 text-white border border-0 rounded w-100 fw-bold" id="cashConfirmBtn">
                                     Confirm Cash Payment
                                 </button>
                             </div>

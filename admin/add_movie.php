@@ -38,70 +38,72 @@ if (!isset($_SESSION['adminname'])) {
         <!-- Navbar -->
         <?php include 'includes/sidebar.php'; ?>
 
-        <!-- Add New Movie Page -->
-        <section class="container my-5 px-5">
-            <div class="card shadow-lg border-0 rounded-4">
-                <div class="card-header text-center text-white py-4 admin-header">
-                    <h1 class="fw-bold text-uppercase mb-0">
-                        <i class="fa-solid fa-circle-plus me-2"></i> Add New Movie
-                    </h1>
+        <!-- Add Movie Form -->
+        <section class="content-area flex-grow-1" style="margin-left: 260px; padding: 20px;">
+            <section class="container my-5 px-4" style="width: 80rem;">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-header text-center text-white py-4 admin-header">
+                        <h1 class="fw-bold text-uppercase mb-0">
+                            <i class="fa-solid fa-circle-plus me-2"></i> Add New Movie
+                        </h1>
+                    </div>
+                    <div class="card-body p-4 p-md-5 bg-light">
+                        <form action="controllers/add-process.php" method="post" class="needs-validation" novalidate>
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label for="title" class="form-label fw-semibold">Movie Title:</label>
+                                    <input type="text" class="form-control" id="title" name="title"
+                                        placeholder="Enter movie title...">
+                                    <div class="invalid-feedback">Please enter the movie title.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="language" class="form-label fw-semibold">Language:</label>
+                                    <input type="text" class="form-control" id="language" name="language"
+                                        placeholder="Enter movie language...">
+                                    <div class="invalid-feedback">Please enter a language.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="release_date" class="form-label fw-semibold">Release Date:</label>
+                                    <input type="date" class="form-control" id="release_date" name="release_date">
+                                    <div class="invalid-feedback">Please select a release date.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="genre" class="form-label fw-semibold">Genre:</label>
+                                    <input type="text" class="form-control" id="genre" name="genre"
+                                        placeholder="Enter movie genre...">
+                                    <div class="invalid-feedback">Please enter a genre.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="rating" class="form-label fw-semibold">Movie Rating:</label>
+                                    <input type="number" step="0.1" min="0" max="10" class="form-control" id="rating" name="rating"
+                                        placeholder="Enter rating between 0–10">
+                                    <div class="invalid-feedback">Please enter a valid rating.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="poster_url" class="form-label fw-semibold">Poster URL:</label>
+                                    <input type="url" class="form-control" id="poster_url" name="poster_url"
+                                        placeholder="Enter movie poster URL...">
+                                    <div class="invalid-feedback">Please enter a valid image URL.</div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="description" class="form-label fw-semibold">Description:</label>
+                                    <textarea class="form-control" id="description" name="description"
+                                        rows="4" placeholder="Enter movie description..."></textarea>
+                                    <div class="invalid-feedback">Please enter a description.</div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-5 d-flex flex-column flex-md-row gap-3 justify-content-center">
+                                <button type="submit" class="bg-success text-white rounded border-0 w-100 w-md-auto px-5 py-2 fw-semibold shadow-sm text-decoration-none">
+                                    <i class="fa-solid fa-plus me-2"></i> Add Movie
+                                </button>
+                                <a href="manage_movies.php" class="bg-danger text-white rounded w-100 w-md-auto px-5 py-2 fw-semibold shadow-sm text-decoration-none">
+                                    <i class="fa-solid fa-xmark me-2"></i> Cancel
+                                </a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="card-body p-4 p-md-5 bg-light">
-                    <form action="controllers/add-process.php" method="post" class="needs-validation" novalidate>
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <label for="title" class="form-label fw-semibold">Movie Title:</label>
-                                <input type="text" class="form-control" id="title" name="title"
-                                    placeholder="Enter movie title...">
-                                <div class="invalid-feedback">Please enter the movie title.</div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="language" class="form-label fw-semibold">Language:</label>
-                                <input type="text" class="form-control" id="language" name="language"
-                                    placeholder="Enter movie language...">
-                                <div class="invalid-feedback">Please enter a language.</div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="release_date" class="form-label fw-semibold">Release Date:</label>
-                                <input type="date" class="form-control" id="release_date" name="release_date">
-                                <div class="invalid-feedback">Please select a release date.</div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="genre" class="form-label fw-semibold">Genre:</label>
-                                <input type="text" class="form-control" id="genre" name="genre"
-                                    placeholder="Enter movie genre...">
-                                <div class="invalid-feedback">Please enter a genre.</div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="rating" class="form-label fw-semibold">Movie Rating:</label>
-                                <input type="number" step="0.1" min="0" max="10" class="form-control" id="rating" name="rating"
-                                    placeholder="Enter rating between 0–10">
-                                <div class="invalid-feedback">Please enter a valid rating.</div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="poster_url" class="form-label fw-semibold">Poster URL:</label>
-                                <input type="url" class="form-control" id="poster_url" name="poster_url"
-                                    placeholder="Enter movie poster URL...">
-                                <div class="invalid-feedback">Please enter a valid image URL.</div>
-                            </div>
-                            <div class="col-12">
-                                <label for="description" class="form-label fw-semibold">Description:</label>
-                                <textarea class="form-control" id="description" name="description"
-                                    rows="4" placeholder="Enter movie description..."></textarea>
-                                <div class="invalid-feedback">Please enter a description.</div>
-                            </div>
-                        </div>
-                        <div class="text-center mt-5 d-flex flex-column flex-md-row gap-3 justify-content-center">
-                            <button type="submit" class="bg-success text-white rounded border-0 w-100 w-md-auto px-5 py-2 fw-semibold shadow-sm text-decoration-none">
-                                <i class="fa-solid fa-plus me-2"></i> Add Movie
-                            </button>
-                            <a href="manage_movies.php" class="bg-danger text-white rounded w-100 w-md-auto px-5 py-2 fw-semibold shadow-sm text-decoration-none">
-                                <i class="fa-solid fa-xmark me-2"></i> Cancel
-                            </a>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            </section>
         </section>
     </main>
 

@@ -115,7 +115,7 @@ if (isset($_SESSION['username'])) {
             <p class="fs-5 text-white">
                 Need help or have questions?
                 Email us at
-                <a href="mailto:cinebookmovies@gmail.com" class="text-white">
+                <a href="mailto:cinebookmovies@gmail.com" class="text-white fw-semibold">
                     cinebookmovies@gmail.com
                 </a>
             </p>

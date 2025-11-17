@@ -24,6 +24,7 @@
           <div class="text-center">            
             <h2 class="fw-bold">Create Your New Account</h2>
             <p class="text-muted small">Join CineBook and experience seamless movie ticket booking!</p>
+             <p id="error_msg" class="text-danger fw-bold mt-2"></p>
           </div>
           <hr>
           <form action="#" method="post" novalidate>
@@ -63,7 +64,7 @@
               </label>
             </div>
             <div class="d-grid mb-4">
-              <button type="submit" class="btn btn-primary fw-semibold" id="register_btn">
+              <button type="submit" class="bg-success px-5 py-2 text-white border border-0 rounded fw-semibold" id="register_btn">
                 <i class="fa-solid fa-user-plus me-2"></i>Register
               </button>
             </div>
@@ -72,8 +73,8 @@
               <p class="text-center m-0 fw-semibold text-muted small">Already have an account?</p>
               <hr class="flex-grow-1 ms-2">
             </div>
-            <div class="text-center mt-3">
-              <a href="login.php" class="btn btn-outline-primary w-100 fw-semibold">
+            <div class="d-grid text-center mt-3">
+              <a href="login.php" class="bg-primary px-5 py-2 text-white border border-0 rounded fw-semibold text-center text-decoration-none fw-semibold">
                 <i class="fa-solid fa-right-to-bracket me-2"></i>Sign In
               </a>
             </div>
