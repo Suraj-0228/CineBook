@@ -11,7 +11,7 @@ if (isset($_GET['user_id'])) {
     if (mysqli_affected_rows($con) > 0) {
         echo "<script>
                 alert('User Deleted Successfully.');
-                window.location.href = '../index.php';
+                window.location.href = '../manage_users.php';
             </script>";
         exit();
     }

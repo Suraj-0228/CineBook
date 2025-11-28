@@ -89,10 +89,17 @@ if (!isset($_SESSION['username'])) {
                             <input type="number" class="form-control shadow-sm" name="amount" id="amount" readonly>
                         </div>
                     </div>
-                    <div class="mb-4 text-center">
+                    <div class="mb-4 text-center mt-5 d-flex flex-column flex-md-row gap-3 justify-content-center">
                         <button type="button" class="bg-success px-5 py-2 text-white border border-0 rounded w-100 fw-bold px-4" data-bs-toggle="modal" data-bs-target="#paymentModal">
                             <i class="fa-solid fa-wallet me-2"></i> Pay & Book Now
                         </button>
+                        <button class="bg-danger text-white rounded w-100 px-5 py-2 fw-semibold border border-0 shadow-sm text-decoration-none" onclick="window.history.back()">
+                            <i class="fa-solid fa-xmark me-2"></i> Cancel
+                        </button>
+                    </div>
+                    <!-- Back Button -->
+                    <div class="mb-4 text-center">
+
                     </div>
                     <input type="hidden" name="payment_method" id="payment_method" required>
                 </form>

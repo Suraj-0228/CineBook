@@ -11,3 +11,7 @@
 .about-section .table td {
     color: #333;
 }
+
+hr{
+    border: 1px solid black !important;
+}

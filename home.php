@@ -73,21 +73,22 @@ if (!isset($_SESSION['username'])) {
                 $rating = $rows['rating'];
                 $language = $rows['language'];
 
-                echo '<div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3 movies-card">';
-                echo '    <div class="card">';
-                echo '          <a href="movies-details.php?id=' . $id . '">
-                                        <img src="' . $poster . '" class="card-img-top" alt="' . $title . '">
-                                    </a>';
-                echo '        <div class="card-body">';
-                echo '            <h5 class="card-title fw-bold">' . $title . '</h5>';
-                echo '            <div class="d-flex justify-content-between align-items-center mb-3">';
-                echo '                <span><i class="fa-solid fa-star text-danger"></i> ' . $rating . '/10.0</span>';
-                echo '                <span class="text-muted">' . $language . '</span>';
-                echo '            </div>';
-                echo '            <a href="movies-details.php?id=' . $id . '" class="btn w-100">View Details</a>';
-                echo '        </div>';
-                echo '    </div>';
-                echo '</div>';
+                echo '
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3 movies-card">
+                        <div class="card">
+                            <a href="movies-details.php?id=' . $id . '">
+                                <img src="' . $poster . '" class="card-img-top" alt="' . $title . '">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">' . $title . '</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span><i class="fa-solid fa-star text-danger"></i> ' . $rating . '/10.0</span>
+                                    <span class="text-muted">' . $language . '</span>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>';
             }
             ?>
         </div>

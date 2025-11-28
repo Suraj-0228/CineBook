@@ -32,31 +32,22 @@ html {
 
 }
 
+.search-btn {
+    background-color: #19589C;
+    color: #E9E9E6;
+}
+
+.back-btn {
+    border: 1px solid #19589C;
+    color: #19589C;
+}
+
 .movies-card {
     transition: transform 0.3s ease;
 }
 
 .movies-card:hover {
     transform: scale(1.02);
-}
-
-.footer-text {
-    font-size: 1.1rem;
-}
-
-.login-social-links {
-    display: flex;
-    justify-content: center;
-}
-
-.login-social-icon {
-    font-size: 1.3rem;
-    color: #19589C;
-    transition: transform 0.3s ease;
-}
-
-.login-social-icon:hover {
-    transform: scale(1.15);
 }
 
 /* Offer Section */
@@ -81,12 +72,6 @@ html {
     transform: scale(1.01);
 }
 
-@media (max-width: 768px) {
-    .offer-img {
-        max-width: 90%;
-    }
-}
-
 /* Index Page CSS */
 .features-section {
     background-color: #19589C;
@@ -98,6 +83,6 @@ html {
     color: #E9E9E6;
 }
 
-.payment-header{
+.payment-header {
     background-color: #19589C;
 }

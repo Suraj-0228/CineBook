@@ -31,16 +31,16 @@
                     <i class="fa fa-user me-2"></i> Manage Users
                 </a>
             </li>
+            <li class="nav-item my-3">
+                <a href="admin_logout.php" class="nav-link bg-danger text-white py-2 px-3 rounded fw-semibold logout-btn" onclick="return confirm('Are You Sure!! You Want to Logout?');">
+                    <i class="fa fa-sign-out-alt me-2"></i> Logout
+                </a>
+            </li>
         </ul>
     </div>
 
     <!-- Logout -->
     <div class="w-100 mt-auto text-center">
-        <a href="admin_logout.php"
-           class="bg-danger px-5 py-2 text-white border border-0 rounded fw-semibold text-decoration-none fw-semibold w-100"
-           onclick="return confirm('Are You Sure? Want to Logout?');">
-           <i class="fa fa-sign-out-alt me-2"></i> Logout
-        </a>
-        <p class="text-white small opacity-75 my-3">&copy; 2025 CineBook</p>
+        <p class="text-white opacity-75 my-3">&copy; 2025 CineBook</p>
     </div>
 </nav>

@@ -78,10 +78,10 @@ if (!isset($_SESSION['username'])) {
 
                     <!-- Search Box -->
                     <div class="input-group mb-3 d-inline-flex w-50 me-3">
-                        <input type="text" name="search" class="form-control mx-2"
+                        <input type="text" name="search" class="form-control mx-2 serach-text rounded"
                             placeholder="Search by Movie Name....."
                             value="<?= htmlspecialchars($search_query) ?>">
-                        <button class="bg-primary px-5 py-2 text-white border border-0 rounded" type="submit">Search</button>
+                        <button class="search-btn px-5 py-2 text-white border border-0 rounded" type="submit">Search</button>
                     </div>
 
                     <!-- Genre Dropdown -->
@@ -114,20 +114,17 @@ if (!isset($_SESSION['username'])) {
                     $rating = $rows['rating'];
                     $language = $rows['language'];
             ?>
-                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4 movies-card">
                         <div class="card h-100 shadow-sm border-0 rounded-3">
                             <a href="movies-details.php?id=<?= $id ?>">
                                 <img src="<?= $poster ?>" class="card-img-top rounded-top" alt="<?= htmlspecialchars($title) ?>">
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title fw-bold text-truncate"><?= htmlspecialchars($title) ?></h5>
-                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
                                     <span><i class="fa-solid fa-star text-danger"></i> <?= $rating ?>/10</span>
                                     <span class="badge bg-light text-dark"><?= htmlspecialchars($language) ?></span>
                                 </div>
-                                <a href="movies-details.php?id=<?= $id ?>" class="btn btn-outline-primary w-100 fw-semibold">
-                                    <i class="fa-solid fa-film me-2"></i> View Details
-                                </a>
                             </div>
                         </div>
                     </div>

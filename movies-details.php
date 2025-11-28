@@ -80,8 +80,17 @@ if (!isset($_SESSION['username'])) {
     }
     ?>
 
+    <section class="container py-4 px-0">
+        <button type="button"
+            class="back-btn fw-semibold px-4 py-2 rounded"
+            onclick="window.history.back()">
+            <i class="fa-solid fa-arrow-left me-2"></i> Back
+        </button>
+    </section>
+
+
     <!-- Movie Overview Section -->
-    <section class="movies-section pt-5">
+    <section class="movies-section pt-3">
         <div class="container p-4 shadow-sm rounded bg-white">
             <div class="row align-items-center g-4">
                 <div class="col-12 col-md-4 text-center">

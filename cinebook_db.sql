@@ -1,3 +1,7 @@
+-- Create Database
+CREATE DATABASE IF NOT EXISTS cinebook_db;
+USE cinebook_db;
+
 -- Users Table
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -83,11 +87,6 @@ CREATE TABLE payments (
     transaction_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (booking_id) REFERENCES bookings(booking_id) ON DELETE CASCADE
 );
-
-
--- Insert Records into register Table
-INSERT INTO `users` (`user_id`, `fullname`, `email`, `username`, `user_password`, `created_at`) VALUES
-(1, 'Manani Suraj Vinodbhai', 'surajmanani028@gmail.com', 'User_Suraj', 'User_0228', '2025-08-15 08:29:35');
 
 -- Insert Records into movies_details Table
 INSERT INTO `movies_details` (`movie_id`, `title`, `language`, `release_date`, `genre`, `rating`, `poster_url`, `description`) VALUES
@@ -235,70 +234,191 @@ INSERT INTO `cast_details` (`movie_id`, `actor_name`, `role_name`) VALUES
 -- Insert Records into Theaters Table
 INSERT INTO `theaters` (`theater_id`, `theater_name`, `ticket_price`, `theater_location`) VALUES
 (1, 'INOX Raj Imperial', 250.00, 'Surat - Piplod'),
-(2, 'PVR RahulRaj Mall', 280.00, 'Surat - Dumas Road'),
-(3, 'Valentine Multiplex', 220.00, 'Surat - Dumas Road'),
-(4, 'Cinemax VR Mall', 300.00, 'Surat - VR Mall'),
+(2, 'PVR RahulRaj Mall', 380.00, 'Surat - Dumas Road'),
+(3, 'Valentine Multiplex', 320.00, 'Surat - Dumas Road'),
+(4, 'Cinemax VR Mall', 350.00, 'Surat - VR Mall'),
 (5, 'INOX Reliance Mall', 240.00, 'Surat - Varachha'),
 (6, 'Rajhans Cinemas', 200.00, 'Surat - Adajan'),
-(7, 'Time Cinema', 180.00, 'Surat - Ring Road');
+(7, 'Time Cinema', 300.00, 'Surat - Ring Road');
 
 -- Insert Records into Show Time Table
 INSERT INTO `showtimes` (`movie_id`, `theater_id`, `show_date`, `show_time`) VALUES
-(1, 1, '2025-08-20', '10:00:00'),
-(1, 2, '2025-08-20', '14:00:00'),
-(1, 4, '2025-08-20', '19:00:00'),
+-- 1. Singham Again
+(1, 1, CURDATE(), '10:00:00'),
+(1, 2, CURDATE(), '13:00:00'),
+(1, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(1, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(1, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(1, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(1, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
 
-(2, 3, '2025-08-21', '11:30:00'),
-(2, 5, '2025-08-21', '20:30:00'),
-(2, 6, '2025-08-27', '22:00:00'),
+-- 2. Bhoot Police
+(2, 1, CURDATE(), '10:00:00'),
+(2, 2, CURDATE(), '13:00:00'),
+(2, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(2, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(2, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(2, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(2, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
 
-(3, 2, '2025-08-21', '09:45:00'),
-(3, 6, '2025-08-22', '15:00:00'),
-(3, 4, '2025-08-22', '21:00:00'),
+-- 3. Housefull 5
+(3, 1, CURDATE(), '10:00:00'),
+(3, 2, CURDATE(), '13:00:00'),
+(3, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(3, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(3, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(3, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(3, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
 
-(4, 7, '2025-08-20', '12:30:00'),
-(4, 1, '2025-08-23', '17:30:00'),
-(4, 2, '2025-08-23', '21:15:00'),
+-- 4. War 2
+(4, 1, CURDATE(), '10:00:00'),
+(4, 2, CURDATE(), '13:00:00'),
+(4, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(4, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(4, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(4, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(4, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
 
-(5, 5, '2025-08-22', '13:30:00'),
-(5, 3, '2025-08-24', '18:00:00'),
-(5, 7, '2025-08-28', '15:30:00'),
+-- 5. Adhura
+(5, 1, CURDATE(), '10:00:00'),
+(5, 2, CURDATE(), '13:00:00'),
+(5, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(5, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(5, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(5, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(5, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
 
-(6, 6, '2025-08-22', '16:00:00'),
-(6, 7, '2025-08-24', '20:00:00'),
+-- 6. 12th Fail
+(6, 1, CURDATE(), '10:00:00'),
+(6, 2, CURDATE(), '13:00:00'),
+(6, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(6, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(6, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(6, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(6, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
 
-(7, 1, '2025-08-23', '10:30:00'),
-(7, 3, '2025-08-23', '19:30:00'),
+-- 7. Jawan
+(7, 1, CURDATE(), '10:00:00'),
+(7, 2, CURDATE(), '13:00:00'),
+(7, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(7, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(7, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(7, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(7, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
 
-(8, 4, '2025-08-21', '18:00:00'),
-(8, 6, '2025-08-24', '21:30:00'),
+-- 8. Golmaal Again
+(8, 1, CURDATE(), '10:00:00'),
+(8, 2, CURDATE(), '13:00:00'),
+(8, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(8, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(8, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(8, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(8, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
 
-(9, 2, '2025-08-23', '15:00:00'),
-(9, 5, '2025-08-25', '20:00:00'),
-(9, 3, '2025-08-28', '18:30:00'),
+-- 9. Toxic
+(9, 1, CURDATE(), '10:00:00'),
+(9, 2, CURDATE(), '13:00:00'),
+(9, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(9, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(9, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(9, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(9, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
 
-(10, 7, '2025-08-24', '11:00:00'),
-(10, 1, '2025-08-25', '16:00:00'),
+-- 10. Fateh
+(10, 1, CURDATE(), '10:00:00'),
+(10, 2, CURDATE(), '13:00:00'),
+(10, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(10, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(10, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(10, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(10, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
 
-(11, 3, '2025-08-24', '14:30:00'),
-(11, 4, '2025-08-25', '19:00:00'),
+-- 11. Kantara Chapter 1
+(11, 1, CURDATE(), '10:00:00'),
+(11, 2, CURDATE(), '13:00:00'),
+(11, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(11, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(11, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(11, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(11, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
 
-(12, 5, '2025-08-23', '12:00:00'),
-(12, 2, '2025-08-25', '21:00:00'),
+-- 12. Raid 2
+(12, 1, CURDATE(), '10:00:00'),
+(12, 2, CURDATE(), '13:00:00'),
+(12, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(12, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(12, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(12, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(12, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
 
-(13, 6, '2025-08-24', '13:00:00'),
-(13, 7, '2025-08-26', '18:00:00'),
-(13, 4, '2025-08-28', '20:00:00'),
+-- 13. Pushpa 2
+(13, 1, CURDATE(), '10:00:00'),
+(13, 2, CURDATE(), '13:00:00'),
+(13, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(13, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(13, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(13, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(13, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
 
-(14, 1, '2025-08-25', '09:30:00'),
-(14, 3, '2025-08-26', '17:30:00'),
+-- 14. Sikandar
+(14, 1, CURDATE(), '10:00:00'),
+(14, 2, CURDATE(), '13:00:00'),
+(14, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(14, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(14, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(14, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(14, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
 
-(15, 2, '2025-08-25', '14:00:00'),
-(15, 5, '2025-08-26', '20:30:00'),
+-- 15. Shaitaan
+(15, 1, CURDATE(), '10:00:00'),
+(15, 2, CURDATE(), '13:00:00'),
+(15, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(15, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(15, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(15, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(15, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
 
-(16, 4, '2025-08-26', '12:30:00'),
-(16, 6, '2025-08-27', '19:30:00'),
+-- 16. Chhori 2
+(16, 1, CURDATE(), '10:00:00'),
+(16, 2, CURDATE(), '13:00:00'),
+(16, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(16, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(16, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(16, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(16, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
 
-(17, 7, '2025-08-25', '16:30:00'),
-(17, 1, '2025-08-27', '21:00:00'),
-(17, 2, '2025-08-28', '22:30:00'); 
+-- 17. Dragon
+(17, 1, CURDATE(), '10:00:00'),
+(17, 2, CURDATE(), '13:00:00'),
+(17, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(17, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(17, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(17, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(17, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
+
+-- 18. Vash 2
+(18, 1, CURDATE(), '10:00:00'),
+(18, 2, CURDATE(), '13:00:00'),
+(18, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(18, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(18, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(18, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(18, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
+
+-- 19. OMG 2
+(19, 1, CURDATE(), '10:00:00'),
+(19, 2, CURDATE(), '13:00:00'),
+(19, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(19, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(19, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(19, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(19, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00'),
+
+-- 20. Drishyam 2
+(20, 1, CURDATE(), '10:00:00'),
+(20, 2, CURDATE(), '13:00:00'),
+(20, 3, CURDATE() + INTERVAL 1 DAY, '16:00:00'),
+(20, 4, CURDATE() + INTERVAL 1 DAY, '19:00:00'),
+(20, 5, CURDATE() + INTERVAL 2 DAY, '22:00:00'),
+(20, 6, CURDATE() + INTERVAL 2 DAY, '12:00:00'),
+(20, 7, CURDATE() + INTERVAL 3 DAY, '21:00:00');

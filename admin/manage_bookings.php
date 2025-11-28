@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'controllers/booking-details.php';
 require 'includes/dbconnection.php';
 
 // ===== Update booking status if admin takes action =====
@@ -10,28 +11,6 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
     header("Location: manage_bookings.php");
     exit;
 }
-
-// ===== Fetch bookings along with payment info =====
-$query = "
-    SELECT 
-        b.*, 
-        u.username, 
-        m.title, 
-        s.show_date, 
-        s.show_time, 
-        t.theater_name,
-        p.payment_method,
-        p.payment_status,
-        p.payment_message
-    FROM bookings b
-    JOIN users u ON b.user_id = u.user_id
-    JOIN movies_details m ON b.movie_id = m.movie_id
-    JOIN showtimes s ON b.show_id = s.show_id
-    JOIN theaters t ON s.theater_id = t.theater_id
-    LEFT JOIN payments p ON b.booking_id = p.booking_id
-    ORDER BY b.booking_id DESC
-";
-$result = mysqli_query($con, $query);
 ?>
 
 <!DOCTYPE html>
@@ -52,126 +31,150 @@ $result = mysqli_query($con, $query);
 
     <main class="d-flex">
 
-        <!-- Navbar -->
+        <!-- Sidebar -->
         <?php include 'includes/sidebar.php'; ?>
 
         <!-- Manage Booking Section -->
         <section class="content-area flex-grow-1" style="margin-left: 260px; padding: 20px;">
-            <section class="container my-5 px-4" style="width: 80rem;">
+            <section class="container my-5 px-4">
                 <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 text-primary">
                     <h1 class="fw-bold text-uppercase mb-3 mb-md-0">
                         <i class="fa-solid fa-ticket me-2"></i> Manage Bookings
                     </h1>
                 </div>
-
-                <div class="table-responsive shadow rounded border">
-                    <table class="table table-striped table-hover align-middle mb-0">
-                        <thead class="table-dark text-center align-middle">
-                            <tr>
-                                <th>Booking ID</th>
-                                <th>Username</th>
-                                <th>Movie Title</th>
-                                <th>Show Date</th>
-                                <th>Show Time</th>
-                                <th>Theater</th>
-                                <th>Seat</th>
-                                <th>Amount</th>
-                                <th>Status</th>
-                                <th>Payment Method</th>
-                                <th>Payment Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-
-                        <tbody class="text-center">
-                            <?php while ($row = mysqli_fetch_assoc($result)): ?>
-                                <?php
-                                $booking_id = $row['booking_id'];
-                                $username = htmlspecialchars($row['username']);
-                                $movie_title = htmlspecialchars($row['title']);
-                                $show_date = $row['show_date'];
-                                $show_time = date("h:i A", strtotime($row['show_time']));
-                                $theater_name = htmlspecialchars($row['theater_name']);
-                                $seat_row = $row['seat_row'];
-                                $total_seat = $row['total_seat'];
-                                $amount = number_format($row['amount'], 2);
-                                $booking_status = $row['booking_status'];
-                                $payment_method = $row['payment_method'] ?? 'N/A';
-                                $payment_status = $row['payment_status'] ?? 'Pending';
-                                $payment_message = $row['payment_message'] ?? '';
-                                ?>
-
-                                <tr>
-                                    <td><?= $booking_id ?></td>
-                                    <td><?= $username ?></td>
-                                    <td><?= $movie_title ?></td>
-                                    <td><?= $show_date ?></td>
-                                    <td><?= $show_time ?></td>
-                                    <td><?= $theater_name ?></td>
-                                    <td><?= $seat_row ?> - <?= $total_seat ?></td>
-                                    <td class="fw-semibold text-success">₹<?= $amount ?></td>
-
-                                    <!-- Booking Status -->
-                                    <td>
-                                        <?php
-                                        $status_badge = match ($booking_status) {
-                                            'Pending' => 'bg-warning text-dark',
-                                            'Approved' => 'bg-success',
-                                            'Cancelled' => 'bg-danger',
-                                            default => 'bg-secondary'
-                                        };
-                                        ?>
-                                        <span class="badge <?= $status_badge ?> px-3 py-2 fw-semibold"><?= $booking_status ?></span>
-                                    </td>
-
-                                    <!-- Payment Method -->
-                                    <td>
-                                        <?php
-                                        $method_badge = match ($payment_method) {
-                                            'UPI' => 'bg-success',
-                                            'Card' => 'bg-info text-dark',
-                                            'Cash' => 'bg-secondary',
-                                            default => 'bg-light text-dark'
-                                        };
-                                        ?>
-                                        <span class="badge <?= $method_badge ?> px-3 py-2 fw-semibold"><?= $payment_method ?></span>
-                                    </td>
-
-                                    <!-- Payment Status -->
-                                    <td>
-                                        <?php
-                                        $payment_badge = match ($payment_status) {
-                                            'Confirmed' => 'bg-success',
-                                            'Pending' => 'bg-warning text-dark',
-                                            'Failed' => 'bg-danger',
-                                            default => 'bg-secondary'
-                                        };
-                                        ?>
-                                        <span class="badge <?= $payment_badge ?> px-3 py-2 fw-semibold"><?= $payment_status ?></span>
-                                    </td>
-
-                                    <!-- Actions -->
-                                    <td>
-                                        <?php if ($booking_status === 'Pending'): ?>
-                                            <div class="d-flex flex-column align-items-center gap-1">
-                                                <a href="?action=approve&id=<?= $booking_id ?>"
-                                                    class="text-success text-decoration-none fw-semibold">
-                                                    <i class="fa-solid fa-check me-1"></i> Approve
-                                                </a>
-                                                <a href="?action=cancel&id=<?= $booking_id ?>"
-                                                    class="text-danger text-decoration-none fw-semibold">
-                                                    <i class="fa-solid fa-xmark me-1"></i> Cancel
-                                                </a>
-                                            </div>
-                                        <?php else: ?>
-                                            <span class="text-muted small">No Actions</span>
+                <?php if ($result && mysqli_num_rows($result) > 0): ?>
+                    <div class="row g-4">
+                        <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                            <?php
+                            $booking_id      = $row['booking_id'];
+                            $username        = htmlspecialchars($row['username']);
+                            $movie_title     = htmlspecialchars($row['title']);
+                            $show_date       = $row['show_date'];
+                            $show_time       = date("h:i A", strtotime($row['show_time']));
+                            $theater_name    = htmlspecialchars($row['theater_name']);
+                            $seat_row        = $row['seat_row'] ?? '';
+                            $total_seat      = $row['total_seat'] ?? '';
+                            $amount          = number_format($row['amount'], 2);
+                            $booking_status  = $row['booking_status'] ?? 'Pending';
+                            $payment_method  = $row['payment_method'] ?? 'N/A';
+                            $payment_status  = $row['payment_status'] ?? 'Pending';
+                            $payment_message = $row['payment_message'] ?? '';
+                            $status_badge = match ($booking_status) {
+                                'Pending'   => 'bg-warning text-dark',
+                                'Approved'  => 'bg-success',
+                                'Cancelled' => 'bg-danger',
+                                default     => 'bg-secondary'
+                            };
+                            $method_badge = match ($payment_method) {
+                                'UPI'  => 'bg-success',
+                                'Card' => 'bg-info text-dark',
+                                'Cash' => 'bg-secondary',
+                                default => 'bg-light text-dark'
+                            };
+                            $payment_badge = match ($payment_status) {
+                                'Confirmed' => 'bg-success',
+                                'Pending'   => 'bg-warning text-dark',
+                                'Failed'    => 'bg-danger',
+                                default     => 'bg-secondary'
+                            };
+                            ?>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+                                    <div class="card-header admin-header text-white d-flex justify-content-between align-items-center">
+                                        <span class="">
+                                            <i class="fa-solid fa-hashtag me-1"></i>Booking ID: <?= $booking_id ?>
+                                        </span>
+                                        <span class="badge <?= $status_badge ?> px-3 py-2 fw-semibold">
+                                            <?= $booking_status ?>
+                                        </span>
+                                    </div>
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title fw-bold mb-1 text-truncate" title="<?= $movie_title ?>">
+                                            <i class="fa-solid fa-film me-2 text-primary"></i><?= $movie_title ?>
+                                        </h5>
+                                        <p class="mb-2 text-muted">
+                                            <i class="fa-solid fa-user me-1"></i><?= $username ?>
+                                        </p>
+                                        <p class="mb-2 d-flex flex-row align-items-center">
+                                            <i class="fa-solid fa-calendar-days me-1 text-primary"></i><?= $show_date ?>
+                                            <i class="fa-solid ms-3 fa-clock me-1 text-danger"></i><?= $show_time ?>
+                                        </p>
+                                        <p class="mb-2">
+                                            <i class="fa-solid fa-building me-1 text-success"></i><?= $theater_name ?>
+                                        </p>
+                                        <p class="mb-2">
+                                            <span class="badge bg-secondary rounded-pill px-3 py-2">
+                                                </i><?= $seat_row ?> - <?= $total_seat ?>
+                                            </span>
+                                        </p>
+                                        <p class="fw-semibold text-success mb-3">
+                                            <i class="fa-solid fa-indian-rupee-sign me-1"></i><?= $amount ?>
+                                        </p>
+                                        <div class="mb-2">
+                                            <span class="badge <?= $method_badge ?> px-3 py-2 fw-semibold me-1">
+                                                <i class="fa-solid fa-wallet me-1"></i><?= $payment_method ?>
+                                            </span>
+                                            <span class="badge <?= $payment_badge ?> px-3 py-2 fw-semibold">
+                                                <?= $payment_status ?>
+                                            </span>
+                                        </div>
+                                        <?php if (!empty($payment_message)): ?>
+                                            <p class=" text-muted mb-2">
+                                                <i class="fa-solid fa-info-circle me-1"></i><?= htmlspecialchars($payment_message) ?>
+                                            </p>
                                         <?php endif; ?>
-                                    </td>
-                                </tr>
-                            <?php endwhile; ?>
-                        </tbody>
-                    </table>
-                </div>
+                                        <div class="mt-auto pt-2">
+                                            <?php if ($booking_status === 'Pending'): ?>
+                                                <div class="d-flex justify-content-between gap-1">
+                                                    <a href="?action=approve&id=<?= $booking_id ?>" class="text-success text-decoration-none fw-semibold">
+                                                        <i class="fa-solid fa-check me-1"></i> Approve
+                                                    </a>
+                                                    <a href="?action=cancel&id=<?= $booking_id ?>" class="text-danger text-decoration-none fw-semibold">
+                                                        <i class="fa-solid fa-xmark me-1"></i> Cancel
+                                                    </a>
+                                                </div>
+                                            <?php else: ?>
+                                                <span class="text-muted ">
+                                                    <i class="fa-solid fa-circle-check me-1"></i>No Actions Available
+                                                </span>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
+                <?php else: ?>
+                    <div class="alert alert-light border text-center py-4 mt-4">
+                        <i class="fa-solid fa-circle-info me-2"></i>
+                        <span class="text-muted">No bookings found.</span>
+                    </div>
+                <?php endif; ?>
+
+                <!-- Pagination -->
+                <?php if ($total_pages > 1): ?>
+                    <nav aria-label="Bookings pagination">
+                        <ul class="pagination justify-content-center mt-4">
+                            <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
+                                <a class="page-link"
+                                    href="<?= $page > 1 ? '?page=' . ($page - 1) : '#' ?>">
+                                    &laquo; Prev
+                                </a>
+                            </li>
+                            <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                                <li class="page-item <?= $i == $page ? 'active' : '' ?>">
+                                    <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                                </li>
+                            <?php endfor; ?>
+                            <li class="page-item <?= $page >= $total_pages ? 'disabled' : '' ?>">
+                                <a class="page-link"
+                                    href="<?= $page < $total_pages ? '?page=' . ($page + 1) : '#' ?>">
+                                    Next &raquo;
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                <?php endif; ?>
             </section>
         </section>
     </main>
