@@ -58,7 +58,6 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                             $booking_status  = $row['booking_status'] ?? 'Pending';
                             $payment_method  = $row['payment_method'] ?? 'N/A';
                             $payment_status  = $row['payment_status'] ?? 'Pending';
-                            $payment_message = $row['payment_message'] ?? '';
                             $status_badge = match ($booking_status) {
                                 'Pending'   => 'bg-warning text-dark',
                                 'Approved'  => 'bg-success',
@@ -78,11 +77,11 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                 default     => 'bg-secondary'
                             };
                             ?>
-                            <div class="col-12 col-md-6 col-lg-4">
+                            <div class="col-12 col-md-6 col-lg-3">
                                 <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
                                     <div class="card-header admin-header text-white d-flex justify-content-between align-items-center">
                                         <span class="">
-                                            <i class="fa-solid fa-hashtag me-1"></i>Booking ID: <?= $booking_id ?>
+                                            Booking ID: <?= $booking_id ?>
                                         </span>
                                         <span class="badge <?= $status_badge ?> px-3 py-2 fw-semibold">
                                             <?= $booking_status ?>
@@ -118,11 +117,6 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                                 <?= $payment_status ?>
                                             </span>
                                         </div>
-                                        <?php if (!empty($payment_message)): ?>
-                                            <p class=" text-muted mb-2">
-                                                <i class="fa-solid fa-info-circle me-1"></i><?= htmlspecialchars($payment_message) ?>
-                                            </p>
-                                        <?php endif; ?>
                                         <div class="mt-auto pt-2">
                                             <?php if ($booking_status === 'Pending'): ?>
                                                 <div class="d-flex justify-content-between gap-1">
@@ -154,7 +148,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                 <!-- Pagination -->
                 <?php if ($total_pages > 1): ?>
                     <nav aria-label="Bookings pagination">
-                        <ul class="pagination justify-content-center mt-4">
+                        <ul class="pagination justify-content-center mt-5">
                             <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
                                 <a class="page-link"
                                     href="<?= $page > 1 ? '?page=' . ($page - 1) : '#' ?>">

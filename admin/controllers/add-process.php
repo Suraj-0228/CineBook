@@ -26,13 +26,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // $result = mysqli_query($con, $sql_query);
 
             if ($con->query($sql_query) === TRUE) {
-                echo "<script>alert('Movie Inserted Successful.');</script>";
+                echo "<script>
+                            alert('Movie Inserted Successfully.');
+                            window.location.href = '../manage_movies.php';
+                        </script>";
             } else {
                 echo "<script>alert('ERROR: Movie Inserting Failed!!!');</script>";
                 echo "Error: " . $con->error;
             }
         } else {
-            echo "<script>alert('ERROR: Please, Fill all the Details.'); window.location.href = '../manage_movies.php';</script>";
+            echo "<script>alert('ERROR: Please, Fill all the Details.'); window.location.href = '../add_movie.php';</script>";
         }
 
         $con->close();

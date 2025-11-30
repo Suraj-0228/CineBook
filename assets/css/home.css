@@ -27,3 +27,29 @@
 .card-img-top {
     height: 25rem;
 }
+
+.hero-section {
+    min-height: 85vh;
+    background-image: url('https://i.pinimg.com/1200x/90/fe/08/90fe081c623f6a7bf0d8e80a143b1988.jpg');
+    /* your hero image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-overlay {
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.6));
+}
+
+.text-gradient {
+    background: linear-gradient(90deg, #ffcc33, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.letter-spacing-1 {
+    letter-spacing: 0.15em;
+}
+

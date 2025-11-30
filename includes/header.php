@@ -14,23 +14,48 @@
             </button>
             <!-- Desktop Nav -->
             <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
+                <!-- Center Menu -->
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item mx-2"><a class="nav-link active text-light" href="home.php">Home</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-light" href="movies.php">Movies</a></li>
-                    <li class="nav-item mx-2"><a class="nav-link text-light" href="my-booking.php">My Bookings</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-light" href="about.php">About Us</a></li>
-                    <li class="nav-item mx-2">
-                        <a href="profile.php?user_id=<?php echo $_SESSION['user_id']; ?>" class="nav-link text-light">Profile</a>
+                </ul>
+
+                <!-- User Dropdown (Right Side) -->
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light d-flex align-items-center"
+                            href="#" id="userDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-user-circle fa-xl"></i>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li>
+                                <a class="dropdown-item"
+                                    href="profile.php?user_id=<?php echo $_SESSION['user_id']; ?>">
+                                    <i class="fa fa-user text-primary me-2"></i> My Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="my-booking.php">
+                                    <i class="fa fa-ticket text-success me-2"></i> My Bookings
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-danger"
+                                    href="logout.php"
+                                    onclick="return confirm('Are you sure you want to log out?');">
+                                    <i class="fa fa-sign-out-alt me-2"></i> Logout
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
-                <!-- Logout (Visible on Desktop) -->
-                <div class="d-none d-lg-block">
-                    <a href="logout.php"
-                        class="bg-danger rounded fw-semibold text-decoration-none text-white px-3 py-2 border border-light"
-                        onclick="return confirm('Are You Sure?? You want to Logout!!');">
-                        <i class="fa fa-sign-out-alt me-2"></i>Logout
-                    </a>
-                </div>
             </div>
         </div>
     </nav>

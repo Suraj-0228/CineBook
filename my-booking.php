@@ -41,59 +41,91 @@ $result = mysqli_query($con, $query);
     <?php include 'includes/header.php'; ?>
 
     <!-- My Booking Details -->
-    <!-- 🎬 My Bookings Section -->
     <div class="container my-5">
         <h2 class="booking-header text-center fw-bold text-light rounded py-3 mb-4 shadow-sm">
             My Bookings
         </h2>
 
-        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
-            <div class="card-body bg-light p-4">
-                <div class="table-responsive">
-                    <?php if (mysqli_num_rows($result) > 0) { ?>
-                        <table class="table table-hover align-middle text-center">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th class="fw-semibold fs-5">Booking ID</th>
-                                    <th class="fw-semibold fs-5">Movie</th>
-                                    <th class="fw-semibold fs-5">Show</th>
-                                    <th class="fw-semibold fs-5">Theater</th>
-                                    <th class="fw-semibold fs-5">Seats</th>
-                                    <th class="fw-semibold fs-5">Amount (₹)</th>
-                                    <th class="fw-semibold fs-5">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                                    <tr class="bg-white border-bottom">
-                                        <td class="py-3"><?php echo $row['booking_id']; ?></td>
-                                        <td class="py-3 fw-semibold text-primary"><?php echo $row['title']; ?></td>
-                                        <td class="py-3"><?php echo $row['show_date'] . ' • ' . date("h:i A", strtotime($row['show_time'])); ?></td>
-                                        <td class="py-3"><?php echo $row['theater_name']; ?></td>
-                                        <td class="py-3"><?php echo $row['seat_row'] . "-" . $row['total_seat']; ?></td>
-                                        <td class="py-3 fw-bold text-success"><?php echo "₹" . number_format($row['amount'], 2); ?></td>
-                                        <td class="py-3">
-                                            <?php if ($row['booking_status'] == 'Pending') { ?>
-                                                <span class="badge bg-warning text-dark px-3 py-2 fs-6 fw-semibold shadow-sm">Pending</span>
-                                            <?php } elseif ($row['booking_status'] == 'Approved') { ?>
-                                                <span class="badge bg-success px-3 py-2 fs-6 fw-semibold shadow-sm">Approved</span>
-                                            <?php } else { ?>
-                                                <span class="badge bg-danger px-3 py-2 fs-6 fw-semibold shadow-sm">Cancelled</span>
-                                            <?php } ?>
-                                        </td>
-                                    </tr>
+        <?php if (mysqli_num_rows($result) > 0) { ?>
+
+            <div class="row g-4">
+                <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="booking-card card shadow-lg border-0 rounded-4 overflow-hidden h-100">
+
+                            <!-- Card Header -->
+                            <div class="card-header d-flex justify-content-between align-items-center features-section text-white py-3">
+                                <span class="fw-semibold">
+                                    Booking ID: <?php echo $row['booking_id']; ?>
+                                </span>
+
+                                <?php if ($row['booking_status'] == 'Pending') { ?>
+                                    <span class="badge bg-warning text-dark fw-semibold px-3 py-2 shadow-sm">
+                                        <i class="fa fa-clock me-1"></i> Pending
+                                    </span>
+                                <?php } elseif ($row['booking_status'] == 'Approved') { ?>
+                                    <span class="badge bg-success fw-semibold px-3 py-2 shadow-sm">
+                                        <i class="fa fa-check-circle me-1"></i> Approved
+                                    </span>
+                                <?php } else { ?>
+                                    <span class="badge bg-danger fw-semibold px-3 py-2 shadow-sm">
+                                        <i class="fa fa-times-circle me-1"></i> Cancelled
+                                    </span>
                                 <?php } ?>
-                            </tbody>
-                        </table>
-                    <?php } else { ?>
-                        <div class="alert alert-danger text-center fw-semibold border-2 border-danger shadow-sm py-4">
-                            You have no bookings yet!
-                            <a href="movies.php" class="alert-link text-decoration-none fw-bold">Book Now</a>
+                            </div>
+
+                            <!-- Card Body -->
+                            <div class="card-body p-4">
+
+                                <h4 class="fw-bold text-primary mb-3">
+                                    <?php echo $row['title']; ?>
+                                </h4>
+
+                                <p class="mb-2">
+                                    <i class="fa fa-calendar-alt me-2 text-secondary"></i>
+                                    <strong>Date:</strong> <?php echo $row['show_date']; ?>
+                                </p>
+
+                                <p class="mb-2">
+                                    <i class="fa fa-clock me-2 text-danger"></i>
+                                    <strong>Time:</strong> <?php echo date("h:i A", strtotime($row['show_time'])); ?>
+                                </p>
+
+                                <p class="mb-2">
+                                    <i class="fa fa-map-marker-alt me-2 text-success"></i>
+                                    <strong>Theater:</strong> <?php echo $row['theater_name']; ?>
+                                </p>
+
+                                <p class="mb-3">
+                                    <i class="fa fa-chair me-2 text-primary"></i>
+                                    <strong>Seats:</strong> <?php echo $row['seat_row'] . "-" . $row['total_seat']; ?>
+                                </p>
+
+                                <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top">
+                                    <span class="fw-semibold text-muted">Total Amount</span>
+                                    <span class="fw-bold fs-4 text-success">
+                                        ₹<?php echo number_format($row['amount'], 2); ?>
+                                    </span>
+                                </div>
+
+                            </div>
                         </div>
-                    <?php } ?>
-                </div>
+                    </div>
+
+                <?php } ?>
             </div>
-        </div>
+
+        <?php } else { ?>
+
+            <div class="card shadow-lg border-0 rounded-4 bg-light p-5 text-center mx-auto" style="max-width: 500px;">
+                <i class="fa fa-ticket-alt fa-3x text-secondary mb-3"></i>
+                <h5 class="fw-bold mb-2">No Bookings Found</h5>
+                <p class="text-muted mb-3">You have no movie bookings yet.</p>
+                <a href="movies.php" class="btn btn-primary px-4 fw-semibold shadow-sm">Browse Movies</a>
+            </div>
+
+        <?php } ?>
     </div>
 
     <!-- Footer -->

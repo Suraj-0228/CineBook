@@ -111,8 +111,7 @@ if (!isset($_SESSION['adminname'])) {
                         JOIN showtimes s ON b.show_id = s.show_id
                         JOIN theaters t ON s.theater_id = t.theater_id
                         LEFT JOIN payments p ON b.booking_id = p.booking_id
-                        ORDER BY b.booking_id DESC
-                        LIMIT 5";
+                        ORDER BY b.booking_id DESC";
                     $result_recent = mysqli_query($con, $query);
                 ?>
 

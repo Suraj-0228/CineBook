@@ -48,16 +48,27 @@ if (!isset($_SESSION['username'])) {
                         <input type="hidden" name="movie_id" value="<?= $movie_id; ?>">
                         <input type="text" class="form-control border-0 shadow-sm" value="<?= $movie_title; ?>" readonly>
                     </div>
-                    <div class="mb-4">
-                        <label for="show_id" class="form-label fw-semibold">Select Show:</label>
-                        <select class="form-select shadow-sm" name="show_id" id="show_id" required>
-                            <option value="">Select Date, Time & Theater</option>
-                            <?php foreach ($shows as $show) {
-                                $selected = ($selected_show_id == $show['show_id']) ? 'selected' : '';
-                                $show_data = $show['show_date'] . ' || ' . date("h:i A", strtotime($show['show_time'])) . ' || ' . $show['theater_name'] . ' (' . $show['theater_location'] . ')';
-                                echo "<option value='{$show['show_id']}' data-price='{$show['ticket_price']}' $selected>$show_data</option>";
-                            } ?>
-                        </select>
+                    <div class="mb-4 row g-4">
+                        <?php
+                        $today = date("Y-m-d");
+                        ?>
+                        <div class="col-md-6">
+                            <label for="booking_date" class="form-label fw-semibold">Select Date:</label>
+                            <input type="date" class="form-control shadow-sm" name="booking_date" id="booking_date" required min="<?= $today; ?>">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="show_id" class="form-label fw-semibold">Select Show:</label>
+                            <select class="form-select shadow-sm" name="show_id" id="show_id" required>
+                                <option value="">Select Date, Time & Theater</option>
+                                <?php foreach ($shows as $show) {
+                                    $selected = ($selected_show_id == $show['show_id']) ? 'selected' : '';
+                                    $show_data = date("h:i A", strtotime($show['show_time']))
+                                        . ' || ' . $show['theater_name']
+                                        . ' (' . $show['theater_location'] . ')';
+                                    echo "<option value='{$show['show_id']}' data-price='{$show['ticket_price']}' $selected>$show_data</option>";
+                                } ?>
+                            </select>
+                        </div>
                     </div>
                     <div class="row g-3 mb-4">
                         <div class="col-md-6">

@@ -78,12 +78,15 @@ if (!isset($_SESSION['adminname'])) {
                                         placeholder="Enter movie language..." value="<?= htmlspecialchars($language) ?>">
                                     <div class="invalid-feedback">Please enter a language.</div>
                                 </div>
+                                <?php $today = date('Y-m-d'); ?>
+
                                 <div class="col-md-6">
                                     <label for="release_date1" class="form-label fw-semibold">Release Date:</label>
                                     <input type="date" class="form-control" id="release_date1" name="release_date1"
-                                        value="<?= htmlspecialchars($release_date) ?>">
+                                        value="<?= htmlspecialchars($release_date) ?>" min="<?= $today ?>">
                                     <div class="invalid-feedback">Please select a release date.</div>
                                 </div>
+
                                 <div class="col-md-6">
                                     <label for="genre1" class="form-label fw-semibold">Genre:</label>
                                     <input type="text" class="form-control" id="genre1" name="genre1"
@@ -94,7 +97,7 @@ if (!isset($_SESSION['adminname'])) {
                                     <label for="rating1" class="form-label fw-semibold">Movie Rating:</label>
                                     <input type="number" class="form-control" id="rating1" name="rating1"
                                         step="0.1" min="0" max="10" value="<?= htmlspecialchars($rating) ?>">
-                                    <div class="invalid-feedback">Please provide a rating between 0 and 10.</div>
+                                    <div class="invalid-feedback fw-semibold">Please, Provide a Rating between 0 and 10!!</div>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="poster1" class="form-label fw-semibold">Poster URL:</label>
@@ -123,6 +126,32 @@ if (!isset($_SESSION['adminname'])) {
             </section>
         </section>
     </main>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function(e) {
+
+            const ratingFields = ["rating", "rating1"]; // both rating inputs
+            let isValid = true;
+
+            ratingFields.forEach(id => {
+                const input = document.getElementById(id);
+                if (input) {
+                    const value = parseFloat(input.value);
+
+                    if (isNaN(value) || value < 0 || value > 10) {
+                        input.classList.add("is-invalid");
+                        isValid = false;
+                    } else {
+                        input.classList.remove("is-invalid");
+                    }
+                }
+            });
+
+            if (!isValid) {
+                e.preventDefault(); // Stop form submission
+            }
+        });
+    </script>
 
 </body>
 

@@ -61,12 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // === Step 2: Validate & Process UPI Payment ===
     upiPayBtn.addEventListener("click", () => {
+
         const upiId = document.getElementById("upiIdInput").value.trim();
 
-        if (upiId === "" || !upiId.includes("@")) {
+        if (upiId === "" || !upiId.includes("@")) { 
             alert("Please enter a valid UPI ID (example@upi)");
             return;
-        }
+        } 
+        
         const modal = bootstrap.Modal.getInstance(document.getElementById("paymentModal"));
         modal.hide();
 

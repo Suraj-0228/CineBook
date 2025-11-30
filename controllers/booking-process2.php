@@ -12,7 +12,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 
 // Fetch all shows for this movie
 $shows = [];
-$sql_query = "SELECT s.show_id, s.show_date, s.show_time, t.theater_name, t.theater_location, t.ticket_price
+$sql_query = "SELECT s.show_id, s.show_time, t.theater_name, t.theater_location, t.ticket_price
               FROM showtimes s JOIN theaters t ON s.theater_id = t.theater_id
               WHERE s.movie_id = '$movie_id'";
 $sql_result = mysqli_query($con, $sql_query);

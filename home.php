@@ -42,18 +42,45 @@ if (!isset($_SESSION['username'])) {
     <?php include 'includes/header.php'; ?>
 
     <!-- Hero Section -->
-    <div class="hero-con my-3">
-        <div class="hero-slider">
-            <div class="slider-item">
-                <img src="https://i.pinimg.com/736x/c9/e8/53/c9e85338209984f5360c1b3e65cbd258.jpg" alt="Slider Image 1" class="img-fluid">
-                <div class="overlay"></div>
-            </div>
-            <div class="slider-item">
-                <img src="https://i.pinimg.com/1200x/78/05/2d/78052d014b0cbf4160e942d48c376658.jpg" alt="Slider Image 2" class="img-fluid">
-                <div class="overlay"></div>
+    <section class="hero-section d-flex align-items-center position-relative text-white">
+        <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+        <div class="container position-relative">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-9 text-center">
+                    <p class="text-uppercase small fw-semibold mb-2 letter-spacing-1">
+                        Welcome to <span class="text-warning">CineBook</span>
+                    </p>
+                    <h1 class="fw-bold display-4 mb-3">
+                        Book Movie Tickets<br>
+                        <span class="text-gradient">Anytime, Anywhere</span>
+                    </h1>
+                    <p class="lead mb-4">
+                        Discover the latest releases, pick your favorite seats,
+                        and enjoy a smooth and secure booking experience — all in just a few clicks.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+                        <a href="movies.php" class="bg-success px-5 py-2 text-white border border-0 rounded fw-bold px-4 text-decoration-none">
+                            <i class="fa-solid fa-film me-2"></i> Browse Movies
+                        </a>
+                        <a href="about.php" class="bg-primary px-5 py-2 text-white border border-0 rounded fw-bold px-4 text-decoration-none">
+                            <i class="fa-solid fa-phone me-2"></i> Contact Us
+                        </a>
+                    </div>
+                    <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+                        <span class="badge px-3 py-2">
+                            <i class="fa-solid fa-bolt me-1"></i> Instant Booking
+                        </span>
+                        <span class="badge px-3 py-2">
+                            <i class="fa-solid fa-chair me-1"></i> Live Seat Selection
+                        </span>
+                        <span class="badge px-3 py-2">
+                            <i class="fa-solid fa-shield-halved me-1"></i> Secure Payments
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
     <hr class="mx-4 border border-dark">
 
     <!-- Movie Cards 1 -->
@@ -101,36 +128,103 @@ if (!isset($_SESSION['username'])) {
     </section>
 
     <!-- Offer Section -->
-    <section class="offer-section text-center mt-5">
+    <section class="offer-section py-5 mt-5">
         <div class="container">
-            <h1 class="fw-bold mb-4">Exclusive Offers</h1>
-            <div class="offer-img">
-                <div class="offer-item mx-2">
-                    <img src="assets/img/offer1.png" alt="Weekend Offers - Cinebook" class="offer-img img-fluid rounded">
+            <!-- Heading -->
+            <div class="text-center mb-4">
+                <p class="text-uppercase small  mb-1">Save More on Every Booking</p>
+                <h2 class="fw-bold mb-2">Exclusive Offers</h2>
+                <p class=" mb-0">
+                    Grab exciting discounts on weekends, festivals, and special occasions with CineBook.
+                </p>
+            </div>
+
+            <!-- Offers Grid -->
+            <div class="row g-4 justify-content-center">
+                <!-- Offer 1 -->
+                <div class="col-12 col-md-6 col-lg-5">
+                    <div class="offer-card h-100 d-flex flex-column">
+                        <img src="assets/img/offer1.png"
+                            alt="Weekend Offers - CineBook"
+                            class="offer-image img-fluid rounded-3 mb-3">
+                        <h5 class="fw-semibold mb-2">Flat 20% Off on Weekend Shows</h5>
+                        <p class=" mb-3">
+                            Enjoy your Friday, Saturday, and Sunday night shows with special discounts
+                            on selected cinemas and showtimes.
+                        </p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                            <span class="small fw-semibold">
+                                Use Code: WEEKEND20
+                            </span>
+                            <a href="#" class="bg-white px-5 py-2 text-dark border border-0 rounded fw-bold px-4 text-decoration-none">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="offer-item mx-2">
-                    <img src="assets/img/offer2.png" alt="Festival Offers - Cinebook" class="offer-img img-fluid rounded">
+
+                <!-- Offer 2 -->
+                <div class="col-12 col-md-6 col-lg-5">
+                    <div class="offer-card h-100 d-flex flex-column">                        
+                        <img src="assets/img/offer2.png"
+                            alt="Festival Offers - CineBook"
+                            class="offer-image img-fluid rounded-3 mb-3">
+                        <h5 class="fw-semibold mb-2">Festive Cashback & Combo Offers</h5>
+                        <p class=" mb-3">
+                            Celebrate festivals with exciting cashback and snack combos on your
+                            favorite movies across partnered theaters.
+                        </p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                            <span class="small text-white fw-semibold">
+                                Limited Time Offer
+                            </span>
+                            <a href="#" class="bg-white px-5 py-2 text-dark border border-0 rounded fw-bold px-4 text-decoration-none">
+                                Grab Now
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials-section p-2 mt-4">
+    <section class="testimonials-section py-5">
         <div class="container">
-            <h1 class="text-center fw-bold mb-4">What Our Users Say</h1>
-            <div class="row justify-content-center">
+
+            <!-- Heading -->
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-uppercase mb-2">
+                    <i class="fa-solid fa-comments me-2 text-primary"></i>What Our Users Say
+                </h2>
+                <p class="text-muted mb-0">Real experiences from people who love booking with CineBook.</p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+
                 <!-- Testimonial 1 -->
-                <div class="col-md-4 mb-4 Testimonial-card">
-                    <div class="card shadow h-100">
-                        <div class="card-body">
-                            <p class="card-text">"CineBook makes booking movie tickets so easy and convenient. I love
-                                the clean interface and great deals!"</p>
-                            <div class="d-flex align-items-center mt-3">
-                                <img src="https://i.pravatar.cc/50?img=1" alt="User 1" class="rounded-circle me-3">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 rounded-4">
+                        <div class="card-body d-flex flex-column p-4">
+                            <div class="mb-3">
+                                <i class="fa-solid fa-quote-left text-primary fs-3 mb-2"></i>
+                                <p class="card-text mb-0 text-muted">
+                                    “CineBook makes booking movie tickets so easy and convenient. I love
+                                    the clean interface and great deals!”
+                                </p>
+                            </div>
+                            <div class="mt-auto d-flex align-items-center">
+                                <img src="https://i.pravatar.cc/60?img=1" alt="User 1" class="rounded-circle me-3">
                                 <div>
                                     <h6 class="mb-0 fw-bold">Amit Shah</h6>
-                                    <small class="text-muted">Movie Enthusiast</small>
+                                    <small class="text-muted">Movie Enthusiast</small><br>
+                                    <span class="text-warning">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -138,16 +232,28 @@ if (!isset($_SESSION['username'])) {
                 </div>
 
                 <!-- Testimonial 2 -->
-                <div class="col-md-4 mb-4 Testimonial-card">
-                    <div class="card shadow h-100">
-                        <div class="card-body">
-                            <p class="card-text">"I’ve never missed a premiere since using CineBook. The offers and
-                                reminders are a huge plus!"</p>
-                            <div class="d-flex align-items-center mt-3">
-                                <img src="https://i.pravatar.cc/50?img=2" alt="User 2" class="rounded-circle me-3">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 rounded-4">
+                        <div class="card-body d-flex flex-column p-4">
+                            <div class="mb-3">
+                                <i class="fa-solid fa-quote-left text-primary fs-3 mb-2"></i>
+                                <p class="card-text mb-0 text-muted">
+                                    “I’ve never missed a premiere since using CineBook.
+                                    The offers and reminders are a huge plus!”
+                                </p>
+                            </div>
+                            <div class="mt-auto d-flex align-items-center">
+                                <img src="https://i.pravatar.cc/60?img=2" alt="User 2" class="rounded-circle me-3">
                                 <div>
                                     <h6 class="mb-0 fw-bold">Riya Mehta</h6>
-                                    <small class="text-muted">Cinema Lover</small>
+                                    <small class="text-muted">Cinema Lover</small><br>
+                                    <span class="text-warning">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star-half-stroke"></i>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -155,53 +261,82 @@ if (!isset($_SESSION['username'])) {
                 </div>
 
                 <!-- Testimonial 3 -->
-                <div class="col-md-4 mb-4 Testimonial-card">
-                    <div class="card shadow h-100">
-                        <div class="card-body">
-                            <p class="card-text">"A seamless experience from browsing movies to booking tickets. Highly
-                                recommended!"</p>
-                            <div class="d-flex align-items-center mt-3">
-                                <img src="https://i.pravatar.cc/50?img=3" alt="User 3" class="rounded-circle me-3">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 rounded-4">
+                        <div class="card-body d-flex flex-column p-4">
+                            <div class="mb-3">
+                                <i class="fa-solid fa-quote-left text-primary fs-3 mb-2"></i>
+                                <p class="card-text mb-0 text-muted">
+                                    “A seamless experience from browsing movies to booking tickets.
+                                    Highly recommended!”
+                                </p>
+                            </div>
+                            <div class="mt-auto d-flex align-items-center">
+                                <img src="https://i.pravatar.cc/60?img=3" alt="User 3" class="rounded-circle me-3">
                                 <div>
                                     <h6 class="mb-0 fw-bold">Sanjay Rao</h6>
-                                    <small class="text-muted">Frequent Viewer</small>
+                                    <small class="text-muted">Frequent Viewer</small><br>
+                                    <span class="text-warning">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
+
     <hr class="mx-4">
 
-    <!-- Subscribe Form -->
-    <section class="card sub-section mb-5 mx-4 p-4 shadow-lg border-0 rounded-4 bg-light">
-        <div class="text-center">
-            <h4 class="fw-bold mb-3">
-                Don’t Miss Out!<br>
-                <span class="fw-normal">Subscribe for the latest movies & exclusive offers.</span>
-            </h4>
-            <form action="#" method="post" class="mt-3">
-                <div class="row justify-content-center g-2">
-                    <div class="col-12 col-md-8 d-flex flex-column flex-md-row align-items-stretch">
-                        <input
-                            type="email"
-                            class="form-control mb-2 mb-md-0 me-md-2 shadow-sm border-secondary"
-                            name="sub_email"
-                            id="sub_email"
-                            placeholder="Enter your Email Address....."
-                            required>
-                        <button
-                            type="submit"
-                            class="btn fw-bold shadow-sm px-4">
-                            Subscribe
-                        </button>
-                    </div>
+    <!-- Subscribe Section -->
+    <section class="mb-5 mx-4">
+        <div class="card sub-section shadow-lg border-0 rounded-4 bg-light p-4 p-md-5"
+            style="background: linear-gradient(135deg, #f5f7ff, #e7f3ff);">
+            <div class="row align-items-center g-4">
+                <div class="col-12 col-md-6 text-center text-md-start">
+                    <h4 class="fw-bold mb-2">
+                        <i class="fa-solid fa-bell me-2 text-primary"></i>
+                        Don’t Miss Out!
+                    </h4>
+                    <p class="mb-2 text-muted">
+                        Get updates on the latest releases, special screenings, and exclusive CineBook offers.
+                    </p>
+                    <span class="badge bg-primary-subtle text-primary-emphasis rounded-pill px-3 py-2">
+                        <i class="fa-solid fa-check me-1"></i> No spam. Unsubscribe anytime.
+                    </span>
                 </div>
-            </form>
+                <div class="col-12 col-md-6">
+                    <form action="#" method="post" class="mt-2 mt-md-0">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text border-0 shadow-sm bg-white">
+                                <i class="fa-solid fa-envelope text-primary"></i>
+                            </span>
+                            <input
+                                type="email"
+                                class="form-control border-0 shadow-sm"
+                                name="sub_email"
+                                id="sub_email"
+                                placeholder="Enter your email address"
+                                required>
+                            <button
+                                type="submit"
+                                class="btn btn-primary fw-bold px- shadow-sm">
+                                Subscribe
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
+
 
     <!-- Footer -->
     <?php include 'includes/footer.php'; ?>

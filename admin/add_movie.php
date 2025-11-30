@@ -1,6 +1,3 @@
-<!-- Requring Add Movie File -->
-<?php require 'controllers/add-process.php' ?>
-
 <?php
 session_start();
 
@@ -62,9 +59,10 @@ if (!isset($_SESSION['adminname'])) {
                                         placeholder="Enter movie language...">
                                     <div class="invalid-feedback">Please enter a language.</div>
                                 </div>
+                                <?php $today = date('Y-m-d'); ?>
                                 <div class="col-md-6">
                                     <label for="release_date" class="form-label fw-semibold">Release Date:</label>
-                                    <input type="date" class="form-control" id="release_date" name="release_date">
+                                    <input type="date" class="form-control" id="release_date" name="release_date" min="<?= $today; ?>" required>
                                     <div class="invalid-feedback">Please select a release date.</div>
                                 </div>
                                 <div class="col-md-6">
@@ -77,7 +75,7 @@ if (!isset($_SESSION['adminname'])) {
                                     <label for="rating" class="form-label fw-semibold">Movie Rating:</label>
                                     <input type="number" step="0.1" min="0" max="10" class="form-control" id="rating" name="rating"
                                         placeholder="Enter rating between 0–10">
-                                    <div class="invalid-feedback">Please enter a valid rating.</div>
+                                    <div class="invalid-feedback fw-semibold">Please, Provide a Rating between 0 and 10!!</div>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="poster_url" class="form-label fw-semibold">Poster URL:</label>
@@ -106,6 +104,20 @@ if (!isset($_SESSION['adminname'])) {
             </section>
         </section>
     </main>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function(e) {
+            const ratingInput = document.getElementById("rating");
+            const rating = parseFloat(ratingInput.value);
+
+            if (rating < 0 || rating > 10) {
+                ratingInput.classList.add("is-invalid");
+                e.preventDefault(); // stop form submission
+            } else {
+                ratingInput.classList.remove("is-invalid");
+            }
+        });
+    </script>
 
 </body>
 

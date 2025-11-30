@@ -148,7 +148,7 @@ if (!isset($_SESSION['adminname'])) {
                 <!-- Pagination -->
                 <?php if ($total_pages > 1) : ?>
                     <nav aria-label="Movies pagination">
-                        <ul class="pagination justify-content-center mt-4">
+                        <ul class="pagination justify-content-center mt-5">
 
                             <!-- Previous -->
                             <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">

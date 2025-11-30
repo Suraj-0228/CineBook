@@ -66,7 +66,7 @@ CREATE TABLE bookings (
     ticket_price DECIMAL(10,2) NOT NULL,
     amount DECIMAL(10,2) NOT NULL,
     booking_status ENUM('Pending', 'Approved', 'Cancelled') DEFAULT 'Pending',
-    booking_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    booking_date DATE NOT NULL,
 
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (movie_id) REFERENCES movies_details(movie_id) ON DELETE CASCADE,
@@ -80,11 +80,6 @@ CREATE TABLE payments (
     payment_method ENUM('UPI', 'Card', 'Cash') NOT NULL,
     payment_status ENUM('Pending', 'Confirmed', 'Failed') DEFAULT 'Pending',
     payment_message VARCHAR(255) DEFAULT NULL,
-    upi_id VARCHAR(100) DEFAULT NULL,
-    upi_transaction_id VARCHAR(100) DEFAULT NULL,
-    card_last_digits VARCHAR(4) DEFAULT NULL,
-    card_holder_name VARCHAR(100) DEFAULT NULL,
-    transaction_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (booking_id) REFERENCES bookings(booking_id) ON DELETE CASCADE
 );
 

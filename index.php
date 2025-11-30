@@ -28,7 +28,7 @@ if (isset($_SESSION['username'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/home.css">
+
     <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 

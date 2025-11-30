@@ -43,10 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Validate Password Range
         const minLength = 6;
-        const maxLength = 12;
+        const maxLength = 15;
 
         if (passwordValue.length < minLength || passwordValue.length > maxLength) {
-            error_msg.textContent = "ERROR: Password must be between ${minLength} and ${maxLength} characters!!";
+            error_msg.textContent = `ERROR: Password must be between ${minLength} and ${maxLength} characters!!`;
             return;
         }
 
