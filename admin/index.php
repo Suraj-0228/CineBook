@@ -32,7 +32,7 @@ if (!isset($_SESSION['adminname'])) {
 <body>
 
     <main class="d-flex">
-        
+
         <!-- Navbar -->
         <?php include 'includes/sidebar.php'; ?>
 
@@ -95,7 +95,7 @@ if (!isset($_SESSION['adminname'])) {
                 </div>
 
                 <?php
-                    $query = "
+                $query = "
                         SELECT 
                             b.*, 
                             u.username, 
@@ -112,7 +112,7 @@ if (!isset($_SESSION['adminname'])) {
                         JOIN theaters t ON s.theater_id = t.theater_id
                         LEFT JOIN payments p ON b.booking_id = p.booking_id
                         ORDER BY b.booking_id DESC";
-                    $result_recent = mysqli_query($con, $query);
+                $result_recent = mysqli_query($con, $query);
                 ?>
 
                 <?php if (mysqli_num_rows($result_recent) > 0) : ?>

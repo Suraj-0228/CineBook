@@ -122,10 +122,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                                 <div class="d-flex justify-content-between gap-1">
                                                     <a href="?action=approve&id=<?= $booking_id ?>" class="text-success text-decoration-none fw-semibold">
                                                         <i class="fa-solid fa-check me-1"></i> Approve
-                                                    </a>
-                                                    <a href="?action=cancel&id=<?= $booking_id ?>" class="text-danger text-decoration-none fw-semibold">
-                                                        <i class="fa-solid fa-xmark me-1"></i> Cancel
-                                                    </a>
+                                                    </a>                                                    
                                                 </div>
                                             <?php else: ?>
                                                 <span class="text-muted ">

@@ -17,9 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($username === $admin_username && $password === $admin_password) {
             $_SESSION['adminname'] = $admin_username;
 
-            echo "<script>
-                alert('Welcome to Admin Dashboard.');
-                window.location.href = 'admin/index.php';
+            echo "<script> alert('Welcome to Admin Dashboard.');
+            window.location.href = 'admin/index.php';
             </script>";
             exit();
         }
@@ -40,10 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 setcookie('username', $username, time() + (7 * 24 * 60 * 60), "/");
             }
 
-            echo "<script>
-                alert('Welcome to CineBook');
-                window.location.href = 'home.php';
-            </script>";
+            $_SESSION['popup_type'] = "login_success";  // change name for each popup
+            header("Location: index.php");
             exit();
         } else {
             echo "<script>alert('Invalid Username or Password!'); window.location.href = 'login.php';</script>";

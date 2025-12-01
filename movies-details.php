@@ -1,13 +1,10 @@
-<!-- If user is not Logged In to Website -->
 <?php
 session_start();
 
-// If session not set but cookie exists, restore session
 if (!isset($_SESSION['username']) && isset($_COOKIE['username'])) {
     $_SESSION['username'] = $_COOKIE['username'];
 }
 
-// If neither session nor cookie, redirect to login
 if (!isset($_SESSION['username'])) {
     echo "<script>
         alert('Please, Login to Access CineBook');
@@ -16,6 +13,7 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,17 +51,17 @@ if (!isset($_SESSION['username'])) {
         if (mysqli_num_rows($result) > 0) {
             $movie = mysqli_fetch_assoc($result);
 
-            $id = $movie['movie_id'];
-            $title = $movie['title'];
-            $language = $movie['language'];
+            $id           = $movie['movie_id'];
+            $title        = $movie['title'];
+            $language     = $movie['language'];
             $release_date = $movie['release_date'];
-            $genre = $movie['genre'];
-            $rating = $movie['rating'];
-            $poster = $movie['poster_url'];
-            $description = $movie['description'];
+            $genre        = $movie['genre'];
+            $rating       = $movie['rating'];
+            $poster       = $movie['poster_url'];
+            $description  = $movie['description'];
 
             // Fetch cast data
-            $cast_query = "SELECT actor_name, role_name FROM cast_details WHERE movie_id = '$id'";
+            $cast_query  = "SELECT actor_name, role_name FROM cast_details WHERE movie_id = '$id'";
             $cast_result = mysqli_query($con, $cast_query);
 
             $cast_list = [];
@@ -71,7 +69,7 @@ if (!isset($_SESSION['username'])) {
                 $cast_list[] = $row;
             }
         } else {
-            echo "<div class='alert alert-danger text-center'>Movie not Found!!</div>";
+            echo "<div class='container py-5'><div class='alert alert-danger text-center mb-0'>Movie not found!</div></div>";
             exit;
         }
     } else {
@@ -80,84 +78,109 @@ if (!isset($_SESSION['username'])) {
     }
     ?>
 
-    <section class="container py-4 px-0">
+    <!-- Back Button -->
+    <section class="container py-3">
         <button type="button"
-            class="back-btn fw-semibold px-4 py-2 rounded"
+            class="btn btn-outline-secondary fw-semibold px-3 py-2"
             onclick="window.history.back()">
             <i class="fa-solid fa-arrow-left me-2"></i> Back
         </button>
     </section>
 
-
     <!-- Movie Overview Section -->
-    <section class="movies-section pt-3">
-        <div class="container p-4 shadow-sm rounded bg-white">
-            <div class="row align-items-center g-4">
-                <div class="col-12 col-md-4 text-center">
-                    <img
-                        src="<?= htmlspecialchars($poster); ?>"
-                        alt="<?= htmlspecialchars($title); ?>"
-                        class="img-fluid rounded-4 shadow-sm border border-light-subtle"
-                        style="max-height: 420px; object-fit: cover;">
-                </div>
-                <div class="col-12 col-md-8">
-                    <h1 class="fw-bold mb-3 text-primary"><?= htmlspecialchars($title); ?></h1>
-                    <div class="d-flex flex-wrap align-items-center mb-3">
-                        <div class="me-3 text-danger">
-                            <i class="fa-solid fa-star"></i>
-                            <span class="fw-semibold text-dark"><?= htmlspecialchars($rating); ?>/10</span>
+    <section class="movies-section mt-3">
+        <div class="container">
+            <div class="card border-0 shadow rounded-4">
+                <div class="card-body p-4 p-md-5">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-12 col-md-4 text-center">
+                            <img
+                                src="<?= htmlspecialchars($poster); ?>"
+                                alt="<?= htmlspecialchars($title); ?>"
+                                class="img-fluid rounded-4 shadow-sm border">
                         </div>
-                        <a href="#" class="btn btn-sm fw-semibold">
-                            <i class="fa-solid fa-pen me-2"></i>Rate Now
-                        </a>
+                        <div class="col-12 col-md-8">
+                            <div class="d-flex flex-wrap justify-content-between align-items-start mb-3">
+                                <div>
+                                    <h1 class="fw-bold mb-2"><?= htmlspecialchars($title); ?></h1>
+                                    <div class="d-flex flex-wrap align-items-center gap-2">
+                                        <span class="badge bg-warning text-dark d-flex align-items-center">
+                                            <i class="fa-solid fa-star me-1"></i>
+                                            <?= htmlspecialchars($rating); ?>/10
+                                        </span>
+                                        <span class="badge bg-light text-muted"><?= htmlspecialchars($language); ?></span>
+                                        <span class="badge bg-light text-muted"><?= htmlspecialchars($genre); ?></span>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-outline-primary btn-sm fw-semibold mt-2 px-3 py-2 mt-md-0">
+                                    <i class="fa-solid fa-pen me-1"></i> Rate Now
+                                </a>
+                            </div>
+                            <div class="mb-3">
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-1">
+                                        <span class="fw-semibold">Language:</span>
+                                        <span class="text-muted"><?= htmlspecialchars($language); ?></span>
+                                    </li>
+                                    <li class="mb-1">
+                                        <span class="fw-semibold">Genre:</span>
+                                        <span class="text-muted"><?= htmlspecialchars($genre); ?></span>
+                                    </li>
+                                    <li class="mb-1">
+                                        <span class="fw-semibold">Duration:</span>
+                                        <span class="text-muted">2h 15m</span>
+                                    </li>
+                                    <li class="mb-1">
+                                        <span class="fw-semibold">Release Date:</span>
+                                        <span class="text-muted"><?= htmlspecialchars($release_date); ?></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="d-flex flex-wrap gap-2 mt-3">
+                                <a href="booking.php?movie_id=<?= $id; ?>"
+                                    class="btn fw-semibold px-4 py-2">
+                                    <i class="fa-solid fa-ticket me-2"></i> Book Ticket
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="list-unstyled mb-4">
-                        <li><strong>Language:</strong> <?= htmlspecialchars($language); ?></li>
-                        <li><strong>Genre:</strong> <?= htmlspecialchars($genre); ?></li>
-                        <li><strong>Duration:</strong> 2h 15m</li>
-                        <li><strong>Release Date:</strong> <?= htmlspecialchars($release_date); ?></li>
-                    </ul>
-                    <a href="booking.php?movie_id=<?= $id; ?>" class="btn fw-semibold px-4 py-2">
-                        <i class="fa-solid fa-ticket me-2"></i>Book Ticket
-                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Description Section -->
-    <section class="about-section my-5">
-        <div class="container">
-            <div class="p-4 bg-light rounded shadow-sm border">
-                <h3 class="fw-bold mb-3 text-primary">
-                    <i class="fa-solid fa-align-left me-3"></i>Description
-                </h3>
-                <p class="text-muted lh-base mb-0">
-                    <?= nl2br(htmlspecialchars($description)); ?>
-                </p>
-            </div>
+    <section class="my-5">
+        <div class="container bg-white shadow-lg rounded-4 p-5">
+
+            <h3 class="fw-bold mb-3 d-flex align-items-center">
+                <i class="fa-solid fa-align-left me-2 text-primary"></i>
+                Description
+            </h3>
+            <p class="text-muted mb-0">
+                <?= nl2br(htmlspecialchars($description)); ?>
+            </p>
+
         </div>
     </section>
 
     <!-- Cast Section -->
-    <section class="cast-section py-5 bg-white">
-        <div class="container">
-            <h2 class="fw-bold text-primary text-center mb-5">
-                <i class="fa-solid fa-users me-2"></i>Movie Cast
+    <section class="mb-5">
+        <div class="container bg-white py-5 rounded-4 shadow-lg">
+            <h2 class="fw-bold text-center mb-4">
+                <i class="fa-solid fa-users me-2 text-primary"></i> Movie Cast
             </h2>
-            <div class="row g-4 justify-content-center">
-                <?php if (!empty($cast_list)) { ?>
+            <?php if (!empty($cast_list)) { ?>
+                <div class="row g-4 justify-content-center">
                     <?php foreach ($cast_list as $cast) { ?>
-                        <div class="col-6 col-md-4 col-lg-3">
-                            <div class="card border-0 shadow text-center h-100 rounded-4">
-                                <div class="card-body p-4">
+                        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                            <div class="card border-0 shadow-sm text-center h-100 rounded-4">
+                                <div class="card-body d-flex flex-column align-items-center p-3">
                                     <img
                                         src="assets/img/action.png"
                                         alt="<?= htmlspecialchars($cast['actor_name']); ?>"
-                                        class="img-fluid rounded-circle shadow-sm mb-3 border"
-                                        style="width: 100px; height: 100px; object-fit: cover;">
-
-                                    <h6 class="fw-bold text-dark mb-1"><?= htmlspecialchars($cast['actor_name']); ?></h6>
+                                        class="img-fluid rounded-circle shadow-sm mb-3 border">
+                                    <h6 class="fw-semibold mb-1"><?= htmlspecialchars($cast['actor_name']); ?></h6>
                                     <?php if (!empty($cast['role_name'])) { ?>
                                         <small class="text-muted fst-italic">as <?= htmlspecialchars($cast['role_name']); ?></small>
                                     <?php } ?>
@@ -165,12 +188,15 @@ if (!isset($_SESSION['username'])) {
                             </div>
                         </div>
                     <?php } ?>
-                <?php } else { ?>
-                    <p class="text-center text-muted">No cast information available.</p>
-                <?php } ?>
-            </div>
+                </div>
+            <?php } else { ?>
+                <div class="text-center text-muted">
+                    No cast information available.
+                </div>
+            <?php } ?>
         </div>
     </section>
+
 
     <!-- Footer -->
     <?php include 'includes/footer.php'; ?>

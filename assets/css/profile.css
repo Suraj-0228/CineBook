@@ -1,0 +1,14 @@
+.cb-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #19589c;
+    color: #fff;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+/* Divider line */
+.divider {
+    border-color: #000000;
+}

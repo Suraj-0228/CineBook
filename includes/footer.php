@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row gy-4 text-center text-md-start">
             <div class="col-12 col-md-4">
-                <a href="home.php" class="text-decoration-none">
+                <a href="index.php" class="text-decoration-none">
                     <h1 class="fw-bold text-white mb-3">CineBook</h1>
                 </a>
                 <p class="small mb-0">
@@ -17,7 +17,7 @@
                 <h5 class="fw-bold mb-3 text-uppercase">Quick Links</h5>
                 <ul class="list-unstyled">
                     <li><a href="#" class="text-light text-decoration-none d-block py-1">Privacy Policy</a></li>
-                    <li><a href="#" class="text-light text-decoration-none d-block py-1">Community</a></li>
+                    <li><a href="contact.php" class="text-light text-decoration-none d-block py-1">Contact Us</a></li>
                     <li><a href="about.php" class="text-light text-decoration-none d-block py-1">About Us</a></li>
                 </ul>
             </div>

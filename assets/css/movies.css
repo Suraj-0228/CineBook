@@ -6,29 +6,130 @@
     height: 25rem;
 }
 
-/* Catagory Section */
-.category-card {
-    background: #19589C;
-    border: 2px solid transparent;
-    border-radius: 12px;
+/* Smooth Card Hover */
+.movie-card {
+    transition: 0.35s ease;
+} 
+
+.movie-card:hover {
+    transform: translateY(-8px);
 }
 
-.category-img {
-    width: 100px;
-    height: 100px;
+/* Poster Container */
+.movie-poster-box {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.2rem;
+    height: 320px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+.movie-poster-img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border: 3px solid #E9E9E6;
+    transition: 0.35s ease;
 }
 
-.category-text {
-    color: #E9E9E6;
+.movie-card-upgrade:hover .movie-poster-img {
+    transform: scale(1.07);
+}
+
+/* Rating Tag (Top-left) */
+.movie-rating-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.75);
+    padding: 4px 10px;
+    border-radius: 20px;
+    color: #ffcc00;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(4px);
+}
+
+/* Hover Overlay */
+.movie-hover-layer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.8));
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    transition: 0.3s ease;
+}
+
+.movie-card-upgrade:hover .movie-hover-layer {
+    opacity: 1;
+}
+
+/* Hover Title */
+.movie-hover-title {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Info Title Under Card */
+.movie-info-title {
+    color: #fff;
     font-size: 1rem;
-    letter-spacing: 0.5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
+/* Language Badge */
+.lang-pill {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    color: #fff;
+}
+
+/* Category card base */
+.category-card {
+    padding: 1.1rem 0.75rem;
+    border-radius: 1.1rem;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Category image (inside circle) */
+.category-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Mobile tweaks */
 @media (max-width: 768px) {
     .category-img {
         width: 80px;
         height: 80px;
+    }
+}
+
+@media (max-width: 576px) {
+    .category-icon-wrapper {
+        width: 70px;
+        height: 70px;
+    }
+
+    .category-img {
+        width: 62px;
+        height: 62px;
     }
 }

@@ -13,6 +13,14 @@ html {
     color: #000000;
 }
 
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+.card-tall{
+    min-height: 15rem;
+}
+
 .btn {
     background-color: #19589C;
     color: #E9E9E6;

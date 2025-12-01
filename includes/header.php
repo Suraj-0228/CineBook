@@ -1,75 +1,72 @@
-<!-- 🎥 CineBook Header -->
+<!-- CineBook Header -->
 <header>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg px-3 py-2 shadow-sm">
         <div class="container-fluid">
-            <!-- Brand -->
-            <a href="home.php" class="navbar-brand d-flex align-items-center">
+            <a href="index.php" class="navbar-brand d-flex align-items-center">
                 <h1 class="fw-bold mb-0 text-light">CineBook</h1>
             </a>
-            <!-- Toggle Button (Mobile) -->
             <button class="navbar-toggler btn d-lg-none py-2 border border-light ms-2 text-white" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle navigation">
                 <i class="fas fa-bars fa-lg"></i>
             </button>
-            <!-- Desktop Nav -->
             <div class="collapse navbar-collapse">
-
-                <!-- Center Menu -->
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item mx-2"><a class="nav-link active text-light" href="home.php">Home</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link active text-light" href="index.php">Home</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-light" href="movies.php">Movies</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-light" href="about.php">About Us</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link text-light" href="contact.php">Contact Us</a></li>
                 </ul>
-
-                <!-- User Dropdown (Right Side) -->
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-light d-flex align-items-center"
-                            href="#" id="userDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-user-circle fa-xl"></i>
-                        </a>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-light d-flex align-items-center dropdown-toggle"
+                                href="#" id="userMenu" role="button" data-bs-toggle="dropdown">
+                                <i class="fa fa-user-circle fa-2xl text-white"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end shadow">
+                                <li>
+                                    <a class="dropdown-item" href="profile.php?user_id=<?= $_SESSION['user_id'] ?>">
+                                        <i class="fa-solid fa-user me-2"></i> My Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="my-booking.php">
+                                        <i class="fa-solid fa-ticket me-2"></i> My Bookings
+                                    </a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-danger fw-semibold" href="logout.php">
+                                        <i class="fa-solid fa-right-from-bracket me-2"></i> Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    <?php else: ?>
+                        <div class="d-flex flex-row">
+                            <div class="d-flex flex-row mx-1">
+                                <a href="login.php" class="px-3 py-2 bg-white text-dark text-center text-decoration-none fw-semibold rounded text-center">Sign In</a>
+                            </div>
+                            <div class="d-flex flex-row mx-1">
+                                <a href="register.php" class="px-3 py-2 bg-white text-dark text-center text-decoration-none fw-semibold rounded text-center">Sign Up</a>
+                            </div>
+                        </div>
+                    <?php endif; ?>
 
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            <li>
-                                <a class="dropdown-item"
-                                    href="profile.php?user_id=<?php echo $_SESSION['user_id']; ?>">
-                                    <i class="fa fa-user text-primary me-2"></i> My Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="my-booking.php">
-                                    <i class="fa fa-ticket text-success me-2"></i> My Bookings
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <a class="dropdown-item text-danger"
-                                    href="logout.php"
-                                    onclick="return confirm('Are you sure you want to log out?');">
-                                    <i class="fa fa-sign-out-alt me-2"></i> Logout
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-
-    <!-- Offcanvas Sidebar (Mobile Menu) -->
     <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
         <div class="offcanvas-header border-bottom border-secondary">
             <h4 class="offcanvas-title fw-bold text-white" id="mobileMenuLabel">Menu</h4>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body d-flex flex-column justify-content-between">
-            <!-- Menu Items -->
             <div>
-                <a href="home.php" class="nav-link text-light mb-3 d-flex align-items-center">
+                <a href="index.php" class="nav-link text-light mb-3 d-flex align-items-center">
                     <i class="fa fa-home me-3 text-white"></i> Home
                 </a>
                 <a href="movies.php" class="nav-link text-light mb-3 d-flex align-items-center">
@@ -85,7 +82,6 @@
                     class="nav-link text-light mb-3 d-flex align-items-center">
                     <i class="fa fa-user me-3 text-white"></i> Profile
                 </a>
-                <!-- Logout -->
                 <div class="mt-4">
                     <a href="logout.php"
                         class="bg-danger rounded fw-semibold text-decoration-none text-white px-3 py-2 border border-light"
@@ -94,7 +90,6 @@
                     </a>
                 </div>
             </div>
-            <!-- Footer -->
             <div class="text-center border-top border-secondary pt-3 mt-3 small">
                 <p class="mb-0 text-secondary">&copy; 2025 <span class="text-white">CineBook</span>. All rights reserved.</p>
             </div>

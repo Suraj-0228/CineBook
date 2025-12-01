@@ -38,19 +38,15 @@ if (!isset($_SESSION['adminname'])) {
         <!-- Manage Movies Section -->
         <section class="content-area flex-grow-1" style="margin-left: 260px; padding: 20px;">
             <section class="container my-5 px-4">
-
                 <?php
                 require 'includes/dbconnection.php';
 
-                // Pagination settings
-                $limit = 8; // Movies per page (change if you want)
+                $limit = 8;
                 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
                 if ($page < 1) {
                     $page = 1;
                 }
                 $offset = ($page - 1) * $limit;
-
-                // Get total movie count
                 $count_query = "SELECT COUNT(*) AS total FROM movies_details";
                 $count_result = mysqli_query($con, $count_query);
                 $total_records = 0;
@@ -59,13 +55,10 @@ if (!isset($_SESSION['adminname'])) {
                     $total_records = (int)$count_row['total'];
                 }
                 $total_pages = $total_records > 0 ? ceil($total_records / $limit) : 1;
-
-                // Fetch paginated movie data (newest first)
                 $sql_query = "SELECT * FROM movies_details ORDER BY release_date DESC LIMIT $limit OFFSET $offset";
                 $result = mysqli_query($con, $sql_query);
                 ?>
 
-                <!-- Header + Add Movie Button -->
                 <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
                     <h1 class="fw-bold text-primary text-uppercase mb-3 mb-md-0">
                         <i class="fa-solid fa-video me-2"></i> Manage Movies
@@ -73,8 +66,6 @@ if (!isset($_SESSION['adminname'])) {
                     <a href="add_movie.php" class="bg-success text-white rounded border-0 w-md-auto px-5 py-2 fw-semibold shadow-sm text-decoration-none">
                         <i class="fa-solid fa-plus me-2"></i> Add Movie </a>
                 </div>
-
-                <!-- Cards Grid -->
                 <?php if ($result && mysqli_num_rows($result) > 0) : ?>
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
 
@@ -90,7 +81,6 @@ if (!isset($_SESSION['adminname'])) {
                         ?>
                             <div class="col">
                                 <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
-                                    <!-- Poster -->
                                     <div class="position-relative">
                                         <img src="<?= htmlspecialchars($poster) ?>"
                                             alt="<?= htmlspecialchars($movie_title) ?>"
@@ -100,28 +90,21 @@ if (!isset($_SESSION['adminname'])) {
                                             <i class="fa-solid fa-star me-1"></i><?= $rating ?>
                                         </span>
                                     </div>
-
-                                    <!-- Card Body -->
                                     <div class="card-body d-flex flex-column p-4">
                                         <h5 class="card-title fw-bold text-truncate" title="<?= htmlspecialchars($movie_title) ?>">
                                             <?= htmlspecialchars($movie_title) ?>
                                         </h5>
-
                                         <p class="mb-1 small text-muted">
                                             <i class="fa-solid fa-language me-1"></i><?= htmlspecialchars($language) ?>
                                             &nbsp; | &nbsp;
                                             <i class="fa-solid fa-calendar-days me-1"></i><?= htmlspecialchars($release_date) ?>
                                         </p>
-
                                         <p class="mb-2">
                                             <span class="badge bg-secondary px-3 py-2"><?= htmlspecialchars($genre) ?></span>
                                         </p>
-
                                         <p class="card-text text-muted small" style="max-height: 60px; overflow: hidden;">
                                             <?= htmlspecialchars($description) ?>
                                         </p>
-
-                                        <!-- Actions -->
                                         <div class="d-flex gap-3">
                                             <a href="update_movie.php?movie_id=<?= $id ?>" class="text-success text-decoration-none" data-bs-toggle="tooltip" title="Edit Movie">
                                                 <i class="fa-solid fa-pen-to-square fa-lg"></i> Edit
@@ -149,8 +132,6 @@ if (!isset($_SESSION['adminname'])) {
                 <?php if ($total_pages > 1) : ?>
                     <nav aria-label="Movies pagination">
                         <ul class="pagination justify-content-center mt-5">
-
-                            <!-- Previous -->
                             <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
                                 <a class="page-link"
                                     href="<?= $page > 1 ? '?page=' . ($page - 1) : '#' ?>"
@@ -158,29 +139,23 @@ if (!isset($_SESSION['adminname'])) {
                                     &laquo; Prev
                                 </a>
                             </li>
-
-                            <!-- Page Numbers -->
                             <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
                                 <li class="page-item <?= $i == $page ? 'active' : '' ?>">
                                     <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
                                 </li>
                             <?php endfor; ?>
-
-                            <!-- Next -->
                             <li class="page-item <?= $page >= $total_pages ? 'disabled' : '' ?>">
                                 <a class="page-link"
                                     href="<?= $page < $total_pages ? '?page=' . ($page + 1) : '#' ?>">
                                     Next &raquo;
                                 </a>
                             </li>
-
                         </ul>
                     </nav>
                 <?php endif; ?>
-
             </section>
         </section>
-
+        
     </main>
 
 </body>

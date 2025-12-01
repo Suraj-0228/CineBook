@@ -1,0 +1,36 @@
+.contact-info-card {
+    border-radius: 1.25rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+}
+
+.icon-circle {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.13);
+}
+
+/* Gradient Header */
+.office-card-header {
+    background: #19589C;
+}
+
+/* Highlight Icons (small circular icons) */
+.highlight-icon {
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 0, 0, 0.13);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+}
