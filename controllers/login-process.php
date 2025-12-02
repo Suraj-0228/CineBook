@@ -2,51 +2,52 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['username']) && isset($_POST['password'])) {
+    if (isset($_POST['email']) && isset($_POST['password'])) {
 
-        require 'includes/dbconnection.php';
+        require '../includes/dbconnection.php';
 
-        // Get form input
-        $username = trim($_POST['username']);
+        $email = trim($_POST['email']);
         $password = trim($_POST['password']);
 
-        // Check for admin login (static credentials) ----
-        $admin_username = 'Admin';
+        $admin_email = 'admin@moviemate.com';
         $admin_password = 'adminPassword';
 
-        if ($username === $admin_username && $password === $admin_password) {
-            $_SESSION['adminname'] = $admin_username;
+        if ($email === $admin_email && $password === $admin_password) {
+            $_SESSION['adminname'] = $admin_email;
 
-            echo "<script> alert('Welcome to Admin Dashboard.');
-            window.location.href = 'admin/index.php';
-            </script>";
+            echo "<script>
+                    alert('Welcome to Admin Dashboard.');
+                    window.location.href = '../admin/index.php';
+                  </script>";
             exit();
         }
 
-        // Check for normal user login (from database) ----
-        $sql_query = "SELECT * FROM users WHERE username = '$username' AND user_password = '$password'";
+        $sql_query = "SELECT * FROM users WHERE email = '$email' AND user_password = '$password'";
         $result = mysqli_query($con, $sql_query);
 
-        if (mysqli_num_rows($result) == 1) {
+        if ($result && mysqli_num_rows($result) == 1) {
             $row = mysqli_fetch_assoc($result);
 
-            // Store user details in session
-            $_SESSION['username'] = $row['username'];
             $_SESSION['user_id']  = $row['user_id'];
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['email']    = $row['email'];
 
-            // "Remember Me" option
             if (isset($_POST['remember'])) {
-                setcookie('username', $username, time() + (7 * 24 * 60 * 60), "/");
+                setcookie('email', $email, time() + (7 * 24 * 60 * 60), "/");
             }
 
-            $_SESSION['popup_type'] = "login_success";  // change name for each popup
-            header("Location: index.php");
+            $_SESSION['popup_type'] = "login_success";
+            header("Location: ../index.php");
             exit();
         } else {
-            echo "<script>alert('Invalid Username or Password!'); window.location.href = 'login.php';</script>";
+            echo "<script>
+                    alert('Invalid Email or Password!');
+                    window.location.href = 'login.php';
+                  </script>";
             exit();
         }
 
         $con->close();
     }
 }
+?>

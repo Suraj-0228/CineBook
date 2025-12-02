@@ -2,12 +2,29 @@
 session_start();
 require 'includes/dbconnection.php';
 $user_id = $_SESSION['user_id'];
+
+$limit = 8;
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+if ($page < 1) {
+    $page = 1;
+}
+$offset = ($page - 1) * $limit;
+
+$count_sql = "SELECT COUNT(*) AS total FROM bookings WHERE user_id = '$user_id'";
+$count_result = mysqli_query($con, $count_sql);
+$count_row = mysqli_fetch_assoc($count_result);
+$total_records = (int)$count_row['total'];
+$total_pages = $total_records > 0 ? ceil($total_records / $limit) : 1;
+
 $query = "SELECT b.*, m.title, s.show_date, s.show_time, t.theater_name 
           FROM bookings b
           JOIN movies_details m ON b.movie_id = m.movie_id
           JOIN showtimes s ON b.show_id = s.show_id
           JOIN theaters t ON s.theater_id = t.theater_id
-          WHERE b.user_id = '$user_id' ";
+          WHERE b.user_id = '$user_id'
+          ORDER BY b.booking_id DESC
+          LIMIT $limit OFFSET $offset";
+
 $result = mysqli_query($con, $query);
 ?>
 
@@ -17,12 +34,13 @@ $result = mysqli_query($con, $query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineBook - My Bookings</title>
+    <title>MovieMate - My Bookings</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="shortcut icon" href="assets/img/favicon.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -38,15 +56,14 @@ $result = mysqli_query($con, $query);
         <?php if (mysqli_num_rows($result) > 0) { ?>
             <div class="row g-4">
                 <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                    <div class="col-12 col-md-6 col-lg-4">
+                    <div class="col-12 col-md-6 col-lg-3">
                         <div class="booking-card card shadow border-0 rounded-4 h-100">
                             <div class="card-header d-flex justify-content-between align-items-center text-white py-3"
                                 style="background: linear-gradient(135deg, #19589c, #143f70);">
                                 <div>
-                                    <small class="text-white-50 d-block">Booking ID: <?php echo $row['booking_id']; ?></small>
+                                    <small class="text-white-50 d-block">Booking ID: #<?php echo $row['booking_id']; ?></small>
                                     <h5 class="mb-0 fw-semibold"><?php echo $row['title']; ?></h5>
                                 </div>
-
                                 <?php if ($row['booking_status'] == 'Pending') { ?>
                                     <span class="badge bg-warning text-dark fw-semibold px-3 py-2 shadow-sm">
                                         <i class="fa fa-clock me-1"></i> Pending
@@ -78,10 +95,34 @@ $result = mysqli_query($con, $query);
                                         <strong>Theater:</strong>
                                         <span class="text-muted"><?php echo $row['theater_name']; ?></span>
                                     </li>
+                                    <?php
+                                    // Raw seat string from DB, e.g. "A01, A02, A03"
+                                    $seatStr = isset($row['seat_row']) ? trim($row['seat_row']) : '';
+
+                                    // Split on commas, remove extra spaces & empty values
+                                    $seats = preg_split('/\s*,\s*/', $seatStr, -1, PREG_SPLIT_NO_EMPTY);
+
+                                    // Sort if you want them in order (optional)
+                                    sort($seats);
+                                    ?>
                                     <li class="mb-2">
                                         <i class="fa fa-chair me-2 text-primary"></i>
                                         <strong>Seats:</strong>
-                                        <span class="text-muted"><?php echo $row['seat_row'] . "-" . $row['total_seat']; ?></span>
+                                        <span class="text-muted">
+                                            <?php
+                                            if (empty($seats)) {
+                                                echo "N/A";
+                                            } elseif (count($seats) === 1) {
+                                                // Only one seat
+                                                echo "(" . $seats[0] . ")";
+                                            } else {
+                                                // Range: first - last
+                                                $firstSeat = $seats[0];
+                                                $lastSeat  = $seats[count($seats) - 1];
+                                                echo "(" . $firstSeat . " - " . $lastSeat . ")";
+                                            }
+                                            ?>
+                                        </span>
                                     </li>
                                 </ul>
                                 <?php if ($row['booking_status'] == 'Pending') { ?>
@@ -104,8 +145,32 @@ $result = mysqli_query($con, $query);
                     </div>
                 <?php } ?>
             </div>
-        <?php } else { ?>
 
+            <!-- Pagination -->
+            <?php if ($total_pages > 1) { ?>
+                <nav aria-label="Bookings pagination">
+                    <ul class="pagination justify-content-center mt-4">
+                        <li class="page-item <?php echo ($page <= 1) ? 'disabled' : ''; ?>">
+                            <a class="page-link" href="?page=<?php echo $page - 1; ?>" tabindex="-1">
+                                Previous
+                            </a>
+                        </li>
+                        <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
+                            <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>">
+                                <a class="page-link" href="?page=<?php echo $i; ?>">
+                                    <?php echo $i; ?>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <li class="page-item <?php echo ($page >= $total_pages) ? 'disabled' : ''; ?>">
+                            <a class="page-link" href="?page=<?php echo $page + 1; ?>">
+                                Next
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            <?php } ?>
+        <?php } else { ?>
             <div class="card shadow-lg border-0 rounded-4 bg-light p-5 text-center mx-auto" style="max-width: 500px;">
                 <i class="fa fa-ticket-alt fa-3x text-secondary mb-3"></i>
                 <h5 class="fw-bold mb-2">No Bookings Found</h5>
@@ -133,7 +198,7 @@ $result = mysqli_query($con, $query);
                     </p>
                 </div>
                 <div class="modal-footer border-0 justify-content-center pb-4">
-                    <button class="btn btn-danger rounded-pill px-4 fw-semibold" data-bs-dismiss="modal">
+                    <button class="bg-danger px-5 py-2 text-white border border-0 rounded fw-semibold text-center text-decoration-none fw-semibold" data-bs-dismiss="modal">
                         Close
                     </button>
                 </div>

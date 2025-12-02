@@ -1,6 +1,32 @@
-.details-img{
+.details-img {
     width: 20rem;
     height: 25rem;
     display: flex;
     margin: auto;
+}
+
+.cast-card {
+    transition: 0.35s ease;
+}
+
+.cast-card:hover {
+    transform: translateY(-8px);
+}
+
+.cast-img {
+    width: 8rem;
+    height: 8rem;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .cast-section, .description-section {
+        margin: 1rem;
+    }
+
+    .cast-img {
+        width: 6rem;
+        height: 6rem;
+        object-fit: cover;
+    }
 }

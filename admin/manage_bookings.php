@@ -19,12 +19,13 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineBook - Manage Bookings</title>
+    <title>MovieMate - Manage Bookings</title>
 
     <!-- Bootstrap + FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="../assets/img/favicon.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -81,7 +82,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                 <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
                                     <div class="card-header admin-header text-white d-flex justify-content-between align-items-center">
                                         <span class="">
-                                            Booking ID: <?= $booking_id ?>
+                                            Booking ID: #<?= $booking_id ?>
                                         </span>
                                         <span class="badge <?= $status_badge ?> px-3 py-2 fw-semibold">
                                             <?= $booking_status ?>
@@ -122,7 +123,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                                 <div class="d-flex justify-content-between gap-1">
                                                     <a href="?action=approve&id=<?= $booking_id ?>" class="text-success text-decoration-none fw-semibold">
                                                         <i class="fa-solid fa-check me-1"></i> Approve
-                                                    </a>                                                    
+                                                    </a>
                                                 </div>
                                             <?php else: ?>
                                                 <span class="text-muted ">

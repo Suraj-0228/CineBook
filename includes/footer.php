@@ -4,7 +4,7 @@
         <div class="row gy-4 text-center text-md-start">
             <div class="col-12 col-md-4">
                 <a href="index.php" class="text-decoration-none">
-                    <h1 class="fw-bold text-white mb-3">CineBook</h1>
+                    <h1 class="fw-bold text-white mb-3">MovieMate</h1>
                 </a>
                 <p class="small mb-0">
                     Discover the latest blockbusters and timeless classics.
@@ -28,11 +28,11 @@
                 <ul class="list-unstyled mb-0">
                     <li class="d-flex justify-content-center justify-content-md-start align-items-center mb-2">
                         <i class="fa-regular fa-envelope me-2"></i>
-                        <span>cinebookmovies@gmail.com</span>
+                        <span>moviemate@gmail.com</span>
                     </li>
                     <li class="d-flex justify-content-center justify-content-md-start align-items-center mb-2">
                         <i class="fa-solid fa-globe me-2"></i>
-                        <span>www.cinebookindia.co.in</span>
+                        <span>www.moviemateindia.co.in</span>
                     </li>
                     <li class="d-flex justify-content-center justify-content-md-start align-items-center">
                         <i class="fa-solid fa-phone me-2"></i>
@@ -49,8 +49,8 @@
         <div class="row align-items-center text-center text-md-start">
             <div class="col-md-8 mb-3 mb-md-0">
                 <p class="small mb-0">
-                    <strong>&copy; CineBook.</strong> All rights reserved.
-                    Designed & developed by the <strong>CineBook Team</strong>.
+                    <strong>&copy; MovieMate.</strong> All rights reserved.
+                    Designed & developed by the <strong>MovieMate Team</strong>.
                 </p>
             </div>
 

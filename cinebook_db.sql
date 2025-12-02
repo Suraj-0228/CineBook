@@ -1,6 +1,6 @@
 -- Create Database
-CREATE DATABASE IF NOT EXISTS cinebook_db;
-USE cinebook_db;
+CREATE DATABASE IF NOT EXISTS moviemate_db;
+USE moviemate_db;
 
 -- Users Table
 CREATE TABLE users (
@@ -61,7 +61,7 @@ CREATE TABLE bookings (
     user_id INT NOT NULL,
     movie_id INT NOT NULL,
     show_id INT NOT NULL,
-    seat_row VARCHAR(5) NOT NULL,
+    seat_row VARCHAR(255) NOT NULL,
     total_seat INT NOT NULL,
     ticket_price DECIMAL(10,2) NOT NULL,
     amount DECIMAL(10,2) NOT NULL,

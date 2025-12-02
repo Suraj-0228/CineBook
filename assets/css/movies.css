@@ -9,7 +9,7 @@
 /* Smooth Card Hover */
 .movie-card {
     transition: 0.35s ease;
-} 
+}
 
 .movie-card:hover {
     transform: translateY(-8px);
@@ -120,6 +120,10 @@
         width: 80px;
         height: 80px;
     }
+
+    .card-img-top {
+        height: 15rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -127,7 +131,6 @@
         width: 70px;
         height: 70px;
     }
-
     .category-img {
         width: 62px;
         height: 62px;

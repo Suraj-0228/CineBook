@@ -7,7 +7,7 @@ if (!isset($_SESSION['username']) && isset($_COOKIE['username'])) {
 
 if (!isset($_SESSION['username'])) {
     echo "<script>
-        alert('Please, Login to Access CineBook');
+        alert('Please, Login to Access MovieMate!!');
         window.location.href = 'login.php';
     </script>";
     exit();
@@ -20,7 +20,7 @@ if (!isset($_SESSION['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineBook - Movies-Details Page</title>
+    <title>MovieMate - Movies-Details Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
     <!-- Slick Slider CSS -->
@@ -30,6 +30,7 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
     <link rel="stylesheet" href="assets/css/details.css">
+    <link rel="shortcut icon" href="assets/img/favicon.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -150,9 +151,8 @@ if (!isset($_SESSION['username'])) {
     </section>
 
     <!-- Description Section -->
-    <section class="my-5">
+    <section class="my-5 description-section">
         <div class="container bg-white shadow-lg rounded-4 p-5">
-
             <h3 class="fw-bold mb-3 d-flex align-items-center">
                 <i class="fa-solid fa-align-left me-2 text-primary"></i>
                 Description
@@ -160,13 +160,12 @@ if (!isset($_SESSION['username'])) {
             <p class="text-muted mb-0">
                 <?= nl2br(htmlspecialchars($description)); ?>
             </p>
-
         </div>
     </section>
 
     <!-- Cast Section -->
-    <section class="mb-5">
-        <div class="container bg-white py-5 rounded-4 shadow-lg">
+    <section class="mb-5 cast-section">
+        <div class="container bg-white py-5 px-4 rounded-4 shadow-lg">
             <h2 class="fw-bold text-center mb-4">
                 <i class="fa-solid fa-users me-2 text-primary"></i> Movie Cast
             </h2>
@@ -174,12 +173,12 @@ if (!isset($_SESSION['username'])) {
                 <div class="row g-4 justify-content-center">
                     <?php foreach ($cast_list as $cast) { ?>
                         <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                            <div class="card border-0 shadow-sm text-center h-100 rounded-4">
+                            <div class="card cast-card border-0 shadow-lg text-center h-100 rounded-4">
                                 <div class="card-body d-flex flex-column align-items-center p-3">
                                     <img
                                         src="assets/img/action.png"
                                         alt="<?= htmlspecialchars($cast['actor_name']); ?>"
-                                        class="img-fluid rounded-circle shadow-sm mb-3 border">
+                                        class="cast-img rounded-circle shadow-lg mb-3 border">
                                     <h6 class="fw-semibold mb-1"><?= htmlspecialchars($cast['actor_name']); ?></h6>
                                     <?php if (!empty($cast['role_name'])) { ?>
                                         <small class="text-muted fst-italic">as <?= htmlspecialchars($cast['role_name']); ?></small>

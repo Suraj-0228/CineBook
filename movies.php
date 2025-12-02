@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineBook - Movies Page</title>
+    <title>MovieMate - Movies Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -17,6 +17,7 @@ session_start();
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/movies.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="shortcut icon" href="assets/img/favicon.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -67,14 +68,14 @@ session_start();
                         </small>
                     </div>
                     <?php if (!empty($search_query) || !empty($filter_genre)): ?>
-                        <div class="active-filter-badge small">
+                        <div class="active-filter-badge">
                             <i class="fa-solid fa-filter me-1"></i>
                             Showing results
                             <?php if (!empty($search_query)): ?>
-                                for "<span class="fw-semibold"><?= htmlspecialchars($search_query) ?></span>"
+                                for "<span class="fw-semibold text-primary"><?= htmlspecialchars($search_query) ?></span>"
                             <?php endif; ?>
                             <?php if (!empty($filter_genre)): ?>
-                                in <span class="fw-semibold"><?= htmlspecialchars($filter_genre) ?></span>
+                                in <span class="fw-semibold text-primary"><?= htmlspecialchars($filter_genre) ?></span>
                             <?php endif; ?>
                         </div>
                     <?php endif; ?>
@@ -90,7 +91,7 @@ session_start();
                                     placeholder="Search by movie name..." value="<?= htmlspecialchars($search_query) ?>">
                             </div>
                         </div>
-                        <div class="col-12 col-md-3 mt-0">
+                        <div class="col-12 col-md-3 mt-2 mt-lg-0">
                             <select name="genre" id="genre" class="form-select filter-select" onchange="this.form.submit()">
                                 <option value="">All Genres</option>
                                 <option value="Action" <?= ($filter_genre == 'Action') ? 'selected' : '' ?>>Action</option>
@@ -99,7 +100,7 @@ session_start();
                                 <option value="Thriller" <?= ($filter_genre == 'Thriller') ? 'selected' : '' ?>>Thriller</option>
                             </select>
                         </div>
-                        <div class="col-12 col-md-3 mt-0 text-md-end d-flex gap-2 mt-md-0 justify-content-end">
+                        <div class="col-12 col-md-3 mt-2 mt-lg-0 text-md-end d-flex gap-2 justify-content-end">
                             <button class="btn search-btn fw-semibold  w-50 w-md-auto" type="submit">
                                 <i class="fa-solid fa-search me-1"></i> Search
                             </button>

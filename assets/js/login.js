@@ -1,43 +1,46 @@
 // ===== Login Validations =====
-const username = document.getElementById("username");
+const email = document.getElementById("email");
 const password = document.getElementById("password");
 const remember = document.getElementById("remember");
 const loginBtn = document.getElementById("login_btn");
-const errorMsg = document.getElementById("error_msg"); // <p> tag
+const errorMsg = document.getElementById("error_msg");
 
-loginBtn.addEventListener("click", function (e) {
-    // Prevent form from submitting until validation passes
-    e.preventDefault();
+// Extra safety: only run if button exists (on login page)
+if (loginBtn && email && password) {
+    loginBtn.addEventListener("click", function (e) {
+        e.preventDefault();
 
-    const usernameValue = username.value.trim();
-    const passwordValue = password.value.trim();
+        const emailValue = email.value.trim();
+        const passwordValue = password.value.trim();
 
-    // Reset previous messages
-    errorMsg.textContent = "";
+        errorMsg.textContent = "";
 
-    // Empty field validation
-    if (usernameValue === "" || passwordValue === "") {
-        errorMsg.textContent = "ERROR: Fields Cannot be Empty!!";
-        return;
-    }
+        if (emailValue === "" || passwordValue === "") {
+            errorMsg.textContent = "ERROR: Fields Cannot be Empty!";
+            return;
+        }
 
-    // Password length validation
-    const minLength = 6;
-    const maxLength = 18;
-    if (passwordValue.length < minLength || passwordValue.length > maxLength) {
-        errorMsg.textContent = `Password must be between ${minLength} and ${maxLength} Characters Long!!`;
-        return;
-    }
+        if (!emailValue.includes("@") || !emailValue.includes(".com")) {
+            errorMsg.textContent = "Please, Enter a valid Email Address!!";
+            return;
+        }
 
-    // Remember Me checkbox validation
-    if (!remember.checked) {
-        errorMsg.textContent = "Please, Check 'Remember Me' before Login!!";
-        return;
-    }
+        const minLength = 6;
+        const maxLength = 18;
+        if (passwordValue.length < minLength || passwordValue.length > maxLength) {
+            errorMsg.textContent = `Password must be between ${minLength} and ${maxLength} Characters Long!!`;
+            return;
+        }
 
-    // If all checks pass, submit the form
-    document.querySelector("form").submit();
-});
+        if (!remember.checked) {
+            errorMsg.textContent = "Please, Check 'Remember Me' Before Login!!";
+            return;
+        }
+
+        document.querySelector("form").submit();
+    });
+}
+
 
 
 // ===== Show / Hide Password =====

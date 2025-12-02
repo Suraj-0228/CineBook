@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineBook - Home Page</title>
+    <title>MovieMate - Home Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
     <!-- Slick Slider CSS -->
@@ -18,6 +18,7 @@ session_start();
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/home.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="shortcut icon" href="assets/img/favicon.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -32,7 +33,7 @@ session_start();
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-9 text-center">
                     <p class="text-uppercase small fw-semibold mb-2 letter-spacing-1">
-                        Welcome to <span class="text-warning">CineBook</span>
+                        Welcome to <span class="text-warning">MovieMate</span>
                     </p>
                     <h1 class="fw-bold display-4 mb-3">
                         Book Movie Tickets<br>
@@ -124,16 +125,16 @@ session_start();
     <section class="py-5 mt-5 offer-section">
         <div class="container">
             <div class="text-center mb-4">
-                <h2 class="fw-bold mb-2 text-white">Exclusive CineBook Offers</h2>
+                <h2 class="fw-bold mb-2 text-white">Exclusive MovieMate Offers</h2>
                 <p class="text-light mb-0">
-                    Enjoy smart savings on weekend shows, festivals, and special occasions with CineBook.
+                    Enjoy smart savings on weekend shows, festivals, and special occasions with MovieMate.
                 </p>
             </div>
             <div class="row g-4 justify-content-center">
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card h-100 border-0 shadow">
                         <img src="assets/img/offer1.png"
-                            alt="Weekend Offers - CineBook">
+                            alt="Weekend Offers - MovieMate">
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <span class="badge bg-primary">Weekend Special</span>
@@ -162,7 +163,7 @@ session_start();
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card h-100 border-0 shadow">
                         <img src="assets/img/offer2.png"
-                            alt="Festival Offers - CineBook">
+                            alt="Festival Offers - MovieMate">
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <span class="badge bg-primary">Festive Offer</span>
@@ -191,13 +192,13 @@ session_start();
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials-section py-5">
+    <section class="testimonials-section pt-5">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="fw-bold text-uppercase mb-2">
                     <i class="fa-solid fa-comments me-2 text-primary"></i>What Our Users Say
                 </h2>
-                <p class="text-muted mb-0">Real experiences from people who love booking with CineBook.</p>
+                <p class="text-muted mb-0">Real experiences from people who love booking with MovieMate.</p>
             </div>
             <div class="row g-4 justify-content-center">
                 <div class="col-12 col-md-6 col-lg-4">
@@ -206,7 +207,7 @@ session_start();
                             <div class="mb-3">
                                 <i class="fa-solid fa-quote-left text-primary fs-3 mb-2"></i>
                                 <p class="card-text mb-0 text-muted">
-                                    “CineBook makes booking movie tickets so easy and convenient. I love
+                                    “MovieMate makes booking movie tickets so easy and convenient. I love
                                     the clean interface and great deals!”
                                 </p>
                             </div>
@@ -233,7 +234,7 @@ session_start();
                             <div class="mb-3">
                                 <i class="fa-solid fa-quote-left text-primary fs-3 mb-2"></i>
                                 <p class="card-text mb-0 text-muted">
-                                    “I’ve never missed a premiere since using CineBook.
+                                    “I’ve never missed a premiere since using MovieMate.
                                     The offers and reminders are a huge plus!”
                                 </p>
                             </div>
@@ -288,41 +289,50 @@ session_start();
     <hr class="mx-4">
 
     <!-- Subscribe Section -->
-    <section class="mb-5 mx-5">
-        <div class="card sub-section shadow-lg border-0 rounded-4 bg-light p-4 p-md-5">
-            <div class="row align-items-center g-4">
-                <div class="col-12 col-md-6 text-center text-md-start">
-                    <h4 class="fw-bold mb-2">
-                        <i class="fa-solid fa-bell me-2 text-primary"></i>
-                        Don’t Miss Out!
-                    </h4>
-                    <p class="mb-2 text-muted">
-                        Get updates on the latest releases, special screenings, and exclusive CineBook offers.
-                    </p>
-                    <span class="badge bg-primary-subtle text-primary-emphasis rounded-pill px-3 py-2">
-                        <i class="fa-solid fa-check me-1"></i> No spam. Unsubscribe anytime.
-                    </span>
-                </div>
-                <div class="col-12 col-md-6">
-                    <form action="#" method="post" class="mt-2 mt-md-0">
-                        <div class="input-group">
-                            <span class="input-group-text border-0 shadow-sm bg-white">
-                                <i class="fa-solid fa-envelope text-primary"></i>
+    <section class="mb-5 mt-0 px-3 px-md-5">
+        <div class="card sub-section shadow-lg border-0 rounded-4 bg-light">
+            <div class="card-body p-4 p-md-5">
+                <div class="row align-items-center gy-4">
+                    <div class="col-12 col-lg-6">
+                        <div class="text-center text-lg-start">
+                            <h4 class="fw-bold mb-2">
+                                <i class="fa-solid fa-bell me-2 text-primary"></i>
+                                Don’t Miss Out!
+                            </h4>
+                            <p class="mb-3 text-muted">
+                                Stay updated with the latest releases, special screenings, and exclusive MovieMate offers — straight to your inbox.
+                            </p>
+                            <span class="badge bg-primary-subtle text-primary-emphasis rounded-pill px-3 py-2">
+                                <i class="fa-solid fa-check me-1"></i> No spam. Unsubscribe anytime.
                             </span>
-                            <input
-                                type="email"
-                                class="form-control border-0 shadow-sm"
-                                name="sub_email"
-                                id="sub_email"
-                                placeholder="Enter your email address"
-                                required>
-                            <button
-                                type="submit"
-                                class="btn btn-primary fw-bold px- shadow-sm">
-                                Subscribe
-                            </button>
                         </div>
-                    </form>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <form action="#" method="post" class="mt-1">
+                            <div class="d-flex flex-column flex-md-row gap-2">
+                                <div class="input-group flex-grow-1">
+                                    <span class="input-group-text border-0 shadow-sm bg-white">
+                                        <i class="fa-solid fa-envelope text-primary"></i>
+                                    </span>
+                                    <input
+                                        type="email"
+                                        class="form-control border-0 shadow-sm"
+                                        name="sub_email"
+                                        id="sub_email"
+                                        placeholder="moviemate@gmail.com"
+                                        required>
+                                </div>
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary fw-bold px-4">
+                                    Subscribe
+                                </button>
+                            </div>
+                            <small class="text-muted d-block mt-2 text-center text-md-start">
+                                Get handpicked updates only when something exciting is coming up.
+                            </small>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -341,13 +351,13 @@ session_start();
                 </div>
                 <div class="modal-body text-center pt-2 pb-3 px-4">
                     <p class="text-muted mb-0">
-                        Welcome to <span class="fw-semibold">CineBook</span>!
+                        Welcome to <span class="fw-semibold">MovieMate</span>!
                         You’re now logged in — start exploring and book your favorite movies.
                     </p>
                 </div>
                 <div class="modal-footer border-0 justify-content-center pb-4">
-                    <button class="btn btn-primary rounded-pill px-4 fw-semibold" data-bs-dismiss="modal">
-                        Continue to Home
+                    <button class="bg-success px-5 py-2 text-white border border-0 rounded fw-semibold text-center text-decoration-none fw-semibold" data-bs-dismiss="modal">
+                        Continue to MovieMate
                     </button>
                 </div>
             </div>

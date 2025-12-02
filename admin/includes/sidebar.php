@@ -46,6 +46,6 @@
 
     <!-- Logout -->
     <div class="w-100 mt-auto text-center">
-        <p class="text-white opacity-75 my-3">&copy; 2025 CineBook</p>
+        <p class="text-white opacity-100 my-3">&copy; 2025 MovieMate</p>
     </div>
 </nav>

@@ -1,30 +1,78 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const showSelect = document.getElementById("show_id");
-    const totalSeatSelect = document.getElementById("totalSeat");
+    // Only real seat buttons, ignore legend seats
+    const seats = document.querySelectorAll(".seat:not(.legend)");
+    const seatRowInput = document.getElementById("seatRow");
+    const totalSeatInput = document.getElementById("totalSeat");
+    const selectedLabel = document.getElementById("selectedSeatsLabel");
     const ticketPriceInput = document.getElementById("ticketPrice");
     const amountInput = document.getElementById("amount");
+    const showSelect = document.getElementById("show_id");
 
-    function updateAmount() {
-        const selectedOption = showSelect.options[showSelect.selectedIndex];
-        let price = 0;
-        let seats = 0;
+    function recalcAmount() {
+        const price = parseFloat(ticketPriceInput.value) || 0;
 
-        if (selectedOption && selectedOption.value !== "") {
-            price = parseFloat(selectedOption.getAttribute("data-price")) || 0;
+        // Count seats from seatRow string itself
+        const seatsCount = seatRowInput.value
+            ? seatRowInput.value.split(",").filter(s => s.trim() !== "").length
+            : 0;
+
+        totalSeatInput.value = seatsCount;
+
+        if (seatsCount > 0 && price > 0) {
+            amountInput.value = (price * seatsCount).toFixed(2);
+        } else {
+            amountInput.value = "";
         }
-
-        if (totalSeatSelect.value !== "") {
-            seats = parseInt(totalSeatSelect.value) || 0;
-        }
-
-        ticketPriceInput.value = price;
-        amountInput.value = price * seats;
     }
 
-    showSelect.addEventListener("change", updateAmount);
-    totalSeatSelect.addEventListener("change", updateAmount);
+    function updateSeatSelection() {
+        // Only selected seat buttons, ignore legends
+        const selectedSeats = Array.from(
+            document.querySelectorAll(".seat.selected:not(.legend)")
+        );
 
-    updateAmount();
+        const seatCodes = [];
+
+        selectedSeats.forEach(seat => {
+            const row = seat.dataset.row;                 // e.g. "A" or "B"
+            const text = seat.textContent.trim();        // visible number, e.g. "1", "02"
+
+            // Skip any invalid seat (no row or number)
+            if (!row || !text) return;
+
+            const num = text.padStart(2, "0");           // "1" -> "01"
+            seatCodes.push(row + num);                   // "A01"
+        });
+
+        // Save to hidden input for backend
+        seatRowInput.value = seatCodes.join(", ");
+
+        // Show in label
+        selectedLabel.textContent = seatCodes.length
+            ? seatCodes.join(", ")
+            : "None";
+
+        recalcAmount();
+    }
+
+    // Click handler for each valid seat
+    seats.forEach(seat => {
+        seat.addEventListener("click", () => {
+            if (seat.classList.contains("booked")) return; // locked seat
+            seat.classList.toggle("selected");
+            updateSeatSelection();
+        });
+    });
+
+    // When show changes, update ticket price & recalc total
+    if (showSelect) {
+        showSelect.addEventListener("change", function () {
+            const opt = this.options[this.selectedIndex];
+            const price = opt.getAttribute("data-price") || "";
+            ticketPriceInput.value = price;
+            recalcAmount();
+        });
+    }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -47,14 +95,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const method = option.getAttribute("data-method");
             methodInput.value = method;
 
-            // Hide all forms first
             forms.forEach(f => f.classList.add("d-none"));
 
-            // Show selected payment form
             const activeForm = document.getElementById(method.toLowerCase() + "Form");
             if (activeForm) activeForm.classList.remove("d-none");
 
-            // Disable booking button until payment confirmed
             confirmBtn.disabled = true;
         });
     });
@@ -63,16 +108,25 @@ document.addEventListener("DOMContentLoaded", () => {
     upiPayBtn.addEventListener("click", () => {
 
         const upiId = document.getElementById("upiIdInput").value.trim();
+        const errorTag = document.getElementById("upiError");
+        const upiPattern = /^[a-zA-Z0-9.\-_]{2,}@[a-zA-Z]{2,}$/;
 
-        if (upiId === "" || !upiId.includes("@")) { 
-            alert("Please enter a valid UPI ID (example@upi)");
+        if (
+            upiId === "" ||
+            upiId === "@" ||
+            upiId.toLowerCase() === "upi" ||
+            !upiPattern.test(upiId)
+        ) {
+            errorTag.innerText = "Please enter a valid UPI ID (Example: yourname@upi)";
+            errorTag.classList.remove("d-none");
             return;
-        } 
-        
+        }
+
+        errorTag.classList.add("d-none");
+
         const modal = bootstrap.Modal.getInstance(document.getElementById("paymentModal"));
         modal.hide();
 
-        // Auto submit form to PHP
         document.getElementById("bookingForm").submit();
     });
 
@@ -106,7 +160,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const modal = bootstrap.Modal.getInstance(document.getElementById("paymentModal"));
         modal.hide();
 
-        // Auto submit form to PHP
         document.getElementById("bookingForm").submit();
     });
 
@@ -115,7 +168,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const modal = bootstrap.Modal.getInstance(document.getElementById("paymentModal"));
         modal.hide();
 
-        // Auto submit form to PHP
         document.getElementById("bookingForm").submit();
     });
 

@@ -7,6 +7,12 @@
     height: 25rem;
 }
 
+@media (max-width: 768px) {
+    .card-img-top {
+        height: 15rem;
+    }
+}
+
 .hero-section {
     min-height: 85vh;
     background-image: url('https://i.pinimg.com/1200x/90/fe/08/90fe081c623f6a7bf0d8e80a143b1988.jpg');
@@ -34,7 +40,7 @@
 
 .movie-card {
     transition: 0.35s ease;
-} 
+}
 
 .movie-card:hover {
     transform: translateY(-8px);

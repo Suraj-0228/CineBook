@@ -7,18 +7,30 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-$user_id        = $_SESSION['user_id'];
-$movie_id       = mysqli_real_escape_string($con, $_POST['movie_id']);
-$show_id        = mysqli_real_escape_string($con, $_POST['show_id']);
-$seat_row       = mysqli_real_escape_string($con, $_POST['seatRow']);
-$total_seat     = (int) $_POST['totalSeat'];
-$payment_method = mysqli_real_escape_string($con, $_POST['payment_method']);
-$booking_date   = mysqli_real_escape_string($con, $_POST['booking_date']);   // NEW
+$user_id        = (int) $_SESSION['user_id'];
+$movie_id       = $_POST['movie_id'] ?? '';
+$show_id        = $_POST['show_id'] ?? '';
+$seat_row_raw   = $_POST['seatRow'] ?? '';
+$seat_row       = mysqli_real_escape_string($con, $seat_row_raw);
+
+// Derive total_seat from the string itself
+$seats_array = array_filter(array_map('trim', explode(',', $seat_row_raw)));
+$total_seat  = count($seats_array);
+
+$payment_method = $_POST['payment_method'] ?? '';
+$booking_date   = $_POST['booking_date'] ?? '';
+
+$movie_id       = mysqli_real_escape_string($con, $movie_id);
+$show_id        = mysqli_real_escape_string($con, $show_id);
+$seat_row       = mysqli_real_escape_string($con, $seat_row);
+$payment_method = mysqli_real_escape_string($con, $payment_method);
+$booking_date   = mysqli_real_escape_string($con, $booking_date);
 
 if (empty($movie_id) || empty($show_id) || empty($seat_row) || $total_seat <= 0 || empty($payment_method) || empty($booking_date)) {
     echo "<script>alert('Please fill all required details!'); window.history.back();</script>";
     exit;
 }
+
 
 if (!strtotime($booking_date)) {
     echo "<script>alert('Invalid Booking Date!'); window.history.back();</script>";

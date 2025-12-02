@@ -10,7 +10,7 @@ if (!isset($_SESSION['adminname']) && isset($_COOKIE['adminname'])) {
 // If neither session nor cookie, redirect to login
 if (!isset($_SESSION['adminname'])) {
     echo "<script>
-        alert('Please, Login to Access CineBook Admin');
+        alert('Please, Login to Access MovieMate Admin!!');
         window.location.href = '../login.php';
     </script>";
     exit();
@@ -23,10 +23,11 @@ if (!isset($_SESSION['adminname'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineBook - Manage Users</title>
+    <title>MovieMate - Manage Users</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="shortcut icon" href="../assets/img/favicon.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -42,7 +43,7 @@ if (!isset($_SESSION['adminname'])) {
                 <div class="d-flex flex-column text-primary flex-md-row justify-content-between align-items-center mb-4">
                     <h1 class="fw-bold text-uppercase mb-3 mb-md-0">
                         <i class="fa-solid fa-users me-2"></i> Manage Users
-                    </h1>                   
+                    </h1>
                 </div>
                 <?php if ($result && mysqli_num_rows($result) > 0): ?>
                     <div class="row g-4">
@@ -59,7 +60,7 @@ if (!isset($_SESSION['adminname'])) {
                                 <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
                                     <div class="card-header admin-header text-white d-flex justify-content-between align-items-center">
                                         <span class="">
-                                            <i class="fa-solid fa-id-badge me-1"></i>User ID: <?= $user_id ?>
+                                            <i class="fa-solid fa-id-badge me-1"></i>User ID: #<?= $user_id ?>
                                         </span>
                                         <span class="">
                                             <i class="fa-solid fa-calendar-days me-1"></i>

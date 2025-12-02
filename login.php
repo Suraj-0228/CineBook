@@ -6,12 +6,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineBook - Login Page</title>
+    <title>MovieMate - Login Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/navbar.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="shortcut icon" href="assets/img/favicon.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -27,14 +28,15 @@
                     <div class="card-body p-4 p-md-5">
                         <div class="text-center mb-4">
                             <h2 class="fw-bold">Login to Your Account</h2>
-                            <p class="text-muted small">Access your CineBook profile or manage your bookings.</p>
+                            <p class="text-muted small">Access your MovieMate profile or manage your bookings.</p>
                             <p id="error_msg" class="text-danger fw-bold mt-2"></p>
                         </div>
                         <hr>
-                        <form action="#" method="POST" novalidate>
+                        <form action="controllers/login-process.php" method="POST" novalidate>
                             <div class="mb-3">
-                                <label for="username" class="form-label fw-semibold">Username</label>
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Enter Your Username....">
+                                <label for="email" class="form-label fw-semibold">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email..."
+                                    value="<?= isset($_COOKIE['email']) ? htmlspecialchars($_COOKIE['email']) : '' ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label fw-semibold">Password</label>

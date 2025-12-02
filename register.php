@@ -8,12 +8,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CineBook - Register</title>
+  <title>MovieMate - Register</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
-    <link rel="stylesheet" href="assets/css/navbar.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/footer.css" />
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/footer.css" />
+  <link rel="shortcut icon" href="assets/img/favicon.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -28,7 +29,7 @@
         <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5 m-2">
           <div class="text-center">
             <h2 class="fw-bold">Create Your New Account</h2>
-            <p class="text-muted small">Join CineBook and experience seamless movie ticket booking!</p>
+            <p class="text-muted small">Join MovieMate and experience seamless movie ticket booking!</p>
             <p id="error_msg" class="text-danger fw-bold mt-2"></p>
           </div>
           <hr>

@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineBook - Profile Page</title>
+    <title>MovieMate - Profile Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -17,6 +17,7 @@ session_start();
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/profile.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="shortcut icon" href="assets/img/favicon.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -55,7 +56,7 @@ session_start();
     $total_bookings = $countRow['total'];
     ?>
 
-    <section class="cb-profile-section p-5">
+    <section class="cb-profile-section p-lg-5 p-4">
         <?php if (!$user_found): ?>
             <div class="alert alert-danger text-center rounded-4">
                 User not found. Please try again.
@@ -63,7 +64,7 @@ session_start();
         <?php else: ?>
             <div class="row g-4">
                 <div class="col-md-4 col-lg-3">
-                    <div class="card cb-profile-sidebar border-0 shadow-lg h-75">
+                    <div class="card cb-profile-sidebar border-0 shadow-lg">
                         <div class="card-body text-center p-5">
                             <div class="cb-avatar mx-auto mb-3 d-flex align-items-center justify-content-center">
                                 <span class="cb-avatar-text">
@@ -79,7 +80,7 @@ session_start();
                                     </a>
                                 </li>
                                 <li class="cb-sidebar-link mb-2">
-                                    <a href="profile.php" class="bg-primary px-3 py-2 text-white text-decoration-none d-block rounded fw-semibold">
+                                    <a href="#" class="bg-primary px-3 py-2 text-white text-decoration-none d-block rounded fw-semibold">
                                         <i class="fa-solid fa-user-gear me-2"></i> Profile Settings
                                     </a>
                                 </li>
@@ -149,7 +150,7 @@ session_start();
                                 <div class="card-body d-flex flex-column p-5">
                                     <div class="d-flex justify-content-between align-items-start mb-3">
                                         <div class="d-flex align-items-center">
-                                            <i class="fa-solid fa-ticket fa-2xl text-primary"></i> 
+                                            <i class="fa-solid fa-ticket fa-2xl text-primary"></i>
                                             <h4 class="fw-semibold text-primary ms-2 mt-2">Total Bookings</h4>
                                         </div>
                                         <h4 class="fw-semibold bg-primary text-white px-3 py-2 rounded-5">
@@ -179,7 +180,7 @@ session_start();
                                         <div class="d-flex align-items-center">
                                             <i class="fa-solid fa-headset fa-2xl text-danger"></i>
                                             <h4 class="fw-semibold text-danger ms-2 mt-2">Contact/Support</h4>
-                                        </div>                                      
+                                        </div>
                                     </div>
                                     <div class="mb-3">
                                         <h6 class="text-dark fw-semibold mb-1">Help & Support</h6>
